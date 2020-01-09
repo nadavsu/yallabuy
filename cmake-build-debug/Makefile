@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/nadavsuliman/CLionProjects/ecommerce
+CMAKE_SOURCE_DIR = /Users/nadavsuliman/CLionProjects/Amalasu
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/CMakeFiles /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,6 +123,249 @@ ecommerce/fast:
 	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/build
 .PHONY : ecommerce/fast
 
+Address.o: Address.cpp.o
+
+.PHONY : Address.o
+
+# target to build an object file
+Address.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Address.cpp.o
+.PHONY : Address.cpp.o
+
+Address.i: Address.cpp.i
+
+.PHONY : Address.i
+
+# target to preprocess a source file
+Address.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Address.cpp.i
+.PHONY : Address.cpp.i
+
+Address.s: Address.cpp.s
+
+.PHONY : Address.s
+
+# target to generate assembly for a file
+Address.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Address.cpp.s
+.PHONY : Address.cpp.s
+
+Buyer.o: Buyer.cpp.o
+
+.PHONY : Buyer.o
+
+# target to build an object file
+Buyer.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Buyer.cpp.o
+.PHONY : Buyer.cpp.o
+
+Buyer.i: Buyer.cpp.i
+
+.PHONY : Buyer.i
+
+# target to preprocess a source file
+Buyer.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Buyer.cpp.i
+.PHONY : Buyer.cpp.i
+
+Buyer.s: Buyer.cpp.s
+
+.PHONY : Buyer.s
+
+# target to generate assembly for a file
+Buyer.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Buyer.cpp.s
+.PHONY : Buyer.cpp.s
+
+Date.o: Date.cpp.o
+
+.PHONY : Date.o
+
+# target to build an object file
+Date.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Date.cpp.o
+.PHONY : Date.cpp.o
+
+Date.i: Date.cpp.i
+
+.PHONY : Date.i
+
+# target to preprocess a source file
+Date.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Date.cpp.i
+.PHONY : Date.cpp.i
+
+Date.s: Date.cpp.s
+
+.PHONY : Date.s
+
+# target to generate assembly for a file
+Date.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Date.cpp.s
+.PHONY : Date.cpp.s
+
+Feedback.o: Feedback.cpp.o
+
+.PHONY : Feedback.o
+
+# target to build an object file
+Feedback.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Feedback.cpp.o
+.PHONY : Feedback.cpp.o
+
+Feedback.i: Feedback.cpp.i
+
+.PHONY : Feedback.i
+
+# target to preprocess a source file
+Feedback.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Feedback.cpp.i
+.PHONY : Feedback.cpp.i
+
+Feedback.s: Feedback.cpp.s
+
+.PHONY : Feedback.s
+
+# target to generate assembly for a file
+Feedback.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Feedback.cpp.s
+.PHONY : Feedback.cpp.s
+
+Item.o: Item.cpp.o
+
+.PHONY : Item.o
+
+# target to build an object file
+Item.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Item.cpp.o
+.PHONY : Item.cpp.o
+
+Item.i: Item.cpp.i
+
+.PHONY : Item.i
+
+# target to preprocess a source file
+Item.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Item.cpp.i
+.PHONY : Item.cpp.i
+
+Item.s: Item.cpp.s
+
+.PHONY : Item.s
+
+# target to generate assembly for a file
+Item.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Item.cpp.s
+.PHONY : Item.cpp.s
+
+ItemList.o: ItemList.cpp.o
+
+.PHONY : ItemList.o
+
+# target to build an object file
+ItemList.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/ItemList.cpp.o
+.PHONY : ItemList.cpp.o
+
+ItemList.i: ItemList.cpp.i
+
+.PHONY : ItemList.i
+
+# target to preprocess a source file
+ItemList.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/ItemList.cpp.i
+.PHONY : ItemList.cpp.i
+
+ItemList.s: ItemList.cpp.s
+
+.PHONY : ItemList.s
+
+# target to generate assembly for a file
+ItemList.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/ItemList.cpp.s
+.PHONY : ItemList.cpp.s
+
+Manager.o: Manager.cpp.o
+
+.PHONY : Manager.o
+
+# target to build an object file
+Manager.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Manager.cpp.o
+.PHONY : Manager.cpp.o
+
+Manager.i: Manager.cpp.i
+
+.PHONY : Manager.i
+
+# target to preprocess a source file
+Manager.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Manager.cpp.i
+.PHONY : Manager.cpp.i
+
+Manager.s: Manager.cpp.s
+
+.PHONY : Manager.s
+
+# target to generate assembly for a file
+Manager.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Manager.cpp.s
+.PHONY : Manager.cpp.s
+
+Order.o: Order.cpp.o
+
+.PHONY : Order.o
+
+# target to build an object file
+Order.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Order.cpp.o
+.PHONY : Order.cpp.o
+
+Order.i: Order.cpp.i
+
+.PHONY : Order.i
+
+# target to preprocess a source file
+Order.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Order.cpp.i
+.PHONY : Order.cpp.i
+
+Order.s: Order.cpp.s
+
+.PHONY : Order.s
+
+# target to generate assembly for a file
+Order.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Order.cpp.s
+.PHONY : Order.cpp.s
+
+Seller.o: Seller.cpp.o
+
+.PHONY : Seller.o
+
+# target to build an object file
+Seller.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Seller.cpp.o
+.PHONY : Seller.cpp.o
+
+Seller.i: Seller.cpp.i
+
+.PHONY : Seller.i
+
+# target to preprocess a source file
+Seller.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Seller.cpp.i
+.PHONY : Seller.cpp.i
+
+Seller.s: Seller.cpp.s
+
+.PHONY : Seller.s
+
+# target to generate assembly for a file
+Seller.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Seller.cpp.s
+.PHONY : Seller.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +402,33 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ecommerce"
+	@echo "... Address.o"
+	@echo "... Address.i"
+	@echo "... Address.s"
+	@echo "... Buyer.o"
+	@echo "... Buyer.i"
+	@echo "... Buyer.s"
+	@echo "... Date.o"
+	@echo "... Date.i"
+	@echo "... Date.s"
+	@echo "... Feedback.o"
+	@echo "... Feedback.i"
+	@echo "... Feedback.s"
+	@echo "... Item.o"
+	@echo "... Item.i"
+	@echo "... Item.s"
+	@echo "... ItemList.o"
+	@echo "... ItemList.i"
+	@echo "... ItemList.s"
+	@echo "... Manager.o"
+	@echo "... Manager.i"
+	@echo "... Manager.s"
+	@echo "... Order.o"
+	@echo "... Order.i"
+	@echo "... Order.s"
+	@echo "... Seller.o"
+	@echo "... Seller.i"
+	@echo "... Seller.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -4,7 +4,7 @@
 
 #include"MainHeader.h"
 
-void main() {
+int main() {
 
     Manager manager;
     int ans;

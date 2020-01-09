@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/nadavsuliman/CLionProjects/ecommerce
+CMAKE_SOURCE_DIR = /Users/nadavsuliman/CLionProjects/Amalasu
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ecommerce.dir/depend.make
@@ -59,28 +59,163 @@ include CMakeFiles/ecommerce.dir/flags.make
 
 CMakeFiles/ecommerce.dir/main.cpp.o: CMakeFiles/ecommerce.dir/flags.make
 CMakeFiles/ecommerce.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ecommerce.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/main.cpp.o -c /Users/nadavsuliman/CLionProjects/ecommerce/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ecommerce.dir/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/main.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/main.cpp
 
 CMakeFiles/ecommerce.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/ecommerce/main.cpp > CMakeFiles/ecommerce.dir/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/main.cpp > CMakeFiles/ecommerce.dir/main.cpp.i
 
 CMakeFiles/ecommerce.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/ecommerce/main.cpp -o CMakeFiles/ecommerce.dir/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/main.cpp -o CMakeFiles/ecommerce.dir/main.cpp.s
+
+CMakeFiles/ecommerce.dir/Buyer.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/Buyer.cpp.o: ../Buyer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ecommerce.dir/Buyer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/Buyer.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/Buyer.cpp
+
+CMakeFiles/ecommerce.dir/Buyer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/Buyer.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/Buyer.cpp > CMakeFiles/ecommerce.dir/Buyer.cpp.i
+
+CMakeFiles/ecommerce.dir/Buyer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/Buyer.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/Buyer.cpp -o CMakeFiles/ecommerce.dir/Buyer.cpp.s
+
+CMakeFiles/ecommerce.dir/Seller.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/Seller.cpp.o: ../Seller.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ecommerce.dir/Seller.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/Seller.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/Seller.cpp
+
+CMakeFiles/ecommerce.dir/Seller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/Seller.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/Seller.cpp > CMakeFiles/ecommerce.dir/Seller.cpp.i
+
+CMakeFiles/ecommerce.dir/Seller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/Seller.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/Seller.cpp -o CMakeFiles/ecommerce.dir/Seller.cpp.s
+
+CMakeFiles/ecommerce.dir/Item.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/Item.cpp.o: ../Item.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ecommerce.dir/Item.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/Item.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/Item.cpp
+
+CMakeFiles/ecommerce.dir/Item.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/Item.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/Item.cpp > CMakeFiles/ecommerce.dir/Item.cpp.i
+
+CMakeFiles/ecommerce.dir/Item.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/Item.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/Item.cpp -o CMakeFiles/ecommerce.dir/Item.cpp.s
+
+CMakeFiles/ecommerce.dir/Feedback.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/Feedback.cpp.o: ../Feedback.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ecommerce.dir/Feedback.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/Feedback.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/Feedback.cpp
+
+CMakeFiles/ecommerce.dir/Feedback.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/Feedback.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/Feedback.cpp > CMakeFiles/ecommerce.dir/Feedback.cpp.i
+
+CMakeFiles/ecommerce.dir/Feedback.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/Feedback.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/Feedback.cpp -o CMakeFiles/ecommerce.dir/Feedback.cpp.s
+
+CMakeFiles/ecommerce.dir/Address.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/Address.cpp.o: ../Address.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ecommerce.dir/Address.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/Address.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/Address.cpp
+
+CMakeFiles/ecommerce.dir/Address.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/Address.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/Address.cpp > CMakeFiles/ecommerce.dir/Address.cpp.i
+
+CMakeFiles/ecommerce.dir/Address.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/Address.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/Address.cpp -o CMakeFiles/ecommerce.dir/Address.cpp.s
+
+CMakeFiles/ecommerce.dir/Date.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/Date.cpp.o: ../Date.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ecommerce.dir/Date.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/Date.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/Date.cpp
+
+CMakeFiles/ecommerce.dir/Date.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/Date.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/Date.cpp > CMakeFiles/ecommerce.dir/Date.cpp.i
+
+CMakeFiles/ecommerce.dir/Date.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/Date.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/Date.cpp -o CMakeFiles/ecommerce.dir/Date.cpp.s
+
+CMakeFiles/ecommerce.dir/Order.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/Order.cpp.o: ../Order.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ecommerce.dir/Order.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/Order.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/Order.cpp
+
+CMakeFiles/ecommerce.dir/Order.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/Order.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/Order.cpp > CMakeFiles/ecommerce.dir/Order.cpp.i
+
+CMakeFiles/ecommerce.dir/Order.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/Order.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/Order.cpp -o CMakeFiles/ecommerce.dir/Order.cpp.s
+
+CMakeFiles/ecommerce.dir/Manager.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/Manager.cpp.o: ../Manager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ecommerce.dir/Manager.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/Manager.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/Manager.cpp
+
+CMakeFiles/ecommerce.dir/Manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/Manager.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/Manager.cpp > CMakeFiles/ecommerce.dir/Manager.cpp.i
+
+CMakeFiles/ecommerce.dir/Manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/Manager.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/Manager.cpp -o CMakeFiles/ecommerce.dir/Manager.cpp.s
+
+CMakeFiles/ecommerce.dir/ItemList.cpp.o: CMakeFiles/ecommerce.dir/flags.make
+CMakeFiles/ecommerce.dir/ItemList.cpp.o: ../ItemList.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ecommerce.dir/ItemList.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecommerce.dir/ItemList.cpp.o -c /Users/nadavsuliman/CLionProjects/Amalasu/ItemList.cpp
+
+CMakeFiles/ecommerce.dir/ItemList.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecommerce.dir/ItemList.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nadavsuliman/CLionProjects/Amalasu/ItemList.cpp > CMakeFiles/ecommerce.dir/ItemList.cpp.i
+
+CMakeFiles/ecommerce.dir/ItemList.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecommerce.dir/ItemList.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nadavsuliman/CLionProjects/Amalasu/ItemList.cpp -o CMakeFiles/ecommerce.dir/ItemList.cpp.s
 
 # Object files for target ecommerce
 ecommerce_OBJECTS = \
-"CMakeFiles/ecommerce.dir/main.cpp.o"
+"CMakeFiles/ecommerce.dir/main.cpp.o" \
+"CMakeFiles/ecommerce.dir/Buyer.cpp.o" \
+"CMakeFiles/ecommerce.dir/Seller.cpp.o" \
+"CMakeFiles/ecommerce.dir/Item.cpp.o" \
+"CMakeFiles/ecommerce.dir/Feedback.cpp.o" \
+"CMakeFiles/ecommerce.dir/Address.cpp.o" \
+"CMakeFiles/ecommerce.dir/Date.cpp.o" \
+"CMakeFiles/ecommerce.dir/Order.cpp.o" \
+"CMakeFiles/ecommerce.dir/Manager.cpp.o" \
+"CMakeFiles/ecommerce.dir/ItemList.cpp.o"
 
 # External object files for target ecommerce
 ecommerce_EXTERNAL_OBJECTS =
 
 ecommerce: CMakeFiles/ecommerce.dir/main.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/Buyer.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/Seller.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/Item.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/Feedback.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/Address.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/Date.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/Order.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/Manager.cpp.o
+ecommerce: CMakeFiles/ecommerce.dir/ItemList.cpp.o
 ecommerce: CMakeFiles/ecommerce.dir/build.make
 ecommerce: CMakeFiles/ecommerce.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ecommerce"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable ecommerce"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ecommerce.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -93,6 +228,6 @@ CMakeFiles/ecommerce.dir/clean:
 .PHONY : CMakeFiles/ecommerce.dir/clean
 
 CMakeFiles/ecommerce.dir/depend:
-	cd /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/nadavsuliman/CLionProjects/ecommerce /Users/nadavsuliman/CLionProjects/ecommerce /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug /Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/CMakeFiles/ecommerce.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/nadavsuliman/CLionProjects/Amalasu /Users/nadavsuliman/CLionProjects/Amalasu /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug /Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ecommerce.dir/depend
 

@@ -4,7 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/nadavsuliman/CLionProjects/ecommerce/main.cpp" "/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/CMakeFiles/ecommerce.dir/main.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/Address.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Address.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/Buyer.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Buyer.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/Date.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Date.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/Feedback.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Feedback.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/Item.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Item.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/ItemList.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/ItemList.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/Manager.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Manager.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/Order.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Order.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/Seller.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Seller.cpp.o"
+  "/Users/nadavsuliman/CLionProjects/Amalasu/main.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug"/>
+				<Option working_dir="/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug"/>
+				<Option working_dir="/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug"/>
+				<Option working_dir="/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ecommerce">
-				<Option output="/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/ecommerce" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug"/>
+				<Option output="/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/ecommerce" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 ecommerce"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 ecommerce"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ecommerce/fast">
-				<Option output="/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/ecommerce" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug"/>
+				<Option output="/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/ecommerce" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,17 +75,71 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 ecommerce/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/ecommerce/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 ecommerce/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/nadavsuliman/CLionProjects/ecommerce/main.cpp">
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Address.cpp">
 			<Option target="ecommerce"/>
 		</Unit>
-		<Unit filename="/Users/nadavsuliman/CLionProjects/ecommerce/CMakeLists.txt">
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Address.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Buyer.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Buyer.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Date.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Date.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Feedback.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Feedback.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Item.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Item.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/ItemList.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/ItemList.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Manager.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Manager.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Order.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Order.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Seller.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Seller.h">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/main.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

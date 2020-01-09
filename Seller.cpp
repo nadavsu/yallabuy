@@ -59,6 +59,20 @@ Seller::~Seller() {
     delete[] lname;
 }
 
+const Seller &Seller::operator=(const Seller& other) {
+    if (this != &other) {
+        delete[] username;
+        delete[] password;
+        delete[] fname;
+        delete[] lname;
+        delete[] feedbacks;
+        copyFeedback(other);
+        address          = other.address;
+        stock_list       = other.stock_list;
+        num_of_feedbacks = other.num_of_feedbacks;
+    }
+}
+
 bool Seller::setFName(const char* new_fname) {
 	if(strlen(new_fname) <= FNAME_MAX_LEN && strlen(new_fname) >= FNAME_MIN_LEN) {
         if (!this->fname) {

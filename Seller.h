@@ -64,11 +64,12 @@ private:
     int          num_of_feedbacks;
 
 public:
-
     Seller(char *username, char *password, char *fname, char *lname, Address address);
     Seller(const Seller& other); // dont want anyone to copy check what to do
     Seller(Seller&& other);
     ~Seller();
+
+    const Seller& operator=(const Seller& other);
 };
 
 
