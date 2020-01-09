@@ -177,6 +177,33 @@ Buyer.cpp.s:
 	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Buyer.cpp.s
 .PHONY : Buyer.cpp.s
 
+CUI.o: CUI.cpp.o
+
+.PHONY : CUI.o
+
+# target to build an object file
+CUI.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/CUI.cpp.o
+.PHONY : CUI.cpp.o
+
+CUI.i: CUI.cpp.i
+
+.PHONY : CUI.i
+
+# target to preprocess a source file
+CUI.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/CUI.cpp.i
+.PHONY : CUI.cpp.i
+
+CUI.s: CUI.cpp.s
+
+.PHONY : CUI.s
+
+# target to generate assembly for a file
+CUI.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/CUI.cpp.s
+.PHONY : CUI.cpp.s
+
 Date.o: Date.cpp.o
 
 .PHONY : Date.o
@@ -408,6 +435,9 @@ help:
 	@echo "... Buyer.o"
 	@echo "... Buyer.i"
 	@echo "... Buyer.s"
+	@echo "... CUI.o"
+	@echo "... CUI.i"
+	@echo "... CUI.s"
 	@echo "... Date.o"
 	@echo "... Date.i"
 	@echo "... Date.s"

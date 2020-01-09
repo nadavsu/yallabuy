@@ -10,6 +10,7 @@
 #include "Order.h"
 #include "Date.h"
 #include "Feedback.h"
+#include "CUI.h"
 
 class Manager {
 private:
@@ -38,9 +39,11 @@ public:
     bool MakeOrder(const char* buyer_username);
 	void printBuyerCart(Buyer* buyer);
     void payOrder(const char* buyer_username, Order& to_order);
+
 	bool printItemsNamed(const char *item_name);
     void printBuyers()  const;
     void printSellers() const;
+    void printBuyerSellerHistory(const char *buyer_username);
 
 private:
     void my_realloc(void *arr, int max_size, int curr_size);

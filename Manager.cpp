@@ -148,7 +148,9 @@ bool Manager::MakeOrder(const char* buyer_username) {
         return true;
 }
 
-void Manager::printBuyerCart(Buyer* buyer) {
+//TODO: This function should get const char *username, and get the buyer from here.
+void Manager::printBuyerCart(const char *buyer_username) {
+    Buyer *buyer = getBuyer(buyer_username);
     buyer->printCart();
 }
 
@@ -200,4 +202,10 @@ bool Manager::printItemsNamed(const char *item_name) {
         }
     }
     return res;
+}
+
+void Manager::printBuyerSellerHistory(const char *buyer_username) {
+    Buyer *buyer = getBuyer(buyer_username);
+    buyer->printSellerHistory();
+    printLine();
 }

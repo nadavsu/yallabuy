@@ -94,6 +94,12 @@
 		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Buyer.h">
 			<Option target="ecommerce"/>
 		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/CUI.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/CUI.h">
+			<Option target="ecommerce"/>
+		</Unit>
 		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Date.cpp">
 			<Option target="ecommerce"/>
 		</Unit>

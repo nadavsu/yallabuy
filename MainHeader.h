@@ -10,18 +10,6 @@
 #include <time.h>
 using namespace std;
 
-static constexpr int PASSWORD_MAX_LEN = 20;
-static constexpr int PASSWORD_MIN_LEN = 6;
-
-static constexpr int FNAME_MAX_LEN = 20;
-static constexpr int FNAME_MIN_LEN = 2;
-static constexpr int LNAME_MAX_LEN = 25;
-static constexpr int LNAME_MIN_LEN = 2;
-
-static constexpr int PAGE_WIDTH = 50;
-
-
-
 Buyer newBuyer();
 Seller newSeller();
 Feedback newFeedback(char* buyer_username);

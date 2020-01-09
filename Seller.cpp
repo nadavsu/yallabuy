@@ -49,7 +49,7 @@ Seller::Seller(Seller&& other) : address(std::move(other.address)), stock_list(s
     other.password      = nullptr;
     other.fname         = nullptr;
     other.lname         = nullptr;
-    other.feedbacks      = nullptr;
+    other.feedbacks     = nullptr;
 }
 
 Seller::~Seller() {
@@ -57,6 +57,10 @@ Seller::~Seller() {
     delete[] password;
     delete[] fname;
     delete[] lname;
+    for (int i = 0; i < num_of_feedbacks; i++) {
+        delete feedbacks[i];
+    }
+    delete[] feedbacks;
 }
 
 const Seller& Seller::operator=(const Seller& other) {

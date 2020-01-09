@@ -2,7 +2,8 @@
 //BY NADAV SULIMAN AND DOR LASRI
 //GROUP 1, KEREN KALIF.
 
-#include"MainHeader.h"
+#include "MainHeader.h"
+#include "CUI.h"
 
 int main() {
 
@@ -125,13 +126,10 @@ void makeFeedback(Manager& admin) {
 
     printTitle("New Feedback");
     printBuyerLogin(admin, buyer_username, password);
-    char **seller_history = admin.getBuyer(
-            buyer_username)->getSellerHistory();       //getBuyer will never return nullptr here because of login.
-    int size_of_seller_history = admin.getBuyer(buyer_username)->getNumOfSellers();
+    admin.printBuyerSellerHistory(buyer_username);
     do {
         cout << "Please enter the name of the seller you want to give feedback to: ";       //Checking if the user bought from the seller.
         cin.getline(seller_username, USERNAME_MAX_LEN);
-
         for (int i = 0; i < size_of_seller_history && !found; ++i) {                    //Looking in the buyer history.
             if (strcmp(seller_history[i], seller_username) == 0) {
                 admin.AddFeedback(seller_username, newFeedback(buyer_username));      //Adding the feedback.
@@ -300,105 +298,4 @@ void getItemInfo(Manager& manager) {
         cout << item_name << " not found!\n";
         printLine();
     }
-}
-
-///The following functions are used for CUI. A bunch of for loops.
-void printSubTitle(const char *title) {
-    for (int i = 0; i < (PAGE_WIDTH - strlen(title)) / 2; ++i) {
-        cout << "-";
-    }
-    cout << title;
-    for (int i = 0; i < (PAGE_WIDTH - strlen(title)) / 2; ++i) {
-        cout << "-";
-    }
-    cout << '\n';
-}
-
-void printTitle(const char *title) {
-
-    cout << "+";
-    for (int i = 0; i < PAGE_WIDTH - 2; ++i) {
-        cout << "-";
-    }
-    cout << "+\n";
-    cout << "|";
-    for (int i = 0; i < (PAGE_WIDTH - 2 - strlen(title)) / 2; ++i) {
-        cout << " ";
-    }
-    cout << title;
-    for (int i = 0; i < (PAGE_WIDTH - 1 - strlen(title)) / 2; ++i) {
-        cout << " ";
-    }
-    cout << "|\n";
-    cout << "+";
-    for (int i = 0; i < PAGE_WIDTH - 2; ++i) {
-        cout << "-";
-    }
-    cout << "+\n";
-}
-
-void printLine() {
-    cout << "+";
-    for (int i = 0; i < PAGE_WIDTH - 2; ++i) {
-        cout << "-";
-    }
-    cout << "+\n";
-}
-
-int printMenu() {
-    int ans;
-    cout << "To register as a new buyer, press 1.\n";
-    cout << "To register as a new seller, press 2.\n";
-    cout << "To add feedback on a seller, press 3.\n";
-    cout << "To add a new item to your shop, press 4.\n";
-    cout << "To add a new item to your cart, press 5.\n";
-    cout << "To make a new order, press 6.\n";
-    cout << "To show all the buyers, press 7.\n";
-    cout << "To show all the seller, press 8.\n";
-    cout << "To get information about a specific item, press 9.\n";
-    cout << "To exit, press 0\n";
-    printLine();
-    cin >> ans;
-    printLine();
-    return ans;
-}
-
-void printBuyerLogin(const Manager &manager, char *username, char *password) {
-    bool logged = true;
-    emptyBuffer();
-    printSubTitle("Buyer Login");
-    do{
-        if(!logged) {
-            cout << "Wrong username or password!\n";
-        }
-        cout << "Username: ";
-        cin.getline(username, USERNAME_MAX_LEN);
-        cout << "Password: ";
-        cin.getline(password, PASSWORD_MAX_LEN);
-        logged = manager.loginBuyer(username, password);
-    } while (!logged);
-}
-
-void printSellerLogin(const Manager &manager, char *username, char *password) {
-    bool logged = true;
-    emptyBuffer();
-    printSubTitle("Seller Login");
-    do{
-        if(!logged) {
-            cout << "Wrong username or password!\n";
-        }
-        cout << "Username: ";
-        cin.getline(username, USERNAME_MAX_LEN);
-        cout << "Password: ";
-        cin.getline(password, PASSWORD_MAX_LEN);
-        logged = manager.loginSeller(username, password);
-    } while (!logged);
-}
-
-
-void emptyBuffer(){
-    int c;
-    do{
-        c = getchar();
-    } while(c != '\n' && c != '\0');
 }
