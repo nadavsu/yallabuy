@@ -236,6 +236,7 @@ void Buyer::copySellerHistory(const Buyer& other) {
 }
 
 void Buyer::printSellerHistory()const {
+    cout << "Buyer : " << this->username<< "Seller's History:" << endl;
     for (int i = 0; i < this->seller_history_size;i++) {
         cout <<this->seller_history[i] <<endl;
     }

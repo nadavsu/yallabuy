@@ -1,10 +1,13 @@
 #include "Date.h"
 #include "MainHeader.h"
 
-Date::Date(int year, int month, int day) {
-	SetYear(year);
-	SetMonth(month);
-	SetDay(day);
+Date::Date() {
+    time_t tt;
+    time(&tt);
+    tm TM = *localtime(&tt);
+	SetYear(TM.tm_year);
+	SetMonth(TM.tm_mon);
+	SetDay(TM.tm_mday);
 }
 
 Date::Date(const Date& other) {

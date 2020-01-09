@@ -202,14 +202,12 @@ void addToCart(Manager &manager) {
 
     printTitle("Add to Cart");
     printBuyerLogin(manager, buyer_username, password);
-
     manager.printSellers();                             //Printing all available sellers you can buy from.
     do {
         cout << "Please enter the seller's username you want to buy from:\n";   //Letting the user choose a seller.
         cin.getline(seller_username, USERNAME_MAX_LEN);
         seller = manager.GetSeller(seller_username);                //GetSeller returns null if no seller is found.
     } while(!seller);
-
     seller->printStock();                                           //Printing the seller's stock.
     do {
         cout << "Please enter the items you want to buy.\n";
@@ -221,7 +219,6 @@ void addToCart(Manager &manager) {
         cin >> quantity;
     } while (seller->quantityIsFine(item_name_to_buy,quantity));     //Taking in the quanityt while it's in range.
     manager.addItemToCart(buyer_username, seller->getItemToBuyer(item_name_to_buy, quantity));        //Adding the item and the quantity to cart.
-
 }
 
 //A function used to make an order from the cart. choosing items.

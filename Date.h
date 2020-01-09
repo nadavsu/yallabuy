@@ -13,20 +13,19 @@ private:
 	int month;
 	int day;
 public:
-	Date(int year,int month,int day);
+	Date();
 	Date(const Date& other);
 	Date(const Date&& other);
 	const Date& operator=(const Date& other);
 	~Date() = default;
 
-	bool SetYear(int year);
-	bool SetMonth(int month);
-	bool SetDay(int day);
-
 	int GetYear()   const;
 	int GetMonth()  const;
 	int GetDay()    const;
-
+private:
+	bool SetYear(int year);
+	bool SetMonth(int month);
+	bool SetDay(int day);
 };
 
 #endif //ECOMMERCE_DATE_H
