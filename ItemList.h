@@ -13,7 +13,7 @@ private:
     Item* tail;
 
 public:
-    void addToTail(Item* new_item);
+    void addToTail(const Item* new_item);
     bool deleteItem(const char *item_name);
     bool isEmpty()   const;
     void printList() const;

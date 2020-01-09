@@ -33,7 +33,7 @@ public:
 	void AddBuyer(Buyer& new_buyer);
 	void AddSeller(Seller& new_seller);
     void AddFeedback(const char* seller_to_feed, const Feedback& new_feedback);
-    void AddItem(const char* seller_username, Item& new_item);
+    void AddItem(const char* seller_username,const Item& new_item);
     void addItemToCart(const char* buyer_username, Item item);
     bool MakeOrder(const char* buyer_username);
 	void printBuyerCart(Buyer* buyer);

@@ -59,7 +59,7 @@ Seller::~Seller() {
     delete[] lname;
 }
 
-const Seller &Seller::operator=(const Seller& other) {
+const Seller& Seller::operator=(const Seller& other) {
     if (this != &other) {
         delete[] username;
         delete[] password;
@@ -217,7 +217,7 @@ void Seller::setFeedback(const Feedback& buyers_feedback){ // accept itemp that 
 
 
 
-void Seller::setItem(const Item& seller_item) {
+void Seller::setItem(const Item* seller_item) {
     stock_list.addToTail(seller_item);
 }
 

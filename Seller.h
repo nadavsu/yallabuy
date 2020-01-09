@@ -31,7 +31,7 @@ public:
     bool setAddress(const Address& new_address);
     bool setPassword(const char* new_password);
     void setFeedback(const Feedback& buyers_feedback);
-    void setItem(const Item& seller_item);
+    void setItem(const Item* seller_item);
 
 
     const char* getFName()           const;

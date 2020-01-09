@@ -124,9 +124,11 @@ void Manager::AddFeedback(const char *seller_to_feed, const Feedback &new_feedba
 }
 
 
-void Manager::AddItem(const char *seller_username, Item& new_item) {
+void Manager::AddItem(const char *seller_username,const Item& new_item) {
+    Item* item; // responsible for pointer because add to list
+    item = new Item(new_item);
     Seller *seller = GetSeller(seller_username);
-    seller->setItem(new_item);
+    seller->setItem(item);
 }
 
 

@@ -235,6 +235,11 @@ void Buyer::copySellerHistory(const Buyer& other) {
     }
 }
 
+void Buyer::printSellerHistory()const {
+    for (int i = 0; i < this->seller_history_size;i++) {
+        cout <<this->seller_history[i] <<endl;
+    }
+}
 
 void Buyer::printBuyer() const {
     cout << "----------------------------------\n";

@@ -74,7 +74,7 @@ bool ItemList::isEmpty() const {
     return head == nullptr;
 }
 
-void ItemList::addToTail(Item* new_item) {
+void ItemList::addToTail(const Item* new_item) {
     if(!itemIsInList(*new_item)) { // add quantity to exist item
         if (isEmpty()) {
             head = tail = new_item;

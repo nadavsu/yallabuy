@@ -116,7 +116,7 @@ Seller newSeller() {
 
 
 //A function that creates a new feedback based on user input.
-void makeFeedback(Manager &admin) {
+void makeFeedback(Manager& admin) {
     char buyer_username[USERNAME_MAX_LEN + 1];
     char password[PASSWORD_MAX_LEN + 1];
     char seller_username[USERNAME_MAX_LEN + 1];

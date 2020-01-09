@@ -37,6 +37,7 @@ public:
     int getNumOfSellers()           const;
     ItemList getCart()              const;
 
+    void printSellerHistory()       const;
     void printBuyer()               const;
     void printCart()                const;
 
