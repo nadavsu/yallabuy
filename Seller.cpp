@@ -208,7 +208,7 @@ Seller::ePasswordStrength Seller::strengthChecker(const char* Password) const {
 }*/
 
 
-void Seller::setFeedback(const Feedback& buyers_feedback){ // accept itemp that feedback should have
+void Seller::setFeedback(const Feedback& buyers_feedback){ // accept item that feedback should have
 	Feedback* new_feed = new Feedback(buyers_feedback);
 	Feedback** new_feedback = new Feedback*[(num_of_feedbacks)+1];
 	for (int i = 0; i < num_of_feedbacks; i++) {

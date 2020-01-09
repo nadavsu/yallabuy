@@ -30,17 +30,19 @@ public:
 	bool loginBuyer(const char* username, const char* password) const;
 	bool loginSeller(const char* username, const char* password) const;
 	Buyer* getBuyer(const char* username); //return through copy const without any inside info like password
-	Seller* GetSeller(const char* username);
+	Seller* getSeller(const char* username);
 	void AddBuyer(Buyer& new_buyer);
 	void AddSeller(Seller& new_seller);
-    void AddFeedback(const char* seller_to_feed, const Feedback& new_feedback);
+    void addFeedback(const Feedback& feedback, const char *seller_username);
     void AddItem(const char* seller_username,const Item& new_item);
     void addItemToCart(const char* buyer_username, Item item);
     bool MakeOrder(const char* buyer_username);
 	void printBuyerCart(Buyer* buyer);
     void payOrder(const char* buyer_username, Order& to_order);
 
-	bool printItemsNamed(const char *item_name);
+    bool sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username);
+
+    bool printItemsNamed(const char *item_name);
     void printBuyers()  const;
     void printSellers() const;
     void printBuyerSellerHistory(const char *buyer_username);

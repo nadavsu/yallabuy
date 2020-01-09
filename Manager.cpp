@@ -65,7 +65,7 @@ Buyer *Manager::getBuyer(const char *username) {
     return nullptr;             ///Added return if buyer not found.
 }
 
-Seller *Manager::GetSeller(const char *username) {
+Seller *Manager::getSeller(const char *username) {
     for (int i = 0; i < curr_seller; i++) {
         if (strcmp(arr_seller[i]->username, username) == 0) {
             return arr_seller[i]; //return through copy const without any inside info like password
@@ -118,16 +118,16 @@ void Manager::AddSeller(Seller &new_seller) {
 }
 
 
-void Manager::AddFeedback(const char *seller_to_feed, const Feedback &new_feedback) {
-    Seller *seller = GetSeller(seller_to_feed);
-    seller->setFeedback(new_feedback);
+void Manager::addFeedback(const Feedback& feedback, const char *seller_username) {
+    Seller *seller = getSeller(seller_username);
+    seller->setFeedback(feedback);
 }
 
 
 void Manager::AddItem(const char *seller_username,const Item& new_item) {
     Item* item; // responsible for pointer because add to list
     item = new Item(new_item);
-    Seller *seller = GetSeller(seller_username);
+    Seller *seller = getSeller(seller_username);
     seller->setItem(item);
 }
 
@@ -208,4 +208,15 @@ void Manager::printBuyerSellerHistory(const char *buyer_username) {
     Buyer *buyer = getBuyer(buyer_username);
     buyer->printSellerHistory();
     printLine();
+}
+
+bool Manager::sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username) {
+    Buyer *buyer = getBuyer(buyer_username);
+
+    for (int i = 0; i < buyer->seller_history_size; ++i) {                    //Looking in the buyer history.
+        if (strcmp(buyer->seller_history[i], seller_username) == 0) {
+            return true;
+        }
+    }
+    return false;
 }

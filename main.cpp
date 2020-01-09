@@ -121,7 +121,8 @@ void makeFeedback(Manager& admin) {
     char buyer_username[USERNAME_MAX_LEN + 1];
     char password[PASSWORD_MAX_LEN + 1];
     char seller_username[USERNAME_MAX_LEN + 1];
-    bool found = false;
+    char comment[COMMENT_MAX_LEN + 1];
+    bool found;
     char cont;
 
     printTitle("New Feedback");
@@ -130,33 +131,16 @@ void makeFeedback(Manager& admin) {
     do {
         cout << "Please enter the name of the seller you want to give feedback to: ";       //Checking if the user bought from the seller.
         cin.getline(seller_username, USERNAME_MAX_LEN);
-        for (int i = 0; i < size_of_seller_history && !found; ++i) {                    //Looking in the buyer history.
-            if (strcmp(seller_history[i], seller_username) == 0) {
-                admin.AddFeedback(seller_username, newFeedback(buyer_username));      //Adding the feedback.
-                found = true;
-            }
-        }
+        found = admin.sellerExistInBuyerSeller(buyer_username, seller_username);
         if (!found) {                                                                   //If the seller not found
             cout << seller_username << " not found in " << buyer_username << "'s history.\n";
             cout << "Would you like to continue? [Y/N]";
             cin >> cont;
         }
     } while (!found || (cont != 'N' && cont != 'n'));
-}
-
-//A function that creates a new feedback
-Feedback newFeedback(char *buyer_username) {
-    char comment[COMMENT_MAX_LEN];              //It takes in the current time of the computer.
-    time_t tt;
-    time(&tt);
-    tm TM = *localtime(&tt);
-
-    cout << "Enter your comment:\n";            //The comment is inserted here.
     cin.getline(comment, COMMENT_MAX_LEN);
-
-    return Feedback(buyer_username, Date(TM.tm_year, TM.tm_mon, TM.tm_mday), comment); //returning the fededback.
+    admin.addFeedback(Feedback(buyer_username, Date(), comment), seller_username);
 }
-
 
 
 //A function which creates an item from the user.
@@ -206,7 +190,7 @@ void addToCart(Manager &manager) {
     do {
         cout << "Please enter the seller's username you want to buy from:\n";   //Letting the user choose a seller.
         cin.getline(seller_username, USERNAME_MAX_LEN);
-        seller = manager.GetSeller(seller_username);                //GetSeller returns null if no seller is found.
+        seller = manager.getSeller(seller_username);                //getSeller returns null if no seller is found.
     } while(!seller);
     seller->printStock();                                           //Printing the seller's stock.
     do {

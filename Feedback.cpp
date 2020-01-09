@@ -4,7 +4,7 @@
 
 #include "Feedback.h"
 
-Feedback::Feedback(char *username, Date date, char *comment) : date(date) {
+Feedback::Feedback(char *feedbacker_username, Date& date, char *comment) : date(date) {
     setUsername(username);
     setComment(comment);
 }
