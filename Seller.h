@@ -14,7 +14,15 @@
 #include "ItemList.h"
 
 using namespace std;
-static constexpr int FEEDBACK_MAX = 30;
+static constexpr int sFEEDBACK_MAX = 30;
+static constexpr int sPASSWORD_MAX_LEN = 20;
+static constexpr int sPASSWORD_MIN_LEN = 6;
+static constexpr int sUSERNAME_MAX_LEN = 20;
+static constexpr int sUSERNAME_MIN_LEN = 1;
+static constexpr int sFNAME_MAX_LEN = 20;
+static constexpr int sFNAME_MIN_LEN = 2;
+static constexpr int sLNAME_MAX_LEN = 25;
+static constexpr int sLNAME_MIN_LEN = 2;
 
 
 class Seller {
@@ -31,7 +39,7 @@ public:
     bool setAddress(const Address& new_address);
     bool setPassword(const char* new_password);
     void setFeedback(const Feedback& buyers_feedback);
-    void setItem(const Item* seller_item);
+    void setItem(Item* seller_item);
 
 
     const char* getFName()           const;
@@ -43,7 +51,7 @@ public:
     void printStock()                const;
     void printSeller()               const;
 
-    Item getItemToBuyer(char* item_name,int quantity);
+    Item getItemToBuyer(const char* item_name, int quantity);
     bool itemExist(char* item_name)  ;
     bool quantityIsFine(char* item_name, int quantity);
 

@@ -74,6 +74,12 @@ Seller *Manager::getSeller(const char *username) {
     return nullptr;             ///Added return if seller not found.
 }
 
+bool Manager::isCartEmpty(const char *buyer_username) {
+    Buyer *buyer = getBuyer(buyer_username);
+    return buyer->isEmptyCart();
+}
+
+
 /*void Manager::AddBuyer(Buyer new_buyer) {
     Buyer* buyer_ptr = new Buyer(std::move(new_buyer)); // copy the buyer from the main to take over control
     // check if kill at main
@@ -94,7 +100,7 @@ void Manager::AddBuyer(Buyer &new_buyer) {
     if (this->curr_buyer == this->max_buyer) {
         my_realloc(arr_buyer, max_buyer, curr_buyer);
     }
-    *this->arr_buyer[curr_buyer++] = new_buyer;
+    this->arr_buyer[curr_buyer++] = new Buyer(new_buyer);
 }
 
 void Manager::my_realloc(void *arr, int max_size, int curr_size) { // make generic func
@@ -114,7 +120,7 @@ void Manager::AddSeller(Seller &new_seller) {
     if (curr_seller == max_seller) {
         my_realloc(arr_seller, max_seller, curr_seller); // make Generic
     }
-    *this->arr_seller[curr_seller++] = new_seller;
+    this->arr_seller[curr_seller++] = new Seller(new_seller);
 }
 
 
@@ -134,41 +140,32 @@ void Manager::AddItem(const char *seller_username,const Item& new_item) {
 
 //TODO: Make this function return bool and get the console messages out of here.
 
-void Manager::addItemToCart(const char *buyer_username, Item item) {
+void Manager::addItemToCart(const char *buyer_username, const Item& item) {
+    Item *new_item = new Item(item);
     Buyer *buyer = getBuyer(buyer_username);
-    buyer->addToCart(item);
+    buyer->addToCart(new_item);
 }
 
-bool Manager::MakeOrder(const char* buyer_username) {
-    Buyer* buyer = getBuyer(buyer_username);
-    if (buyer->isEmptyCart()) {
-        return false;
-    }
-        printBuyerCart(buyer);
-        return true;
-}
-
-//TODO: This function should get const char *username, and get the buyer from here.
 void Manager::printBuyerCart(const char *buyer_username) {
     Buyer *buyer = getBuyer(buyer_username);
     buyer->printCart();
 }
 
-void Manager::payOrder(const char* buyer_username, Order& to_order) {
+void Manager::payOrder(const char* buyer_username, Order& order) {
     Buyer* buyer = getBuyer(buyer_username);
     Item *curr_cart_item;
-    Item* curr_order_item = to_order.getOrderedItems().getHead();
+    Item* curr_order_item = order.getOrderedItems().getHead();
 
-    buyer->addToSellerHistory(to_order.getNameOfSellers(), to_order.getNumOfSellers());
+    buyer->addToSellerHistory(order.getNameOfSellers(), order.getNumOfSellers());
     while (curr_order_item != nullptr) {
         curr_cart_item = buyer->getCart().getHead();
         while (curr_cart_item != nullptr) {
-            if (strcmp(curr_order_item->GetName(), curr_cart_item->GetName()) == 0 ) {
+            if (curr_order_item->GetQuantity() && strcmp(curr_order_item->GetName(), curr_cart_item->GetName()) == 0) {
                 curr_cart_item->reduceQuantity(curr_order_item->GetQuantity());
-                curr_cart_item = nullptr;
                 if (curr_cart_item->GetQuantity() == 0) {
                     buyer->getCart().deleteItem(curr_cart_item->GetName());
                 }
+                curr_cart_item = nullptr;
             } else {
                 curr_cart_item = curr_cart_item->getNext();
             }
@@ -219,4 +216,9 @@ bool Manager::sellerExistInBuyerSeller(const char *buyer_username, const char *s
         }
     }
     return false;
+}
+
+void Manager::copyCartToOrder(Order& order, const char *buyer_username) {
+    Buyer *buyer = getBuyer(buyer_username);
+    order.setItemList(buyer->getCart());
 }

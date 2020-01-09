@@ -19,6 +19,10 @@ public:
 
 	void SetNameOfBuyer(const char* name_of_buyer);
     void setItem(Item* item);
+    void setItemList(ItemList list);
+
+    void updatePrice();
+    void updateSellerHistory();
 
     void printCart();
 

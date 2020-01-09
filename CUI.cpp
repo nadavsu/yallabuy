@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 #include "CUI.h"
-
+#include "Manager.h"
 
 void printSubTitle(const char *title) {
     for (int i = 0; i < (PAGE_WIDTH - strlen(title)) / 2; ++i) {
@@ -67,7 +67,7 @@ int printMenu() {
     return ans;
 }
 
-void printBuyerLogin(const Manager &manager, char *username, char *password) {
+void printBuyerLogin(Manager &manager, char *username, char *password) {
     bool logged = true;
     emptyBuffer();
     printSubTitle("Buyer Login");
@@ -76,14 +76,14 @@ void printBuyerLogin(const Manager &manager, char *username, char *password) {
             cout << "Wrong username or password!\n";
         }
         cout << "Username: ";
-        cin.getline(username, USERNAME_MAX_LEN);
+        cin.getline(username, bUSERNAME_MAX_LEN);
         cout << "Password: ";
-        cin.getline(password, PASSWORD_MAX_LEN);
+        cin.getline(password, bPASSWORD_MAX_LEN);
         logged = manager.loginBuyer(username, password);
     } while (!logged);
 }
 
-void printSellerLogin(const Manager &manager, char *username, char *password) {
+void printSellerLogin(Manager &manager, char *username, char *password) {
     bool logged = true;
     emptyBuffer();
     printSubTitle("Seller Login");
@@ -92,9 +92,9 @@ void printSellerLogin(const Manager &manager, char *username, char *password) {
             cout << "Wrong username or password!\n";
         }
         cout << "Username: ";
-        cin.getline(username, USERNAME_MAX_LEN);
+        cin.getline(username, bUSERNAME_MAX_LEN);
         cout << "Password: ";
-        cin.getline(password, PASSWORD_MAX_LEN);
+        cin.getline(password, bPASSWORD_MAX_LEN);
         logged = manager.loginSeller(username, password);
     } while (!logged);
 }

@@ -75,7 +75,7 @@ const Buyer& Buyer::operator=(const Buyer& other) {
 
 ///The following are setters and getters.
 bool Buyer::setFName(const char *new_fname) {
-    if(strlen(new_fname) <= FNAME_MAX_LEN) {
+    if(strlen(new_fname) <= bFNAME_MAX_LEN) {
         if(!fname) {
             delete[] fname;
         }
@@ -87,7 +87,7 @@ bool Buyer::setFName(const char *new_fname) {
 }
 
 bool Buyer::setLName(const char *new_lname) {
-    if(strlen(new_lname) <= LNAME_MAX_LEN) {
+    if(strlen(new_lname) <= bLNAME_MAX_LEN) {
         if(!lname) {
             delete[] lname;
         }
@@ -99,7 +99,7 @@ bool Buyer::setLName(const char *new_lname) {
 }
 
 bool Buyer::setUsername(const char *new_username) {
-    if(strlen(new_username) <= USERNAME_MAX_LEN && strlen(new_username) >= USERNAME_MIN_LEN) {
+    if(strlen(new_username) <= bUSERNAME_MAX_LEN && strlen(new_username) >= bUSERNAME_MIN_LEN) {
         if(!username) {
             delete[] username;
         }
@@ -112,7 +112,7 @@ bool Buyer::setUsername(const char *new_username) {
 
 
 bool Buyer::setPassword(const char *new_password) {
-    if(strlen(new_password) <= PASSWORD_MAX_LEN && strlen(new_password) >= PASSWORD_MIN_LEN) {
+    if(strlen(new_password) <= bPASSWORD_MAX_LEN && strlen(new_password) >= bPASSWORD_MIN_LEN) {
         if(!password) {
             delete[] password;
         }
@@ -130,12 +130,8 @@ void Buyer::setAddress(const Address& new_address) {
 }
 
 
-void Buyer::addToCart(const Item new_item) {
+void Buyer::addToCart(Item* new_item) {
     cart.addToTail(new_item);
-}
-
-bool Buyer::removeFromCart(const char *name) {
-    return cart.deleteItem(name);
 }
 
 bool Buyer::isEmptyCart() {

@@ -3,7 +3,6 @@
 //
 
 #include "Seller.h"
-#include "MainHeader.h"
 
 Seller::Seller(char *username, char *password, char *fname, char *lname, Address address) : address(std::move(address)) {
     this->feedbacks = nullptr;
@@ -78,7 +77,7 @@ const Seller& Seller::operator=(const Seller& other) {
 }
 
 bool Seller::setFName(const char* new_fname) {
-	if(strlen(new_fname) <= FNAME_MAX_LEN && strlen(new_fname) >= FNAME_MIN_LEN) {
+	if(strlen(new_fname) <= sFNAME_MAX_LEN && strlen(new_fname) >= sFNAME_MIN_LEN) {
         if (!this->fname) {
             delete[] this->fname;
         }
@@ -90,7 +89,7 @@ bool Seller::setFName(const char* new_fname) {
 	return false;
 }
 bool Seller::setLName(const char* new_lname) {
-    if(strlen(new_lname) <= LNAME_MAX_LEN && strlen(new_lname) >= LNAME_MIN_LEN) {
+    if(strlen(new_lname) <= sLNAME_MAX_LEN && strlen(new_lname) >= sLNAME_MIN_LEN) {
         if (!this->lname) {
             delete[] this->lname;
         }
@@ -103,7 +102,7 @@ bool Seller::setLName(const char* new_lname) {
 }
 
 bool Seller::setUsername(const char* new_username) { // check if already exist.
-    if(strlen(new_username) <= USERNAME_MAX_LEN && strlen(new_username) >= USERNAME_MIN_LEN) {
+    if(strlen(new_username) <= sUSERNAME_MAX_LEN && strlen(new_username) >= sUSERNAME_MIN_LEN) {
         if (!this->username) {
             delete[] this->username;
         }
@@ -124,7 +123,7 @@ bool Seller::setAddress(const Address& new_address) {
 }
 
 bool Seller::setPassword(const char* new_password) {
-    if(strlen(new_password) <= PASSWORD_MAX_LEN && strlen(new_password) >= PASSWORD_MIN_LEN) {
+    if(strlen(new_password) <= sPASSWORD_MAX_LEN && strlen(new_password) >= sPASSWORD_MIN_LEN) {
         if(!password) {
             delete[] password;
         }
@@ -221,7 +220,7 @@ void Seller::setFeedback(const Feedback& buyers_feedback){ // accept item that f
 
 
 
-void Seller::setItem(const Item* seller_item) {
+void Seller::setItem(Item* seller_item) {
     stock_list.addToTail(seller_item);
 }
 
@@ -277,7 +276,7 @@ Item *Seller::getItem(const char *item_name) {
     return stock_list.findItem(item_name);
 }
 
-Item Seller::getItemToBuyer(char* item_name,int quantity) { // check exist for sure
+Item Seller::getItemToBuyer(const char* item_name,int quantity) { // check exist for sure
     Item* item_to_buy;
     item_to_buy = getItem(item_name);
     Item to_buyer = *item_to_buy;

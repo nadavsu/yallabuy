@@ -16,7 +16,6 @@ class Manager {
 private:
 	Seller** arr_seller;
 	Buyer** arr_buyer;
-	Order order;
 	int curr_buyer;
 	int max_buyer;
 	int curr_seller;
@@ -35,13 +34,13 @@ public:
 	void AddSeller(Seller& new_seller);
     void addFeedback(const Feedback& feedback, const char *seller_username);
     void AddItem(const char* seller_username,const Item& new_item);
-    void addItemToCart(const char* buyer_username, Item item);
-    bool MakeOrder(const char* buyer_username);
-	void printBuyerCart(Buyer* buyer);
-    void payOrder(const char* buyer_username, Order& to_order);
+    void addItemToCart(const char *buyer_username, const Item& item);
+	void printBuyerCart(const char *buyer_username);
+    void payOrder(const char* buyer_username, Order& order);
 
     bool sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username);
-
+    bool isCartEmpty(const char *buyer_username);
+    void copyCartToOrder(Order& order, const char *buyer_username);
     bool printItemsNamed(const char *item_name);
     void printBuyers()  const;
     void printSellers() const;

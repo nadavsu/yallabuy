@@ -66,10 +66,28 @@ void Order::SetNameOfBuyer(const char* name_of_buyer) {
 	strcpy(this->name_of_buyer, name_of_buyer);
 }
 
-void Order::setItem(Item* item) {
-    ordered_items.addToTail(item);
-    SetTotalPrice(item->GetQuantity() * item->GetPrice());
-	addToNameOfSellers(item->getSellerName());
+void Order::updatePrice() {
+	Item *temp = ordered_items.getHead();
+
+	while (temp) {
+		total_price += temp->GetQuantity() * temp->GetPrice();
+		temp = temp->getNext();
+	}
+}
+
+void Order::updateSellerHistory() {
+	Item *temp = ordered_items.getHead();
+
+	while (temp) {
+		if(temp->GetQuantity()) {
+			addToNameOfSellers(temp->getSellerName());
+		}
+		temp = temp->getNext();
+	}
+}
+
+void Order::setItemList(ItemList list) {
+	ordered_items = list;
 }
 
 void Order::printCart() {
@@ -104,8 +122,4 @@ void Order::makeNewNameOfSellers(const char* seller_name) {
 	strcpy(new_name_of_sellers[num_of_sellers - 1],seller_name);
 	delete[]name_of_sellers;
 	name_of_sellers = new_name_of_sellers;
-}
-
-void Order::SetTotalPrice(int add_to) {
-	total_price += add_to;
 }

@@ -9,13 +9,10 @@
 #include "Date.h"
 #include <string.h>
 
-static constexpr int USERNAME_MAX_LEN = 20;
-static constexpr int USERNAME_MIN_LEN = 1;
 static constexpr int COMMENT_MAX_LEN = 200;
 
 class Feedback {
 public:
-    bool setDate(const Date& new_date);
     bool setComment(const char* new_comment);
 
     const char* getUsername()   const;
@@ -23,7 +20,7 @@ public:
     Date getDate()              const;
 
 private:
-    bool setUsername(const char* new_username);
+    void setUsername(const char *new_username);
 
 private:
     char* username;
@@ -31,7 +28,8 @@ private:
 	char* comment;
 
 public:
-	Feedback(char* feedbacker_username, Date& date, char* comment);
+    Feedback(char *feedbacker_username, char *comment, Date& date);
+	Feedback(char* feedbacker_username, char* comment);
 	Feedback(const Feedback& other);
     Feedback(Feedback&& other);
     ~Feedback();

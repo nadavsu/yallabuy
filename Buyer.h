@@ -9,13 +9,14 @@
 #include "Address.h"
 #include "ItemList.h"
 
-static constexpr int PASSWORD_MAX_LEN = 20;
-static constexpr int PASSWORD_MIN_LEN = 6;
-
-static constexpr int FNAME_MAX_LEN = 20;
-static constexpr int FNAME_MIN_LEN = 2;
-static constexpr int LNAME_MAX_LEN = 25;
-static constexpr int LNAME_MIN_LEN = 2;
+static constexpr int bPASSWORD_MAX_LEN = 20;
+static constexpr int bPASSWORD_MIN_LEN = 6;
+static constexpr int bUSERNAME_MAX_LEN = 20;
+static constexpr int bUSERNAME_MIN_LEN = 1;
+static constexpr int bFNAME_MAX_LEN = 20;
+static constexpr int bFNAME_MIN_LEN = 2;
+static constexpr int bLNAME_MAX_LEN = 25;
+static constexpr int bLNAME_MIN_LEN = 2;
 
 
 class Buyer {
@@ -41,15 +42,13 @@ public:
     void printBuyer()               const;
     void printCart()                const;
 
-    void addToCart(const Item new_item);
+    void addToCart(Item* new_item);
     bool isEmptyCart();
     bool removeFromCart(const char *item);
     void emptySellerHistory();
     void copySellerHistory(const Buyer& other);
 
-        private:
     bool setUsername(const char *username);
-    Buyer(const Buyer& other);
 
 private:
 

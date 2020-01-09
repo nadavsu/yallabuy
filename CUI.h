@@ -5,8 +5,9 @@
 #ifndef ECOMMERCE_CUI_H
 #define ECOMMERCE_CUI_H
 
-#include "Manager.h"
 #include "Buyer.h"
+
+class Manager;
 
 static constexpr int PAGE_WIDTH = 50;
 
@@ -14,8 +15,8 @@ void printSubTitle(const char *title);
 void printTitle(const char *title);
 void printLine();
 int printMenu();
-void printBuyerLogin(const Manager &manager, char *username, char *password);
-void printSellerLogin(const Manager &manager, char *username, char *password);
+void printBuyerLogin(Manager &manager, char *username, char *password);
+void printSellerLogin(Manager &manager, char *username, char *password);
 void emptyBuffer();
 
 #endif //ECOMMERCE_CUI_H

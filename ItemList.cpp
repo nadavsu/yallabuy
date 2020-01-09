@@ -9,54 +9,11 @@ ItemList::ItemList() {
 }
 
 ItemList::ItemList(const ItemList& other) {
-    Item* curr_other = other.head;
-    while (curr_other !=nullptr) {
-        Item* temp;// check goes to copy
-        *temp = *curr_other;
-        addToTail(temp);
-        curr_other = curr_other->next;
-        temp = nullptr;
-    }
-}
-ItemList::ItemList(ItemList&& other) {
-    this->head = other.head;
-    this->tail = other.tail;
-}
-
-const ItemList& ItemList::operator=(const ItemList& other) {
-    if (this != &other) {
-        if (this->head != nullptr) {
-            this->~ItemList();
-        }
-        Item* curr_other = other.head;
-        while (curr_other != nullptr) {
-            Item* temp;// check goes to copy
-            *temp = *curr_other;
-            addToTail(temp);
-            curr_other = curr_other->next;
-            temp = nullptr;
-        }
-    }
-    else {
-        return *this;
-    }
-}
-
-ItemList::~ItemList() {
-    Item *temp = head;
-    Item *next_temp;
-    while(temp) {
-        next_temp = temp->next;
-        delete temp;
-        temp = next_temp;
-    }
-}
-
-ItemList::ItemList(const ItemList& other) {
     head = tail = nullptr;
     Item* other_item = other.head;
     while(other_item) {
         Item* curr_item = new Item(*other_item);
+        curr_item->next = nullptr;
         addToTail(curr_item);
         other_item = other_item->next;
     }
@@ -70,11 +27,39 @@ ItemList::ItemList(ItemList&& other) {
     other.tail = nullptr;
 }
 
+ItemList::~ItemList() {
+    Item *temp = head;
+    Item *next_temp;
+    while(temp) {
+        next_temp = temp->next;
+        delete temp;
+        temp = next_temp;
+    }
+}
+
+const ItemList& ItemList::operator=(const ItemList& other) {
+    if (this != &other) {
+        if (this->head != nullptr) {
+            this->~ItemList();
+        }
+        Item* curr_other = other.head;
+        while (curr_other != nullptr) {
+            Item* temp = new Item(*curr_other);         // check goes to copy
+            temp->next = nullptr;
+            addToTail(temp);
+            curr_other = curr_other->next;
+        }
+    }
+    else {
+        return *this;
+    }
+}
+
 bool ItemList::isEmpty() const {
     return head == nullptr;
 }
 
-void ItemList::addToTail(const Item* new_item) {
+void ItemList::addToTail(Item* new_item) {
     if(!itemIsInList(*new_item)) { // add quantity to exist item
         if (isEmpty()) {
             head = tail = new_item;
