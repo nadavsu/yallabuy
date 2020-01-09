@@ -43,6 +43,24 @@ Order::~Order() {
 	delete name_of_buyer;
 }
 
+const Order& Order::operator=(const Order& other) {
+	if (this != &other) {
+		for (int i = 0; i < num_of_sellers; i++) {
+			delete name_of_sellers[i];
+		}
+		delete name_of_sellers;
+		delete[]name_of_buyer;
+		SetNameOfBuyer(other.name_of_buyer);
+		copyNameOfSellers(other);
+		total_price = other.total_price;
+		num_of_sellers = other.num_of_sellers;
+		ordered_items = other.ordered_items;
+	}
+	else {
+		return *this;
+	}
+}
+
 void Order::SetNameOfBuyer(const char* name_of_buyer) {
 	this->name_of_buyer = new char[strlen(name_of_buyer) + 1];
 	strcpy(this->name_of_buyer, name_of_buyer);

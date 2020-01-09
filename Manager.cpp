@@ -91,10 +91,10 @@ Seller *Manager::GetSeller(const char *username) {
 
 
 void Manager::AddBuyer(Buyer &new_buyer) {
-    if (curr_buyer == max_buyer) {
+    if (this->curr_buyer == this->max_buyer) {
         my_realloc(arr_buyer, max_buyer, curr_buyer);
     }
-    *arr_buyer[curr_buyer++] = new_buyer;
+    *this->arr_buyer[curr_buyer++] = new_buyer;
 }
 
 void Manager::my_realloc(void *arr, int max_size, int curr_size) { // make generic func
@@ -114,7 +114,7 @@ void Manager::AddSeller(Seller &new_seller) {
     if (curr_seller == max_seller) {
         my_realloc(arr_seller, max_seller, curr_seller); // make Generic
     }
-    *arr_seller[curr_seller++] = new_seller;
+    *this->arr_seller[curr_seller++] = new_seller;
 }
 
 
