@@ -1,6 +1,6 @@
 #ifndef ECOMMERCE_DATE_H
 #define ECOMMERCE_DATE_H
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 using namespace std;
 

@@ -27,17 +27,17 @@ Item::Item(const Item& other) {
 	this->next = other.next;
 }
 
-Item::Item(Item&& other) {
-	name = other.name;
-	category = other.category;
-	price = other.price;
-	quantity = other.quantity;
-	next = other.next;
-	name_of_seller = other.name_of_seller;
-	serial_number = other.serial_number;
-	this->name = nullptr;
-	this->name_of_seller = nullptr;
-}
+//Item::Item(Item&& other) {
+//	name = other.name;
+//	category = other.category;
+//	price = other.price;
+//	quantity = other.quantity;
+//	next = other.next;
+//	name_of_seller = other.name_of_seller;
+//	serial_number = other.serial_number;
+//	this->name = nullptr;
+//	this->name_of_seller = nullptr;
+//}
 
 Item::~Item() {
 	delete[] name;

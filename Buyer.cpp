@@ -207,6 +207,10 @@ ItemList Buyer::getCart() const {
     return cart;
 }
 
+Item* Buyer::getCartHead() {
+    return cart.getHead();
+}
+
 Address Buyer::getAddress() const {
     return address;
 }
@@ -253,4 +257,8 @@ void Buyer::printCart() const {
     } else {
         cart.printList();
     }
+}
+
+void Buyer::deleteItemFromCart(const char* item_name) {
+    cart.deleteItem(item_name);
 }

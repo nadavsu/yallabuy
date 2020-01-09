@@ -51,7 +51,7 @@ public:
     void printStock()                const;
     void printSeller()               const;
 
-    Item getItemToBuyer(const char* item_name, int quantity);
+    Item* getItemToBuyer(const char* item_name, int quantity);
     bool itemExist(char* item_name)  ;
     bool quantityIsFine(char* item_name, int quantity);
 

@@ -79,7 +79,7 @@ void Order::updateSellerHistory() {
 	Item *temp = ordered_items.getHead();
 
 	while (temp) {
-		if(temp->GetQuantity()) {
+		if(temp->GetQuantity()!= 0) {
 			addToNameOfSellers(temp->getSellerName());
 		}
 		temp = temp->getNext();
@@ -102,6 +102,10 @@ ItemList Order::getOrderedItems() {
 }
 int Order::getNumOfSellers() {
 	return num_of_sellers;
+}
+
+Item* Order::getOrderedItemsHead() {
+	return this->ordered_items.getHead();
 }
 
 void Order::addToNameOfSellers(const char* seller_name) {

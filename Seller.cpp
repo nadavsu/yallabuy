@@ -74,6 +74,9 @@ const Seller& Seller::operator=(const Seller& other) {
         stock_list       = other.stock_list;
         num_of_feedbacks = other.num_of_feedbacks;
     }
+    else {
+        return *this;
+    }
 }
 
 bool Seller::setFName(const char* new_fname) {
@@ -276,11 +279,11 @@ Item *Seller::getItem(const char *item_name) {
     return stock_list.findItem(item_name);
 }
 
-Item Seller::getItemToBuyer(const char* item_name,int quantity) { // check exist for sure
-    Item* item_to_buy;
-    item_to_buy = getItem(item_name);
-    Item to_buyer = *item_to_buy;
-    to_buyer.SetQuantity(quantity);
+Item* Seller::getItemToBuyer(const char* item_name,int quantity) { // check exist for sure
+    Item* item_to_buy = getItem(item_name);
+    Item* to_buyer;
+    to_buyer = new Item(*item_to_buy);
+    to_buyer->SetQuantity(quantity);
     item_to_buy->reduceQuantity(quantity);
     if (item_to_buy->GetQuantity() == 0 ) {
         this->stock_list.deleteItem(item_name);
@@ -301,5 +304,5 @@ bool Seller::itemExist(char* item_name){
 bool Seller::quantityIsFine(char* item_name,int quantity) {
     Item* item;
     item = getItem(item_name);
-    return (quantity > 0 && quantity < item->GetQuantity());
+    return (quantity > 0 && quantity <= item->GetQuantity());
 }

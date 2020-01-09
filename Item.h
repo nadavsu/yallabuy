@@ -16,6 +16,7 @@ class Item {
 friend class Seller;
 friend class Buyer;
 friend class ItemList;
+friend class Manager;
 public:
 	enum eCategory{Electronics = 0, Home, Garden, Games};
 
@@ -49,7 +50,7 @@ private:
 public:
     Item(char* name_of_seller, char* name, eCategory category, int price, int quantity);
     Item(const Item& other);
-    Item(Item&& other);
+    //Item(Item&& other);
     ~Item();
     const Item& operator=(const Item& other);
 };

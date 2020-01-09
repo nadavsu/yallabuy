@@ -140,8 +140,9 @@ void Manager::AddItem(const char *seller_username,const Item& new_item) {
 
 //TODO: Make this function return bool and get the console messages out of here.
 
-void Manager::addItemToCart(const char *buyer_username, const Item& item) {
-    Item *new_item = new Item(item);
+void Manager::addItemToCart(const char *buyer_username, Item* item) {
+    Item *new_item = new Item(*item);
+    new_item->next = nullptr;
     Buyer *buyer = getBuyer(buyer_username);
     buyer->addToCart(new_item);
 }
@@ -154,16 +155,16 @@ void Manager::printBuyerCart(const char *buyer_username) {
 void Manager::payOrder(const char* buyer_username, Order& order) {
     Buyer* buyer = getBuyer(buyer_username);
     Item *curr_cart_item;
-    Item* curr_order_item = order.getOrderedItems().getHead();
+    Item* curr_order_item = order.getOrderedItemsHead();
 
     buyer->addToSellerHistory(order.getNameOfSellers(), order.getNumOfSellers());
     while (curr_order_item != nullptr) {
-        curr_cart_item = buyer->getCart().getHead();
+        curr_cart_item = buyer->getCartHead();
         while (curr_cart_item != nullptr) {
             if (curr_order_item->GetQuantity() && strcmp(curr_order_item->GetName(), curr_cart_item->GetName()) == 0) {
                 curr_cart_item->reduceQuantity(curr_order_item->GetQuantity());
                 if (curr_cart_item->GetQuantity() == 0) {
-                    buyer->getCart().deleteItem(curr_cart_item->GetName());
+                    buyer->deleteItemFromCart(curr_cart_item->GetName());
                 }
                 curr_cart_item = nullptr;
             } else {
@@ -220,5 +221,5 @@ bool Manager::sellerExistInBuyerSeller(const char *buyer_username, const char *s
 
 void Manager::copyCartToOrder(Order& order, const char *buyer_username) {
     Buyer *buyer = getBuyer(buyer_username);
-    order.setItemList(buyer->getCart());
+    order.setItemList(buyer->getCart());//make copy twice!!!!
 }

@@ -29,7 +29,7 @@ public:
     char** getNameOfSellers();
     ItemList getOrderedItems();
     int getNumOfSellers();
-
+    Item* getOrderedItemsHead(); // check if to move to private
 
 private:
     void addToNameOfSellers(const char* seller_name);

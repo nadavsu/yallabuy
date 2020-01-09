@@ -201,7 +201,7 @@ void addToCart(Manager &admin) {
     do {
         cout << "Input quantity: ";
         cin >> quantity;
-    } while (seller->quantityIsFine(item_name_to_buy,quantity));     //Taking in the quanityt while it's in range.
+    } while (!(seller->quantityIsFine(item_name_to_buy,quantity)));     //Taking in the quanityt while it's in range.
     admin.addItemToCart(buyer_username, seller->getItemToBuyer(item_name_to_buy, quantity));        //Adding the item and the quantity to cart.
 }
 
@@ -224,11 +224,11 @@ void MakeOrderFromCart(Manager &admin) {
 
     Order curr_order(buyer_username);                                   //Creating a new order with the username.
     admin.copyCartToOrder(curr_order, buyer_username);              //Copying the items from the cart to the order.
-    Item *temp = curr_order.getOrderedItems().getHead();
+    Item *temp = curr_order.getOrderedItemsHead();
 
     while (temp) {                                            //Going through the items in the users cart
-            cout << "Do you want to add this Item to your cart [Y/N]?" << endl; //Asking him what he wants to add.
             temp->printItem();
+            cout << "Do you want to add this Item to your cart [Y/N]?" << endl; //Asking him what he wants to add.
             cin >> add_to_order;
             if (add_to_order == 'y' || add_to_order == 'Y') {           //Adding the item from the cart to the order list.
                 do {

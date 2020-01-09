@@ -37,6 +37,8 @@ public:
     char **getSellerHistory()       const;
     int getNumOfSellers()           const;
     ItemList getCart()              const;
+    Item* getCartHead(); // check if to move to private
+    void deleteItemFromCart(const char* item_name);// check if to move to private
 
     void printSellerHistory()       const;
     void printBuyer()               const;
@@ -44,7 +46,6 @@ public:
 
     void addToCart(Item* new_item);
     bool isEmptyCart();
-    bool removeFromCart(const char *item);
     void emptySellerHistory();
     void copySellerHistory(const Buyer& other);
 
