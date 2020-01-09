@@ -91,13 +91,10 @@ Seller *Manager::GetSeller(const char *username) {
 
 
 void Manager::AddBuyer(Buyer &new_buyer) {
-    Buyer *buyer_ptr = new Buyer(
-            std::move(new_buyer));     //Moving the new_buyer to buyer_ptr to take control from the main.
-    /// check if kill at main
-    if (curr_buyer == max_buyer) {
+    if (this->curr_buyer == this->max_buyer) {
         my_realloc(arr_buyer, max_buyer, curr_buyer);
     }
-    arr_buyer[curr_buyer++] = buyer_ptr;
+    *this->arr_buyer[curr_buyer++] = new_buyer;
 }
 
 void Manager::my_realloc(void *arr, int max_size, int curr_size) { // make generic func
@@ -114,13 +111,10 @@ void Manager::my_realloc(void *arr, int max_size, int curr_size) { // make gener
 //TODO: Maybe change all the adding functions below to return bool. if seller is not found then error occurs.
 
 void Manager::AddSeller(Seller &new_seller) {
-    Seller *seller = new Seller(std::move(new_seller));  // check copy seller
-    // copy the seller from the main to take over control
-    // check if kill at main
     if (curr_seller == max_seller) {
         my_realloc(arr_seller, max_seller, curr_seller); // make Generic
     }
-    arr_seller[curr_seller++] = seller;
+    *this->arr_seller[curr_seller++] = new_seller;
 }
 
 

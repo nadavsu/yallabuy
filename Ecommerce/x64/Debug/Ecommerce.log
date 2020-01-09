@@ -1,0 +1,77 @@
+﻿  Address.cpp
+  Buyer.cpp
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(67,30): error C2535: 'Buyer::Buyer(const Buyer &)': member function already defined or declared
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(51): message : see declaration of 'Buyer::Buyer'
+C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(102,32): error C2065: 'USERNAME_MAX_LEN': undeclared identifier
+C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(102,76): error C2065: 'USERNAME_MIN_LEN': undeclared identifier
+C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(134,28): error C2664: 'void ItemList::addToTail(Item *)': cannot convert argument 1 from 'const Item' to 'Item *'
+C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(134,20): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\lasri\source\repos\Amalasu\ItemList.h(16,10): message : see declaration of 'ItemList::addToTail'
+  Date.cpp
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(67,30): error C2535: 'Buyer::Buyer(const Buyer &)': member function already defined or declared
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(51): message : see declaration of 'Buyer::Buyer'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(13,22): error C2374: 'PASSWORD_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(12): message : see declaration of 'PASSWORD_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(14,22): error C2374: 'PASSWORD_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(13): message : see declaration of 'PASSWORD_MIN_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(16,22): error C2374: 'FNAME_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(15): message : see declaration of 'FNAME_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(17,22): error C2374: 'FNAME_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(16): message : see declaration of 'FNAME_MIN_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(18,22): error C2374: 'LNAME_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(17): message : see declaration of 'LNAME_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(19,22): error C2374: 'LNAME_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(18): message : see declaration of 'LNAME_MIN_LEN'
+  Feedback.cpp
+  Item.cpp
+  ItemList.cpp
+C:\Users\lasri\source\repos\Amalasu\ItemList.cpp(55,43): error C2084: function 'ItemList::ItemList(const ItemList &)' already has a body
+C:\Users\lasri\source\repos\Amalasu\ItemList.cpp(11): message : see previous definition of '{ctor}'
+C:\Users\lasri\source\repos\Amalasu\ItemList.cpp(65,38): error C2084: function 'ItemList::ItemList(ItemList &&)' already has a body
+C:\Users\lasri\source\repos\Amalasu\ItemList.cpp(21): message : see previous definition of '{ctor}'
+  main.cpp
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(67,30): error C2535: 'Buyer::Buyer(const Buyer &)': member function already defined or declared
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(51): message : see declaration of 'Buyer::Buyer'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(13,22): error C2374: 'PASSWORD_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(12): message : see declaration of 'PASSWORD_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(14,22): error C2374: 'PASSWORD_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(13): message : see declaration of 'PASSWORD_MIN_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(16,22): error C2374: 'FNAME_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(15): message : see declaration of 'FNAME_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(17,22): error C2374: 'FNAME_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(16): message : see declaration of 'FNAME_MIN_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(18,22): error C2374: 'LNAME_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(17): message : see declaration of 'LNAME_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(19,22): error C2374: 'LNAME_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(18): message : see declaration of 'LNAME_MIN_LEN'
+C:\Users\lasri\source\repos\Amalasu\main.cpp(7,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\lasri\source\repos\Amalasu\main.cpp(276,37): error C2664: 'void Order::setItem(Item *)': cannot convert argument 1 from 'Item' to 'Item *'
+C:\Users\lasri\source\repos\Amalasu\main.cpp(276,32): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\lasri\source\repos\Amalasu\Order.h(21,10): message : see declaration of 'Order::setItem'
+  Manager.cpp
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(67,30): error C2535: 'Buyer::Buyer(const Buyer &)': member function already defined or declared
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(51): message : see declaration of 'Buyer::Buyer'
+  Order.cpp
+  Seller.cpp
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(67,30): error C2535: 'Buyer::Buyer(const Buyer &)': member function already defined or declared
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(51): message : see declaration of 'Buyer::Buyer'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(13,22): error C2374: 'PASSWORD_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(12): message : see declaration of 'PASSWORD_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(14,22): error C2374: 'PASSWORD_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(13): message : see declaration of 'PASSWORD_MIN_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(16,22): error C2374: 'FNAME_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(15): message : see declaration of 'FNAME_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(17,22): error C2374: 'FNAME_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(16): message : see declaration of 'FNAME_MIN_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(18,22): error C2374: 'LNAME_MAX_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(17): message : see declaration of 'LNAME_MAX_LEN'
+C:\Users\lasri\source\repos\Amalasu\MainHeader.h(19,22): error C2374: 'LNAME_MIN_LEN': redefinition; multiple initialization
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(18): message : see declaration of 'LNAME_MIN_LEN'
+C:\Users\lasri\source\repos\Amalasu\Seller.cpp(207,37): error C2664: 'void ItemList::addToTail(Item *)': cannot convert argument 1 from 'const Item' to 'Item *'
+C:\Users\lasri\source\repos\Amalasu\Seller.cpp(207,26): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\lasri\source\repos\Amalasu\ItemList.h(16,10): message : see declaration of 'ItemList::addToTail'
+  Func.cpp
+  Generating Code...
+C:\Users\lasri\source\repos\Amalasu\Item.cpp(59): warning C4715: 'Item::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Feedback.cpp(36): warning C4715: 'Feedback::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Address.cpp(54): warning C4715: 'Address::operator=': not all control paths return a value

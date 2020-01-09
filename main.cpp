@@ -4,15 +4,11 @@
 
 #include"MainHeader.h"
 
-void main() {
+int main() {
 
     Manager manager;
     int ans;
-    char ans2;
-    bool valid;
-    char trash;
-
-
+    
     printTitle("Welcome to LASU!");     //Main menu
     do {
         ans = printMenu();
