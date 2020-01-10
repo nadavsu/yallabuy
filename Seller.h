@@ -52,8 +52,9 @@ public:
     void printSeller()               const;
 
     Item* getItemToBuyer(const char* item_name, int quantity);
-    bool itemExist(char* item_name)  ;
-    bool quantityIsFine(char* item_name, int quantity);
+    bool itemExist(const char* item_name)  ;
+    bool quantityIsFine(const char* item_name, int quantity);
+    bool isEmptyCart();
 
 private:
     Item* getItem(const char* item_name);

@@ -33,20 +33,26 @@ public:
 	void AddBuyer(Buyer& new_buyer);
 	void AddSeller(Seller& new_seller);
     void addFeedback(const Feedback& feedback, const char *seller_username);
-    void AddItem(const char* seller_username,const Item& new_item);
-    void addItemToCart(const char *buyer_username, Item* item);
+	void AddItem(const char* seller_username, const Item& new_item);
 	void printBuyerCart(const char *buyer_username);
     void payOrder(const char* buyer_username, Order& order);
 
     bool sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username);
-    bool isCartEmpty(const char *buyer_username);
+    bool buyerIsCartEmpty(const char *buyer_username);
+	bool sellerIsCartEmpty(const char* seller_username);
+	bool isItemExistInSeller(const char* seller_username,const char* item_name_to_buy);
+	bool sellerIsQuantityFine(const char* seller_username,const char* item_name_to_buy,int quantity);
+	void addItemToCart(const char* buyer_username, const char* seller_username, const char* item_name_to_buy, int quantity);
+	void printSellerShop(const char* seller_username);
     void copyCartToOrder(Order& order, const char *buyer_username);
     bool printItemsNamed(const char *item_name);
     void printBuyers()  const;
     void printSellers() const;
+	bool isSellerExist(char* seller_name);
     void printBuyerSellerHistory(const char *buyer_username);
 
 private:
+	Item* getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity);
     void my_realloc(void *arr, int max_size, int curr_size);
 };
 

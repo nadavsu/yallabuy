@@ -1,6 +1,2 @@
-﻿  Seller.cpp
-  main.cpp
-C:\Users\lasri\source\repos\Amalasu\main.cpp(148,11): warning C4101: 'new_list': unreferenced local variable
-  Generating Code...
-C:\Users\lasri\source\repos\Amalasu\Seller.cpp(80): warning C4715: 'Seller::operator=': not all control paths return a value
+﻿  Manager.cpp
   Ecommerce.vcxproj -> C:\Users\lasri\Source\Repos\Amalasu\x64\Debug\Ecommerce.exe

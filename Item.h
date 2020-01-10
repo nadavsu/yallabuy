@@ -50,7 +50,7 @@ private:
 public:
     Item(char* name_of_seller, char* name, eCategory category, int price, int quantity);
     Item(const Item& other);
-    //Item(Item&& other);
+    Item(Item&& other);
     ~Item();
     const Item& operator=(const Item& other);
 };

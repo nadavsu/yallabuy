@@ -68,8 +68,10 @@ Buyer newBuyer() {
     cin.getline(l_name, bLNAME_MAX_LEN);
     cout << "Username: ";
     cin.getline(username, bUSERNAME_MAX_LEN);
-    cout << "Password: ";
-    cin.getline(password, bPASSWORD_MAX_LEN);
+    do {
+        cout << "Password (atleast 6): ";
+        cin.getline(password, bPASSWORD_MAX_LEN);
+    } while (strlen(password) < 6);
     cout << "City: ";
     cin.get(city, CITY_MAX_LEN);
     cout << "Street: ";
@@ -101,8 +103,10 @@ Seller newSeller() {
     cin.getline(l_name, sLNAME_MAX_LEN);
     cout << "Username: ";
     cin.getline(username, sUSERNAME_MAX_LEN);
-    cout << "Password: ";
-    cin.getline(password, sPASSWORD_MAX_LEN);
+    do {
+        cout << "Password (atleast 6): ";
+        cin.getline(password, sPASSWORD_MAX_LEN);
+    } while (strlen(password) < 6);
     cout << "City: ";
     cin.get(city, CITY_MAX_LEN);
     cout << "Street: ";
@@ -182,7 +186,6 @@ void addToCart(Manager &admin) {
     char password[bPASSWORD_MAX_LEN + 1];
     char item_name_to_buy[ITEM_MAX_NAME_LEN + 1];
     int quantity;
-    Seller *seller = nullptr;
 
     printTitle("Add to Cart");
     printBuyerLogin(admin, buyer_username, password);
@@ -190,19 +193,28 @@ void addToCart(Manager &admin) {
     do {
         cout << "Please enter the seller's username you want to buy from:\n";   //Letting the user choose a seller.
         cin.getline(seller_username, bUSERNAME_MAX_LEN);
-        seller = admin.getSeller(seller_username);                //getSeller returns null if no seller is found.
-    } while(!seller);
-    seller->printStock();                                           //Printing the seller's stock.
+        
+        //seller = admin.getSeller(seller_username);                //getSeller returns null if no seller is found.
+    } while(!(admin.isSellerExist(seller_username)));
+    if (!(admin.sellerIsCartEmpty(seller_username))) {
+        admin.printSellerShop(seller_username);//Printing the seller's stock.
+    }
+    else {
+        cout << "No Item In Shop " << endl<<"returning to menu" << endl;
+        return;
+    }
     do {
         cout << "Please enter the items you want to buy.\n";
         cin.getline(item_name_to_buy, ITEM_MAX_NAME_LEN);
-    } while (!(seller->itemExist(item_name_to_buy)));                //Checking if the item was found (null if not)
+    } while (!(admin.isItemExistInSeller(seller_username,item_name_to_buy)));//Checking if the item was found (null if not)
+    //} while (!(seller->itemExist(item_name_to_buy)));
 
     do {
         cout << "Input quantity: ";
         cin >> quantity;
-    } while (!(seller->quantityIsFine(item_name_to_buy,quantity)));     //Taking in the quanityt while it's in range.
-    admin.addItemToCart(buyer_username, seller->getItemToBuyer(item_name_to_buy, quantity));        //Adding the item and the quantity to cart.
+    } while (!(admin.sellerIsQuantityFine(seller_username, item_name_to_buy, quantity)));     //Taking in the quanityt while it's in range.
+    //} while (!(seller->quantityIsFine(item_name_to_buy,quantity)));     //Taking in the quanityt while it's in range.
+    admin.addItemToCart(buyer_username, seller_username,item_name_to_buy, quantity);        //Adding the item and the quantity to cart.
 }
 
 //A function used to make an order from the cart. choosing items.
@@ -217,7 +229,7 @@ void MakeOrderFromCart(Manager &admin) {
     printBuyerLogin(admin, buyer_username, password);
     printSubTitle("Choose from your cart:");
 
-    if(admin.isCartEmpty(buyer_username)) {
+    if(admin.buyerIsCartEmpty(buyer_username)) {
         cout << "Your cart is empty.\n";
         return;
     }
@@ -225,10 +237,10 @@ void MakeOrderFromCart(Manager &admin) {
     Order curr_order(buyer_username);                                   //Creating a new order with the username.
     admin.copyCartToOrder(curr_order, buyer_username);              //Copying the items from the cart to the order.
     Item *temp = curr_order.getOrderedItemsHead();
-
+    cout << "Your cart :" << endl;
     while (temp) {                                            //Going through the items in the users cart
             temp->printItem();
-            cout << "Do you want to add this Item to your cart [Y/N]?" << endl; //Asking him what he wants to add.
+            cout << "Do you want to add this Item to your order [Y/N]?" << endl; //Asking him what he wants to add.
             cin >> add_to_order;
             if (add_to_order == 'y' || add_to_order == 'Y') {           //Adding the item from the cart to the order list.
                 do {

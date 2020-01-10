@@ -74,11 +74,30 @@ Seller *Manager::getSeller(const char *username) {
     return nullptr;             ///Added return if seller not found.
 }
 
-bool Manager::isCartEmpty(const char *buyer_username) {
+bool Manager::buyerIsCartEmpty(const char *buyer_username) {
     Buyer *buyer = getBuyer(buyer_username);
     return buyer->isEmptyCart();
 }
 
+bool Manager::sellerIsCartEmpty(const char* seller_username) {
+    Seller* selller = getSeller(seller_username);
+    return selller->isEmptyCart();
+}
+
+bool Manager::isItemExistInSeller(const char* seller_username,const char* item_name_to_buy) {
+    Seller* seller = getSeller(seller_username);
+    return seller->itemExist(item_name_to_buy);
+}
+
+bool Manager::sellerIsQuantityFine(const char* seller_username,const char* item_name_to_buy,int quantity) {
+    Seller* seller = getSeller(seller_username);
+    return seller->quantityIsFine(item_name_to_buy, quantity);
+}
+
+void Manager::printSellerShop(const char* seller_username) {
+    Seller* seller = getSeller(seller_username);
+    seller->printStock();
+}
 
 /*void Manager::AddBuyer(Buyer new_buyer) {
     Buyer* buyer_ptr = new Buyer(std::move(new_buyer)); // copy the buyer from the main to take over control
@@ -140,11 +159,20 @@ void Manager::AddItem(const char *seller_username,const Item& new_item) {
 
 //TODO: Make this function return bool and get the console messages out of here.
 
-void Manager::addItemToCart(const char *buyer_username, Item* item) {
-    Item *new_item = new Item(*item);
+void Manager::addItemToCart(const char *buyer_username, const char* seller_username, const char* item_name_to_buy, int quantity) {
+    Item* seller_item = getItemFromSellerToBuyer(seller_username, item_name_to_buy, quantity);
+    Item* new_item;
+    new_item = new Item(*seller_item);
     new_item->next = nullptr;
     Buyer *buyer = getBuyer(buyer_username);
     buyer->addToCart(new_item);
+    delete seller_item;
+}
+
+Item* Manager::getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity) {
+    Seller* seller = getSeller(seller_username);
+    Item* seller_item = seller->getItemToBuyer(item_name_to_buy, quantity);
+    return seller_item;
 }
 
 void Manager::printBuyerCart(const char *buyer_username) {
@@ -184,6 +212,16 @@ void Manager::printBuyers() const {
 void Manager::printSellers() const {
     for (int i = 0; i < curr_seller; i++) {
         arr_seller[i]->printSeller();
+    }
+}
+
+bool Manager::isSellerExist(char* seller_name) {
+    Seller* seller = getSeller(seller_name);
+    if (seller != nullptr) {
+        return true;
+    }
+    else {
+        return false;
     }
 }
 

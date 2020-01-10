@@ -290,7 +290,7 @@ Item* Seller::getItemToBuyer(const char* item_name,int quantity) { // check exis
     }
     return to_buyer;
 }
-bool Seller::itemExist(char* item_name){
+bool Seller::itemExist(const char* item_name){
     Item* item;
     item = getItem(item_name);
     if (item != nullptr) {
@@ -301,8 +301,12 @@ bool Seller::itemExist(char* item_name){
     }
 }
 
-bool Seller::quantityIsFine(char* item_name,int quantity) {
+bool Seller::quantityIsFine(const char* item_name,int quantity) {
     Item* item;
     item = getItem(item_name);
     return (quantity > 0 && quantity <= item->GetQuantity());
+}
+
+bool Seller::isEmptyCart() {
+    return stock_list.isEmpty();
 }
