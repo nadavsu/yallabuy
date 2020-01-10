@@ -51,6 +51,7 @@ public:
 	bool isSellerExist(char* seller_name);
     void printBuyerSellerHistory(const char *buyer_username);
 
+    void _debugfill();
 private:
 	Item* getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity);
     void my_realloc(void *arr, int max_size, int curr_size);

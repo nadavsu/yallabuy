@@ -261,3 +261,28 @@ void Manager::copyCartToOrder(Order& order, const char *buyer_username) {
     Buyer *buyer = getBuyer(buyer_username);
     order.setItemList(buyer->getCart());//make copy twice!!!!
 }
+
+void Manager::_debugfill() {
+    Buyer buyer1("dorlasri", "123456", "Dor", "Lasri", Address("Nahariya", "Bialik", 2));
+    Buyer buyer2("arnaudmaarek", "ilovefrance", "Arnaud", "Maarek", Address("Tel Aviv", "Bograshov", 9));
+    AddBuyer(buyer1);
+    AddBuyer(buyer2);
+
+    Seller seller1("nadavsuliman", "fuckyou", "Nadav", "Suliman", Address("Raanana", "Aharonson", 12));
+    AddSeller(seller1);
+    Item item1s1("nadavsuliman", "PS5", (Item::eCategory) 3, 4000, 20);
+    Item item2s1("nadavsuliman", "Wii", (Item::eCategory) 3, 980, 5);
+    Item item3s1("nadavsuliman", "Pizza", (Item::eCategory) 0, 60, 90);
+    AddItem(seller1.getUsername(), item1s1);
+    AddItem(seller1.getUsername(), item2s1);
+    AddItem(seller1.getUsername(), item3s1);
+
+    Seller seller2("shaitek5", "maccabizona", "Shai", "Rubinstein", Address("Jerusalem", "Yitzhak Sade", 4));
+    AddSeller(seller2);
+    Item item1s2("shaitek5", "ASUS PC", (Item::eCategory) 0, 3000, 50);
+    Item item2s2("shaitek5", "Macbook Pro", (Item::eCategory) 0, 10000, 5);
+    Item item3s2("shaitek5", "Sambusak", (Item::eCategory) 0, 10, 20);
+    AddItem(seller2.getUsername(), item1s2);
+    AddItem(seller2.getUsername(), item2s2);
+    AddItem(seller2.getUsername(), item3s2);
+}
