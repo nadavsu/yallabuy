@@ -3,21 +3,20 @@
 //GROUP 1, KEREN KALIF.
 
 #include "MainHeader.h"
-#include "CUI.h"
 
 int main() {
 
     Manager manager;
     int ans;
     
-    printTitle("Welcome to LASU!");     //Main menu
+    printTitle("Welcome to YallaBuy!");     //Main menu
     do {
         ans = printMenu();
         if (ans == 1) {
-            Buyer b(newBuyer());
+            Buyer b(newAccount());
             manager.AddBuyer(b);
         } else if (ans == 2) {
-            Seller s(newSeller());
+            Seller s(newAccount());
             manager.AddSeller(s);
         } else if (ans == 3) {
             makeFeedback(manager);
@@ -49,28 +48,24 @@ int main() {
 }
 
 
-//A funciton that adds new buyer, takes in info from the user
-Buyer newBuyer() {
-    char street[STREET_MAX_LEN + 1];
-    char city[CITY_MAX_LEN + 1];
+//A funciton that adds new account, takes in info from the user
+Account newAccount() {
     int house_number;
-    char f_name[bFNAME_MAX_LEN + 1];
-    char l_name[bLNAME_MAX_LEN + 1];
-    char username[bUSERNAME_MAX_LEN + 1];
-    char password[bPASSWORD_MAX_LEN + 1];
-    char trash;
+    char street[STREET_MAX_LEN + 1], city[CITY_MAX_LEN + 1];
+    char f_name[FNAME_MAX_LEN + 1], l_name[LNAME_MAX_LEN + 1];
+    char username[USERNAME_MAX_LEN + 1], password[PASSWORD_MAX_LEN + 1], trash;
 
-    printTitle("New Buyer Account");
+    printTitle("New Account");
     cout << "First Name: ";
     cin.getline(&trash, 1);
-    cin.getline(f_name, bFNAME_MAX_LEN);
+    cin.getline(f_name, FNAME_MAX_LEN);
     cout << "Last Name: ";
-    cin.getline(l_name, bLNAME_MAX_LEN);
+    cin.getline(l_name, LNAME_MAX_LEN);
     cout << "Username: ";
-    cin.getline(username, bUSERNAME_MAX_LEN);
+    cin.getline(username, USERNAME_MAX_LEN);
     do {
-        cout << "Password (atleast 6): ";
-        cin.getline(password, bPASSWORD_MAX_LEN);
+        cout << "Password (at least 6): ";
+        cin.getline(password, PASSWORD_MAX_LEN);
     } while (strlen(password) < 6);
     cout << "City: ";
     cin.get(city, CITY_MAX_LEN);
@@ -81,60 +76,23 @@ Buyer newBuyer() {
     cin >> house_number;
     printLine();
 
-    return Buyer(username, password, f_name, l_name, Address(city, street, house_number));
+    Address address(city, street, house_number);
+    return Account(username, password, f_name, l_name, address);
 }
-
-//A function that takes in info from the user to add a new seller.
-Seller newSeller() {
-    char street[STREET_MAX_LEN + 1];
-    char city[CITY_MAX_LEN + 1];
-    int house_number;
-    char f_name[sFNAME_MAX_LEN + 1];
-    char l_name[sLNAME_MAX_LEN + 1];
-    char username[sUSERNAME_MAX_LEN + 1];
-    char password[sPASSWORD_MAX_LEN + 1];
-    char trash;
-
-    printTitle("New Seller Account");       //Inputting information
-    cout << "First Name: ";
-    cin.getline(&trash, 1);
-    cin.getline(f_name, sFNAME_MAX_LEN);
-    cout << "Last Name: ";
-    cin.getline(l_name, sLNAME_MAX_LEN);
-    cout << "Username: ";
-    cin.getline(username, sUSERNAME_MAX_LEN);
-    do {
-        cout << "Password (atleast 6): ";
-        cin.getline(password, sPASSWORD_MAX_LEN);
-    } while (strlen(password) < 6);
-    cout << "City: ";
-    cin.get(city, CITY_MAX_LEN);
-    cout << "Street: ";
-    cin.getline(&trash, 1);
-    cin.getline(street, STREET_MAX_LEN);
-    cout << "House Number: ";
-    cin >> house_number;
-    printLine();
-
-    return Seller(username, password, f_name, l_name, Address(city, street, house_number)); //Creating the seller.
-}
-
 
 //A function that creates a new feedback based on user input.
 void makeFeedback(Manager& admin) {
-    char buyer_username[bUSERNAME_MAX_LEN + 1];
-    char password[bPASSWORD_MAX_LEN + 1];
-    char seller_username[sUSERNAME_MAX_LEN + 1];
-    char comment[COMMENT_MAX_LEN + 1];
+    char buyer_username[USERNAME_MAX_LEN + 1], password[PASSWORD_MAX_LEN + 1];
+    char seller_username[USERNAME_MAX_LEN + 1], comment[COMMENT_MAX_LEN + 1];
     bool found;
     char cont;
 
     printTitle("New Feedback");
-    printBuyerLogin(admin, buyer_username, password);
+    printLogin(admin, buyer_username, password);
     admin.printBuyerSellerHistory(buyer_username);
     do {
         cout << "Please enter the name of the seller you want to give feedback to: ";       //Checking if the user bought from the seller.
-        cin.getline(seller_username, sUSERNAME_MAX_LEN);
+        cin.getline(seller_username, USERNAME_MAX_LEN);
         found = admin.sellerExistInBuyerSeller(buyer_username, seller_username);
         if (!found) {                                                                   //If the seller not found
             cout << seller_username << " not found in " << buyer_username << "'s history.\n";
@@ -149,18 +107,15 @@ void makeFeedback(Manager& admin) {
 
 //A function which creates an item from the user.
 void makeItem(Manager &admin) {
-    Item *new_list; // head of List
-    char password[sPASSWORD_MAX_LEN + 1]; // may cause problem for strcmp in manager login
-    char seller_username[sUSERNAME_MAX_LEN + 1];
+    char password[PASSWORD_MAX_LEN + 1]; // may cause problem for strcmp in manager login
+    char seller_username[USERNAME_MAX_LEN + 1];
     char ans;
 
     printTitle("Add a new item to stock");
-    printSellerLogin(admin, seller_username, password);
+    printLogin(admin, seller_username, password);
     do {                                                            //Taking in information until the user says stop.
         char name[ITEM_MAX_NAME_LEN + 1], trash;
-        int category;
-        int price;
-        int quantity;
+        int category, price, quantity;
 
         printSubTitle("Add your product");
         cout << "Name:" << endl;
@@ -181,22 +136,20 @@ void makeItem(Manager &admin) {
 
 //A function which is used to add to add an item from cart.
 void addToCart(Manager &admin) {
-    char buyer_username[bUSERNAME_MAX_LEN + 1];
-    char seller_username[sUSERNAME_MAX_LEN + 1];
-    char password[bPASSWORD_MAX_LEN + 1];
-    char item_name_to_buy[ITEM_MAX_NAME_LEN + 1];
+    char buyer_username[USERNAME_MAX_LEN + 1], seller_username[USERNAME_MAX_LEN + 1];
+    char password[PASSWORD_MAX_LEN + 1], item_name_to_buy[ITEM_MAX_NAME_LEN + 1];
     int quantity;
 
     printTitle("Add to Cart");
-    printBuyerLogin(admin, buyer_username, password);
+    printLogin(admin, buyer_username, password);
     admin.printSellers();                             //Printing all available sellers you can buy from.
     do {
         cout << "Please enter the seller's username you want to buy from:\n";   //Letting the user choose a seller.
-        cin.getline(seller_username, bUSERNAME_MAX_LEN);
+        cin.getline(seller_username, USERNAME_MAX_LEN);
         
         //seller = admin.getSeller(seller_username);                //getSeller returns null if no seller is found.
     } while(!(admin.isSellerExist(seller_username)));
-    if (!(admin.sellerIsCartEmpty(seller_username))) {
+    if (!(admin.sellerIsStockEmpty(seller_username))) {
         admin.printSellerShop(seller_username);//Printing the seller's stock.
     }
     else {
@@ -219,14 +172,14 @@ void addToCart(Manager &admin) {
 
 //A function used to make an order from the cart. choosing items.
 void MakeOrderFromCart(Manager &admin) {
-    char buyer_username[bUSERNAME_MAX_LEN + 1];
-    char password[bPASSWORD_MAX_LEN + 1];
+    char buyer_username[USERNAME_MAX_LEN + 1];
+    char password[PASSWORD_MAX_LEN + 1];
     char add_to_order;
     char want_to_pay;
     int quantity;
 
     printTitle("Make Order");
-    printBuyerLogin(admin, buyer_username, password);
+    printLogin(admin, buyer_username, password);
     printSubTitle("Choose from your cart:");
 
     if(admin.buyerIsCartEmpty(buyer_username)) {

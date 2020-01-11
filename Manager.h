@@ -14,24 +14,19 @@
 
 class Manager {
 private:
-	Seller** arr_seller;
-	Buyer** arr_buyer;
-	int curr_buyer;
-	int max_buyer;
-	int curr_seller;
-	int max_seller;
+	Account** account_arr;
+	int curr_account;
+	int max_account;
 
 public:
 	Manager();
 	Manager(Manager& other) = delete;
 	~Manager();
 
-	bool loginBuyer(const char* username, const char* password) const;
-	bool loginSeller(const char* username, const char* password) const;
-	Buyer* getBuyer(const char* username); //return through copy const without any inside info like password
-	Seller* getSeller(const char* username);
-	void AddBuyer(Buyer& new_buyer);
-	void AddSeller(Seller& new_seller);
+	bool login(const char* username, const char* password) const;
+	Account* getAccount(const char* username); //return through copy const without any inside info like password
+	void AddBuyer(Account& new_account);
+	void AddSeller(Account& new_account);
     void addFeedback(const Feedback& feedback, const char *seller_username);
 	void AddItem(const char* seller_username, const Item& new_item);
 	void printBuyerCart(const char *buyer_username);
@@ -39,7 +34,7 @@ public:
 
     bool sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username);
     bool buyerIsCartEmpty(const char *buyer_username);
-	bool sellerIsCartEmpty(const char* seller_username);
+	bool sellerIsStockEmpty(const char* seller_username);
 	bool isItemExistInSeller(const char* seller_username,const char* item_name_to_buy);
 	bool sellerIsQuantityFine(const char* seller_username,const char* item_name_to_buy,int quantity);
 	void addItemToCart(const char* buyer_username, const char* seller_username, const char* item_name_to_buy, int quantity);
@@ -48,13 +43,13 @@ public:
     bool printItemsNamed(const char *item_name);
     void printBuyers()  const;
     void printSellers() const;
-	bool isSellerExist(char* seller_name);
+	bool isSellerExist(char* seller_username);
     void printBuyerSellerHistory(const char *buyer_username);
 
     void _debugfill();
 private:
 	Item* getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity);
-    void my_realloc(void *arr, int max_size, int curr_size);
+    void my_realloc();
 };
 
 

@@ -2,15 +2,17 @@
 #define MAINHEADER_H
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include "Account.h"
 #include "Buyer.h"
 #include "Address.h"
 #include"Seller.h"
 #include "Manager.h"
 #include "Feedback.h"
+#include "CUI.h"
 #include <time.h>
 using namespace std;
 
-Buyer newBuyer();
+Account newAccount();
 Seller newSeller();
 Feedback newFeedback(char* buyer_username);
 void makeItem(Manager& admin);

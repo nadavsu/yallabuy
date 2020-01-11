@@ -15,8 +15,7 @@ void printSubTitle(const char *title);
 void printTitle(const char *title);
 void printLine();
 int printMenu();
-void printBuyerLogin(Manager &manager, char *username, char *password);
-void printSellerLogin(Manager &manager, char *username, char *password);
+void printLogin(Manager &manager, char *username, char *password);
 void emptyBuffer();
 
 #endif //ECOMMERCE_CUI_H

@@ -67,35 +67,19 @@ int printMenu() {
     return ans;
 }
 
-void printBuyerLogin(Manager &manager, char *username, char *password) {
+void printLogin(Manager &manager, char *username, char *password) {
     bool logged = true;
     emptyBuffer();
-    printSubTitle("Buyer Login");
+    printSubTitle("Login:");
     do{
         if(!logged) {
             cout << "Wrong username or password!\n";
         }
         cout << "Username: ";
-        cin.getline(username, bUSERNAME_MAX_LEN);
+        cin.getline(username, USERNAME_MAX_LEN);
         cout << "Password: ";
-        cin.getline(password, bPASSWORD_MAX_LEN);
-        logged = manager.loginBuyer(username, password);
-    } while (!logged);
-}
-
-void printSellerLogin(Manager &manager, char *username, char *password) {
-    bool logged = true;
-    emptyBuffer();
-    printSubTitle("Seller Login");
-    do{
-        if(!logged) {
-            cout << "Wrong username or password!\n";
-        }
-        cout << "Username: ";
-        cin.getline(username, bUSERNAME_MAX_LEN);
-        cout << "Password: ";
-        cin.getline(password, bPASSWORD_MAX_LEN);
-        logged = manager.loginSeller(username, password);
+        cin.getline(password, PASSWORD_MAX_LEN);
+        logged = manager.login(username, password);
     } while (!logged);
 }
 

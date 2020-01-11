@@ -6,6 +6,8 @@
 #define ECOMMERCE_ADDRESS_H
 
 #include <iostream>
+using namespace std;
+
 static constexpr int CITY_MAX_LEN = 25;
 static constexpr int STREET_MAX_LEN = 25;
 
@@ -24,8 +26,6 @@ public:
     const char *getStreet()     const;
     int         getHomeNumber() const;
 
-    void printAddress()         const;
-
 private:
     char*   m_city;
     char*   m_street;
@@ -37,6 +37,8 @@ public:
     Address(Address&& other);
     ~Address();
     const Address& operator=(const Address& other);
+    friend ostream& operator<<(ostream& os, const Address& address);
+
 };
 
 

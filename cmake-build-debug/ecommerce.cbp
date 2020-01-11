@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Account.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Account.h">
+			<Option target="ecommerce"/>
+		</Unit>
 		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Address.cpp">
 			<Option target="ecommerce"/>
 		</Unit>

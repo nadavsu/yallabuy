@@ -5,54 +5,37 @@
 #include "Buyer.h"
 using namespace std;
 
-//Constructor
-Buyer::Buyer(char *username, char *password, char *fname, char *lname, Address address) : address(address) {
-    setUsername(username);
-    setPassword(password);
-    setFName(fname);
-    setLName(lname);
-    seller_history = nullptr;
+///Constructors and Destructors------------------------------------------
+Buyer::Buyer(char *username, char *password, char *fname, char *lname, Address& address): Account(username, password, fname, lname, address) {
+    seller_history      = nullptr;
     seller_history_size = 0;
+}
 
+Buyer::Buyer(const Account& base) : Account(base) {
+    seller_history      = nullptr;
+    seller_history_size = 0;
 }
 
 //Copy ctor
-Buyer::Buyer(const Buyer& other) : address(other.address), cart(other.cart) {
-    setUsername(other.username);
-    setPassword(other.password);
-    setFName(other.fname);
-    setLName(other.lname);
+Buyer::Buyer(const Buyer& other) : Account(other), cart(other.cart) {
     copySellerHistory(other);
 }
 
 //Move ctor
-Buyer::Buyer(Buyer&& other) : address(std::move(other.address)), cart(std::move(other.cart)) {
-    username = other.username;
-    password = other.password;
-    fname = other.fname;
-    lname = other.lname;
-    seller_history = other.seller_history;
-    seller_history_size = other.seller_history_size;
-
-    other.username = nullptr;
-    other.password = nullptr;
-    other.fname = nullptr;
-    other.lname = nullptr;
+Buyer::Buyer(Buyer&& other) : Account(std::move(other)), cart(std::move(other.cart)) {
+    seller_history       = other.seller_history;
+    seller_history_size  = other.seller_history_size;
     other.seller_history = nullptr;
 }
 
-//dtor
+//TODO: check whether to delete the username, pssword, fname, lname here or not.
 Buyer::~Buyer() {
-    delete[] username;
-    delete[] password;
-    delete[] fname;
-    delete[] lname;
     emptySellerHistory();           //emptying the seller history.
     delete[] seller_history;        //deleting it.
 }
 
 const Buyer& Buyer::operator=(const Buyer& other) {
-    if (this != &other) {
+    if(this != &other){
         delete[]username;
         delete[]password;
         delete[]fname;
@@ -66,70 +49,29 @@ const Buyer& Buyer::operator=(const Buyer& other) {
         this->cart = other.cart;
         copySellerHistory(other);
         this->seller_history_size = other.seller_history_size;
-    }
-    else {
+    } else {
         return *this;
     }
 }
 
-
-///The following are setters and getters.
-bool Buyer::setFName(const char *new_fname) {
-    if(strlen(new_fname) <= bFNAME_MAX_LEN) {
-        if(!fname) {
-            delete[] fname;
-        }
-        fname = new char[strlen(new_fname) + 1];
-        strcpy(fname, new_fname);
-        return true;
-    }
-    return false;
+///Getters and Setters------------------------------------------------------
+ItemList Buyer::getCart() const {
+    return cart;
 }
 
-bool Buyer::setLName(const char *new_lname) {
-    if(strlen(new_lname) <= bLNAME_MAX_LEN) {
-        if(!lname) {
-            delete[] lname;
-        }
-        lname = new char[strlen(new_lname) + 1];
-        strcpy(lname, new_lname);
-        return true;
-    }
-    return false;
+char **Buyer::getSellerHistory() const {
+    return seller_history;
 }
 
-bool Buyer::setUsername(const char *new_username) {
-    if(strlen(new_username) <= bUSERNAME_MAX_LEN && strlen(new_username) >= bUSERNAME_MIN_LEN) {
-        if(!username) {
-            delete[] username;
-        }
-        username = new char[strlen(new_username) + 1];
-        strcpy(username, new_username);
-        return true;
-    }
-    return false;
+int Buyer::getNumOfSellers() const {
+    return seller_history_size;
 }
 
-
-bool Buyer::setPassword(const char *new_password) {
-    if(strlen(new_password) <= bPASSWORD_MAX_LEN && strlen(new_password) >= bPASSWORD_MIN_LEN) {
-        if(!password) {
-            delete[] password;
-        }
-        password = new char[strlen(new_password) + 1];
-        strcpy(password, new_password);
-        return true;
-    }
-    return false;
+Item* Buyer::getCartHead() {
+    return cart.getHead();
 }
 
-void Buyer::setAddress(const Address& new_address) {
-    address.setHomeNumber(new_address.getHomeNumber());
-    address.setStreet(new_address.getStreet());
-    address.setCity(new_address.getCity());
-}
-
-
+///Cart Functions----------------------------------------------------------
 void Buyer::addToCart(Item* new_item) {
     cart.addToTail(new_item);
 }
@@ -139,6 +81,7 @@ bool Buyer::isEmptyCart() {
 }
 
 
+///Seller History Functions-------------------------------------------------
 //A function used to add an array of strings to the history of the buyer.
 //Used for the feedback
 void Buyer::addToSellerHistory(char** seller_name,int size_of_seller_name) {
@@ -156,7 +99,7 @@ void Buyer::addToSellerHistory(char** seller_name,int size_of_seller_name) {
                 To_add = true;
             }
         }
-        if (To_add == true) { // did the last compare
+        if (To_add) { // did the last compare
             AfterEaraseDup[index] = new char[strlen(seller_name[i]) + 1];
             strcpy(AfterEaraseDup[index] ,seller_name[i]);
             index++;
@@ -182,40 +125,6 @@ void Buyer::makeNewSellerHistory(char** AfterEaraseDup, int size_of_AfterEaraseD
 
 }
 
-
-const char *Buyer::getFName() const {
-    return fname;
-}
-
-const char *Buyer::getLName() const {
-    return lname;
-}
-
-const char *Buyer::getPassword() const {
-    return password;
-}
-
-char **Buyer::getSellerHistory() const {
-    return seller_history;
-}
-
-int Buyer::getNumOfSellers() const {
-    return seller_history_size;
-}
-
-ItemList Buyer::getCart() const {
-    return cart;
-}
-
-Item* Buyer::getCartHead() {
-    return cart.getHead();
-}
-
-Address Buyer::getAddress() const {
-    return address;
-}
-
-
 void Buyer::emptySellerHistory() {
     for(int i = 0; i < seller_history_size; ++i) {
         delete seller_history[i];
@@ -235,20 +144,12 @@ void Buyer::copySellerHistory(const Buyer& other) {
     }
 }
 
+///Printing Functions--------------------------------------------------------
 void Buyer::printSellerHistory()const {
     cout << "Buyer : " << this->username<< "Seller's History:" << endl;
     for (int i = 0; i < this->seller_history_size;i++) {
-        cout <<this->seller_history[i] <<endl;
+        cout << this->seller_history[i] <<endl;
     }
-}
-
-void Buyer::printBuyer() const {
-    cout << "----------------------------------\n";
-    cout << "Username: " << username << endl;
-    cout << "Name: " << fname << " " << lname << endl;
-    this->address.printAddress();
-    cout << "----------------------------------\n";
-
 }
 
 void Buyer::printCart() const {

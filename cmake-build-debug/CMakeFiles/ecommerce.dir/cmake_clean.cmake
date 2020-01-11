@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ecommerce.dir/Account.cpp.o"
   "CMakeFiles/ecommerce.dir/Address.cpp.o"
   "CMakeFiles/ecommerce.dir/Buyer.cpp.o"
   "CMakeFiles/ecommerce.dir/CUI.cpp.o"

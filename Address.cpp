@@ -53,6 +53,11 @@ const Address& Address::operator=(const Address& other) {
     }
 }
 
+ostream& operator<<(ostream& os, const Address& address) {
+    os << address.m_street << " " << address.m_home_number << ", " << address.m_city;
+    return os;
+}
+
 bool Address::setCity(const char *city) {
     if(strlen(city) <= CITY_NAME_LEN) {
         delete[] m_city;
@@ -91,8 +96,4 @@ const char *Address::getStreet() const{
 
 int Address::getHomeNumber() const{
     return m_home_number;
-}
-
-void Address::printAddress() const {
-    cout << m_street << " " << m_home_number << ", " << m_city << endl;
 }

@@ -123,6 +123,33 @@ ecommerce/fast:
 	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/build
 .PHONY : ecommerce/fast
 
+Account.o: Account.cpp.o
+
+.PHONY : Account.o
+
+# target to build an object file
+Account.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Account.cpp.o
+.PHONY : Account.cpp.o
+
+Account.i: Account.cpp.i
+
+.PHONY : Account.i
+
+# target to preprocess a source file
+Account.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Account.cpp.i
+.PHONY : Account.cpp.i
+
+Account.s: Account.cpp.s
+
+.PHONY : Account.s
+
+# target to generate assembly for a file
+Account.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Account.cpp.s
+.PHONY : Account.cpp.s
+
 Address.o: Address.cpp.o
 
 .PHONY : Address.o
@@ -429,6 +456,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ecommerce"
+	@echo "... Account.o"
+	@echo "... Account.i"
+	@echo "... Account.s"
 	@echo "... Address.o"
 	@echo "... Address.i"
 	@echo "... Address.s"
