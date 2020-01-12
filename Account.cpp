@@ -3,7 +3,7 @@
 //
 
 #include "Account.h"
-Account::Account(char *username, char *password, char *fname, char *lname, Address& address) : address(address) {
+Account::Account(const char* username, const char* password, const char* fname, const char* lname,const Address& address) : address(address) {
     setUsername(username);
     setPassword(password);
     setFName(fname);
@@ -34,6 +34,23 @@ Account::~Account() {
     delete[] password;
     delete[] fname;
     delete[] lname;
+}
+
+const Account& Account::operator=(const Account& other) {
+    if (this != &other) {
+        delete[] username;
+        delete[] password;
+        delete[] fname;
+        delete[] lname;
+        this->address = other.address;
+        setFName(other.fname);
+        setLName(other.lname);
+        setUsername(other.username);
+        setPassword(other.password);
+    }
+    else {
+        return *this;
+    }
 }
 
 ostream& operator<<(ostream& os, Account& base) {

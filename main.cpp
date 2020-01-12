@@ -13,24 +13,20 @@ int main() {
     do {
         ans = printMenu();
         if (ans == 1) {
-            Buyer b(newAccount());
-            manager.AddBuyer(b);
+            newAccount(manager);
         } else if (ans == 2) {
-            Seller s(newAccount());
-            manager.AddSeller(s);
-        } else if (ans == 3) {
             makeFeedback(manager);
-        } else if (ans == 4) {
+        } else if (ans == 3) {
             makeItem(manager);
-        } else if (ans == 5) {
+        } else if (ans == 4) {
             addToCart(manager);
-        } else if (ans == 6) {
+        } else if (ans == 5) {
             MakeOrderFromCart(manager);
-        } else if (ans == 7) {
+        } else if (ans == 6) {
             manager.printBuyers();
-        } else if (ans == 8) {
+        } else if (ans == 7) {
             manager.printSellers();
-        } else if (ans == 9) {
+        } else if (ans == 8) {
             getItemInfo(manager);
         } else if (ans == 0) {
             char c;
@@ -49,13 +45,32 @@ int main() {
 
 
 //A funciton that adds new account, takes in info from the user
-Account newAccount() {
+void newAccount(Manager& admin) {
     int house_number;
     char street[STREET_MAX_LEN + 1], city[CITY_MAX_LEN + 1];
     char f_name[FNAME_MAX_LEN + 1], l_name[LNAME_MAX_LEN + 1];
     char username[USERNAME_MAX_LEN + 1], password[PASSWORD_MAX_LEN + 1], trash;
+    int AccountType;
+    Account* temp;
 
-    printTitle("New Account");
+    cout << "What type of user do you want to open?" << endl;
+    cout << "To register as a new buyer, press 1."<< endl;
+    cout << "To register as a new seller, press 2."<< endl;
+    cout << "To register as a new buyer/seller, press 3." << endl;
+    cin >> AccountType;
+
+    if (AccountType == 1) {
+        printTitle("New Account Buyer");
+    }
+    else if(AccountType == 2) {
+        printTitle("New Account Seller");
+    }
+    else if (AccountType == 3) {
+        printTitle("New Account BuyerSeller");
+    }
+    else {
+        cout << "Invalid Input" << endl;
+    }
     cout << "First Name: ";
     cin.getline(&trash, 1);
     cin.getline(f_name, FNAME_MAX_LEN);
@@ -75,9 +90,24 @@ Account newAccount() {
     cout << "House Number: ";
     cin >> house_number;
     printLine();
-
     Address address(city, street, house_number);
-    return Account(username, password, f_name, l_name, address);
+    if (AccountType == 1) {
+        printTitle("New Account Buyer");
+        temp =new Buyer(username, password, f_name, l_name, address) ;
+    }
+    else if (AccountType == 2) {
+        printTitle("New Account Seller");
+        temp = new Seller(username, password, f_name, l_name, address);
+    }
+    else if (AccountType == 3) {
+        printTitle("New Account BuyerSeller");
+        temp = new BuyerSeller(username, password, f_name, l_name, address);
+    }
+    else {
+        cout << "Invalid Input" << endl;
+    }
+    admin.addAccout(temp);
+    delete temp;
 }
 
 //A function that creates a new feedback based on user input.

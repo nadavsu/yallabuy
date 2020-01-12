@@ -12,9 +12,9 @@
 #include <time.h>
 using namespace std;
 
-Account newAccount();
-Seller newSeller();
-Feedback newFeedback(char* buyer_username);
+void newAccount(Manager& manager);
+//Seller newSeller();
+void makeFeedback(Manager& admin);
 void makeItem(Manager& admin);
 void makeFeedback(Manager& admin);
 void addToCart(Manager& admin);

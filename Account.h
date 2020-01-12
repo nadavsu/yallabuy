@@ -1,7 +1,3 @@
-//
-// Created by Nadav Suliman on 10/1/20.
-//
-
 #ifndef ECOMMERCE_ACCOUNT_H
 #define ECOMMERCE_ACCOUNT_H
 
@@ -28,11 +24,11 @@ protected:
     Address     address;
 
 public:
-    Account(char *username, char *password, char *fname, char *lname, Address& address);
+    Account(const char *username,const char *password,const char *fname,const char *lname,const Address& address);
     virtual ~Account();
     Account(const Account& other);
     Account(Account&& other);
-
+    const Account& operator=(const Account& other);
     friend ostream& operator<<(ostream& os, Account& base);
 
 public: //Setters & Getters
@@ -47,6 +43,8 @@ public: //Setters & Getters
     bool setLName(const char *lname);
     bool setFName(const char *fname);
     void setAddress(const Address &address);
+
+    virtual Account* clone() const = 0;
 
     friend class Manager;
 };

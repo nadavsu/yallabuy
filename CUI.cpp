@@ -51,15 +51,14 @@ void printLine() {
 
 int printMenu() {
     int ans;
-    cout << "To register as a new buyer, press 1.\n";
-    cout << "To register as a new seller, press 2.\n";
-    cout << "To add feedback on a seller, press 3.\n";
-    cout << "To add a new item to your shop, press 4.\n";
-    cout << "To add a new item to your cart, press 5.\n";
-    cout << "To make a new order, press 6.\n";
-    cout << "To show all the buyers, press 7.\n";
-    cout << "To show all the seller, press 8.\n";
-    cout << "To get information about a specific item, press 9.\n";
+    cout << "To register as a new account, press 1.\n";
+    cout << "To add feedback on a seller, press 2.\n";
+    cout << "To add a new item to your shop, press 3.\n";
+    cout << "To add a new item to your cart, press 4.\n";
+    cout << "To make a new order, press 5.\n";
+    cout << "To show all the buyers, press 6.\n";
+    cout << "To show all the seller, press 7.\n";
+    cout << "To get information about a specific item, press 8.\n";
     cout << "To exit, press 0\n";
     printLine();
     cin >> ans;

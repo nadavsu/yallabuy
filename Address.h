@@ -32,7 +32,7 @@ private:
     int     m_home_number;
 
 public:
-    Address(char *city, char *street, int home_number);
+    Address(const char *city,const char *street, int home_number);
     Address(const Address& other);
     Address(Address&& other);
     ~Address();

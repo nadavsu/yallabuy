@@ -36,6 +36,31 @@ Account *Manager::getAccount(const char *username) {
     return nullptr;
 }
 
+void Manager::addAccout(Account* temp) {
+    if (curr_account == max_account) {
+        my_realloc();
+    }
+    const char* accountt_type;
+    accountt_type = typeid(*temp).name();
+    if (strcmp(accountt_type, typeid(Buyer).name()) == 0) {
+        Buyer* temp_buyer = dynamic_cast<Buyer*>(temp);
+        account_arr[curr_account++] = new Buyer(*temp_buyer);
+    }
+    else if (strcmp(accountt_type, typeid(Seller).name()) == 0) {
+        Seller* temp_seller = dynamic_cast<Seller*>(temp);
+        account_arr[curr_account++] = new Seller(*temp_seller);
+    }
+    else if (strcmp(accountt_type, typeid(BuyerSeller).name()) == 0) {
+        BuyerSeller* temp_buyerseller = dynamic_cast<BuyerSeller*>(temp);
+        account_arr[curr_account++] = new BuyerSeller(*temp_buyerseller);
+    }
+    else {
+        cout << "Error: didnt recognize account type try enter new account again" << endl;
+
+    }
+}
+
+/*
 void Manager::AddSeller(Account& new_account) {
     if (curr_account == max_account) {
         my_realloc();
@@ -49,7 +74,7 @@ void Manager::AddBuyer(Account& new_account) {
     }
     this->account_arr[curr_account++] = new Buyer(new_account);    ///This may create an issue with the dynamic binding -
 }                                                                  ///Using the constructor with base. Check during debug.
-
+*/
 //TODO: Add exceptions instead of printing the messages in this class!!!
 
 bool Manager::buyerIsCartEmpty(const char *buyer_username) {
@@ -228,6 +253,14 @@ void Manager::printBuyerSellerHistory(const char *buyer_username) {
         printLine();
     } else {
         cout << "Buyer not found!\n";
+    }
+}
+
+void Manager::printAccount() {
+    for (int i = 0; i < curr_account;i++) {
+        if (strcmp(typeid(*account_arr[i]).name(),typeid(BuyerSeller).name()) == 0) {
+            cout << *account_arr[i] << endl;
+        }
     }
 }
 

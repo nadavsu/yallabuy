@@ -191,3 +191,11 @@ Seller::ePasswordStrength Seller::strengthChecker(const char* Password) const {
 		}//else
 	}//else
 }*/
+
+Account* Seller::clone() const {
+	return new Seller(*this);
+}
+
+const char* Seller::getType()const {
+	return "Seller";
+}

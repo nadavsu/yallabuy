@@ -11,6 +11,7 @@
 #include "Date.h"
 #include "Feedback.h"
 #include "CUI.h"
+#include "BuyerSeller.h"
 
 class Manager {
 private:
@@ -24,9 +25,10 @@ public:
 	~Manager();
 
 	bool login(const char* username, const char* password) const;
-	Account* getAccount(const char* username); //return through copy const without any inside info like password
-	void AddBuyer(Account& new_account);
-	void AddSeller(Account& new_account);
+	Account* getAccount(const char* username);
+	void addAccout(Account* temp);
+	//void AddBuyer(Account& new_account);
+	//void AddSeller(Account& new_account);
     void addFeedback(const Feedback& feedback, const char *seller_username);
 	void AddItem(const char* seller_username, const Item& new_item);
 	void printBuyerCart(const char *buyer_username);
@@ -45,7 +47,7 @@ public:
     void printSellers() const;
 	bool isSellerExist(char* seller_username);
     void printBuyerSellerHistory(const char *buyer_username);
-
+	void printAccount();
     void _debugfill();
 private:
 	Item* getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity);

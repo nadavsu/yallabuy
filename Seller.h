@@ -1,8 +1,6 @@
 //
 // Created by Nadav Suliman on 24/11/19.
 //
-
-
 #ifndef ECOMMERCE_SELLER_H
 #define ECOMMERCE_SELLER_H
 
@@ -30,13 +28,12 @@ public:
 
 public:
     Seller(char *username, char *password, char *fname, char *lname, Address& address);
-    Seller(const Account& base);
+    //Seller(const Account& base);
     Seller(const Seller& other); // dont want anyone to copy check what to do
     Seller(Seller&& other);
-    ~Seller();
+    virtual ~Seller();
 
     const Seller& operator=(const Seller& other);
-
     void setFeedback(const Feedback& buyers_feedback);
     void setItem(Item* seller_item);
 
@@ -49,7 +46,8 @@ public:
     bool itemExist(const char* item_name)  ;
     bool quantityIsFine(const char* item_name, int quantity);
     bool isEmptyStock();
-
+    virtual Account* clone() const override;
+    virtual const char* getType() const;
 private:
     Item* getItem(const char* item_name);
     void copyFeedback(const Seller& other);

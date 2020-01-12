@@ -163,3 +163,11 @@ void Buyer::printCart() const {
 void Buyer::deleteItemFromCart(const char* item_name) {
     cart.deleteItem(item_name);
 }
+
+const char* Buyer::getType()const {
+    return "Buyer";
+}
+
+Account* Buyer::clone() const {
+    return new Buyer(*this);
+}

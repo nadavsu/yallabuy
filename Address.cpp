@@ -6,7 +6,7 @@
 using namespace std;
 //
 //Constructor
-Address::Address(char *city, char *street, int home_number) {
+Address::Address(const char* city, const char* street, int home_number) {
     m_city = new char[strlen(city) + 1];
     m_street = new char[strlen(street) + 1];
 

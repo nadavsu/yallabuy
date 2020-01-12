@@ -138,8 +138,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Account.cpp" />
     <ClCompile Include="..\Address.cpp" />
     <ClCompile Include="..\Buyer.cpp" />
+    <ClCompile Include="..\BuyerSeller.cpp" />
     <ClCompile Include="..\CUI.cpp" />
     <ClCompile Include="..\Date.cpp" />
     <ClCompile Include="..\Feedback.cpp" />
@@ -152,8 +154,10 @@
     <ClCompile Include="Func.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Account.h" />
     <ClInclude Include="..\Address.h" />
     <ClInclude Include="..\Buyer.h" />
+    <ClInclude Include="..\BuyerSeller.h" />
     <ClInclude Include="..\CUI.h" />
     <ClInclude Include="..\Date.h" />
     <ClInclude Include="..\Feedback.h" />

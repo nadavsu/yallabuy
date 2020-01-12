@@ -19,10 +19,10 @@ protected:
 
 public:
     Buyer(char *username, char *password, char *fname, char *lname, Address& address);
-    Buyer(const Account& base);
+    //Buyer(const Account& base);
     Buyer(const Buyer& other);
     Buyer(Buyer&& other);
-    ~Buyer();
+    virtual ~Buyer();
     const Buyer& operator=(const Buyer& other);
 
 public:
@@ -42,6 +42,8 @@ public:
     void emptySellerHistory();
     void copySellerHistory(const Buyer& other);
     void addToSellerHistory(char** seller_name, int size_of_seller_name);
+    virtual const char* getType() const;
+    virtual Account* clone() const override;
 
     friend class Manager;
 };
