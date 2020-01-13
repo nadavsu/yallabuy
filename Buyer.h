@@ -18,7 +18,7 @@ protected:
     int         seller_history_size;
 
 public:
-    Buyer(char *username, char *password, char *fname, char *lname, Address& address);
+    Buyer(const char* username, const char* password, const char* fname, const char* lname, Address& address);
     //Buyer(const Account& base);
     Buyer(const Buyer& other);
     Buyer(Buyer&& other);

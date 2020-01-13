@@ -256,12 +256,21 @@ void Manager::printBuyerSellerHistory(const char *buyer_username) {
     }
 }
 
-void Manager::printAccount() {
+void Manager::printBuyerSellers()const {
     for (int i = 0; i < curr_account;i++) {
         if (strcmp(typeid(*account_arr[i]).name(),typeid(BuyerSeller).name()) == 0) {
             cout << *account_arr[i] << endl;
         }
     }
+}
+
+void Manager::printAccount()const {
+    cout << "Buyers:"<<endl;
+    printBuyers();
+    cout << "Sellers:" << endl;
+    printSellers();
+    cout << "BuyerSellers:" << endl;
+    printBuyerSellers();
 }
 
 bool Manager::sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username) {
@@ -304,28 +313,35 @@ void Manager::_debugfill() {
     Address s_address1("Raanana", "Aharonson", 12);
     Address s_address2("Jerusalem", "Yitzhak Sade", 4);
 
-    Buyer buyer1("dorlasri", "123456", "Dor", "Lasri", b_address1);
-    Buyer buyer2("arnaudmaarek", "ilovefrance", "Arnaud", "Maarek", b_address2);
-    AddBuyer(buyer1);
-    AddBuyer(buyer2);
+    Account* temp;
+    temp = new Buyer("dorlasri", "123456", "Dor", "Lasri", b_address1);
+    this->addAccout(temp);
+    delete temp;
 
-    Seller seller1("nadavsuliman", "fuckyou", "Nadav", "Suliman", s_address1);
-    AddSeller(seller1);
+    temp = new Buyer("arnaudmaarek", "ilovefrance", "Arnaud", "Maarek", b_address2);
+    this->addAccout(temp);
+    delete temp;
+
+    temp = new Seller("nadavsuliman", "fuckyou", "Nadav", "Suliman", s_address1);
+    this->addAccout(temp);
+    delete temp;
     Item item1s1("nadavsuliman", "PS5", (Item::eCategory) 3, 4000, 20);
     Item item2s1("nadavsuliman", "Wii", (Item::eCategory) 3, 980, 5);
     Item item3s1("nadavsuliman", "Pizza", (Item::eCategory) 0, 60, 90);
-    AddItem(seller1.getUsername(), item1s1);
-    AddItem(seller1.getUsername(), item2s1);
-    AddItem(seller1.getUsername(), item3s1);
+    AddItem("nadavsuliman", item1s1);
+    AddItem("nadavsuliman", item2s1);
+    AddItem("nadavsuliman", item3s1);
 
-    Seller seller2("shaitek5", "maccabizona", "Shai", "Rubinstein", s_address2);
-    AddSeller(seller2);
+    temp = new Seller("shaitek5", "maccabizona", "Shai", "Rubinstein", s_address2);
+    addAccout(temp);
+    delete temp;
     Item item1s2("shaitek5", "ASUS PC", (Item::eCategory) 0, 3000, 50);
     Item item2s2("shaitek5", "Macbook Pro", (Item::eCategory) 0, 10000, 5);
     Item item3s2("shaitek5", "Sambusak", (Item::eCategory) 0, 10, 20);
-    AddItem(seller2.getUsername(), item1s2);
-    AddItem(seller2.getUsername(), item2s2);
-    AddItem(seller2.getUsername(), item3s2);
+    AddItem("shaitek5", item1s2);
+    AddItem("shaitek5", item2s2);
+    AddItem("shaitek5", item3s2);
+
 }
 
 

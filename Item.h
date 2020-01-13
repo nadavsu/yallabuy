@@ -48,7 +48,7 @@ private:
     Item* next;
 
 public:
-    Item(char* name_of_seller, char* name, eCategory category, int price, int quantity);
+    Item(const char* name_of_seller,const char* name, eCategory category, int price, int quantity);
     Item(const Item& other);
     Item(Item&& other);
     ~Item();

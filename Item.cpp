@@ -6,7 +6,7 @@
 #include "Item.h"
 using namespace std;
 
-Item::Item(char* name_of_seller, char* name, Item::eCategory category, int price, int quantity) {
+Item::Item(const char* name_of_seller,const char* name, Item::eCategory category, int price, int quantity) {
 	SetNameOfSeller(name_of_seller);
 	SetName(name);
 	SetCategory(category);

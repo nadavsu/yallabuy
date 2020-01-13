@@ -6,14 +6,14 @@ Date::Date() {
     time(&tt);
     tm TM = *localtime(&tt);
 	SetYear(TM.tm_year);
-	SetMonth(TM.tm_mon);
+	SetMonth(TM.tm_mon+1);
 	SetDay(TM.tm_mday);
 }
 
 Date::Date(const Date& other) {
-	SetMonth(other.month);
-	SetYear(other.year);
-	SetDay(other.day);
+    this->day = other.day;
+    this->month = other.month;
+    this->year = other.year;
 }
 
 const Date& Date::operator=(const Date& other) {

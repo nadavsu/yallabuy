@@ -1,6 +1,6 @@
 #ifndef ECOMMERCE_ACCOUNT_H
 #define ECOMMERCE_ACCOUNT_H
-
+#define _CRT_SECURE_NO_WARNINGS
 
 #include "Address.h"
 #include "ItemList.h"

@@ -6,16 +6,16 @@
 using namespace std;
 
 ///Constructors and Destructors------------------------------------------
-Buyer::Buyer(char *username, char *password, char *fname, char *lname, Address& address): Account(username, password, fname, lname, address) {
+Buyer::Buyer(const char *username,const char *password,const char *fname,const char *lname, Address& address): Account(username, password, fname, lname, address) {
     seller_history      = nullptr;
     seller_history_size = 0;
 }
-
+/*
 Buyer::Buyer(const Account& base) : Account(base) {
     seller_history      = nullptr;
     seller_history_size = 0;
 }
-
+*/
 //Copy ctor
 Buyer::Buyer(const Buyer& other) : Account(other), cart(other.cart) {
     copySellerHistory(other);
@@ -87,12 +87,11 @@ bool Buyer::isEmptyCart() {
 void Buyer::addToSellerHistory(char** seller_name,int size_of_seller_name) {
     int index = 0;
     bool To_add = true;
-    bool found = false;
+
     char** AfterEaraseDup = new char* [size_of_seller_name]; // delete in makeNewSellerHistory func
     for (int i = 0; i < size_of_seller_name;i++) {
-        for (int j = 0; j < seller_history_size || found == true;j++) {
+        for (int j = 0; j < seller_history_size;j++) {
             if (strcmp(seller_history[j], seller_name[i]) == 0) {
-                found = true;
                 To_add = false;
             }
             else {
@@ -103,9 +102,7 @@ void Buyer::addToSellerHistory(char** seller_name,int size_of_seller_name) {
             AfterEaraseDup[index] = new char[strlen(seller_name[i]) + 1];
             strcpy(AfterEaraseDup[index] ,seller_name[i]);
             index++;
-            To_add = false;
         }
-        found = false;
     }
     makeNewSellerHistory(AfterEaraseDup, index);
 }
@@ -122,7 +119,7 @@ void Buyer::makeNewSellerHistory(char** AfterEaraseDup, int size_of_AfterEaraseD
     delete[]this->seller_history;
     delete[]AfterEaraseDup;
     this->seller_history = NewSellerHistory;
-
+    this->seller_history_size = size_of_AfterEaraseDup + seller_history_size;
 }
 
 void Buyer::emptySellerHistory() {
@@ -146,10 +143,11 @@ void Buyer::copySellerHistory(const Buyer& other) {
 
 ///Printing Functions--------------------------------------------------------
 void Buyer::printSellerHistory()const {
-    cout << "Buyer : " << this->username<< "Seller's History:" << endl;
+    cout << "Buyer : "<< endl << this->username<< endl << "Seller's History:" << endl;
     for (int i = 0; i < this->seller_history_size;i++) {
         cout << this->seller_history[i] <<endl;
     }
+
 }
 
 void Buyer::printCart() const {

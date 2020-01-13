@@ -8,7 +8,7 @@ int main() {
 
     Manager manager;
     int ans;
-    
+    manager._debugfill();
     printTitle("Welcome to YallaBuy!");     //Main menu
     do {
         ans = printMenu();
@@ -26,9 +26,13 @@ int main() {
             manager.printBuyers();
         } else if (ans == 7) {
             manager.printSellers();
-        } else if (ans == 8) {
+        }else if (ans == 8) {
             getItemInfo(manager);
-        } else if (ans == 0) {
+        }else if (ans == 9) {
+            manager.printBuyerSellers();
+        }else if (ans == 10) {
+            manager.printAccount();
+        }else if (ans == 0) {
             char c;
             cout << "Are you sure? [Y/N]: ";
             cin >> c;
@@ -105,6 +109,7 @@ void newAccount(Manager& admin) {
     }
     else {
         cout << "Invalid Input" << endl;
+        return;
     }
     admin.addAccout(temp);
     delete temp;
@@ -115,23 +120,28 @@ void makeFeedback(Manager& admin) {
     char buyer_username[USERNAME_MAX_LEN + 1], password[PASSWORD_MAX_LEN + 1];
     char seller_username[USERNAME_MAX_LEN + 1], comment[COMMENT_MAX_LEN + 1];
     bool found;
-    char cont;
+    char cont ;
 
     printTitle("New Feedback");
     printLogin(admin, buyer_username, password);
     admin.printBuyerSellerHistory(buyer_username);
     do {
-        cout << "Please enter the name of the seller you want to give feedback to: ";       //Checking if the user bought from the seller.
+        cout << "Please enter the name of the seller you want to give feedback to: "<<endl;       //Checking if the user bought from the seller.
         cin.getline(seller_username, USERNAME_MAX_LEN);
         found = admin.sellerExistInBuyerSeller(buyer_username, seller_username);
         if (!found) {                                                                   //If the seller not found
             cout << seller_username << " not found in " << buyer_username << "'s history.\n";
             cout << "Would you like to continue? [Y/N]";
             cin >> cont;
+            if (cont == 'N' && cont == 'n') {
+                return;
+            }
         }
-    } while (!found || (cont != 'N' && cont != 'n'));
+    } while (!found);
+    cout << "Comment:" << endl;
     cin.getline(comment, COMMENT_MAX_LEN);
     admin.addFeedback(Feedback(buyer_username, comment), seller_username);
+    printLine();
 }
 
 
@@ -198,6 +208,7 @@ void addToCart(Manager &admin) {
     } while (!(admin.sellerIsQuantityFine(seller_username, item_name_to_buy, quantity)));     //Taking in the quanityt while it's in range.
     //} while (!(seller->quantityIsFine(item_name_to_buy,quantity)));     //Taking in the quanityt while it's in range.
     admin.addItemToCart(buyer_username, seller_username,item_name_to_buy, quantity);        //Adding the item and the quantity to cart.
+    printLine();
 }
 
 //A function used to make an order from the cart. choosing items.
@@ -249,6 +260,7 @@ void MakeOrderFromCart(Manager &admin) {
     else {
         cout << "Canceling order.\n";
     }
+    printLine();
 }
 
 //getting information about an item.

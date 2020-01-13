@@ -59,6 +59,8 @@ int printMenu() {
     cout << "To show all the buyers, press 6.\n";
     cout << "To show all the seller, press 7.\n";
     cout << "To get information about a specific item, press 8.\n";
+    cout << "To show all the Buyersellers, press 9.\n";
+    cout << "To show all the Account, press 10.\n";
     cout << "To exit, press 0\n";
     printLine();
     cin >> ans;

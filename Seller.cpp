@@ -5,16 +5,16 @@
 #include "Seller.h"
 
 ///Constructors and Destructors------------------------------------------
-Seller::Seller(char *username, char *password, char *fname, char *lname, Address& address) : Account(username, password, fname, lname, address) {
+Seller::Seller(const char *username,const char *password,const char *fname,const char *lname, Address& address) : Account(username, password, fname, lname, address) {
     this->feedbacks = nullptr;
     this->num_of_feedbacks = 0;
 }
-
+/*
 Seller::Seller(const Account& base) : Account(base) {
     this->feedbacks = nullptr;
     this->num_of_feedbacks = 0;
 }
-
+*/
 Seller::Seller(const Seller& other) : Account(other), stock_list(other.stock_list) {
     this->feedbacks = new Feedback*[other.num_of_feedbacks];
     num_of_feedbacks = other.num_of_feedbacks;

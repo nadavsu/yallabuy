@@ -1,6 +1,6 @@
 #ifndef _BUYERSELLER_H
-#define _BUYERSELLER_H;
-
+#define _BUYERSELLER_H
+#define _CRT_SECURE_NO_WARNINGS
 #include "Buyer.h"
 #include "Seller.h"
 

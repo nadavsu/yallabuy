@@ -10,11 +10,11 @@ BuyerSeller::BuyerSeller(const Buyer& otherbuyer, const Seller& otherseller) :
 	Seller(otherseller),Buyer(otherbuyer){
 
 }
-
+/*
 BuyerSeller::BuyerSeller(const Account& other) :Account(other), Buyer(other), Seller(other) {
 
 }
-
+*/
 BuyerSeller::BuyerSeller(const BuyerSeller& other):Account(other),Buyer(other),Seller(other) {
 
 }
@@ -24,9 +24,14 @@ BuyerSeller::BuyerSeller(const BuyerSeller&& other):Account(other),Seller(other)
 }
 
 const BuyerSeller& BuyerSeller::operator=(const BuyerSeller& other) {
-	Account::operator=(other);
-	Buyer::operator=(other);
-	Seller::operator=(other);
+	if (this != &other) {
+		Account::operator=(other);
+		Buyer::operator=(other);
+		Seller::operator=(other);
+	}
+	else {
+		return *this;
+	}
 }
 
 Account* BuyerSeller::clone() const {

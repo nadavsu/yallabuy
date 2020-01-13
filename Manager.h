@@ -43,11 +43,12 @@ public:
 	void printSellerShop(const char* seller_username);
     void copyCartToOrder(Order& order, const char *buyer_username);
     bool printItemsNamed(const char *item_name);
-    void printBuyers()  const;
-    void printSellers() const;
 	bool isSellerExist(char* seller_username);
     void printBuyerSellerHistory(const char *buyer_username);
-	void printAccount();
+	void printBuyers()  const;
+	void printSellers() const;
+	void printBuyerSellers()const;
+	void printAccount()const;
     void _debugfill();
 private:
 	Item* getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity);
