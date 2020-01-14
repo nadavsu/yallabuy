@@ -9,6 +9,7 @@ using namespace std;
 Buyer::Buyer(const char *username,const char *password,const char *fname,const char *lname, Address& address): Account(username, password, fname, lname, address) {
     seller_history      = nullptr;
     seller_history_size = 0;
+    this->total_price = 0;
 }
 /*
 Buyer::Buyer(const Account& base) : Account(base) {
@@ -19,6 +20,7 @@ Buyer::Buyer(const Account& base) : Account(base) {
 //Copy ctor
 Buyer::Buyer(const Buyer& other) : Account(other), cart(other.cart) {
     copySellerHistory(other);
+    this->total_price = other.total_price;
 }
 
 //Move ctor
@@ -26,6 +28,7 @@ Buyer::Buyer(Buyer&& other) : Account(std::move(other)), cart(std::move(other.ca
     seller_history       = other.seller_history;
     seller_history_size  = other.seller_history_size;
     other.seller_history = nullptr;
+    this->total_price = other.total_price;
 }
 
 //TODO: check whether to delete the username, pssword, fname, lname here or not.
@@ -49,6 +52,7 @@ const Buyer& Buyer::operator=(const Buyer& other) {
         this->cart = other.cart;
         copySellerHistory(other);
         this->seller_history_size = other.seller_history_size;
+        this->total_price = other.total_price;
     } else {
         return *this;
     }
@@ -71,9 +75,14 @@ Item* Buyer::getCartHead() {
     return cart.getHead();
 }
 
+int Buyer::getTotalPriceOfCart()const  {
+    return;
+}
+
 ///Cart Functions----------------------------------------------------------
 void Buyer::addToCart(Item* new_item) {
     cart.addToTail(new_item);
+    this->total_price = +new_item->GetPrice() * new_item->GetQuantity();
 }
 
 bool Buyer::isEmptyCart() {
@@ -159,6 +168,9 @@ void Buyer::printCart() const {
 }
 
 void Buyer::deleteItemFromCart(const char* item_name) {
+    Item* item_to_delete;
+    item_to_delete = cart.findItem(item_name);
+    total_price -= item_to_delete->GetPrice() + item_to_delete->GetQuantity();
     cart.deleteItem(item_name);
 }
 

@@ -4,7 +4,6 @@
 
 #ifndef ECOMMERCE_BUYER_H
 #define ECOMMERCE_BUYER_H
-
 #define _CRT_SECURE_NO_WARNINGS
 #include "Address.h"
 #include "ItemList.h"
@@ -16,7 +15,7 @@ protected:
     ItemList    cart;         //A linked list of Items, cart points to head of list.
     char        **seller_history;
     int         seller_history_size;
-
+    int         total_price;
 public:
     Buyer(const char* username, const char* password, const char* fname, const char* lname, Address& address);
     //Buyer(const Account& base);
@@ -30,6 +29,7 @@ public:
     ItemList    getCart()              const;
     char**      getSellerHistory()     const;
     int         getNumOfSellers()      const;
+    int         getTotalPriceOfCart()  const;
 
     void printCart()                   const;
     void printSellerHistory()          const;

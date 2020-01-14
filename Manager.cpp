@@ -18,6 +18,11 @@ Manager::~Manager() {
     delete[] account_arr;
 }
 
+const Manager& Manager::operator+=(Account* other) {
+    addAccout(other);
+    return *this;
+}
+
 bool Manager::login(const char *username, const char *password) const {
     for (int i = 0; i < curr_account; i++) {
         if (strcmp(username, account_arr[i]->username) == 0) {
@@ -30,7 +35,7 @@ bool Manager::login(const char *username, const char *password) const {
 Account *Manager::getAccount(const char *username) {
     for (int i = 0; i < curr_account; i++) {
         if (strcmp(account_arr[i]->username, username) == 0) {
-            return account_arr[i]; //return through copy const without any inside info like password
+            return account_arr[i];
         }
     }
     return nullptr;

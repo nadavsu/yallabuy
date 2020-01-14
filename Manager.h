@@ -23,6 +23,8 @@ public:
 	Manager();
 	Manager(Manager& other) = delete;
 	~Manager();
+	const Manager& operator+=(Account* other);
+	//bool operator>(const char* buyer1_name,const char* buyer2_name)const ;
 
 	bool login(const char* username, const char* password) const;
 	Account* getAccount(const char* username);

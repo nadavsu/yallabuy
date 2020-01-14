@@ -111,7 +111,7 @@ void newAccount(Manager& admin) {
         cout << "Invalid Input" << endl;
         return;
     }
-    admin.addAccout(temp);
+    admin += temp;
     delete temp;
 }
 
