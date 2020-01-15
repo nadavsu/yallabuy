@@ -33,7 +33,6 @@ void Buyer::toOs(ostream& os) const {
 bool Buyer::operator>(const Buyer& other) const {
     return this->getTotalPriceOfCart() > other.getTotalPriceOfCart();
 }
-//TODO: check whether to delete the username, pssword, fname, lname here or not.
 Buyer::~Buyer() {
     emptySellerHistory();           //emptying the seller history.
     delete[] seller_history;        //deleting it.

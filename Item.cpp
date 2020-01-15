@@ -12,7 +12,6 @@ Item::Item(const char* name_of_seller,const char* name, Item::eCategory category
 	SetCategory(category);
 	SetPrice(price);
 	serial_number = num_of_items++;
-	//TODO: fix the above giving us a linker error.
 	SetQuantity(quantity);
 	next = NULL;
 }

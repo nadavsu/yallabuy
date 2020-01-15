@@ -23,7 +23,6 @@ Seller::Seller(Seller&& other) : Account(std::move(other)), stock_list(std::move
     other.feedbacks         = nullptr;
 }
 
-//TODO: check whether to delete the username, pssword, fname, lname here or not.
 Seller::~Seller() {
     for (int i = 0; i < num_of_feedbacks; i++) {
         delete feedbacks[i];

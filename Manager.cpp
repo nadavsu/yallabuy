@@ -87,7 +87,7 @@ void Manager::addAccout(Account* temp) {
     }
 }
 
-//TODO: Add exceptions instead of printing the messages in this class!!!
+//TODO: Add exceptions in next exercise here.
 
 bool Manager::buyerIsCartEmpty(const char *buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
@@ -359,7 +359,6 @@ void Manager::_debugfill() {
 }
 
 
-//TODO: fix if tester sends two buyersellers.
 bool Manager::testCompareOperator(const char *username_1, const char *username_2) {
     Buyer *buyer_1 = dynamic_cast<Buyer *>(getAccount(username_1));                     //Note
     Buyer *buyer_2 = dynamic_cast<Buyer *>(getAccount(username_2));
