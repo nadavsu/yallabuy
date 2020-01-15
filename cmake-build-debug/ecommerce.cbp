@@ -100,6 +100,12 @@
 		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Buyer.h">
 			<Option target="ecommerce"/>
 		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/BuyerSeller.cpp">
+			<Option target="ecommerce"/>
+		</Unit>
+		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/BuyerSeller.h">
+			<Option target="ecommerce"/>
+		</Unit>
 		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/CUI.cpp">
 			<Option target="ecommerce"/>
 		</Unit>

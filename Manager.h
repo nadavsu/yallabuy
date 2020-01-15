@@ -16,7 +16,10 @@
 class Manager {
 private:
 	Account** account_arr;
-	int curr_account;
+	int curr_account;           //TODO: change this to num_of_accounts?
+	int num_of_buyers;
+	int num_of_sellers;
+	int num_of_buyersellers;
 	int max_account;
 
 public:
@@ -24,7 +27,11 @@ public:
 	Manager(Manager& other) = delete;
 	~Manager();
 	const Manager& operator+=(Account* other);
-	//bool operator>(const char* buyer1_name,const char* buyer2_name)const ;
+
+	int getNumOfAccounts()      const;
+    int getNumOfSellers()       const;
+    int getNumOfBuyers()        const;
+    int getNumOfBuyerSellers()  const;
 
 	bool login(const char* username, const char* password) const;
 	Account* getAccount(const char* username);
@@ -51,6 +58,9 @@ public:
 	void printSellers() const;
 	void printBuyerSellers()const;
 	void printAccount()const;
+
+	bool testCompareOperator();
+	bool testPrintCart();
     void _debugfill();
 private:
 	Item* getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity);

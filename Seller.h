@@ -28,7 +28,6 @@ public:
 
 public:
     Seller(const char *username,const char *password,const char *fname,const char *lname, Address& address);
-    //Seller(const Account& base);
     Seller(const Seller& other); // dont want anyone to copy check what to do
     Seller(Seller&& other);
     virtual ~Seller();

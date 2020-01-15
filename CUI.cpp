@@ -49,7 +49,7 @@ void printLine() {
     cout << "+\n";
 }
 
-int printMenu() {
+int printMainMenu() {
     int ans;
     cout << "To register as a new account, press 1.\n";
     cout << "To add feedback on a seller, press 2.\n";
@@ -60,8 +60,22 @@ int printMenu() {
     cout << "To show all the seller, press 7.\n";
     cout << "To get information about a specific item, press 8.\n";
     cout << "To show all the Buyersellers, press 9.\n";
-    cout << "To show all the Account, press 10.\n";
+    cout << "To show all the accounts, press 10.\n";
+    cout << "To test the operators overloading, press 11.\n";
     cout << "To exit, press 0\n";
+    printLine();
+    cin >> ans;
+    printLine();
+    return ans;
+}
+
+int printOperatorsMenu() {
+    int ans;
+    cout << "To test the < operator, press 1\n.";
+    cout << "To test the << operator on a cart and items, press 2.\n";
+    cout << "To test the << operator on an account, press 3.\n";
+    cout << "To test the += operator, press 4.\n";
+    cout << "To quit this menu, press 0.\n";
     printLine();
     cin >> ans;
     printLine();

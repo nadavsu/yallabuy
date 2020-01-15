@@ -14,7 +14,8 @@ static constexpr int PAGE_WIDTH = 50;
 void printSubTitle(const char *title);
 void printTitle(const char *title);
 void printLine();
-int printMenu();
+int printMainMenu();
+int printOperatorsMenu();
 void printLogin(Manager &manager, char *username, char *password);
 void emptyBuffer();
 

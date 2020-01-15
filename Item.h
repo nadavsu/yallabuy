@@ -6,6 +6,7 @@
 #define ECOMMERCE_ITEM_H
 
 #include <iostream>
+using namespace std;
 static constexpr int ITEM_MAX_NAME_LEN = 30;
 static constexpr int MAX_ITEM_NAME = 20;
 static constexpr int MAX_CATEGORY_NAME = 15;
@@ -52,7 +53,9 @@ public:
     Item(const Item& other);
     Item(Item&& other);
     ~Item();
+
     const Item& operator=(const Item& other);
+    friend ostream& operator<<(ostream& os, const Item& item);
 };
 
 #endif //ECOMMERCE_ITEM_H

@@ -3,6 +3,7 @@
 //
 
 #include "ItemList.h"
+using namespace std;
 
 ItemList::ItemList() {
     head = tail = nullptr;
@@ -53,6 +54,15 @@ const ItemList& ItemList::operator=(const ItemList& other) {
     else {
         return *this;
     }
+}
+
+ostream& operator<<(ostream& os, const ItemList& list) {
+    Item *curr = list.head;
+    while(curr) {
+        os << *curr << '\n';
+        curr = curr->getNext();
+    }
+    return os;
 }
 
 bool ItemList::isEmpty() const {
@@ -130,6 +140,6 @@ void ItemList::printList() const {
     }
 }
 
-Item *ItemList::getHead() {
+Item *ItemList::getHead() const {
     return head;
 }

@@ -57,7 +57,12 @@ ostream& operator<<(ostream& os, Account& base) {
     os << "Username: " << base.username << endl;
     os << "Name: " << base.fname << " " << base.lname << endl;
     os << "Address: " << base.address << endl;
+    base.toOs(os);
     return os;
+}
+
+void Account::toOs(ostream &os) const {
+
 }
 
 char *Account::getUsername() const {
@@ -104,6 +109,7 @@ bool Account::setLName(const char *new_lname) {
     return false;
 }
 
+
 bool Account::setUsername(const char *new_username) {
     if(strlen(new_username) <= USERNAME_MAX_LEN && strlen(new_username) >= USERNAME_MIN_LEN) {
         if(!username) {
@@ -115,7 +121,6 @@ bool Account::setUsername(const char *new_username) {
     }
     return false;
 }
-
 
 bool Account::setPassword(const char *new_password) {
     if(strlen(new_password) <= PASSWORD_MAX_LEN && strlen(new_password) >= PASSWORD_MIN_LEN) {

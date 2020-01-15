@@ -6,6 +6,7 @@
 #define ECOMMERCE_ITEMLIST_H
 
 #include "Item.h"
+using namespace std;
 
 class ItemList {
 private:
@@ -17,7 +18,7 @@ public:
     bool deleteItem(const char *item_name);
     bool isEmpty()   const;
     void printList() const;
-    Item *getHead();
+    Item *getHead()  const;
     Item *findItem(const char *item_name);
 public:
 
@@ -25,7 +26,9 @@ public:
     ~ItemList();
     ItemList(const ItemList& other);
     ItemList(ItemList&& other);
+
     const ItemList& operator=(const ItemList& other);
+    friend ostream& operator<<(ostream& os, const ItemList& list);
 
 private:
     bool itemIsInList(const Item& new_item);

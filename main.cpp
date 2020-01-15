@@ -8,10 +8,10 @@ int main() {
 
     Manager manager;
     int ans;
-    manager._debugfill();
+    manager._debugfill();                           //TODO: REMOVE BEFORE FLIGHT
     printTitle("Welcome to YallaBuy!");     //Main menu
     do {
-        ans = printMenu();
+        ans = printMainMenu();
         if (ans == 1) {
             newAccount(manager);
         } else if (ans == 2) {
@@ -32,6 +32,8 @@ int main() {
             manager.printBuyerSellers();
         }else if (ans == 10) {
             manager.printAccount();
+        } else if (ans == 11) {
+            testOperators(manager);
         }else if (ans == 0) {
             char c;
             cout << "Are you sure? [Y/N]: ";
@@ -74,6 +76,7 @@ void newAccount(Manager& admin) {
     }
     else {
         cout << "Invalid Input" << endl;
+        return;
     }
     cout << "First Name: ";
     cin.getline(&trash, 1);
@@ -97,7 +100,7 @@ void newAccount(Manager& admin) {
     Address address(city, street, house_number);
     if (AccountType == 1) {
         printTitle("New Account Buyer");
-        temp =new Buyer(username, password, f_name, l_name, address) ;
+        temp = new Buyer(username, password, f_name, l_name, address) ;
     }
     else if (AccountType == 2) {
         printTitle("New Account Seller");
@@ -276,4 +279,26 @@ void getItemInfo(Manager& manager) {
         cout << item_name << " not found!\n";
         printLine();
     }
+}
+
+void testOperators(Manager& manager) {
+    int ans;
+    do{
+        ans = printOperatorsMenu();
+        if (ans == 1) {
+            while (manager.getNumOfBuyers() + manager.getNumOfBuyerSellers() < 2) {
+                cout << "Not enough buyer accounts in the system.\nPlease register 2 or more accounts...\n";
+                newAccount(manager);
+            }
+            cout << manager.testCompareOperator() << endl;
+        } else if (ans == 2) {
+            while (manager.getNumOfBuyers() + manager.getNumOfBuyerSellers() < 1) {
+                cout << "Not enough buyer accounts in the system.\nPlease register 1 or more buyer account...\n";
+                newAccount(manager);
+            }
+           if(!manager.testPrintCart()) {
+                cout << "No buyer with a cart!";
+           }
+        }
+    } while(true);
 }

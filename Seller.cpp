@@ -9,12 +9,7 @@ Seller::Seller(const char *username,const char *password,const char *fname,const
     this->feedbacks = nullptr;
     this->num_of_feedbacks = 0;
 }
-/*
-Seller::Seller(const Account& base) : Account(base) {
-    this->feedbacks = nullptr;
-    this->num_of_feedbacks = 0;
-}
-*/
+
 Seller::Seller(const Seller& other) : Account(other), stock_list(other.stock_list) {
     this->feedbacks = new Feedback*[other.num_of_feedbacks];
     num_of_feedbacks = other.num_of_feedbacks;

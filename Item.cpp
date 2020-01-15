@@ -59,6 +59,18 @@ const Item& Item::operator=(const Item& other) {
 	}
 }
 
+ostream& operator<<(ostream& os, const Item& item) {
+    os << "---------------------------------------------\n";
+    os << "Name of seller: " << item.name_of_seller << endl;
+    os << "Product name: " << item.name << endl;
+    os << "Category: " << (Item::eCategory)item.category << endl;
+    os << "Quantity: " << item.quantity << endl;
+    os << "Price: " << item.price << endl;
+    os << "Serial No. " << item.serial_number << endl;
+    os << "---------------------------------------------\n";
+    return os;
+}
+
 
 void Item::SetName(const char* name) {
 	this->name = new char[strlen(name) + 1];

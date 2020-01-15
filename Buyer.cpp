@@ -7,16 +7,11 @@ using namespace std;
 
 ///Constructors and Destructors------------------------------------------
 Buyer::Buyer(const char *username,const char *password,const char *fname,const char *lname, Address& address): Account(username, password, fname, lname, address) {
-    seller_history      = nullptr;
-    seller_history_size = 0;
-    this->total_price = 0;
+    this->seller_history      = nullptr;
+    this->seller_history_size = 0;
+    this->total_price         = 0;
 }
-/*
-Buyer::Buyer(const Account& base) : Account(base) {
-    seller_history      = nullptr;
-    seller_history_size = 0;
-}
-*/
+
 //Copy ctor
 Buyer::Buyer(const Buyer& other) : Account(other), cart(other.cart) {
     copySellerHistory(other);
@@ -31,6 +26,13 @@ Buyer::Buyer(Buyer&& other) : Account(std::move(other)), cart(std::move(other.ca
     this->total_price = other.total_price;
 }
 
+void Buyer::toOs(ostream& os) const {
+    os << "Cart total: " << total_price << endl;
+}
+
+bool Buyer::operator>(const Buyer& other) const {
+    return this->getTotalPriceOfCart() > other.getTotalPriceOfCart();
+}
 //TODO: check whether to delete the username, pssword, fname, lname here or not.
 Buyer::~Buyer() {
     emptySellerHistory();           //emptying the seller history.
@@ -75,14 +77,14 @@ Item* Buyer::getCartHead() {
     return cart.getHead();
 }
 
-int Buyer::getTotalPriceOfCart()const  {
-    return;
+int Buyer::getTotalPriceOfCart() const  {
+    return total_price;
 }
 
 ///Cart Functions----------------------------------------------------------
 void Buyer::addToCart(Item* new_item) {
     cart.addToTail(new_item);
-    this->total_price = +new_item->GetPrice() * new_item->GetQuantity();
+    this->total_price += new_item->GetPrice() * new_item->GetQuantity();
 }
 
 bool Buyer::isEmptyCart() {
@@ -109,7 +111,7 @@ void Buyer::addToSellerHistory(char** seller_name,int size_of_seller_name) {
         }
         if (To_add) { // did the last compare
             AfterEaraseDup[index] = new char[strlen(seller_name[i]) + 1];
-            strcpy(AfterEaraseDup[index] ,seller_name[i]);
+            strcpy(AfterEaraseDup[index], seller_name[i]);
             index++;
         }
     }
@@ -163,7 +165,7 @@ void Buyer::printCart() const {
     if(cart.isEmpty()) {
         cout << "Your cart is empty!";
     } else {
-        cart.printList();
+        cout << cart;
     }
 }
 

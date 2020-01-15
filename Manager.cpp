@@ -7,6 +7,9 @@
 Manager::Manager() {
     this->max_account = 1;
     this->curr_account = 0;
+    this->num_of_buyers = 0;
+    this->num_of_sellers = 0;
+    this->num_of_buyersellers = 0;
     this->account_arr = new Account *[max_account];
 }
 
@@ -16,6 +19,22 @@ Manager::~Manager() {
     }
 
     delete[] account_arr;
+}
+
+int Manager::getNumOfAccounts() const {
+    return curr_account;
+}
+
+int Manager::getNumOfBuyers() const {
+    return num_of_buyers;
+}
+
+int Manager::getNumOfSellers() const {
+    return num_of_sellers;
+}
+
+int Manager::getNumOfBuyerSellers() const {
+    return num_of_buyersellers;
 }
 
 const Manager& Manager::operator+=(Account* other) {
@@ -45,19 +64,22 @@ void Manager::addAccout(Account* temp) {
     if (curr_account == max_account) {
         my_realloc();
     }
-    const char* accountt_type;
-    accountt_type = typeid(*temp).name();
-    if (strcmp(accountt_type, typeid(Buyer).name()) == 0) {
+    const char* account_type;
+    account_type = typeid(*temp).name();
+    if (strcmp(account_type, typeid(Buyer).name()) == 0) {
         Buyer* temp_buyer = dynamic_cast<Buyer*>(temp);
         account_arr[curr_account++] = new Buyer(*temp_buyer);
+        num_of_buyers++;
     }
-    else if (strcmp(accountt_type, typeid(Seller).name()) == 0) {
+    else if (strcmp(account_type, typeid(Seller).name()) == 0) {
         Seller* temp_seller = dynamic_cast<Seller*>(temp);
         account_arr[curr_account++] = new Seller(*temp_seller);
+        num_of_sellers++;
     }
-    else if (strcmp(accountt_type, typeid(BuyerSeller).name()) == 0) {
+    else if (strcmp(account_type, typeid(BuyerSeller).name()) == 0) {
         BuyerSeller* temp_buyerseller = dynamic_cast<BuyerSeller*>(temp);
         account_arr[curr_account++] = new BuyerSeller(*temp_buyerseller);
+        num_of_buyersellers++;
     }
     else {
         cout << "Error: didnt recognize account type try enter new account again" << endl;
@@ -65,21 +87,6 @@ void Manager::addAccout(Account* temp) {
     }
 }
 
-/*
-void Manager::AddSeller(Account& new_account) {
-    if (curr_account == max_account) {
-        my_realloc();
-    }
-    this->account_arr[curr_account++] = new Seller(new_account);
-}
-
-void Manager::AddBuyer(Account& new_account) {
-    if (this->curr_account == this->max_account) {
-        my_realloc();
-    }
-    this->account_arr[curr_account++] = new Buyer(new_account);    ///This may create an issue with the dynamic binding -
-}                                                                  ///Using the constructor with base. Check during debug.
-*/
 //TODO: Add exceptions instead of printing the messages in this class!!!
 
 bool Manager::buyerIsCartEmpty(const char *buyer_username) {
@@ -241,7 +248,7 @@ bool Manager::printItemsNamed(const char *item_name) {
             Item *curr_item = temp->stock_list.getHead();
             while (curr_item) {
                 if (strcmp(item_name, curr_item->GetName()) == 0) {
-                    curr_item->printItem();
+                    cout << *curr_item;
                     res = true;
                 }
                 curr_item = curr_item->getNext();
@@ -261,7 +268,7 @@ void Manager::printBuyerSellerHistory(const char *buyer_username) {
     }
 }
 
-void Manager::printBuyerSellers()const {
+void Manager::printBuyerSellers() const {
     for (int i = 0; i < curr_account;i++) {
         if (strcmp(typeid(*account_arr[i]).name(),typeid(BuyerSeller).name()) == 0) {
             cout << *account_arr[i] << endl;
@@ -269,7 +276,7 @@ void Manager::printBuyerSellers()const {
     }
 }
 
-void Manager::printAccount()const {
+void Manager::printAccount() const {
     cout << "Buyers:"<<endl;
     printBuyers();
     cout << "Sellers:" << endl;
@@ -312,6 +319,8 @@ void Manager::my_realloc() {
     account_arr = new_account_arr;
 }
 
+///Test Functions-----------------------------------------------------------
+
 void Manager::_debugfill() {
     Address b_address1("Nahariya", "Bialik", 2);
     Address b_address2("Tel Aviv", "Bograshov", 9);
@@ -349,6 +358,42 @@ void Manager::_debugfill() {
 
 }
 
+//Note: when reaching this function there should be at least two buyers in the array.
+bool Manager::testCompareOperator() {
+    int i = 0;
+    Buyer *buyer1, *buyer2;
+    while (i < curr_account) {
+        buyer1 = dynamic_cast<Buyer *>(account_arr[i]);
+        i++;
+        if(buyer1) {
+            break;
+        }
+    }
+    while (i < curr_account) {
+        buyer2 = dynamic_cast<Buyer *>(account_arr[i]);
+        i++;
+        if(buyer2) {
+            break;
+        }
+    }
+    cout << buyer1;
+    cout << buyer2;
+    cout << "Printing if first buyer > second buyer.\n";
+    return *buyer1 > *buyer2;
+
+}
+
+bool Manager::testPrintCart() {
+    int i = 0;
+    while (i < curr_account) {
+        Buyer *buyer = dynamic_cast<Buyer *>(account_arr[i]);
+        i++;
+        if(buyer && !buyer->isEmptyCart()) {
+            cout << buyer->cart;
+            return true;
+        }
+    }
+}
 
 /*void Manager::AddBuyer(Buyer new_buyer) {
     Buyer* buyer_ptr = new Buyer(std::move(new_buyer)); // copy the buyer from the main to take over control

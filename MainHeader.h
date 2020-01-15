@@ -25,7 +25,7 @@ void printSellerLogin(const Manager& manager, char* username, char* password);
 void printSubTitle(const char* title);
 void printTitle(const char* title);
 void printLine();
-int printMenu();
+int printMainMenu();
 
 void emptyBuffer();
 //int Item::num_of_items = 1000;

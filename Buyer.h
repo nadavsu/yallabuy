@@ -18,14 +18,16 @@ protected:
     int         total_price;
 public:
     Buyer(const char* username, const char* password, const char* fname, const char* lname, Address& address);
-    //Buyer(const Account& base);
     Buyer(const Buyer& other);
     Buyer(Buyer&& other);
     virtual ~Buyer();
+
     const Buyer& operator=(const Buyer& other);
+    bool operator>(const Buyer& other) const;
+    void toOs(ostream& os)             const;
 
 public:
-    Item*       getCartHead();                            //Move this to private?
+    Item*       getCartHead();                            ///Move this to private?
     ItemList    getCart()              const;
     char**      getSellerHistory()     const;
     int         getNumOfSellers()      const;
@@ -36,7 +38,7 @@ public:
 
     bool isEmptyCart();
     void addToCart(Item* new_item);
-    void deleteItemFromCart(const char* item_name); //Move this to private?
+    void deleteItemFromCart(const char* item_name); ///Move this to private?
 
     void makeNewSellerHistory(char** AfterEaraseDup, int size_of_AfterEaraseDup);
     void emptySellerHistory();

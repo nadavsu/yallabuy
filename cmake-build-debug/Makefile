@@ -204,6 +204,33 @@ Buyer.cpp.s:
 	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Buyer.cpp.s
 .PHONY : Buyer.cpp.s
 
+BuyerSeller.o: BuyerSeller.cpp.o
+
+.PHONY : BuyerSeller.o
+
+# target to build an object file
+BuyerSeller.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/BuyerSeller.cpp.o
+.PHONY : BuyerSeller.cpp.o
+
+BuyerSeller.i: BuyerSeller.cpp.i
+
+.PHONY : BuyerSeller.i
+
+# target to preprocess a source file
+BuyerSeller.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/BuyerSeller.cpp.i
+.PHONY : BuyerSeller.cpp.i
+
+BuyerSeller.s: BuyerSeller.cpp.s
+
+.PHONY : BuyerSeller.s
+
+# target to generate assembly for a file
+BuyerSeller.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/BuyerSeller.cpp.s
+.PHONY : BuyerSeller.cpp.s
+
 CUI.o: CUI.cpp.o
 
 .PHONY : CUI.o
@@ -465,6 +492,9 @@ help:
 	@echo "... Buyer.o"
 	@echo "... Buyer.i"
 	@echo "... Buyer.s"
+	@echo "... BuyerSeller.o"
+	@echo "... BuyerSeller.i"
+	@echo "... BuyerSeller.s"
 	@echo "... CUI.o"
 	@echo "... CUI.i"
 	@echo "... CUI.s"

@@ -30,6 +30,7 @@ public:
     Account(Account&& other);
     const Account& operator=(const Account& other);
     friend ostream& operator<<(ostream& os, Account& base);
+    virtual void toOs(ostream& os) const;
 
 public: //Setters & Getters
     char *getUsername()         const;
