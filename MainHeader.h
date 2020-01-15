@@ -22,12 +22,7 @@ void MakeOrderFromCart(Manager& admin);
 void getItemInfo(Manager& manager);
 void printBuyerLogin(const Manager& manager, char* username, char* password);
 void printSellerLogin(const Manager& manager, char* username, char* password);
-void printSubTitle(const char* title);
-void printTitle(const char* title);
-void printLine();
-int printMainMenu();
-
 void emptyBuffer();
-//int Item::num_of_items = 1000;
+void testOperators(Manager& admin);
 
 #endif //MAINHEADER_H

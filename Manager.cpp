@@ -358,54 +358,39 @@ void Manager::_debugfill() {
 
 }
 
-//Note: when reaching this function there should be at least two buyers in the array.
-bool Manager::testCompareOperator() {
-    int i = 0;
-    Buyer *buyer1, *buyer2;
-    while (i < curr_account) {
-        buyer1 = dynamic_cast<Buyer *>(account_arr[i]);
-        i++;
-        if(buyer1) {
-            break;
-        }
-    }
-    while (i < curr_account) {
-        buyer2 = dynamic_cast<Buyer *>(account_arr[i]);
-        i++;
-        if(buyer2) {
-            break;
-        }
-    }
-    cout << buyer1;
-    cout << buyer2;
-    cout << "Printing if first buyer > second buyer.\n";
-    return *buyer1 > *buyer2;
 
+//TODO: fix if tester sends two buyersellers.
+bool Manager::testCompareOperator(const char *username_1, const char *username_2) {
+    Buyer *buyer_1 = dynamic_cast<Buyer *>(getAccount(username_1));                     //Note
+    Buyer *buyer_2 = dynamic_cast<Buyer *>(getAccount(username_2));
+
+    if(buyer_1 && buyer_2) {
+        printLine();
+        cout << *buyer_1;
+        printLine();
+        cout << *buyer_2;
+        printLine();
+        cout << username_1 << " > " << username_2 << "?\n";
+        (*buyer_1 > *buyer_2) ? cout << "true\n" : cout << "false\n";
+        return true;
+    }
+    return false;
 }
 
-bool Manager::testPrintCart() {
-    int i = 0;
-    while (i < curr_account) {
-        Buyer *buyer = dynamic_cast<Buyer *>(account_arr[i]);
-        i++;
-        if(buyer && !buyer->isEmptyCart()) {
-            cout << buyer->cart;
-            return true;
-        }
+bool Manager::testPrintCart(const char *buyer_username) {
+    Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
+    if(buyer && !buyer->isEmptyCart()) {
+        cout << buyer->cart;
+        return true;
     }
+    return false;
 }
 
-/*void Manager::AddBuyer(Buyer new_buyer) {
-    Buyer* buyer_ptr = new Buyer(std::move(new_buyer)); // copy the buyer from the main to take over control
-    // check if kill at main
-    if (curr_buyer == max_buyer) {
-        Buyer** new_arr_buyer = new Buyer*[curr_buyer + 1];
-        for(int i = 0; i < curr_buyer; ++i) {
-            new_arr_buyer[i] = arr_buyer[i];
-        }
-        ///my_realloc();
-        delete[] arr_buyer;
-        arr_buyer = new_arr_buyer;
+bool Manager::testPrintAccount(const char *username) {
+    Account *account = getAccount(username);
+    if(account) {
+        cout << *account;
+        return true;
     }
-    arr_buyer[curr_buyer++] = buyer_ptr;
-}*/
+    return false;
+}

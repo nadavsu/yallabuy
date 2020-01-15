@@ -281,24 +281,45 @@ void getItemInfo(Manager& manager) {
     }
 }
 
-void testOperators(Manager& manager) {
+void testOperators(Manager& admin) {
     int ans;
+    char trash;
     do{
         ans = printOperatorsMenu();
         if (ans == 1) {
-            while (manager.getNumOfBuyers() + manager.getNumOfBuyerSellers() < 2) {
-                cout << "Not enough buyer accounts in the system.\nPlease register 2 or more accounts...\n";
-                newAccount(manager);
+            char buyer_username1[USERNAME_MAX_LEN + 1];
+            char buyer_username2[USERNAME_MAX_LEN + 1];
+            cout << "Enter two buyer or buyerseller usernames:\n";
+            cin.getline(&trash, 1);
+            cin.getline(buyer_username1, USERNAME_MAX_LEN);
+            cin.getline(buyer_username2, USERNAME_MAX_LEN);
+            if(!admin.testCompareOperator(buyer_username1, buyer_username2)) {
+                cout << "One of the buyers not found!\n";
             }
-            cout << manager.testCompareOperator() << endl;
         } else if (ans == 2) {
-            while (manager.getNumOfBuyers() + manager.getNumOfBuyerSellers() < 1) {
-                cout << "Not enough buyer accounts in the system.\nPlease register 1 or more buyer account...\n";
-                newAccount(manager);
+            char buyer_username[USERNAME_MAX_LEN + 1];
+            cout << "Enter a buyer username: ";
+            cin.getline(&trash, 1);
+            cin.getline(buyer_username, USERNAME_MAX_LEN);
+            printSubTitle(strcat(buyer_username, "'s Cart:"));
+            if(!admin.testPrintCart(buyer_username)) {
+                cout << "Buyer not found or his cart is empty.\n";
             }
-           if(!manager.testPrintCart()) {
-                cout << "No buyer with a cart!";
-           }
+        } else if (ans == 3) {
+            char username[USERNAME_MAX_LEN + 1];
+            cout << "Enter a username: ";
+            cin.getline(&trash, 1);
+            cin.getline(username, USERNAME_MAX_LEN);
+            if(!admin.testPrintAccount(username)) {
+                cout << "Account with username " << username << " not found!\n";
+            }
+        } else if (ans == 4) {
+            newAccount(admin);
+        } else if (ans == 0) {
+            return;
+        } else {
+            cout << "Invalid input!\n";
+            printLine();
         }
     } while(true);
 }

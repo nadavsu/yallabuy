@@ -71,7 +71,8 @@ int printMainMenu() {
 
 int printOperatorsMenu() {
     int ans;
-    cout << "To test the < operator, press 1\n.";
+    printSubTitle("Operators Menu");
+    cout << "To test the > operator, press 1.\n";
     cout << "To test the << operator on a cart and items, press 2.\n";
     cout << "To test the << operator on an account, press 3.\n";
     cout << "To test the += operator, press 4.\n";

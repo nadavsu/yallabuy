@@ -59,8 +59,9 @@ public:
 	void printBuyerSellers()const;
 	void printAccount()const;
 
-	bool testCompareOperator();
-	bool testPrintCart();
+	bool testCompareOperator(const char *username_1, const char *username_2);
+	bool testPrintCart(const char *buyer_username);
+	bool testPrintAccount(const char *username);
     void _debugfill();
 private:
 	Item* getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity);
