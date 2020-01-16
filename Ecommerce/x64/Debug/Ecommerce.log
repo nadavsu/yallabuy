@@ -1,15 +1,36 @@
 ﻿  Account.cpp
+  Address.cpp
   Buyer.cpp
   BuyerSeller.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(19,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(27): message : see declaration of 'Buyer::toOs'
   CUI.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(19,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(27): message : see declaration of 'Buyer::toOs'
   Date.cpp
-  Manager.cpp
-  Seller.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(19,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(27): message : see declaration of 'Buyer::toOs'
+  Feedback.cpp
+  Item.cpp
+  ItemList.cpp
   main.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(19,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(27): message : see declaration of 'Buyer::toOs'
+  Manager.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(19,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(27): message : see declaration of 'Buyer::toOs'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(373,19): error C2676: binary '>': 'Buyer' does not define this operator or a conversion to a type acceptable to the predefined operator
+  Order.cpp
+  Seller.cpp
+  Func.cpp
   Generating Code...
-C:\Users\lasri\source\repos\Amalasu\Seller.cpp(54): warning C4715: 'Seller::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Seller.cpp(48): warning C4715: 'Seller::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Order.cpp(62): warning C4715: 'Order::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\ItemList.cpp(57): warning C4715: 'ItemList::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Item.cpp(59): warning C4715: 'Item::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Feedback.cpp(40): warning C4715: 'Feedback::operator=': not all control paths return a value
 C:\Users\lasri\source\repos\Amalasu\Date.cpp(28): warning C4715: 'Date::operator=': not all control paths return a value
 C:\Users\lasri\source\repos\Amalasu\BuyerSeller.cpp(35): warning C4715: 'BuyerSeller::operator=': not all control paths return a value
-C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(55): warning C4715: 'Buyer::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(59): warning C4715: 'Buyer::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Address.cpp(54): warning C4715: 'Address::operator=': not all control paths return a value
 C:\Users\lasri\source\repos\Amalasu\Account.cpp(54): warning C4715: 'Account::operator=': not all control paths return a value
-  Ecommerce.vcxproj -> C:\Users\lasri\Source\Repos\Amalasu\x64\Debug\Ecommerce.exe

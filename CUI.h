@@ -5,8 +5,6 @@
 #ifndef ECOMMERCE_CUI_H
 #define ECOMMERCE_CUI_H
 
-#include "Buyer.h"
-
 class Manager;
 
 static constexpr int PAGE_WIDTH = 50;
