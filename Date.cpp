@@ -1,13 +1,18 @@
 #include "Date.h"
-#include "MainHeader.h"
 
+
+//Default constructor creates today's date.
 Date::Date() {
     time_t tt;
     time(&tt);
     tm TM = *localtime(&tt);
-	SetYear(TM.tm_year);
-	SetMonth(TM.tm_mon+1);
-	SetDay(TM.tm_mday);
+    setYear(TM.tm_year);
+    setMonth(TM.tm_mon + 1);
+    setDay(TM.tm_mday);
+}
+
+Date::Date(int day, int month, int year) : day(day), month(month), year(year) {
+
 }
 
 Date::Date(const Date& other) {
@@ -33,14 +38,14 @@ Date::Date(const Date&& other) {
     this->year = other.year;
 }
 
-bool Date::SetYear(int year) {
+bool Date::setYear(int year) {
     if(year <= CURRENT_YEAR && year >= MINIMUM_YEAR) {
         this->year = year;
         return true;
     }
     return false;
 }
-bool Date::SetMonth(int month) {
+bool Date::setMonth(int month) {
     if(month <= 12 && month >= 1) {
         this->month = month;
         return true;
@@ -48,7 +53,7 @@ bool Date::SetMonth(int month) {
     return false;
 }
 
-bool Date::SetDay(int day) {
+bool Date::setDay(int day) {
     if(day <= 31 && day >= 1) {
         this->day = day;
         return true;
@@ -56,14 +61,14 @@ bool Date::SetDay(int day) {
     return false;
 }
 
-int Date::GetYear() const {
+int Date::getYear() const {
 	return year;
 }
 
-int Date::GetMonth() const {
+int Date::getMonth() const {
 	return month;
 }
 
-int Date::GetDay() const {
+int Date::getDay() const {
 	return day;
 }

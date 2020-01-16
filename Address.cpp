@@ -4,7 +4,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Address.h"
 using namespace std;
-//
+
 //Constructor
 Address::Address(const char* city, const char* street, int home_number) {
     m_city = new char[strlen(city) + 1];

@@ -65,7 +65,7 @@ Item* Manager::getItemFromSellerToBuyer(const char* seller_username, const char*
     return nullptr;
 }
 
-///Manager Funcitons-------------------------------------------------------------------------------
+///Manager Functions-------------------------------------------------------------------------------
 bool Manager::login(const char *username, const char *password) {
     Account *account = getAccount(username);
     if(account) {
@@ -370,7 +370,6 @@ void Manager::_debugfill() {
     AddItem("shaitek5", item3s2);
 
 }
-
 
 bool Manager::testCompareOperator(const char *username_1, const char *username_2) {
     Buyer *buyer_1 = dynamic_cast<Buyer *>(getAccount(username_1));

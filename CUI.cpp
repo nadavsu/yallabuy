@@ -7,6 +7,11 @@ using namespace std;
 #include "CUI.h"
 #include "Manager.h"
 
+/*
+ * This file includes console user interface functions.
+ */
+
+
 void printSubTitle(const char *title) {
     for (int i = 0; i < (PAGE_WIDTH - strlen(title)) / 2; ++i) {
         cout << "-";

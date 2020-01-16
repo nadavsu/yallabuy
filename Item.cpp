@@ -6,6 +6,7 @@
 #include "Item.h"
 using namespace std;
 
+///Constructors & Destructors-------------------------------------------------------
 Item::Item(const char* name_of_seller,const char* name, Item::eCategory category, int price, int quantity) {
 	SetNameOfSeller(name_of_seller);
 	SetName(name);
@@ -13,7 +14,7 @@ Item::Item(const char* name_of_seller,const char* name, Item::eCategory category
 	SetPrice(price);
 	serial_number = num_of_items++;
 	SetQuantity(quantity);
-	next = NULL;
+	next = nullptr;
 }
 
 Item::Item(const Item& other) {
@@ -43,6 +44,7 @@ Item::~Item() {
 	delete[] name_of_seller;
 }
 
+///Operators--------------------------------------------------------------------------
 const Item& Item::operator=(const Item& other) {
 	if (this != &other){
 		delete[]name;
@@ -70,7 +72,7 @@ ostream& operator<<(ostream& os, const Item& item) {
     return os;
 }
 
-
+///Setters and getters-----------------------------------------------------------------
 void Item::SetName(const char* name) {
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
