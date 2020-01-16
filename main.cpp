@@ -8,7 +8,6 @@ int main() {
 
     Manager manager;
     int ans;
-    manager._debugfill();                           //TODO: REMOVE BEFORE FLIGHT
     printTitle("Welcome to YallaBuy!");     //Main menu
     do {
         ans = printMainMenu();
@@ -56,29 +55,29 @@ void newAccount(Manager& admin) {
     char street[STREET_MAX_LEN + 1], city[CITY_MAX_LEN + 1];
     char f_name[FNAME_MAX_LEN + 1], l_name[LNAME_MAX_LEN + 1];
     char username[USERNAME_MAX_LEN + 1], password[PASSWORD_MAX_LEN + 1], trash;
-    int AccountType;
+    int account_type;
     Account* temp;
 
     cout << "What type of user do you want to open?" << endl;
     cout << "To register as a new buyer, press 1."<< endl;
     cout << "To register as a new seller, press 2."<< endl;
     cout << "To register as a new buyer/seller, press 3." << endl;
-    cin >> AccountType;
+    cin >> account_type;
 
-    if (AccountType == 1) {
+    if (account_type == 1) {                                     //Choosing account type to create.
         printTitle("New Account Buyer");
     }
-    else if(AccountType == 2) {
+    else if(account_type == 2) {
         printTitle("New Account Seller");
     }
-    else if (AccountType == 3) {
+    else if (account_type == 3) {
         printTitle("New Account BuyerSeller");
     }
     else {
         cout << "Invalid Input" << endl;
         return;
     }
-    cout << "First Name: ";
+    cout << "First Name: ";                                 //Taking info from the user.
     cin.getline(&trash, 1);
     cin.getline(f_name, FNAME_MAX_LEN);
     cout << "Last Name: ";
@@ -98,16 +97,13 @@ void newAccount(Manager& admin) {
     cin >> house_number;
     printLine();
     Address address(city, street, house_number);
-    if (AccountType == 1) {
-        printTitle("New Account Buyer");
+    if (account_type == 1) {                                         //Creating the object based to the account_type
         temp = new Buyer(username, password, f_name, l_name, address) ;
     }
-    else if (AccountType == 2) {
-        printTitle("New Account Seller");
+    else if (account_type == 2) {
         temp = new Seller(username, password, f_name, l_name, address);
     }
-    else if (AccountType == 3) {
-        printTitle("New Account BuyerSeller");
+    else if (account_type == 3) {
         temp = new BuyerSeller(username, password, f_name, l_name, address);
     }
     else {
@@ -126,7 +122,7 @@ void makeFeedback(Manager& admin) {
     char cont ;
 
     printTitle("New Feedback");
-    printLogin(admin, buyer_username, password);
+    printLogin(admin, buyer_username, password);            //Logging in.
     admin.printBuyerSellerHistory(buyer_username);
     do {
         cout << "Please enter the name of the seller you want to give feedback to: "<<endl;       //Checking if the user bought from the seller.
@@ -141,7 +137,7 @@ void makeFeedback(Manager& admin) {
             }
         }
     } while (!found);
-    cout << "Comment:" << endl;
+    cout << "Comment:" << endl;                                 //Taking comment from the user.
     cin.getline(comment, COMMENT_MAX_LEN);
     admin.addFeedback(Feedback(buyer_username, comment), seller_username);
     printLine();
@@ -150,7 +146,7 @@ void makeFeedback(Manager& admin) {
 
 //A function which creates an item from the user.
 void makeItem(Manager &admin) {
-    char password[PASSWORD_MAX_LEN + 1]; // may cause problem for strcmp in manager login
+    char password[PASSWORD_MAX_LEN + 1];
     char seller_username[USERNAME_MAX_LEN + 1];
     char ans;
 
@@ -190,26 +186,23 @@ void addToCart(Manager &admin) {
         cout << "Please enter the seller's username you want to buy from:\n";   //Letting the user choose a seller.
         cin.getline(seller_username, USERNAME_MAX_LEN);
         
-        //seller = admin.getSeller(seller_username);                //getSeller returns null if no seller is found.
     } while(!(admin.isSellerExist(seller_username)));
     if (!(admin.sellerIsStockEmpty(seller_username))) {
-        admin.printSellerShop(seller_username);//Printing the seller's stock.
+        admin.printSellerShop(seller_username);             //Printing the seller's stock.
     }
     else {
-        cout << "No Item In Shop " << endl<<"returning to menu" << endl;
+        cout << "No item in shop.\nReturning to menu.\n";
         return;
     }
     do {
         cout << "Please enter the items you want to buy.\n";
         cin.getline(item_name_to_buy, ITEM_MAX_NAME_LEN);
     } while (!(admin.isItemExistInSeller(seller_username,item_name_to_buy)));//Checking if the item was found (null if not)
-    //} while (!(seller->itemExist(item_name_to_buy)));
 
     do {
         cout << "Input quantity: ";
         cin >> quantity;
     } while (!(admin.sellerIsQuantityFine(seller_username, item_name_to_buy, quantity)));     //Taking in the quanityt while it's in range.
-    //} while (!(seller->quantityIsFine(item_name_to_buy,quantity)));     //Taking in the quanityt while it's in range.
     admin.addItemToCart(buyer_username, seller_username,item_name_to_buy, quantity);        //Adding the item and the quantity to cart.
     printLine();
 }
@@ -271,7 +264,7 @@ void getItemInfo(Manager& manager) {
     char trash;
     char item_name[ITEM_MAX_NAME_LEN + 1];
     bool does_exist;
-    cout << "Please enter the name of the item you want to print:\n";
+    cout << "Please enter the name of the item you want to print:\n";       //Taking item name from the user.
     cin.getline(&trash, 1);
     cin.getline(item_name, ITEM_MAX_NAME_LEN);
     does_exist = manager.printItemsNamed(item_name);        //Printing the items named by the users.

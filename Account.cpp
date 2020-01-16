@@ -3,6 +3,8 @@
 //
 
 #include "Account.h"
+
+///Constructors & Destructors--------------------------------------------------------------
 Account::Account(const char* username, const char* password, const char* fname, const char* lname,const Address& address) : address(address) {
     setUsername(username);
     setPassword(password);
@@ -36,6 +38,7 @@ Account::~Account() {
     delete[] lname;
 }
 
+///Operators----------------------------------------------------------------------
 const Account& Account::operator=(const Account& other) {
     if (this != &other) {
         delete[] username;
@@ -65,6 +68,7 @@ void Account::toOs(ostream &os) const {
 
 }
 
+///Getters and setters---------------------------------------------------------------------
 char *Account::getUsername() const {
     return username;
 }

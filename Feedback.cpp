@@ -9,7 +9,7 @@ Feedback::Feedback(char *feedbacker_username, char *comment) {  //Constructor fo
     setComment(comment);
 }
 
-Feedback::Feedback(char *feedbacker_username, char *comment, Date& date) : date(date) { //Constructor with a specific date
+Feedback::Feedback(char *feedbacker_username, char *comment, const Date& date) : date(date) { //Constructor with a specific date
     setUsername(feedbacker_username);
     setComment(comment);
 }

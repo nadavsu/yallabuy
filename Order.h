@@ -35,7 +35,6 @@ private:
     void addToNameOfSellers(const char* seller_name);
     void makeNewNameOfSellers(const char* seller_name);
     void copyNameOfSellers(const Order& other);
-    void SetTotalPrice(int add_to);
 
 private:
     char*       name_of_buyer;

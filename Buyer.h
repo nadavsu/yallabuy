@@ -27,7 +27,7 @@ public:
     void toOs(ostream& os)             const;
 
 public:
-    Item*       getCartHead();                            ///Move this to private?
+    Item*       getCartHead();
     ItemList    getCart()              const;
     char**      getSellerHistory()     const;
     int         getNumOfSellers()      const;
@@ -38,7 +38,7 @@ public:
 
     bool isEmptyCart();
     void addToCart(Item* new_item);
-    void deleteItemFromCart(const char* item_name); ///Move this to private?
+    void deleteItemFromCart(const char* item_name);
 
     void makeNewSellerHistory(char** AfterEaraseDup, int size_of_AfterEaraseDup);
     void emptySellerHistory();

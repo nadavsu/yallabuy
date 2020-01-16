@@ -9,7 +9,6 @@ class BuyerSeller :public Seller, public Buyer
 public:
     BuyerSeller(char* username, char* password, char* fname, char* lname, Address& address);
 	BuyerSeller(const Buyer& otherbuyer, const Seller& otherseller);
-    //BuyerSeller(const Account& base);
     BuyerSeller(const BuyerSeller& other);
     BuyerSeller(const BuyerSeller&& other);
     //virtual ~BuyerSeller();

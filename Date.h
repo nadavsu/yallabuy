@@ -13,19 +13,20 @@ private:
 	int month;
 	int day;
 public:
-	Date();
+	Date();                                     //This constructor creates a date with today's date.
+	Date(int day, int month, int year);         //This constructor creates a user inputted date.
 	Date(const Date& other);
 	Date(const Date&& other);
 	const Date& operator=(const Date& other);
 	~Date() = default;
 
-	int GetYear()   const;
-	int GetMonth()  const;
-	int GetDay()    const;
-private:
-	bool SetYear(int year);
-	bool SetMonth(int month);
-	bool SetDay(int day);
+	int getYear()   const;
+	int getMonth()  const;
+	int getDay()    const;
+private:                                        //Date does not need to be changed.
+	bool setYear(int year);
+	bool setMonth(int month);
+	bool setDay(int day);
 };
 
 #endif //ECOMMERCE_DATE_H

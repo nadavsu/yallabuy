@@ -28,7 +28,7 @@ private:
 	char* comment;
 
 public:
-    Feedback(char *feedbacker_username, char *comment, Date& date);
+    Feedback(char *feedbacker_username, char *comment, const Date& date);
 	Feedback(char* feedbacker_username, char* comment);
 	Feedback(const Feedback& other);
     Feedback(Feedback&& other);

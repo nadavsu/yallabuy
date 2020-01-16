@@ -10,12 +10,8 @@ BuyerSeller::BuyerSeller(const Buyer& otherbuyer, const Seller& otherseller) :
 	Seller(otherseller),Buyer(otherbuyer){
 
 }
-/*
-BuyerSeller::BuyerSeller(const Account& other) :Account(other), Buyer(other), Seller(other) {
 
-}
-*/
-BuyerSeller::BuyerSeller(const BuyerSeller& other):Account(other),Buyer(other),Seller(other) {
+BuyerSeller::BuyerSeller(const BuyerSeller& other) : Account(other), Buyer(other), Seller(other) {
 
 }
 
