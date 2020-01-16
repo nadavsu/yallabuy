@@ -28,36 +28,36 @@ public:
 	~Manager();
 	const Manager& operator+=(Account* other);
 
+public:
 	int getNumOfAccounts()      const;
     int getNumOfSellers()       const;
     int getNumOfBuyers()        const;
     int getNumOfBuyerSellers()  const;
+    Account* getAccount(const char* username);
 
-	bool login(const char* username, const char* password) const;
-	Account* getAccount(const char* username);
-	void addAccout(Account* temp);
-	//void AddBuyer(Account& new_account);
-	//void AddSeller(Account& new_account);
+    bool login(const char* username, const char* password);
+	void addAccount(Account* temp);
     void addFeedback(const Feedback& feedback, const char *seller_username);
 	void AddItem(const char* seller_username, const Item& new_item);
 	void printBuyerCart(const char *buyer_username);
     void payOrder(const char* buyer_username, Order& order);
 
-    bool sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username);
     bool buyerIsCartEmpty(const char *buyer_username);
-	bool sellerIsStockEmpty(const char* seller_username);
-	bool isItemExistInSeller(const char* seller_username,const char* item_name_to_buy);
-	bool sellerIsQuantityFine(const char* seller_username,const char* item_name_to_buy,int quantity);
-	void addItemToCart(const char* buyer_username, const char* seller_username, const char* item_name_to_buy, int quantity);
-	void printSellerShop(const char* seller_username);
+    bool sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username);
+    bool sellerIsStockEmpty(const char* seller_username);
+    bool sellerIsQuantityFine(const char* seller_username,const char* item_name_to_buy,int quantity);
+    bool isSellerExist(char* seller_username);
+    bool isItemExistInSeller(const char* seller_username,const char* item_name_to_buy);
+    void addItemToCart(const char* buyer_username, const char* seller_username, const char* item_name_to_buy, int quantity);
     void copyCartToOrder(Order& order, const char *buyer_username);
-    bool printItemsNamed(const char *item_name);
-	bool isSellerExist(char* seller_username);
-    void printBuyerSellerHistory(const char *buyer_username);
-	void printBuyers()  const;
-	void printSellers() const;
-	void printBuyerSellers()const;
-	void printAccount()const;
+
+    void printSellerShop(const char* seller_username);
+	bool printItemsNamed(const char *item_name);
+	void printBuyerSellerHistory(const char *buyer_username);
+	void printBuyers()          const;
+	void printSellers()         const;
+	void printBuyerSellers()    const;
+	void printAccount()         const;
 
 	bool testCompareOperator(const char *username_1, const char *username_2);
 	bool testPrintCart(const char *buyer_username);

@@ -13,15 +13,12 @@
 using namespace std;
 
 void newAccount(Manager& manager);
-//Seller newSeller();
 void makeFeedback(Manager& admin);
 void makeItem(Manager& admin);
 void makeFeedback(Manager& admin);
 void addToCart(Manager& admin);
 void MakeOrderFromCart(Manager& admin);
 void getItemInfo(Manager& manager);
-void printBuyerLogin(const Manager& manager, char* username, char* password);
-void printSellerLogin(const Manager& manager, char* username, char* password);
 void emptyBuffer();
 void testOperators(Manager& admin);
 

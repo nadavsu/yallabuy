@@ -84,7 +84,7 @@ void Seller::copyFeedback(const Seller& other) {
 
 ///Printing Functions-------------------------------------------------------
 void Seller::printStock() const {
-    stock_list.printList();
+    cout << stock_list;
 }
 
 ///Stock and Item Functions-------------------------------------------------

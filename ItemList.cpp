@@ -9,6 +9,7 @@ ItemList::ItemList() {
     head = tail = nullptr;
 }
 
+//Constructor for item list.
 ItemList::ItemList(const ItemList& other) {
     head = tail = nullptr;
     Item* other_item = other.head;
@@ -20,6 +21,7 @@ ItemList::ItemList(const ItemList& other) {
     }
 }
 
+//Move constructor
 ItemList::ItemList(ItemList&& other) {
     head = other.head;
     tail = other.tail;
@@ -28,6 +30,7 @@ ItemList::ItemList(ItemList&& other) {
     other.tail = nullptr;
 }
 
+//Destructor
 ItemList::~ItemList() {
     Item *temp = head;
     Item *next_temp;
@@ -70,8 +73,8 @@ bool ItemList::isEmpty() const {
 }
 
 void ItemList::addToTail(Item* new_item) {
-    if(!itemIsInList(*new_item)) { // add quantity to exist item
-        if (isEmpty()) {
+    if(!itemIsInList(*new_item)) {              //Checking if the item already exists in the list - if so we increase the quantity.
+        if (isEmpty()) {                        //The function does this itemIsInList does this already.
             head = tail = new_item;
         } else {
             tail->next = new_item;
@@ -80,6 +83,8 @@ void ItemList::addToTail(Item* new_item) {
     }
 }
 
+
+//A function used to delete an item from the list.
 bool ItemList::deleteItem(const char *item_name) {
     Item *prev = nullptr;
     Item *curr = head;
@@ -108,6 +113,7 @@ bool ItemList::deleteItem(const char *item_name) {
     }
     return false;
 }
+
 
 bool ItemList::itemIsInList(const Item& new_item) { // remeber he add to quantity already
     Item* temp = head;
