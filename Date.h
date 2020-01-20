@@ -2,6 +2,7 @@
 #define ECOMMERCE_DATE_H
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <time.h>
 using namespace std;
 
 static constexpr int CURRENT_YEAR = 2020;

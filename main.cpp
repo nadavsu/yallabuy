@@ -8,6 +8,7 @@ int main() {
 
     Manager manager;
     int ans;
+    manager._debugfill();
     printTitle("Welcome to YallaBuy!");     //Main menu
     do {
         ans = printMainMenu();
