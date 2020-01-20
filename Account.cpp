@@ -55,15 +55,21 @@ const Account& Account::operator=(const Account& other) {
         return *this;
     }
 }
-
 ostream& operator<<(ostream& os, Account& base) {
-    os << "Username: " << base.username << endl;
-    os << "Name: " << base.fname << " " << base.lname << endl;
-    os << "Address: " << base.address << endl;
-    base.toOs(os);
+    if (typeid(os) == typeid(ofstream)) {
+        const char* TypeName = typeid(base).name();
+        os << TypeName << " " << base.username << " " << base.password << " "
+            << base.fname << " " << base.lname << " "
+            << base.address.getCity << " " << base.address.getStreet() << " " << base.address.getHomeNumber() << endl;
+    }
+    else {
+        os << "Username: " << base.username << endl;
+        os << "Name: " << base.fname << " " << base.lname << endl;
+        os << "Address: " << base.address << endl;
+        base.toOs(os);
+    }
     return os;
 }
-
 void Account::toOs(ostream &os) const {
 
 }

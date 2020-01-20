@@ -67,6 +67,7 @@ int printMainMenu() {
     cout << "To show all the Buyersellers, press 9.\n";
     cout << "To show all the accounts, press 10.\n";
     cout << "To test the operators overloading, press 11.\n";
+    cout << "To Save system, press 12.\n";
     cout << "To exit, press 0\n";
     printLine();
     cin >> ans;

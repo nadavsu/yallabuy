@@ -34,6 +34,8 @@ int main() {
             manager.printAccount();
         } else if (ans == 11) {
             testOperators(manager);
+        }else if (ans == 12){
+            saveSystem(manager);
         }else if (ans == 0) {
             char c;
             cout << "Are you sure? [Y/N]: ";
@@ -133,7 +135,7 @@ void makeFeedback(Manager& admin) {
             cout << seller_username << " not found in " << buyer_username << "'s history.\n";
             cout << "Would you like to continue? [Y/N]";
             cin >> cont;
-            if (cont == 'N' && cont == 'n') {
+            if (cont == 'N' || cont == 'n') {
                 return;
             }
         }
@@ -316,4 +318,13 @@ void testOperators(Manager& admin) {
             printLine();
         }
     } while(true);
+}
+
+void saveSystem(Manager& manager) {
+    char filename[FILENAME_MAX];
+    cout << "Please Enter the name of the file that you want to save the system to(include end file like .txt etc):" << endl;
+    cin.getline(filename, FILENAME_MAX);
+    ofstream OutFile(filename);
+    OutFile << manager;
+    OutFile.close();
 }

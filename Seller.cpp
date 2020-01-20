@@ -46,7 +46,18 @@ const Seller& Seller::operator=(const Seller& other) {
         return *this;
     }
 }
-
+ostream& operator<<(ostream& out, Seller& s) {
+	if (typeid(out) == typeid(ofstream)) {
+		out << (Account&)s;
+		out << s.num_of_feedbacks << endl; // add if size_of_feedback == 0
+		for (int i = 0; i < s.num_of_feedbacks; i++) {
+			out << s.feedbacks[i]->getUsername() << " " << s.feedbacks[i]->getDate().getYear() << " " <<
+				s.feedbacks[i]->getDate().getMonth() << " " << s.feedbacks[i]->getDate().getDay() << " "
+				<< s.feedbacks[i]->getComment() << endl;
+		}
+	}
+	return out;
+}
 ///Getters and Setters------------------------------------------------------
 Feedback **Seller::getFeedback() const {
     return feedbacks;

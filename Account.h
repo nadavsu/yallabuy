@@ -2,6 +2,8 @@
 #define ECOMMERCE_ACCOUNT_H
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <iostream>
+#include <fstream>
 #include "Address.h"
 #include "ItemList.h"
 using namespace std;
@@ -29,7 +31,7 @@ public:
     Account(const Account& other);
     Account(Account&& other);
     const Account& operator=(const Account& other);
-    friend ostream& operator<<(ostream& os, Account& base);
+    virtual friend ostream& operator<<(ostream& os, Account& base);
     virtual void toOs(ostream& os) const;
 
 public: //Setters & Getters

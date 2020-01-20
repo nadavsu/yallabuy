@@ -21,5 +21,6 @@ void MakeOrderFromCart(Manager& admin);
 void getItemInfo(Manager& manager);
 void emptyBuffer();
 void testOperators(Manager& admin);
+void saveSystem(Manager& manager);
 
 #endif //MAINHEADER_H

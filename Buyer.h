@@ -5,6 +5,8 @@
 #ifndef ECOMMERCE_BUYER_H
 #define ECOMMERCE_BUYER_H
 #define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <fstream>
 #include "Address.h"
 #include "ItemList.h"
 #include "Account.h"
@@ -24,6 +26,7 @@ public:
 
     const Buyer& operator=(const Buyer& other);
     bool operator>(const Buyer& other) const;
+    friend ostream& operator<<(ostream& out ,Buyer& b);
     void toOs(ostream& os)             const;
 
 public:
@@ -46,6 +49,7 @@ public:
     void addToSellerHistory(char** seller_name, int size_of_seller_name);
     virtual const char* getType() const;
     virtual Account* clone() const override;
+    void saveBuyerToFile(ofstream& OutFile);
 
     friend class Manager;
 };
