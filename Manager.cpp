@@ -226,7 +226,7 @@ void Manager::payOrder(const string& buyer_username, Order& order) {
     Item *curr_cart_item;
     Item *curr_order_item = order.getOrderedItemsHead();                        //Getting the head of the ordered items.
 
-    buyer->addToSellerHistory(order.getNameOfSellers(), order.getNumOfSellers());
+    buyer->addToSellerHistory(order.getNameOfSellers());
     while (curr_order_item) {                                                   //Updating the cart and order quantities.
         curr_cart_item = buyer->getCartHead();
         while (curr_cart_item) {
@@ -322,12 +322,8 @@ void Manager::printAccount() const {
 bool Manager::sellerExistInBuyerSeller(const string& buyer_username, const string& seller_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer) {
-        for (int i = 0; i < buyer->seller_history_size; ++i) {                    //Looking in the buyer history.
-            if (buyer->seller_history[i] == seller_username) {
-                return true;
-            }
-        }
-        return false;
+        auto found = find(buyer->seller_history.begin(), buyer->seller_history.end(), seller_username);
+        return (found != buyer->seller_history.end());
     }
     cout << "Buyer not found!\n";
     return false;

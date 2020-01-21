@@ -47,7 +47,7 @@ ostream& operator<<(ostream& os, Account& base) {
         const char* TypeName = typeid(base).name();
         os << TypeName << " " << base.username << " " << base.password << " "
             << base.fname << " " << base.lname << " "
-            << base.address.getCity << " " << base.address.getStreet() << " " << base.address.getHomeNumber() << endl;
+            << base.address.getCity() << " " << base.address.getStreet() << " " << base.address.getHomeNumber() << endl;
     }
     else {
         os << "Username: " << base.username << endl;

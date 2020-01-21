@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 #include "Buyer.h"
 #include "Seller.h"
 #include "Order.h"
