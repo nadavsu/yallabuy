@@ -29,6 +29,31 @@ const Manager& Manager::operator+=(Account* other) {
     return *this;
 }
 
+ostream& operator<<(ostream& os, Manager& base) {
+    if (typeid(os) == typeid(ofstream)) {
+        Account* temp;
+        const char* TypeName;
+        os << base.curr_account << " " << base.num_of_buyers << " " << base.num_of_sellers << " " <<
+            base.num_of_buyersellers << " " << base.max_account << endl;
+        for (int i = 0; i < base.curr_account; i++) {
+            temp = base.account_arr[i];
+            TypeName = typeid(*temp).name();
+            if (strcmp(TypeName, typeid(Seller).name()) == 0) {
+                Seller* newtemp = dynamic_cast<Seller*>(temp);
+                os << newtemp;
+            }
+            else if (strcmp(TypeName, typeid(Buyer).name()) == 0) {
+                Buyer* newtemp = dynamic_cast<Buyer*>(temp);
+                os << newtemp;
+            }
+            else {
+                BuyerSeller* newtemp = dynamic_cast<BuyerSeller*>(temp);
+                os << newtemp;
+            }
+        }
+    }
+}
+
 ///Getters------------------------------------------------------------------------
 int Manager::getNumOfAccounts() const {
     return curr_account;
@@ -323,6 +348,37 @@ void Manager::copyCartToOrder(Order& order, const string& buyer_username) {
         cout << "Buyer not found!\n";
     }
 }
+
+/* the order of the saving of the file is (new line here is new line in file) :
+curr_account, num_of_buyers,num_of_sellers,num_of_buyersellers,max_account
+account_arr[0]
+.
+.
+.
+account_arr[curr_account-1]
+
+account save in this order:
+   typeofaccount,username,password,lname,fname,address(order:m_city,m_street,m_home_number)
+
+   (in same line)
+   then if seller:
+   num_of_feedbacks
+   FeedBacks[0]
+   .
+   .
+   FeedBacks[num_of_feedbacks-1]
+   order :
+       username,date(order:year,month,day ),comment
+
+     if buyer:
+      seller_history_size,
+      seller_history[0][0]
+      .
+      .
+      .
+      seller_history[seller_history_size-1][0]
+      if buyerseller then all of the detail first seller then buyer
+*/
 
 void Manager::my_realloc() {
     this->max_account = (this->max_account) * 2;

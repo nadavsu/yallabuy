@@ -33,6 +33,16 @@ void Buyer::toOs(ostream& os) const {
 bool Buyer::operator>(const Buyer& other) const {
     return this->getTotalPriceOfCart() > other.getTotalPriceOfCart();
 }
+ostream& operator<<(ostream& out, Buyer& b) {
+    if (typeid(out) == typeid(ofstream)) {
+        out << (Account&)b;
+        out << b.seller_history_size << endl; // add if size_of_feedback == 0
+        for (int i = 0; i < b.seller_history_size; i++) {
+            out << *b.seller_history[i] << endl;
+        }
+    }
+    return out;
+}
 Buyer::~Buyer() {
     delete[] seller_history;        //deleting it.
 }

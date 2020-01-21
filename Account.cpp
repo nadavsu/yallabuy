@@ -9,12 +9,23 @@ Account::Account(const string& username, const string& password, const string& f
                  const Address& address) : address(address), username(username), password(password), fname(fname),
                  lname(lname) {
 
+Account::Account(const Account& other) : address(other.address) {
+    setUsername(other.username);
+    setPassword(other.password);
+    setFName(other.fname);
+    setLName(other.lname);
 }
 
 /*Account::Account(const Account& other) : address(other.address) {}              //TODO: Do we need to remove this?
 
 Account::Account(Account&& other) : address(std::move(other.address)) {}*/
 
+Account::~Account() {
+    delete[] username;
+    delete[] password;
+    delete[] fname;
+    delete[] lname;
+}
 
 ///Operators----------------------------------------------------------------------
 /*const Account &Account::operator=(const Account &other) {
@@ -31,13 +42,20 @@ Account::Account(Account&& other) : address(std::move(other.address)) {}*/
     } else {
         return *this;
     }
-}*/
-
-ostream &operator<<(ostream &os, Account &base) {
-    os << "Username: " << base.username << endl;
-    os << "Name: " << base.fname << " " << base.lname << endl;
-    os << "Address: " << base.address << endl;
-    base.toOs(os);
+}
+ostream& operator<<(ostream& os, Account& base) {
+    if (typeid(os) == typeid(ofstream)) {
+        const char* TypeName = typeid(base).name();
+        os << TypeName << " " << base.username << " " << base.password << " "
+            << base.fname << " " << base.lname << " "
+            << base.address.getCity << " " << base.address.getStreet() << " " << base.address.getHomeNumber() << endl;
+    }
+    else {
+        os << "Username: " << base.username << endl;
+        os << "Name: " << base.fname << " " << base.lname << endl;
+        os << "Address: " << base.address << endl;
+        base.toOs(os);
+    }
     return os;
 }
 

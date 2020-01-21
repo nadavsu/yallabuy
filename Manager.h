@@ -4,7 +4,8 @@
 
 #ifndef ECOMMERCE_MANAGER_H
 #define ECOMMERCE_MANAGER_H
-
+#include <iostream>
+#include <fstream>
 #include "Buyer.h"
 #include "Seller.h"
 #include "Order.h"
@@ -27,6 +28,7 @@ public:
 	Manager(Manager& other) = delete;
 	~Manager();
 	const Manager& operator+=(Account* other);
+	friend ostream& operator<<(ostream& os, Manager& base);
 
 public:
 	int getNumOfAccounts()      const;

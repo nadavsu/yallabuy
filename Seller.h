@@ -33,6 +33,7 @@ public:
     virtual ~Seller();
 
     const Seller& operator=(const Seller& other);
+    friend ostream& operator<<(ostream& out, Seller& s);
     void setFeedback(const Feedback& buyers_feedback);
     void setItem(Item* seller_item);
 

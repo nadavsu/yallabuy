@@ -19,6 +19,13 @@ BuyerSeller::BuyerSeller(const BuyerSeller&& other):Account(other),Seller(other)
 	
 }
 
+ostream& operator<<(ostream& out, BuyerSeller& bs) {
+	if (typeid(out) == typeid(ofstream)) {
+		out << (Seller&)bs << (Buyer&)bs;
+	}
+	return out;
+}
+
 const BuyerSeller& BuyerSeller::operator=(const BuyerSeller& other) {
 	if (this != &other) {
 		Account::operator=(other);

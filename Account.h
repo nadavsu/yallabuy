@@ -2,6 +2,8 @@
 #define ECOMMERCE_ACCOUNT_H
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <iostream>
+#include <fstream>
 #include "Address.h"
 #include "ItemList.h"
 using namespace std;

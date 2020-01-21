@@ -13,6 +13,7 @@ public:
     BuyerSeller(const BuyerSeller&& other);
     //virtual ~BuyerSeller();
     const BuyerSeller& operator=(const BuyerSeller& other);
+    friend ostream& operator<<(ostream& out, BuyerSeller& bs);
     virtual Account* clone() const override;
     virtual const char *getType() const;
 };
