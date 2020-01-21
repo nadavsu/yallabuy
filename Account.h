@@ -27,6 +27,7 @@ protected:
 
 public:
     Account(const string& username, const string& password, const string& fname, const string& lname ,const Address& address);
+    virtual ~Account();
     //Account(const Account& other);
     //Account(Account&& other);
     //const Account& operator=(const Account& other);

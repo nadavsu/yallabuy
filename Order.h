@@ -26,7 +26,7 @@ public:
 
     void printCart();
 
-    const string* getNameOfSellers();
+    string* getNameOfSellers();
     ItemList getOrderedItems();
     int getNumOfSellers();
     Item* getOrderedItemsHead(); // check if to move to private

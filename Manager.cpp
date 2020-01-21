@@ -6,20 +6,17 @@
 
 ///Constructors & Destructors----------------------------------------------------
 Manager::Manager() {
-    this->max_account = 1;
-    this->curr_account = 0;
     this->num_of_buyers = 0;
     this->num_of_sellers = 0;
     this->num_of_buyersellers = 0;
-    this->account_arr = new Account *[max_account];
 }
 
 Manager::~Manager() {
-    for(int i = 0; i < max_account; i++) {
-        delete this->account_arr[i];
+    while (!account_arr.empty()) {
+        delete account_arr.back();
+        account_arr.pop_back();
     }
-
-    delete[] account_arr;
+    
 }
 
 
@@ -33,10 +30,10 @@ ostream& operator<<(ostream& os, Manager& base) {
     if (typeid(os) == typeid(ofstream)) {
         Account* temp;
         const char* TypeName;
-        os << base.curr_account << " " << base.num_of_buyers << " " << base.num_of_sellers << " " <<
-            base.num_of_buyersellers << " " << base.max_account << endl;
-        for (int i = 0; i < base.curr_account; i++) {
-            temp = base.account_arr[i];
+        os << base.account_arr.size() << " " << base.num_of_buyers << " " << base.num_of_sellers << " " <<
+            base.num_of_buyersellers << " " << base.account_arr.capacity() << endl;
+        for (auto account : base.account_arr) {
+            temp = account;
             TypeName = typeid(*temp).name();
             if (strcmp(TypeName, typeid(Seller).name()) == 0) {
                 Seller* newtemp = dynamic_cast<Seller*>(temp);
@@ -56,7 +53,7 @@ ostream& operator<<(ostream& os, Manager& base) {
 
 ///Getters------------------------------------------------------------------------
 int Manager::getNumOfAccounts() const {
-    return curr_account;
+    return account_arr.size();
 }
 
 int Manager::getNumOfBuyers() const {
@@ -101,24 +98,22 @@ bool Manager::login(const string& username, const string& password) {
 
 //A function which creates a new account.
 void Manager::addAccount(Account* temp) {
-    if (curr_account == max_account) {
-        my_realloc();
-    }
+
     const char* account_type;
     account_type = typeid(*temp).name();
     if (strcmp(account_type, typeid(Buyer).name()) == 0) {
         Buyer* temp_buyer = dynamic_cast<Buyer*>(temp);
-        account_arr[curr_account++] = new Buyer(*temp_buyer);
+        account_arr.push_back(temp);
         num_of_buyers++;
     }
     else if (strcmp(account_type, typeid(Seller).name()) == 0) {
         Seller* temp_seller = dynamic_cast<Seller*>(temp);
-        account_arr[curr_account++] = new Seller(*temp_seller);
+        account_arr.push_back(temp);
         num_of_sellers++;
     }
     else if (strcmp(account_type, typeid(BuyerSeller).name()) == 0) {
         BuyerSeller* temp_buyerseller = dynamic_cast<BuyerSeller*>(temp);
-        account_arr[curr_account++] = new BuyerSeller(*temp_buyerseller);
+        account_arr.push_back(temp);
         num_of_buyersellers++;
     }
     else {
@@ -250,8 +245,8 @@ void Manager::payOrder(const string& buyer_username, Order& order) {
 }
 
 void Manager::printBuyers() const {
-    for (int i = 0; i < curr_account; i++) {
-        Buyer *buyer = dynamic_cast<Buyer *>(account_arr[i]);
+    for (auto account : account_arr) {
+        Buyer *buyer = dynamic_cast<Buyer *>(account);
         if(buyer) {
             printLine();
             cout << *buyer;
@@ -261,8 +256,8 @@ void Manager::printBuyers() const {
 }
 
 void Manager::printSellers() const {
-    for (int i = 0; i < curr_account; i++) {
-        Seller *seller = dynamic_cast<Seller *>(account_arr[i]);
+    for (auto account : account_arr) {
+        Seller *seller = dynamic_cast<Seller *>(account);
         if(seller) {
             printLine();
             cout << *seller;
@@ -279,8 +274,8 @@ bool Manager::isSellerExist(string& seller_username) {
 //Searching for an item based on a name.
 bool Manager::printItemsNamed(const string& item_name) {
     bool res = false;
-    for(int i = 0; i < curr_account; i++) {                 //Going through the account array and getting all the sellers.
-        Seller *temp = dynamic_cast<Seller *>(account_arr[i]);
+    for (auto account : account_arr) {                 //Going through the account array and getting all the sellers.
+        Seller *temp = dynamic_cast<Seller *>(account);
         if(temp) {
             Item *curr_item = temp->stock_list.getHead();   //Going through the list
             while (curr_item) {
@@ -307,9 +302,9 @@ void Manager::printBuyerSellerHistory(const string& buyer_username) {
 }
 
 void Manager::printBuyerSellers() const {
-    for (int i = 0; i < curr_account;i++) {
-        if (strcmp(typeid(*account_arr[i]).name(),typeid(BuyerSeller).name()) == 0) {
-            cout << *account_arr[i] << endl;
+    for (auto account : account_arr) {
+        if ((typeid(*account).name(), typeid(BuyerSeller).name()) == 0) {
+            cout << *account << endl;
         }
     }
 }
@@ -380,6 +375,7 @@ account save in this order:
       if buyerseller then all of the detail first seller then buyer
 */
 
+/*
 void Manager::my_realloc() {
     this->max_account = (this->max_account) * 2;
     Account **new_account_arr = new Account *[this->max_account];
@@ -389,6 +385,7 @@ void Manager::my_realloc() {
     delete[] account_arr;
     account_arr = new_account_arr;
 }
+*/
 
 ///Test Functions-----------------------------------------------------------
 

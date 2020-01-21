@@ -79,7 +79,7 @@ void Order::printCart() {
 	ordered_items.printList();
 }
 
-const string* Order::getNameOfSellers() {
+string* Order::getNameOfSellers() {
 	return name_of_sellers;
 }
 ItemList Order::getOrderedItems() {

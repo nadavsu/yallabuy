@@ -8,24 +8,22 @@
 Account::Account(const string& username, const string& password, const string& fname, const string& lname,
                  const Address& address) : address(address), username(username), password(password), fname(fname),
                  lname(lname) {
+}
 
-Account::Account(const Account& other) : address(other.address) {
+Account::~Account() {
+
+}
+
+/*Account::Account(const Account& other) : address(other.address) {
     setUsername(other.username);
     setPassword(other.password);
     setFName(other.fname);
     setLName(other.lname);
-}
+}*/
 
 /*Account::Account(const Account& other) : address(other.address) {}              //TODO: Do we need to remove this?
 
 Account::Account(Account&& other) : address(std::move(other.address)) {}*/
-
-Account::~Account() {
-    delete[] username;
-    delete[] password;
-    delete[] fname;
-    delete[] lname;
-}
 
 ///Operators----------------------------------------------------------------------
 /*const Account &Account::operator=(const Account &other) {
@@ -42,7 +40,8 @@ Account::~Account() {
     } else {
         return *this;
     }
-}
+}*/
+
 ostream& operator<<(ostream& os, Account& base) {
     if (typeid(os) == typeid(ofstream)) {
         const char* TypeName = typeid(base).name();

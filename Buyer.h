@@ -16,7 +16,7 @@
 class Buyer : virtual public Account {
 protected:
     ItemList    cart;         //A linked list of Items, cart points to head of list.
-    string      seller_history;
+    string*     seller_history;
     int         seller_history_size;
     int         total_price;
 public:

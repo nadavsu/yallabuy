@@ -38,7 +38,7 @@ ostream& operator<<(ostream& out, Buyer& b) {
         out << (Account&)b;
         out << b.seller_history_size << endl; // add if size_of_feedback == 0
         for (int i = 0; i < b.seller_history_size; i++) {
-            out << *b.seller_history[i] << endl;
+            out << b.seller_history[i] << endl;
         }
     }
     return out;
@@ -69,7 +69,7 @@ ItemList Buyer::getCart() const {
     return cart;
 }
 
-const string *Buyer::getSellerHistory() const {
+string *Buyer::getSellerHistory() const {
     return seller_history;
 }
 
