@@ -47,16 +47,16 @@ int Manager::getNumOfBuyerSellers() const {
 }
 
 //A functions which gets an account based on a username.
-Account *Manager::getAccount(const char *username) {
-    for (int i = 0; i < curr_account; i++) {
-        if (strcmp(account_arr[i]->username, username) == 0) {
-            return account_arr[i];
+Account *Manager::getAccount(const string& username) {
+    for(auto account : account_arr) {
+        if (account->username == username) {
+            return account;
         }
     }
     return nullptr;
 }
 
-Item* Manager::getItemFromSellerToBuyer(const char* seller_username, const char* item_name_to_buy, int quantity) {
+Item* Manager::getItemFromSellerToBuyer(const string& seller_username, const string& item_name_to_buy, int quantity) {
     Seller *seller = dynamic_cast<Seller *>(getAccount(seller_username));
     if(seller) {
         Item *seller_item = seller->getItemToBuyer(item_name_to_buy, quantity);
@@ -66,10 +66,10 @@ Item* Manager::getItemFromSellerToBuyer(const char* seller_username, const char*
 }
 
 ///Manager Functions-------------------------------------------------------------------------------
-bool Manager::login(const char *username, const char *password) {
+bool Manager::login(const string& username, const string& password) {
     Account *account = getAccount(username);
     if(account) {
-        return strcmp(account->getPassword(), password) == 0;
+        return account->getPassword() == password;
     }
     return false;
 }
@@ -102,8 +102,10 @@ void Manager::addAccount(Account* temp) {
     }
 }
 
+//TODO: can create an object function for the following functions.
+//Will take in class T, and function
 //A function which adds a new feedback to a seller.
-void Manager::addFeedback(const Feedback& feedback, const char *seller_username) {
+void Manager::addFeedback(const Feedback& feedback, const string& seller_username) {
     Seller *seller = dynamic_cast<Seller *>(getAccount(seller_username));           //Getting the seller based on ID.
     if(seller) {
         seller->setFeedback(feedback);                                              //Setting the feedback.
@@ -113,7 +115,7 @@ void Manager::addFeedback(const Feedback& feedback, const char *seller_username)
 }
 
 //A function which returns if a buyer's cart is empty based on his username.
-bool Manager::buyerIsCartEmpty(const char *buyer_username) {
+bool Manager::buyerIsCartEmpty(const string& buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));       //Getting the buyer
     if(buyer) {
         return buyer->isEmptyCart();                                        //Returning if his cart is empty.
@@ -123,7 +125,7 @@ bool Manager::buyerIsCartEmpty(const char *buyer_username) {
 }
 
 //Same as function above just with seller's stock.
-bool Manager::sellerIsStockEmpty(const char* seller_username) {
+bool Manager::sellerIsStockEmpty(const string& seller_username) {
     Seller *seller = dynamic_cast<Seller *>(getAccount(seller_username));
     if(seller) {
         return seller->isEmptyStock();
@@ -132,8 +134,8 @@ bool Manager::sellerIsStockEmpty(const char* seller_username) {
     return true;
 }
 
-//A function which chekcs if an item name exists in a seller's stock.
-bool Manager::isItemExistInSeller(const char* seller_username, const char* item_name_to_buy) {
+//A function which checks if an item name exists in a seller's stock.
+bool Manager::isItemExistInSeller(const string& seller_username, const string& item_name_to_buy) {
     Seller *seller = dynamic_cast<Seller *>(getAccount(seller_username));
     if(seller) {
         return seller->itemExist(item_name_to_buy);
@@ -142,7 +144,7 @@ bool Manager::isItemExistInSeller(const char* seller_username, const char* item_
     return false;
 }
 
-bool Manager::sellerIsQuantityFine(const char* seller_username,const char* item_name_to_buy,int quantity) {
+bool Manager::sellerIsQuantityFine(const string& seller_username, const string& item_name_to_buy, int quantity) {
     Seller *seller = dynamic_cast<Seller *>(getAccount(seller_username));
     if(seller) {
         return seller->quantityIsFine(item_name_to_buy, quantity);
@@ -152,7 +154,7 @@ bool Manager::sellerIsQuantityFine(const char* seller_username,const char* item_
 }
 
 
-void Manager::printSellerShop(const char* seller_username) {
+void Manager::printSellerShop(const string& seller_username) {
     Seller* seller = dynamic_cast<Seller *>(getAccount(seller_username));
     if(seller) {
         cout << seller->stock_list;
@@ -162,7 +164,7 @@ void Manager::printSellerShop(const char* seller_username) {
 }
 
 //A function which adds a new product to a seller.
-void Manager::AddItem(const char *seller_username, const Item& new_item) {
+void Manager::AddItem(const string& seller_username, const Item& new_item) {
     Item* item;                 // responsible for pointer because add to list
     item = new Item(new_item);  // Creating a new item copy.
     Seller *seller = dynamic_cast<Seller *>(getAccount(seller_username));   //Getting the seller based on the username.
@@ -174,7 +176,7 @@ void Manager::AddItem(const char *seller_username, const Item& new_item) {
 }
 
 //A function which adds an item to the cart.
-void Manager::addItemToCart(const char *buyer_username, const char* seller_username, const char* item_name_to_buy, int quantity) {
+void Manager::addItemToCart(const string& buyer_username, const string& seller_username, const string& item_name_to_buy, int quantity) {
     Item* seller_item = getItemFromSellerToBuyer(seller_username, item_name_to_buy, quantity);
     Item* new_item;
     new_item = new Item(*seller_item);                              //Copying the seller's item.
@@ -188,7 +190,7 @@ void Manager::addItemToCart(const char *buyer_username, const char* seller_usern
     delete seller_item;
 }
 
-void Manager::printBuyerCart(const char *buyer_username) {
+void Manager::printBuyerCart(const string& buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer) {
         cout << buyer->cart;
@@ -199,7 +201,7 @@ void Manager::printBuyerCart(const char *buyer_username) {
 }
 
 //A function which closes an order.
-void Manager::payOrder(const char *buyer_username, Order& order) {
+void Manager::payOrder(const string& buyer_username, Order& order) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));           //Getting the buyer
     Item *curr_cart_item;
     Item *curr_order_item = order.getOrderedItemsHead();                        //Getting the head of the ordered items.
@@ -208,7 +210,7 @@ void Manager::payOrder(const char *buyer_username, Order& order) {
     while (curr_order_item) {                                                   //Updating the cart and order quantities.
         curr_cart_item = buyer->getCartHead();
         while (curr_cart_item) {
-            if (curr_order_item->GetQuantity() && strcmp(curr_order_item->GetName(), curr_cart_item->GetName()) == 0) {
+            if (curr_order_item->GetQuantity() && curr_order_item->GetName() == curr_cart_item->GetName()) {
                 curr_cart_item->reduceQuantity(curr_order_item->GetQuantity());
                 if (curr_cart_item->GetQuantity() == 0) {
                     buyer->deleteItemFromCart(curr_cart_item->GetName());
@@ -244,20 +246,20 @@ void Manager::printSellers() const {
     }
 }
 
-bool Manager::isSellerExist(char *seller_username) {
+bool Manager::isSellerExist(string& seller_username) {
     Seller *seller = dynamic_cast<Seller *>(getAccount(seller_username));
     return seller != nullptr;
 }
 
 //Searching for an item based on a name.
-bool Manager::printItemsNamed(const char *item_name) {
+bool Manager::printItemsNamed(const string& item_name) {
     bool res = false;
     for(int i = 0; i < curr_account; i++) {                 //Going through the account array and getting all the sellers.
         Seller *temp = dynamic_cast<Seller *>(account_arr[i]);
         if(temp) {
             Item *curr_item = temp->stock_list.getHead();   //Going through the list
             while (curr_item) {
-                if (strcmp(item_name, curr_item->GetName()) == 0) { //Checking if the item name matches the current item name in the list.
+                if (item_name == curr_item->GetName()) { //Checking if the item name matches the current item name in the list.
                     cout << *curr_item;                     //Printing.
                     res = true;
                 }
@@ -269,7 +271,7 @@ bool Manager::printItemsNamed(const char *item_name) {
 }
 
 //Printing the buyer's seller history.
-void Manager::printBuyerSellerHistory(const char *buyer_username) {
+void Manager::printBuyerSellerHistory(const string& buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer) {
         buyer->printSellerHistory();
@@ -297,11 +299,11 @@ void Manager::printAccount() const {
 }
 
 //Checking if a seller exists in the buyer's seller history - used for feedback.
-bool Manager::sellerExistInBuyerSeller(const char *buyer_username, const char *seller_username) {
+bool Manager::sellerExistInBuyerSeller(const string& buyer_username, const string& seller_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer) {
         for (int i = 0; i < buyer->seller_history_size; ++i) {                    //Looking in the buyer history.
-            if (strcmp(buyer->seller_history[i], seller_username) == 0) {
+            if (buyer->seller_history[i] == seller_username) {
                 return true;
             }
         }
@@ -312,7 +314,7 @@ bool Manager::sellerExistInBuyerSeller(const char *buyer_username, const char *s
 }
 
 //Copying a cart to the order.
-void Manager::copyCartToOrder(Order& order, const char *buyer_username) {
+void Manager::copyCartToOrder(Order& order, const string& buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer) {
         order.setItemList(buyer->getCart());//make copy twice!!!!
@@ -371,7 +373,7 @@ void Manager::_debugfill() {
 
 }
 
-bool Manager::testCompareOperator(const char *username_1, const char *username_2) {
+bool Manager::testCompareOperator(const string& username_1, const string& username_2) {
     Buyer *buyer_1 = dynamic_cast<Buyer *>(getAccount(username_1));
     Buyer *buyer_2 = dynamic_cast<Buyer *>(getAccount(username_2));
 
@@ -388,7 +390,7 @@ bool Manager::testCompareOperator(const char *username_1, const char *username_2
     return false;
 }
 
-bool Manager::testPrintCart(const char *buyer_username) {
+bool Manager::testPrintCart(const string& buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer && !buyer->isEmptyCart()) {
         cout << buyer->cart;
@@ -397,7 +399,7 @@ bool Manager::testPrintCart(const char *buyer_username) {
     return false;
 }
 
-bool Manager::testPrintAccount(const char *username) {
+bool Manager::testPrintAccount(const string& username) {
     Account *account = getAccount(username);
     if(account) {
         cout << *account;

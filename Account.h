@@ -17,32 +17,31 @@ static constexpr int LNAME_MIN_LEN = 2;
 
 class Account {
 protected:
-    char*       username;
-    char*       password;
-    char*       lname;
-    char*       fname;
+    string      username;
+    string      password;
+    string      lname;
+    string      fname;
     Address     address;
 
 public:
-    Account(const char *username,const char *password,const char *fname,const char *lname,const Address& address);
-    virtual ~Account();
-    Account(const Account& other);
-    Account(Account&& other);
-    const Account& operator=(const Account& other);
+    Account(const string& username, const string& password, const string& fname, const string& lname ,const Address& address);
+    //Account(const Account& other);
+    //Account(Account&& other);
+    //const Account& operator=(const Account& other);
     friend ostream& operator<<(ostream& os, Account& base);
     virtual void toOs(ostream& os) const;
 
 public: //Setters & Getters
-    char *getUsername()         const;
-    char *getPassword()         const;
-    char *getLName()            const;
-    char *getFName()            const;
+    const string& getUsername()         const;
+    const string& getPassword()         const;
+    const string& getLName()            const;
+    const string& getFName()            const;
     const Address& getAddress() const;
 
-    bool setUsername(const char *username);
-    bool setPassword(const char *password);
-    bool setLName(const char *lname);
-    bool setFName(const char *fname);
+    bool setUsername(const string& username);
+    bool setPassword(const string& password);
+    bool setLName(const string& lname);
+    bool setFName(const string& fname);
     void setAddress(const Address &address);
 
     virtual Account* clone() const = 0;

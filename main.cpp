@@ -53,10 +53,9 @@ int main() {
 //A funciton that adds new account, takes in info from the user
 void newAccount(Manager& admin) {
     int house_number;
-    char street[STREET_MAX_LEN + 1], city[CITY_MAX_LEN + 1];
-    char f_name[FNAME_MAX_LEN + 1], l_name[LNAME_MAX_LEN + 1];
-    char username[USERNAME_MAX_LEN + 1], password[PASSWORD_MAX_LEN + 1], trash;
     int account_type;
+    char trash;
+    string street, city, fname, lname, password;
     Account* temp;
 
     cout << "What type of user do you want to open?" << endl;

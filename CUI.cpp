@@ -12,18 +12,18 @@ using namespace std;
  */
 
 
-void printSubTitle(const char *title) {
-    for (int i = 0; i < (PAGE_WIDTH - strlen(title)) / 2; ++i) {
+void printSubTitle(const string& title) {
+    for (int i = 0; i < (PAGE_WIDTH - title.length()) / 2; ++i) {
         cout << "-";
     }
     cout << title;
-    for (int i = 0; i < (PAGE_WIDTH - strlen(title)) / 2; ++i) {
+    for (int i = 0; i < (PAGE_WIDTH - title.length()) / 2; ++i) {
         cout << "-";
     }
     cout << '\n';
 }
 
-void printTitle(const char *title) {
+void printTitle(const string& title) {
 
     cout << "+";
     for (int i = 0; i < PAGE_WIDTH - 2; ++i) {
@@ -31,11 +31,11 @@ void printTitle(const char *title) {
     }
     cout << "+\n";
     cout << "|";
-    for (int i = 0; i < (PAGE_WIDTH - 2 - strlen(title)) / 2; ++i) {
+    for (int i = 0; i < (PAGE_WIDTH - 2 - title.length()) / 2; ++i) {
         cout << " ";
     }
     cout << title;
-    for (int i = 0; i < (PAGE_WIDTH - 1 - strlen(title)) / 2; ++i) {
+    for (int i = 0; i < (PAGE_WIDTH - 1 - title.length()) / 2; ++i) {
         cout << " ";
     }
     cout << "|\n";
@@ -88,7 +88,7 @@ int printOperatorsMenu() {
     return ans;
 }
 
-void printLogin(Manager &manager, char *username, char *password) {
+void printLogin(Manager &manager, string& username, string& password) {
     bool logged = true;
     emptyBuffer();
     printSubTitle("Login:");
@@ -97,9 +97,9 @@ void printLogin(Manager &manager, char *username, char *password) {
             cout << "Wrong username or password!\n";
         }
         cout << "Username: ";
-        cin.getline(username, USERNAME_MAX_LEN);
+        getline(cin, username);
         cout << "Password: ";
-        cin.getline(password, PASSWORD_MAX_LEN);
+        getline(cin, password);
         logged = manager.login(username, password);
     } while (!logged);
 }

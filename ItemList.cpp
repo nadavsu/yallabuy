@@ -85,7 +85,7 @@ void ItemList::addToTail(Item* new_item) {
 
 
 //A function used to delete an item from the list.
-bool ItemList::deleteItem(const char *item_name) {
+bool ItemList::deleteItem(const string& item_name) {
     Item *prev = nullptr;
     Item *curr = head;
 
@@ -93,7 +93,7 @@ bool ItemList::deleteItem(const char *item_name) {
         return false;
     } else {
         while(curr) {
-            if(strcmp(item_name, curr->name) == 0) {
+            if(item_name == curr->name) {
                 if(!prev) {
                     head = curr->next;
                     delete curr;
@@ -118,7 +118,7 @@ bool ItemList::deleteItem(const char *item_name) {
 bool ItemList::itemIsInList(const Item& new_item) { // remeber he add to quantity already
     Item* temp = head;
     while (temp) {
-        if (strcmp(temp->name, new_item.name) == 0) {
+        if (temp->name == new_item.name) {
             temp->quantity += new_item.quantity;
             return true;
         }
@@ -127,10 +127,10 @@ bool ItemList::itemIsInList(const Item& new_item) { // remeber he add to quantit
     return false;
 }
 
-Item *ItemList::findItem(const char *item_name) {
+Item *ItemList::findItem(const string& item_name) {
     Item *temp = head;
     while (temp) {
-        if(strcmp(temp->name, item_name) == 0) {
+        if(temp->name == item_name) {
             return temp;
         }
         temp = temp->next;

@@ -18,25 +18,21 @@ public:
     static constexpr int CITY_NAME_LEN =    20;
     static constexpr int STREET_NAME_LEN =  25;
 
-    bool setCity(const char *city);
-    bool setStreet(const char *street);
+    bool setCity(const string& city);
+    bool setStreet(const string& street);
     bool setHomeNumber(int home_number);
 
-    const char *getCity()       const;
-    const char *getStreet()     const;
-    int         getHomeNumber() const;
+    const string& getCity()       const;
+    const string& getStreet()     const;
+    int           getHomeNumber() const;
 
 private:
-    char*   m_city;
-    char*   m_street;
-    int     m_home_number;
+    string   city;
+    string   street;
+    int      home_number;
 
 public:
-    Address(const char *city,const char *street, int home_number);
-    Address(const Address& other);
-    Address(Address&& other);
-    ~Address();
-    const Address& operator=(const Address& other);
+    Address(const string& city, const string& street, int home_number);
     friend ostream& operator<<(ostream& os, const Address& address);
 
 };

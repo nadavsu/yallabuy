@@ -11,14 +11,14 @@
 class Order{
 public:
     Order() = default;
-    Order(char* name_of_buyer);
+    Order(const string& name_of_buyer);
     Order(const Order& other);
-    Order(const Order&& other);
+    Order(Order&& other);
     ~Order();
     const Order& operator=(const Order& other);
 
-	void SetNameOfBuyer(const char* name_of_buyer);
-    void setItem(Item* item);
+	void SetNameOfBuyer(const string& name_of_buyer);
+    //void setItem(Item* item);
     void setItemList(ItemList list);
 
     void updatePrice();
@@ -26,19 +26,19 @@ public:
 
     void printCart();
 
-    char** getNameOfSellers();
+    const string* getNameOfSellers();
     ItemList getOrderedItems();
     int getNumOfSellers();
     Item* getOrderedItemsHead(); // check if to move to private
 
 private:
-    void addToNameOfSellers(const char* seller_name);
-    void makeNewNameOfSellers(const char* seller_name);
+    void addToNameOfSellers(const string& seller_name);
+    void makeNewNameOfSellers(const string& seller_name);
     void copyNameOfSellers(const Order& other);
 
 private:
-    char*       name_of_buyer;
-    char**      name_of_sellers;
+    string      name_of_buyer;
+    string*     name_of_sellers;
     int         total_price;
     int         num_of_sellers;
     ItemList    ordered_items; // head of linked list

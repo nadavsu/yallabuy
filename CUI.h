@@ -9,12 +9,12 @@ class Manager;
 
 static constexpr int PAGE_WIDTH = 50;
 
-void printSubTitle(const char *title);
-void printTitle(const char *title);
+void printSubTitle(const string& title);
+void printTitle(const string& title);
 void printLine();
 int printMainMenu();
 int printOperatorsMenu();
-void printLogin(Manager &manager, char *username, char *password);
+void printLogin(Manager &manager, string& username, string& password);
 void emptyBuffer();
 
 #endif //ECOMMERCE_CUI_H

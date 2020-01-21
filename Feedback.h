@@ -13,23 +13,23 @@ static constexpr int COMMENT_MAX_LEN = 200;
 
 class Feedback {
 public:
-    bool setComment(const char* new_comment);
+    bool setComment(const string& new_comment);
 
-    const char* getUsername()   const;
-    const char* getComment()    const;
-    Date getDate()              const;
-
-private:
-    void setUsername(const char *new_username);
+    const string& getUsername()   const;
+    const string& getComment()    const;
+    Date getDate()                const;
 
 private:
-    char* username;
+    void setUsername(const string& new_username);
+
+private:
+    string username;
 	Date  date;
-	char* comment;
+	string comment;
 
 public:
-    Feedback(char *feedbacker_username, char *comment, const Date& date);
-	Feedback(char* feedbacker_username, char* comment);
+    Feedback(const string& feedbacker_username, const string& comment, const Date& date);
+	Feedback(const string& feedbacker_username, const string& comment);
 	Feedback(const Feedback& other);
     Feedback(Feedback&& other);
     ~Feedback();

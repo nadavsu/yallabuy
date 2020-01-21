@@ -6,24 +6,24 @@
 using namespace std;
 
 ///Constructors and Destructors------------------------------------------
-Buyer::Buyer(const char *username,const char *password,const char *fname,const char *lname, Address& address): Account(username, password, fname, lname, address) {
-    this->seller_history      = nullptr;
+Buyer::Buyer(const string& username, const string& password, const string& fname, const string& lname, Address& address)
+                                                                : Account(username, password, fname, lname, address) {
+    this->seller_history;
     this->seller_history_size = 0;
     this->total_price         = 0;
 }
 
 //Copy ctor
-Buyer::Buyer(const Buyer& other) : Account(other), cart(other.cart) {
+Buyer::Buyer(const Buyer& other) : Account(other), cart(other.cart), total_price(other.total_price), seller_history_size
+                                    (seller_history_size) {
     copySellerHistory(other);
-    this->total_price = other.total_price;
 }
 
 //Move ctor
-Buyer::Buyer(Buyer&& other) : Account(std::move(other)), cart(std::move(other.cart)) {
+Buyer::Buyer(Buyer&& other) : Account(std::move(other)), cart(std::move(other.cart)), total_price(other.total_price),
+                            seller_history_size(other.seller_history_size) {
     seller_history       = other.seller_history;
-    seller_history_size  = other.seller_history_size;
     other.seller_history = nullptr;
-    this->total_price = other.total_price;
 }
 
 void Buyer::toOs(ostream& os) const {
@@ -34,26 +34,21 @@ bool Buyer::operator>(const Buyer& other) const {
     return this->getTotalPriceOfCart() > other.getTotalPriceOfCart();
 }
 Buyer::~Buyer() {
-    emptySellerHistory();           //emptying the seller history.
     delete[] seller_history;        //deleting it.
 }
 
 const Buyer& Buyer::operator=(const Buyer& other) {
     if(this != &other){
-        delete[]username;
-        delete[]password;
-        delete[]fname;
-        delete[]lname;
-        emptySellerHistory();
-        setUsername(other.username);
-        setPassword(other.password);
-        setFName(other.fname);
-        setLName(other.lname);
-        this->address = other.address;
-        this->cart = other.cart;
+        delete[] seller_history;
+        username = other.username;
+        password = other.password;
+        fname = other.fname;
+        lname = other.lname;
+        address = other.address;
+        cart = other.cart;
         copySellerHistory(other);
-        this->seller_history_size = other.seller_history_size;
-        this->total_price = other.total_price;
+        seller_history_size = other.seller_history_size;
+        total_price = other.total_price;
     } else {
         return *this;
     }
@@ -64,7 +59,7 @@ ItemList Buyer::getCart() const {
     return cart;
 }
 
-char **Buyer::getSellerHistory() const {
+const string *Buyer::getSellerHistory() const {
     return seller_history;
 }
 
@@ -94,55 +89,51 @@ bool Buyer::isEmptyCart() {
 ///Seller History Functions-------------------------------------------------
 //A function which adds an array of strings to the history of the buyer.
 //Used for the feedback
-void Buyer::addToSellerHistory(char** seller_name,int size_of_seller_name) {
+void Buyer::addToSellerHistory(string *seller_names, int size_of_seller_names) {
     int index = 0;
-    bool To_add = true;
+    bool to_add = true;
 
-    char** AfterEaraseDup = new char* [size_of_seller_name];    //freeing memory in makeNewSellerHistory func
-    for (int i = 0; i < size_of_seller_name;i++) {              //Going through the array of strings
-        for (int j = 0; j < seller_history_size;j++) {          //Checking the seller already exists in the history
-            if (strcmp(seller_history[j], seller_name[i]) == 0) {
-                To_add = false;
-            }
-            else {
-                To_add = true;
-            }
+    string *after_erase_dup = new string[size_of_seller_names];
+    //char** AfterEaraseDup = new char* [size_of_seller_names];    //freeing memory in makeNewSellerHistory func
+    for (int i = 0; i < size_of_seller_names; i++) {             //Going through the array of strings
+        for (int j = 0; j < seller_history_size; j++) {          //Checking the seller already exists in the history
+            to_add = (seller_history[j] != seller_names[i]);
         }
-        if (To_add) {                                           //If the seller does not exist in the history
-            AfterEaraseDup[index] = new char[strlen(seller_name[i]) + 1];   //Then we add.
-            strcpy(AfterEaraseDup[index], seller_name[i]);
+        if (to_add) {                                           //If the seller does not exist in the history
+            after_erase_dup[index] = seller_names[i];
             index++;
         }
     }
-    makeNewSellerHistory(AfterEaraseDup, index);
+    makeNewSellerHistory(after_erase_dup, index);
 }
 
 //A function which creates a new seller history array.
-void Buyer::makeNewSellerHistory(char** AfterEaraseDup, int size_of_AfterEaraseDup) {
-    char** NewSellerHistory = new char* [size_of_AfterEaraseDup + seller_history_size];
+void Buyer::makeNewSellerHistory(string *after_erase_dup, int size) {
+
+    string* new_seller_history = new string[size + seller_history_size];
     for (int i = 0; i < seller_history_size;i++) {
-        NewSellerHistory[i] = seller_history[i];
+        new_seller_history[i] = seller_history[i];
     }
-    for (int i = 0; i < size_of_AfterEaraseDup; i++) {
-        NewSellerHistory[i + seller_history_size] = AfterEaraseDup[i];
+    for (int i = 0; i < size; i++) {
+        new_seller_history[i + seller_history_size] = after_erase_dup[i];
     }
-    delete[]this->seller_history;
-    delete[]AfterEaraseDup;
-    this->seller_history = NewSellerHistory;
-    this->seller_history_size = size_of_AfterEaraseDup + seller_history_size;
+    delete[] this->seller_history;
+    delete[] after_erase_dup;
+    this->seller_history = new_seller_history;
+    this->seller_history_size = size + seller_history_size;
 }
 
-void Buyer::emptySellerHistory() {
+/*void Buyer::emptySellerHistory() {
     for(int i = 0; i < seller_history_size; ++i) {
         delete seller_history[i];
     }
-}
+}*/
 
 void Buyer::copySellerHistory(const Buyer& other) {
     if (other.seller_history_size > 0) {
-        seller_history = new char* [other.seller_history_size];
+        seller_history = new string[other.seller_history_size];
         for (int i = 0; i < other.seller_history_size; ++i) {
-            strcpy(seller_history[i], other.seller_history[i]);
+            seller_history[i] = other.seller_history[i];
         }
     }
     else {
@@ -151,21 +142,21 @@ void Buyer::copySellerHistory(const Buyer& other) {
     }
 }
 
+void Buyer::deleteItemFromCart(const string& item_name) {
+    Item* item_to_delete;
+    item_to_delete = cart.findItem(item_name);              //Finding the item to delete.
+    total_price = total_price - (item_to_delete->GetPrice() * item_to_delete->GetQuantity());  //Decreasing the total price.
+    cart.deleteItem(item_name);
+}
+
+
 ///Printing Functions--------------------------------------------------------
-void Buyer::printSellerHistory()const {
+void Buyer::printSellerHistory() const {
     cout << "Buyer : "<< endl << this->username<< endl << "Seller's History:" << endl;
     for (int i = 0; i < this->seller_history_size;i++) {
         cout << this->seller_history[i] <<endl;
     }
 
-}
-
-
-void Buyer::deleteItemFromCart(const char* item_name) {
-    Item* item_to_delete;
-    item_to_delete = cart.findItem(item_name);              //Finding the item to delete.
-    total_price = total_price - (item_to_delete->GetPrice() * item_to_delete->GetQuantity());  //Decreasing the total price.
-    cart.deleteItem(item_name);
 }
 
 const char* Buyer::getType()const {

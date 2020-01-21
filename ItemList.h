@@ -15,11 +15,11 @@ private:
 
 public:
     void addToTail(Item* new_item);
-    bool deleteItem(const char *item_name);
+    bool deleteItem(const string& item_name);
     bool isEmpty()   const;
     void printList() const;
     Item *getHead()  const;
-    Item *findItem(const char *item_name);
+    Item *findItem(const string& item_name);
 public:
 
     ItemList();

@@ -1,7 +1,7 @@
 #include"BuyerSeller.h"
 
-BuyerSeller::BuyerSeller(char* username, char* password, char* fname, char* lname, Address& address):Account(username, password, fname, lname, address)
-,Buyer(username, password, fname, lname, address) ,Seller(username, password, fname, lname, address) {
+BuyerSeller::BuyerSeller(const string&  username, const string&  password, const string&  fname, const string&  lname, Address& address): Account(username, password, fname, lname, address),
+Buyer(username, password, fname, lname, address), Seller(username, password, fname, lname, address) {
 
 }
 
@@ -34,6 +34,6 @@ Account* BuyerSeller::clone() const {
 	return new BuyerSeller(*this);
 }
 
-const char* BuyerSeller::getType() const {
+const char *BuyerSeller::getType() const {
 	return "BuyerSeller";
 }

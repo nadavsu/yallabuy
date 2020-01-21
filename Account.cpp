@@ -5,41 +5,19 @@
 #include "Account.h"
 
 ///Constructors & Destructors--------------------------------------------------------------
-Account::Account(const char* username, const char* password, const char* fname, const char* lname,const Address& address) : address(address) {
-    setUsername(username);
-    setPassword(password);
-    setFName(fname);
-    setLName(lname);
+Account::Account(const string& username, const string& password, const string& fname, const string& lname,
+                 const Address& address) : address(address), username(username), password(password), fname(fname),
+                 lname(lname) {
+
 }
 
-Account::Account(const Account& other) : address(other.address) {
-    setUsername(other.username);
-    setPassword(other.password);
-    setFName(other.fname);
-    setLName(other.lname);
-}
+/*Account::Account(const Account& other) : address(other.address) {}              //TODO: Do we need to remove this?
 
-Account::Account(Account&& other) : address(std::move(other.address)) {
-    username = other.username;
-    password = other.password;
-    fname = other.fname;
-    lname = other.lname;
+Account::Account(Account&& other) : address(std::move(other.address)) {}*/
 
-    other.username  = nullptr;
-    other.password  = nullptr;
-    other.fname     = nullptr;
-    other.lname     = nullptr;
-}
-
-Account::~Account() {
-    delete[] username;
-    delete[] password;
-    delete[] fname;
-    delete[] lname;
-}
 
 ///Operators----------------------------------------------------------------------
-const Account& Account::operator=(const Account& other) {
+/*const Account &Account::operator=(const Account &other) {
     if (this != &other) {
         delete[] username;
         delete[] password;
@@ -50,13 +28,12 @@ const Account& Account::operator=(const Account& other) {
         setLName(other.lname);
         setUsername(other.username);
         setPassword(other.password);
-    }
-    else {
+    } else {
         return *this;
     }
-}
+}*/
 
-ostream& operator<<(ostream& os, Account& base) {
+ostream &operator<<(ostream &os, Account &base) {
     os << "Username: " << base.username << endl;
     os << "Name: " << base.fname << " " << base.lname << endl;
     os << "Address: " << base.address << endl;
@@ -69,19 +46,19 @@ void Account::toOs(ostream &os) const {
 }
 
 ///Getters and setters---------------------------------------------------------------------
-char *Account::getUsername() const {
+const string& Account::getUsername() const {
     return username;
 }
 
-char *Account::getPassword() const {
+const string&Account::getPassword() const {
     return password;
 }
 
-char *Account::getLName() const {
+const string& Account::getLName() const {
     return lname;
 }
 
-char *Account::getFName() const {
+const string& Account::getFName() const {
     return fname;
 }
 
@@ -89,56 +66,40 @@ const Address &Account::getAddress() const {
     return address;
 }
 
-bool Account::setFName(const char *new_fname) {
-    if(strlen(new_fname) <= FNAME_MAX_LEN) {
-        if(!fname) {
-            delete[] fname;
-        }
-        fname = new char[strlen(new_fname) + 1];
-        strcpy(fname, new_fname);
+bool Account::setFName(const string& new_fname) {
+    if (new_fname.length() <= FNAME_MAX_LEN) {
+        this->fname = new_fname;
         return true;
     }
     return false;
 }
 
-bool Account::setLName(const char *new_lname) {
-    if(strlen(new_lname) <= LNAME_MAX_LEN) {
-        if(!lname) {
-            delete[] lname;
-        }
-        lname = new char[strlen(new_lname) + 1];
-        strcpy(lname, new_lname);
+bool Account::setLName(const string& new_lname) {
+    if (new_lname.length() <= LNAME_MAX_LEN) {
+        this->lname = new_lname;
         return true;
     }
     return false;
 }
 
 
-bool Account::setUsername(const char *new_username) {
-    if(strlen(new_username) <= USERNAME_MAX_LEN && strlen(new_username) >= USERNAME_MIN_LEN) {
-        if(!username) {
-            delete[] username;
-        }
-        username = new char[strlen(new_username) + 1];
-        strcpy(username, new_username);
+bool Account::setUsername(const string& new_username) {
+    if (new_username.length() <= USERNAME_MAX_LEN) {
+        this->username = new_username;
         return true;
     }
     return false;
 }
 
-bool Account::setPassword(const char *new_password) {
-    if(strlen(new_password) <= PASSWORD_MAX_LEN && strlen(new_password) >= PASSWORD_MIN_LEN) {
-        if(!password) {
-            delete[] password;
-        }
-        password = new char[strlen(new_password) + 1];
-        strcpy(password, new_password);
+bool Account::setPassword(const string& new_password) {
+    if (new_password.length() <= PASSWORD_MAX_LEN && new_password.length() >=PASSWORD_MIN_LEN) {
+        this->password = new_password;
         return true;
     }
     return false;
 }
 
-void Account::setAddress(const Address& new_address) {
+void Account::setAddress(const Address &new_address) {
     address.setHomeNumber(new_address.getHomeNumber());
     address.setStreet(new_address.getStreet());
     address.setCity(new_address.getCity());

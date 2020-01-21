@@ -5,7 +5,7 @@
 #include "Seller.h"
 
 ///Constructors and Destructors------------------------------------------
-Seller::Seller(const char *username,const char *password,const char *fname,const char *lname, Address& address) : Account(username, password, fname, lname, address) {
+Seller::Seller(const string& username,const string& password, const string& fname, const string& lname, Address& address) : Account(username, password, fname, lname, address) {
     this->feedbacks = nullptr;
     this->num_of_feedbacks = 0;
 }
@@ -13,7 +13,6 @@ Seller::Seller(const char *username,const char *password,const char *fname,const
 Seller::Seller(const Seller& other) : Account(other), stock_list(other.stock_list) {
     this->feedbacks = new Feedback*[other.num_of_feedbacks];
     num_of_feedbacks = other.num_of_feedbacks;
-
     copyFeedback(other);
 }
 
@@ -32,10 +31,6 @@ Seller::~Seller() {
 
 const Seller& Seller::operator=(const Seller& other) {
     if (this != &other) {
-        delete[] username;
-        delete[] password;
-        delete[] fname;
-        delete[] lname;
         delete[] feedbacks;
         copyFeedback(other);
         address          = other.address;
@@ -56,7 +51,7 @@ ItemList Seller::getStock() const {
     return stock_list;
 }
 
-Item *Seller::getItem(const char *item_name) {
+Item *Seller::getItem(const string& item_name) {
     return stock_list.findItem(item_name);
 }
 void Seller::setItem(Item* seller_item) {
@@ -76,7 +71,6 @@ void Seller::setFeedback(const Feedback& buyers_feedback){ // accept item that f
 
 ///Feedback Functions-------------------------------------------------------
 void Seller::copyFeedback(const Seller& other) {
-    ///Source to problems maybe.
     for(int i = 0; i < other.num_of_feedbacks; ++i) {
         feedbacks[i] = new Feedback(other.feedbacks[i][0]);
     }
@@ -88,7 +82,7 @@ void Seller::printStock() const {
 }
 
 ///Stock and Item Functions-------------------------------------------------
-Item* Seller::getItemToBuyer(const char* item_name,int quantity) { // check exist for sure
+Item* Seller::getItemToBuyer(const string&  item_name,int quantity) { // check exist for sure
     Item* item_to_buy = getItem(item_name);
     Item* to_buyer;
     to_buyer = new Item(*item_to_buy);
@@ -99,13 +93,13 @@ Item* Seller::getItemToBuyer(const char* item_name,int quantity) { // check exis
     }
     return to_buyer;
 }
-bool Seller::itemExist(const char* item_name){
+bool Seller::itemExist(const string&  item_name){
     Item* item;
     item = getItem(item_name);
     return item != nullptr;
 }
 
-bool Seller::quantityIsFine(const char* item_name,int quantity) {
+bool Seller::quantityIsFine(const string&  item_name,int quantity) {
     Item* item;
     item = getItem(item_name);
     return (quantity > 0 && quantity <= item->GetQuantity());
@@ -116,7 +110,7 @@ bool Seller::isEmptyStock() {
 }
 
 /*
-Seller::ePasswordStrength Seller::strengthChecker(const char* Password) const {
+Seller::ePasswordStrength Seller::strengthChecker(const string&  Password) const {
 	int a, len, hasUpper, hasLower, hasSymb, hasSpecial, hasNum, i, flag;
 	unsigned char x;
 	len = strlen(Password);
@@ -190,6 +184,6 @@ Account* Seller::clone() const {
 	return new Seller(*this);
 }
 
-const char* Seller::getType()const {
+const char *Seller::getType() const {
 	return "Seller";
 }

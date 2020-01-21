@@ -27,7 +27,7 @@ public:
     };
 
 public:
-    Seller(const char *username,const char *password,const char *fname,const char *lname, Address& address);
+    Seller(const string& username, const string& password, const string& fname, const string& lname, Address& address);
     Seller(const Seller& other); // dont want anyone to copy check what to do
     Seller(Seller&& other);
     virtual ~Seller();
@@ -41,14 +41,14 @@ public:
     ItemList getStock()              const;
     void printStock()                const;
 
-    Item* getItemToBuyer(const char* item_name, int quantity);
-    bool itemExist(const char* item_name)  ;
-    bool quantityIsFine(const char* item_name, int quantity);
+    Item* getItemToBuyer(const string& item_name, int quantity);
+    bool itemExist(const string& item_name)  ;
+    bool quantityIsFine(const string& item_name, int quantity);
     bool isEmptyStock();
     virtual Account* clone() const override;
-    virtual const char* getType() const;
+    virtual const char *getType() const;
 private:
-    Item* getItem(const char* item_name);
+    Item* getItem(const string& item_name);
     void copyFeedback(const Seller& other);
     //ePasswordStrength strengthChecker(const char* Password)    const;
 

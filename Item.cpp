@@ -7,26 +7,26 @@
 using namespace std;
 
 ///Constructors & Destructors-------------------------------------------------------
-Item::Item(const char* name_of_seller,const char* name, Item::eCategory category, int price, int quantity) {
-	SetNameOfSeller(name_of_seller);
-	SetName(name);
-	SetCategory(category);
-	SetPrice(price);
-	serial_number = num_of_items++;
-	SetQuantity(quantity);
+Item::Item(const string& name_of_seller ,const string& name, Item::eCategory category, int price, int quantity) {
+	this->name_of_seller = name_of_seller;
+	this->name = name;
+	this->category = category;
+	this->price = price;
+    this->quantity = quantity;
+    serial_number = num_of_items++;
 	next = nullptr;
 }
 
-Item::Item(const Item& other) {
-	SetName(other.name);
-	SetCategory(other.category);
-	SetPrice(other.price);
-	SetQuantity(other.quantity);
-	SetNameOfSeller(other.name_of_seller);
+/*Item::Item(const Item& other) {
+    name = other.name;
+    name_of_seller = other.name_of_seller;
+	this->category = other.category;
+	this->price = other.price;
+	this->quantity = other.quantity;
 	this->serial_number = other.serial_number;
 	this->next = other.next;
-}
-
+}*/
+/*
 Item::Item(Item&& other) {
 	name = other.name;
 	category = other.category;
@@ -37,15 +37,15 @@ Item::Item(Item&& other) {
 	serial_number = other.serial_number;
 	this->name = nullptr;
 	this->name_of_seller = nullptr;
-}
+}*/
 
-Item::~Item() {
+/*Item::~Item() {
 	delete[] name;
 	delete[] name_of_seller;
-}
+}*/
 
 ///Operators--------------------------------------------------------------------------
-const Item& Item::operator=(const Item& other) {
+/*const Item& Item::operator=(const Item& other) {
 	if (this != &other){
 		delete[]name;
 		delete[]name_of_seller;
@@ -58,7 +58,7 @@ const Item& Item::operator=(const Item& other) {
 	else {
 		return *this;
 	}
-}
+}*/
 
 ostream& operator<<(ostream& os, const Item& item) {
     os << "---------------------------------------------\n";
@@ -73,14 +73,12 @@ ostream& operator<<(ostream& os, const Item& item) {
 }
 
 ///Setters and getters-----------------------------------------------------------------
-void Item::SetName(const char* name) {
-	this->name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
+void Item::SetName(const string& name) {
+	this->name = name;
 }
 
-void Item::SetNameOfSeller(const char* name_of_seller) {
-	this->name_of_seller = new char[strlen(name_of_seller) + 1];
-	strcpy(this->name_of_seller, name_of_seller);
+void Item::SetNameOfSeller(const string& name_of_seller) {
+	this->name_of_seller = name_of_seller;
 }
 
 void Item::SetCategory(Item::eCategory category) {
@@ -99,7 +97,7 @@ void Item::reduceQuantity(int reduction) {
 
 }
 
-const char* Item::GetName() const {
+const string& Item::GetName() const {
 	return this->name;
 }
 Item::eCategory Item::GetCategory() const {
@@ -121,7 +119,7 @@ Item* Item::getNext() const {
 	return next;
 }
 
-const char* Item::getSellerName() const {
+const string& Item::getSellerName() const {
 	return name_of_seller;
 }
 
