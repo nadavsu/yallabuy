@@ -38,7 +38,7 @@ account save in this order:
 
    (in same line)
    then if seller:
-   num_of_feedbacks
+   logsize of feedback
    FeedBacks[0]
    .
    .
@@ -80,30 +80,32 @@ ostream& operator<<(ostream& os, Manager& base) {
     }
 }
 // not completed
-/*ifstream& operator>>(ifstream& in, Manager& base) {
+ifstream& operator>>(ifstream& in, Manager& base) {
     if (typeid(in) == typeid(ifstream)) {
         string TypeName;
-        in >> base.account_arr.size() >> base.num_of_buyers >> base.num_of_sellers >>
-            base.num_of_buyersellers >> base.account_arr.capacity();
-        base.account_arr = new Account * [base.max_account];
-        for (int i = 0; i < base.curr_account; i++) {
+        int size_of_arr;
+        int capacity_account;
+        in >> size_of_arr >> base.num_of_buyers >> base.num_of_sellers >>
+            base.num_of_buyersellers>> capacity_account;
+        base.account_arr.resize(capacity_account);
+        for (int i = 0; i < size_of_arr; i++) {
             in >> TypeName;
-            if (strcmp(TypeName, typeid(Seller).name()) == 0) {
-                Seller* newtemp = dynamic_cast<Seller*>(temp);
-                os << newtemp;
+            if (TypeName.compare(typeid(Seller).name()) == 0) {
+                Seller* newtemp = new Seller(in);
+                base.account_arr.push_back(newtemp);
             }
-            else if (strcmp(TypeName, typeid(Buyer).name()) == 0) {
-                Buyer* newtemp = dynamic_cast<Buyer*>(temp);
-                os << newtemp;
+            else if (TypeName.compare(typeid(Buyer).name()) == 0) {
+                Buyer* newtemp = new Buyer(in);
+                base.account_arr.push_back(newtemp);
             }
-            else {
-                BuyerSeller* newtemp = dynamic_cast<BuyerSeller*>(temp);
-                os << newtemp;
+            else {//TypeName.compare(typeid(BuyerSeller).name())
+                BuyerSeller* newtemp = new BuyerSeller(in);
+                base.account_arr.push_back(newtemp);
             }
         }
         return in;
     }
-}*/
+}
 ///Getters------------------------------------------------------------------------
 int Manager::getNumOfAccounts() const {
     return account_arr.size();
@@ -151,7 +153,10 @@ bool Manager::login(const string& username, const string& password) {
 
 //A function which creates a new account.
 void Manager::addAccount(Account* temp) {
-
+    Account* new_account;
+    new_account = temp->clone();
+    account_arr.push_back(new_account);
+    /*                                                //check this
     const char* account_type;
     account_type = typeid(*temp).name();
     if (strcmp(account_type, typeid(Buyer).name()) == 0) {
@@ -173,6 +178,7 @@ void Manager::addAccount(Account* temp) {
         cout << "Error: didn't recognize account type, try entering a new account again." << endl;
 
     }
+     */
 }
 
 //TODO: can create an object function for the following functions.

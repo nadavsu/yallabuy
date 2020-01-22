@@ -1,4 +1,85 @@
-﻿  main.cpp
-C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(18,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
-C:\Users\lasri\source\repos\Amalasu\Buyer.h(27): message : see declaration of 'Buyer::toOs'
-  Ecommerce.vcxproj -> C:\Users\lasri\Source\Repos\Amalasu\x64\Debug\Ecommerce.exe
+﻿  Account.cpp
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(17,40): error C2600: 'Account::Account': cannot define a compiler-generated special member function (must be declared in the class first)
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(29,22): error C2440: 'delete': cannot convert from 'std::string' to 'void*'
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(29,14): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(30,22): error C2440: 'delete': cannot convert from 'std::string' to 'void*'
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(30,14): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(31,19): error C2440: 'delete': cannot convert from 'std::string' to 'void*'
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(31,14): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(32,19): error C2440: 'delete': cannot convert from 'std::string' to 'void*'
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(32,14): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\lasri\source\repos\Amalasu\Account.cpp(145,1): fatal error C1071: unexpected end of file found in comment
+  Address.cpp
+  Buyer.cpp
+  BuyerSeller.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
+  CUI.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
+C:\Users\lasri\source\repos\Amalasu\CUI.cpp(101,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\CUI.cpp(103,9): error C3861: 'getline': identifier not found
+  Date.cpp
+  Feedback.cpp
+  Item.cpp
+  ItemList.cpp
+  Manager.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(111,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(403,23): error C2039: 'max_account': is not a member of 'Manager'
+C:\Users\lasri\source\repos\Amalasu\Manager.h(19): message : see declaration of 'Manager'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(403,43): error C2039: 'max_account': is not a member of 'Manager'
+C:\Users\lasri\source\repos\Amalasu\Manager.h(19): message : see declaration of 'Manager'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(404,64): error C2039: 'max_account': is not a member of 'Manager'
+C:\Users\lasri\source\repos\Amalasu\Manager.h(19): message : see declaration of 'Manager'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(404,65): error C3078: array size must be specified in new expressions
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(405,43): error C2039: 'curr_account': is not a member of 'Manager'
+C:\Users\lasri\source\repos\Amalasu\Manager.h(19): message : see declaration of 'Manager'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(408,25): error C2440: 'delete': cannot convert from 'std::vector<Account *,std::allocator<Account *>>' to 'void*'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(408,14): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(409,34): error C2679: binary '=': no operator found which takes a right-hand operand of type 'Account **' (or there is no acceptable conversion)
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\vector(1176,13): message : could be 'std::vector<Account *,std::allocator<Account *>> &std::vector<Account *,std::allocator<Account *>>::operator =(std::initializer_list<_Ty>)'
+          with
+          [
+              _Ty=Account *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\vector(1168,13): message : or       'std::vector<Account *,std::allocator<Account *>> &std::vector<Account *,std::allocator<Account *>>::operator =(const std::vector<Account *,std::allocator<Account *>> &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\vector(665,13): message : or       'std::vector<Account *,std::allocator<Account *>> &std::vector<Account *,std::allocator<Account *>>::operator =(std::vector<Account *,std::allocator<Account *>> &&) noexcept(<expr>)'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(409,34): message : while trying to match the argument list '(std::vector<Account *,std::allocator<Account *>>, Account **)'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(411,1): warning C4138: '*/' found outside of comment
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(411,2): error C2059: syntax error: '/'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(415,28): error C2143: syntax error: missing ';' before '{'
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(415,28): error C2447: '{': missing function header (old-style formal list?)
+  Order.cpp
+  Seller.cpp
+  main.cpp
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
+C:\Users\lasri\source\repos\Amalasu\main.cpp(84,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(86,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(88,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(91,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(94,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(97,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(130,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(142,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(162,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(187,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(199,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(268,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(285,13): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(286,13): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(294,13): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(303,13): error C3861: 'getline': identifier not found
+  Generating Code...
+C:\Users\lasri\source\repos\Amalasu\Seller.cpp(46): warning C4715: 'Seller::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Seller.cpp(57): warning C4715: 'operator>>': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\ItemList.cpp(60): warning C4715: 'ItemList::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Feedback.cpp(41): warning C4715: 'Feedback::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Feedback.cpp(50): warning C4715: 'operator>>': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Date.cpp(36): warning C4715: 'Date::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Date.cpp(47): warning C4715: 'operator>>': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.cpp(42): warning C4715: 'BuyerSeller::operator=': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(44): warning C4715: 'operator>>': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Address.cpp(34): warning C4715: 'operator>>': not all control paths return a value

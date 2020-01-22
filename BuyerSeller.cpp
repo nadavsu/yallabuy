@@ -1,5 +1,9 @@
 #include"BuyerSeller.h"
 
+BuyerSeller::BuyerSeller(ifstream& os):Account(os),Seller(os),Buyer(os) {
+
+}
+
 BuyerSeller::BuyerSeller(const string&  username, const string&  password, const string&  fname, const string&  lname, Address& address): Account(username, password, fname, lname, address),
 Buyer(username, password, fname, lname, address), Seller(username, password, fname, lname, address) {
 

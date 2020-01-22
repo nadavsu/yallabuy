@@ -44,11 +44,12 @@ bool Buyer::operator>(const Buyer& other) const {
 }
 ifstream& operator>>(ifstream& in, Buyer& b) {
     if (typeid(in) == typeid(ifstream)) {
-        int seller_history_size = b.seller_history.size();
-        in >> (Account&)b;
-        in >> seller_history_size;
-        for (auto i : b.seller_history) {
-            in >> i;
+        //in >> (Account&)b;
+        int size;
+        in >> size;
+        b.seller_history.resize(size);
+        for (int i = 0; i < size; i++) {
+            in >> b.seller_history[i];
         }
         return in;
     }
@@ -166,7 +167,7 @@ void Buyer::makeNewSellerHistory(vector<string>& after_erase_dup) {
 
 void Buyer::deleteItemFromCart(const string& item_name) {
     auto item_itr = findItem(item_name);
-    if (item_itr != cart.end) {
+    if (item_itr != cart.end()) {
         total_price = total_price - ((*item_itr)->GetPrice() * (*item_itr)->GetQuantity());
         delete *item_itr;
         cart.erase(item_itr);

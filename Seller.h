@@ -13,13 +13,13 @@
 #include "ItemList.h"
 #include "Account.h"
 #include "CUI.h"
+#include "Array.h"
 using namespace std;
 
 class Seller : virtual public Account {
 protected:
-    Feedback**   feedbacks;
-    list<Item*>   stock_list;        //Linked list of ordered_items.
-    int          num_of_feedbacks;
+    Array<Feedback*>   feedbacks;
+    list<Item*>     stock_list;        //Linked list of ordered_items.
 
 public:
     enum ePasswordStrength {
@@ -41,9 +41,9 @@ public:
     void setItem(Item* seller_item);
 
 public:
-    Feedback** getFeedback()         const;
-    list<Item*> getStock()           const;
-    void printStock()                const;
+    Array<Feedback*> getFeedback()         const;
+    list<Item*> getStock()                 const;
+    void printStock()                      const;
 
     bool isEmptyStock()              const;
     Item* getItemToBuyer(const string& item_name, int quantity);
@@ -54,7 +54,7 @@ public:
     virtual Account* clone()         const override;
 private:
     list<Item*>::iterator getItem(const string& item_name);
-    void copyFeedback(const Seller& other);
+    void copyFeedback(Seller& other);
     //ePasswordStrength strengthChecker(const char* Password)    const;
 
     friend class Manager;
