@@ -18,21 +18,16 @@ public:
 
 		const Array& operator=(const Array& other);
 		const Array& operator+=(const T& newVal);
-		T operator[](int index);
-		int givelogsize();
-		int givephysize();
+		T operator[](int index) const;
+		int givelogsize() const;
+		int givephysize() const;
 		friend ostream& operator<<(ostream& os,const Array& arr) {
-			for (int i - 0; i < arr.logsize; i++) {
+			for (int i = 0; i < arr.logsize; i++) {
 				os << arr.arr[i] << arr.delimeter;
 				return os;
 			}
 		}
-		friend ostream& operator<<(ostream& os, const Array<Feedback*>& arr) { // check specialization
-			for (int i - 0; i < arr.logsize; i++) {
-				os << *arr.arr[i] << arr.delimeter;
-				return os;
-			}
-		}
+
 
 };
 
@@ -58,11 +53,6 @@ Array<T>::Array(const Array&& other) : arr(nullptr) {
 	this->physize = other.physize;
 	this->arr = other.arr;
 	other.arr = nullptr;
-}
-
-template<class T>
-Array<T>::~Array() {
-	delete[]arr;
 }
 
 template<class T>
@@ -98,20 +88,20 @@ const Array<T>& Array<T>::operator+=(const T& newVal) {
 	}
 }
 template<class T>
-T Array<T>::operator[](int index) {
+T Array<T>::operator[](int index) const {
 	return arr[index];
 }
 
 template<class T>
-int Array<T>::givelogsize() {
+int Array<T>::givelogsize() const {
 	return logsize;
 }
 template<class T>
-int Array<T>::givephysize() {
+int Array<T>::givephysize() const {
 	return physize;
 }
 
-// member function specialization
+/*// member function specialization
 template<> // works with and without template<> 
 const Array<Feedback*>& Array<Feedback*>::operator=(const Array& other)
 {
@@ -134,6 +124,5 @@ Array<Feedback*>::~Array() {
 		delete arr[i];
 	}
 	delete[]arr;
-}
-
+}*/
 #endif //ECOMMERCE_ARRAY_H

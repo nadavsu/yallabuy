@@ -33,7 +33,7 @@ ostream& operator<<(ostream& out, BuyerSeller& bs) {
 const BuyerSeller& BuyerSeller::operator=(const BuyerSeller& other) {
 	if (this != &other) {
 		Account::operator=(other);
-		Buyer::operator=(other);
+		//Buyer::operator=(other);
 		Seller::operator=(other);
 	}
 	else {
@@ -41,10 +41,15 @@ const BuyerSeller& BuyerSeller::operator=(const BuyerSeller& other) {
 	}
 }
 
-Account* BuyerSeller::clone() const {
-	return new BuyerSeller(*this);
+void BuyerSeller::toOs(ostream& out) const {
+    Buyer::toOs(out);
+    Seller::toOs(out);
 }
 
-const char *BuyerSeller::getType() const {
+Account* BuyerSeller::clone() const {
+    return new BuyerSeller(*this);
+}
+
+const string& BuyerSeller::getType() const {
 	return "BuyerSeller";
 }

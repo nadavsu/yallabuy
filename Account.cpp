@@ -10,26 +10,12 @@ Account::Account(const string& username, const string& password, const string& f
     lname(lname) {
 }
 
+Account::~Account() {
+
+}
+
 Account::Account(ifstream& in): address(in) {
     in >> *this;
-}
-
-Account::Account(const Account& other) : address(other.address) {
-    setUsername(other.username);
-    setPassword(other.password);
-    setFName(other.fname);
-    setLName(other.lname);
-}
-
-/*Account::Account(const Account& other) : address(other.address) {}              //TODO: Do we need to remove this?
-
-Account::Account(Account&& other) : address(std::move(other.address)) {}*/
-
-Account::~Account() {
-    delete[] username;
-    delete[] password;
-    delete[] fname;
-    delete[] lname;
 }
 
 ifstream& operator>>(ifstream& in, Account& base) {
@@ -63,10 +49,12 @@ ifstream& operator>>(ifstream& in, Account& base) {
         return *this;
     }
 }
+*/
+
 ostream& operator<<(ostream& os, Account& base) {
     if (typeid(os) == typeid(ofstream)) {
         const char* TypeName = typeid(base).name();
-        os << TypeName <<" "<< base.address.getCity << " " << base.address.getStreet() << " " 
+        os << TypeName <<" "<< base.address.getCity() << " " << base.address.getStreet() << " "
         << base.address.getHomeNumber() << " " << base.username << " " << base.password << " "
             << base.fname << " " << base.lname <<  endl;
     }

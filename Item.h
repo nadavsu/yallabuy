@@ -16,8 +16,8 @@ static constexpr int ITEM_MAX = 50;
 class Item {
 friend class Seller;
 friend class Buyer;
-friend class ItemList;
 friend class Manager;
+friend class ItemList;
 public:
 	enum eCategory{Electronics = 0, Home, Garden, Games};
 

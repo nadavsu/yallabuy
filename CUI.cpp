@@ -56,19 +56,20 @@ void printLine() {
 
 int printMainMenu() {
     int ans;
-    cout << "To register as a new account, press 1.\n";
-    cout << "To add feedback on a seller, press 2.\n";
-    cout << "To add a new item to your shop, press 3.\n";
-    cout << "To add a new item to your cart, press 4.\n";
-    cout << "To make a new order, press 5.\n";
-    cout << "To show all the buyers, press 6.\n";
-    cout << "To show all the seller, press 7.\n";
-    cout << "To get information about a specific item, press 8.\n";
-    cout << "To show all the Buyersellers, press 9.\n";
-    cout << "To show all the accounts, press 10.\n";
-    cout << "To test the operators overloading, press 11.\n";
-    cout << "To Save system, press 12.\n";
-    cout << "To exit, press 0\n";
+    printSubTitle("Select your option");
+    cout << "1. Register as a new account\n";
+    cout << "2. Add feedback on a seller\n";
+    cout << "3. Add a new item to your shop\n";
+    cout << "4. Add a new item to your cart\n";
+    cout << "5. Make a new order\n";
+    cout << "6. Show all the buyers\n";
+    cout << "7. Show all the seller\n";
+    cout << "8. Show all the Buyersellers\n";
+    cout << "9. Get information about a specific item\n";
+    cout << "10. Show all the accounts\n";
+    cout << "11. Test the operators overloading\n";
+    cout << "12. Save system, press 12\n";
+    cout << "0. Exit\n";
     printLine();
     cin >> ans;
     printLine();
@@ -78,18 +79,18 @@ int printMainMenu() {
 int printOperatorsMenu() {
     int ans;
     printSubTitle("Operators Menu");
-    cout << "To test the > operator, press 1.\n";
-    cout << "To test the << operator on a cart and items, press 2.\n";
-    cout << "To test the << operator on an account, press 3.\n";
-    cout << "To test the += operator, press 4.\n";
-    cout << "To quit this menu, press 0.\n";
+    cout << "1. Test the > operator\n";
+    cout << "2. Test the << operator on a cart and items\n";
+    cout << "3. Test the << operator on an account\n";
+    cout << "4. Test the += operator\n";
+    cout << "0. Quit this menu\n";
     printLine();
     cin >> ans;
     printLine();
     return ans;
 }
 
-void printLogin(Manager &manager, string& username, string& password) {
+void printLogin(Manager &manager, string& username, string& password, const string& type) {
     bool logged = true;
     emptyBuffer();
     printSubTitle("Login:");
@@ -101,7 +102,7 @@ void printLogin(Manager &manager, string& username, string& password) {
         getline(cin, username);
         cout << "Password: ";
         getline(cin, password);
-        logged = manager.login(username, password);
+        logged = manager.login(username, password, type);
     } while (!logged);
 }
 

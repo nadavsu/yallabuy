@@ -19,11 +19,9 @@
 class Manager {
 private:
 	vector<Account*> account_arr;
-	//int curr_account;           //TODO: change this to num_of_accounts?
 	int num_of_buyers;
 	int num_of_sellers;
 	int num_of_buyersellers;
-	//int max_account;
 
 public:
 	Manager();
@@ -40,7 +38,7 @@ public:
     int getNumOfBuyerSellers()  const;
     Account* getAccount(const string& username);
 
-    bool login(const string& username, const string& password);
+    bool login(const string& username, const string& password, const string& type);
 	void addAccount(Account* temp);
     void addFeedback(const Feedback& feedback, const string& seller_username);
 	void AddItem(const string&  seller_username, const Item& new_item);

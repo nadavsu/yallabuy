@@ -4,7 +4,7 @@
 #include "Buyer.h"
 #include "Seller.h"
 
-class BuyerSeller :public Seller, public Buyer
+class BuyerSeller : public Seller, public Buyer
 {
 public:
     BuyerSeller(ifstream& os);
@@ -17,7 +17,8 @@ public:
     friend ostream& operator<<(ostream& out, BuyerSeller& bs);
     friend ifstream& operator>>(ifstream& in, Seller& b);
     virtual Account* clone() const override;
-    virtual const char *getType() const;
+    virtual const string& getType() const;
+    void toOs(ostream& out) const override;
 };
 
 #endif // !_BUYERSELLER_H

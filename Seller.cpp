@@ -15,6 +15,9 @@ Seller::Seller(const string& username,const string& password, const string& fnam
 Seller::Seller(const Seller& other) : Account(other), stock_list(other.stock_list) , feedbacks(other.feedbacks){
    // this->feedbacks = new Feedback*[other.num_of_feedbacks];
     //copyFeedback(other);
+    for (auto item : other.stock_list) {
+        stock_list.push_back(new Item(*item));
+    }
 }
 
 Seller::Seller(Seller&& other) : Account(std::move(other)), stock_list(std::move(other.stock_list))/*, feedbacks(other.feedbacks)*/{
@@ -22,14 +25,17 @@ Seller::Seller(Seller&& other) : Account(std::move(other)), stock_list(std::move
  //   this->num_of_feedbacks  = other.num_of_feedbacks;
  //   other.feedbacks         = nullptr;
 }
-/*
+
 Seller::~Seller() {
-    for (int i = 0; i < num_of_feedbacks; i++) {
-        delete feedbacks[i];
+    auto item_itr = stock_list.begin();
+    while (item_itr != stock_list.end()) {
+        auto temp = item_itr;
+        ++temp;
+        delete *item_itr;
+        item_itr = temp;
     }
-    delete[] feedbacks;
 }
-*/
+
 const Seller& Seller::operator=(const Seller& other) {
     if (this != &other) {
         //delete[] feedbacks;
@@ -54,30 +60,48 @@ ifstream& operator>>(ifstream& in, Seller& s) {
 		return in;
 	}
 }
-ostream& operator<<(ostream& out,Seller& s) {
+
+/*ostream& operator<<(ostream& out,Seller& s) {
 	if (typeid(out) == typeid(ofstream)) {
 		out << (Account&)s;
 		out << s.feedbacks.givelogsize() << endl; // add if size_of_feedback == 0
 		for (int i = 0; i < s.feedbacks.givelogsize(); i++) {
 			out << s.feedbacks[i];
 		}
+	} else {
+        out << (Account&)s;
 	}
 	return out;
+}*/
+
+void Seller::toOs(ostream& out) const {
+    if (typeid(out) == typeid(ofstream)) {
+        out << feedbacks.givelogsize() << endl; // add if size_of_feedback == 0
+        for (int i = 0; i < feedbacks.givelogsize(); i++) {
+            out << feedbacks[i];
+        }
+    }
 }
 ///Getters and Setters------------------------------------------------------
 Array<Feedback*> Seller::getFeedback() const {
     return feedbacks;
 }
 
-ItemList Seller::getStock() const {
+list<Item*> Seller::getStock() const {
     return stock_list;
 }
 
-Item *Seller::getItem(const string& item_name) {
-    return stock_list.findItem(item_name);
+list<Item*>::iterator Seller::getItem(const string& item_name) {
+    auto item_itr = stock_list.begin();
+    for (; item_itr != stock_list.end(); ++item_itr) {
+        if((*item_itr)->GetName() == item_name) {
+            return item_itr;
+        }
+    }
+    return item_itr;
 }
 void Seller::setItem(Item* seller_item) {
-    stock_list.addToTail(seller_item);
+    stock_list.push_back(seller_item);
 }
 
 void Seller::setFeedback(const Feedback& buyers_feedback){ // accept item that feedback should have
@@ -105,35 +129,45 @@ void Seller::setFeedback(const Feedback& buyers_feedback){ // accept item that f
 
 ///Printing Functions-------------------------------------------------------
 void Seller::printStock() const {
-    cout << stock_list;
+    for (auto item : stock_list) {
+        cout << *item;
+    }
 }
 
 ///Stock and Item Functions-------------------------------------------------
 Item* Seller::getItemToBuyer(const string&  item_name,int quantity) { // check exist for sure
-    Item* item_to_buy = getItem(item_name);
-    Item* to_buyer;
-    to_buyer = new Item(*item_to_buy);
-    to_buyer->SetQuantity(quantity);
-    item_to_buy->reduceQuantity(quantity);
-    if (item_to_buy->GetQuantity() == 0 ) {
-        this->stock_list.deleteItem(item_name);
+    auto item_to_buy = getItem(item_name);
+    if(item_to_buy != stock_list.end()) {
+        Item *to_buyer;
+        to_buyer = new Item(*(*item_to_buy));              ///todo: check this
+        to_buyer->SetQuantity(quantity);
+        (*item_to_buy)->reduceQuantity(quantity);
+        if ((*item_to_buy)->GetQuantity() == 0) {
+            delete *item_to_buy;
+            this->stock_list.erase(item_to_buy);
+        }
+        return to_buyer;
+    } else {
+        cout << "Item not found!";
+        return nullptr;
     }
-    return to_buyer;
 }
 bool Seller::itemExist(const string&  item_name){
-    Item* item;
-    item = getItem(item_name);
-    return item != nullptr;
+    return (getItem(item_name) != stock_list.end());
 }
 
-bool Seller::quantityIsFine(const string&  item_name,int quantity) {
-    Item* item;
-    item = getItem(item_name);
-    return (quantity > 0 && quantity <= item->GetQuantity());
+bool Seller::quantityIsFine(const string& item_name, int quantity) {
+    auto item = getItem(item_name);
+    if (item != stock_list.end()) {
+        return (quantity > 0 && quantity <= (*item)->GetQuantity());
+    } else {
+        cout << "Item not found!";
+        return false;
+    }
 }
 
-bool Seller::isEmptyStock() {
-    return stock_list.isEmpty();
+bool Seller::isEmptyStock() const {
+    return stock_list.empty();
 }
 
 /*
@@ -211,6 +245,6 @@ Account* Seller::clone() const {
 	return new Seller(*this);
 }
 
-const char *Seller::getType() const {
+const string& Seller::getType() const {
 	return "Seller";
 }

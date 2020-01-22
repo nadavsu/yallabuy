@@ -393,6 +393,33 @@ Manager.cpp.s:
 	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Manager.cpp.s
 .PHONY : Manager.cpp.s
 
+OFunctions.o: OFunctions.cpp.o
+
+.PHONY : OFunctions.o
+
+# target to build an object file
+OFunctions.cpp.o:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/OFunctions.cpp.o
+.PHONY : OFunctions.cpp.o
+
+OFunctions.i: OFunctions.cpp.i
+
+.PHONY : OFunctions.i
+
+# target to preprocess a source file
+OFunctions.cpp.i:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/OFunctions.cpp.i
+.PHONY : OFunctions.cpp.i
+
+OFunctions.s: OFunctions.cpp.s
+
+.PHONY : OFunctions.s
+
+# target to generate assembly for a file
+OFunctions.cpp.s:
+	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/OFunctions.cpp.s
+.PHONY : OFunctions.cpp.s
+
 Order.o: Order.cpp.o
 
 .PHONY : Order.o
@@ -513,6 +540,9 @@ help:
 	@echo "... Manager.o"
 	@echo "... Manager.i"
 	@echo "... Manager.s"
+	@echo "... OFunctions.o"
+	@echo "... OFunctions.i"
+	@echo "... OFunctions.s"
 	@echo "... Order.o"
 	@echo "... Order.i"
 	@echo "... Order.s"

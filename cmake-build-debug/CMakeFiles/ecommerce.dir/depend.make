@@ -4,8 +4,6 @@
 CMakeFiles/ecommerce.dir/Account.cpp.o: ../Account.cpp
 CMakeFiles/ecommerce.dir/Account.cpp.o: ../Account.h
 CMakeFiles/ecommerce.dir/Account.cpp.o: ../Address.h
-CMakeFiles/ecommerce.dir/Account.cpp.o: ../Item.h
-CMakeFiles/ecommerce.dir/Account.cpp.o: ../ItemList.h
 
 CMakeFiles/ecommerce.dir/Address.cpp.o: ../Address.cpp
 CMakeFiles/ecommerce.dir/Address.cpp.o: ../Address.h
@@ -20,6 +18,7 @@ CMakeFiles/ecommerce.dir/Buyer.cpp.o: ../ItemList.h
 
 CMakeFiles/ecommerce.dir/BuyerSeller.cpp.o: ../Account.h
 CMakeFiles/ecommerce.dir/BuyerSeller.cpp.o: ../Address.h
+CMakeFiles/ecommerce.dir/BuyerSeller.cpp.o: ../Array.h
 CMakeFiles/ecommerce.dir/BuyerSeller.cpp.o: ../Buyer.h
 CMakeFiles/ecommerce.dir/BuyerSeller.cpp.o: ../BuyerSeller.cpp
 CMakeFiles/ecommerce.dir/BuyerSeller.cpp.o: ../BuyerSeller.h
@@ -32,6 +31,7 @@ CMakeFiles/ecommerce.dir/BuyerSeller.cpp.o: ../Seller.h
 
 CMakeFiles/ecommerce.dir/CUI.cpp.o: ../Account.h
 CMakeFiles/ecommerce.dir/CUI.cpp.o: ../Address.h
+CMakeFiles/ecommerce.dir/CUI.cpp.o: ../Array.h
 CMakeFiles/ecommerce.dir/CUI.cpp.o: ../Buyer.h
 CMakeFiles/ecommerce.dir/CUI.cpp.o: ../BuyerSeller.h
 CMakeFiles/ecommerce.dir/CUI.cpp.o: ../CUI.cpp
@@ -44,20 +44,8 @@ CMakeFiles/ecommerce.dir/CUI.cpp.o: ../Manager.h
 CMakeFiles/ecommerce.dir/CUI.cpp.o: ../Order.h
 CMakeFiles/ecommerce.dir/CUI.cpp.o: ../Seller.h
 
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../Account.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../Address.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../Buyer.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../BuyerSeller.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../CUI.h
 CMakeFiles/ecommerce.dir/Date.cpp.o: ../Date.cpp
 CMakeFiles/ecommerce.dir/Date.cpp.o: ../Date.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../Feedback.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../Item.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../ItemList.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../MainHeader.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../Manager.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../Order.h
-CMakeFiles/ecommerce.dir/Date.cpp.o: ../Seller.h
 
 CMakeFiles/ecommerce.dir/Feedback.cpp.o: ../Date.h
 CMakeFiles/ecommerce.dir/Feedback.cpp.o: ../Feedback.cpp
@@ -72,6 +60,7 @@ CMakeFiles/ecommerce.dir/ItemList.cpp.o: ../ItemList.h
 
 CMakeFiles/ecommerce.dir/Manager.cpp.o: ../Account.h
 CMakeFiles/ecommerce.dir/Manager.cpp.o: ../Address.h
+CMakeFiles/ecommerce.dir/Manager.cpp.o: ../Array.h
 CMakeFiles/ecommerce.dir/Manager.cpp.o: ../Buyer.h
 CMakeFiles/ecommerce.dir/Manager.cpp.o: ../BuyerSeller.h
 CMakeFiles/ecommerce.dir/Manager.cpp.o: ../CUI.h
@@ -84,6 +73,9 @@ CMakeFiles/ecommerce.dir/Manager.cpp.o: ../Manager.h
 CMakeFiles/ecommerce.dir/Manager.cpp.o: ../Order.h
 CMakeFiles/ecommerce.dir/Manager.cpp.o: ../Seller.h
 
+CMakeFiles/ecommerce.dir/OFunctions.cpp.o: ../OFunctions.cpp
+CMakeFiles/ecommerce.dir/OFunctions.cpp.o: ../OFunctions.h
+
 CMakeFiles/ecommerce.dir/Order.cpp.o: ../Item.h
 CMakeFiles/ecommerce.dir/Order.cpp.o: ../ItemList.h
 CMakeFiles/ecommerce.dir/Order.cpp.o: ../Order.cpp
@@ -91,7 +83,7 @@ CMakeFiles/ecommerce.dir/Order.cpp.o: ../Order.h
 
 CMakeFiles/ecommerce.dir/Seller.cpp.o: ../Account.h
 CMakeFiles/ecommerce.dir/Seller.cpp.o: ../Address.h
-CMakeFiles/ecommerce.dir/Seller.cpp.o: ../Buyer.h
+CMakeFiles/ecommerce.dir/Seller.cpp.o: ../Array.h
 CMakeFiles/ecommerce.dir/Seller.cpp.o: ../CUI.h
 CMakeFiles/ecommerce.dir/Seller.cpp.o: ../Date.h
 CMakeFiles/ecommerce.dir/Seller.cpp.o: ../Feedback.h
@@ -102,6 +94,7 @@ CMakeFiles/ecommerce.dir/Seller.cpp.o: ../Seller.h
 
 CMakeFiles/ecommerce.dir/main.cpp.o: ../Account.h
 CMakeFiles/ecommerce.dir/main.cpp.o: ../Address.h
+CMakeFiles/ecommerce.dir/main.cpp.o: ../Array.h
 CMakeFiles/ecommerce.dir/main.cpp.o: ../Buyer.h
 CMakeFiles/ecommerce.dir/main.cpp.o: ../BuyerSeller.h
 CMakeFiles/ecommerce.dir/main.cpp.o: ../CUI.h
