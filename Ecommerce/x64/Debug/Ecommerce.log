@@ -9,21 +9,72 @@ C:\Users\lasri\source\repos\Amalasu\Account.cpp(31,14): message : No user-define
 C:\Users\lasri\source\repos\Amalasu\Account.cpp(32,19): error C2440: 'delete': cannot convert from 'std::string' to 'void*'
 C:\Users\lasri\source\repos\Amalasu\Account.cpp(32,14): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
 C:\Users\lasri\source\repos\Amalasu\Account.cpp(145,1): fatal error C1071: unexpected end of file found in comment
-  Address.cpp
-  Buyer.cpp
   BuyerSeller.cpp
+C:\Users\lasri\source\repos\Amalasu\Array.h(25,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(37): message : see reference to class template instantiation 'Array<T>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(31,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(64,12): error C2995: 'Array<T>::~Array(void)': function template has already been defined
+C:\Users\lasri\source\repos\Amalasu\Array.h(17): message : see declaration of 'Array<T>::~Array'
+C:\Users\lasri\source\repos\Amalasu\Array.h(30,1): error C2084: function 'std::ostream &Array<Feedback *>::operator <<(std::ostream &,const Array<Feedback *> &)' already has a body
+C:\Users\lasri\source\repos\Amalasu\Array.h(24): message : see previous definition of '<<'
+C:\Users\lasri\source\repos\Amalasu\Array.h(116): message : see reference to class template instantiation 'Array<Feedback *>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(132,1): error C2447: '{': missing function header (old-style formal list?)
 C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
 C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
   CUI.cpp
+C:\Users\lasri\source\repos\Amalasu\Array.h(25,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(37): message : see reference to class template instantiation 'Array<T>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(31,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(64,12): error C2995: 'Array<T>::~Array(void)': function template has already been defined
+C:\Users\lasri\source\repos\Amalasu\Array.h(17): message : see declaration of 'Array<T>::~Array'
+C:\Users\lasri\source\repos\Amalasu\Array.h(30,1): error C2084: function 'std::ostream &Array<Feedback *>::operator <<(std::ostream &,const Array<Feedback *> &)' already has a body
+C:\Users\lasri\source\repos\Amalasu\Array.h(24): message : see previous definition of '<<'
+C:\Users\lasri\source\repos\Amalasu\Array.h(116): message : see reference to class template instantiation 'Array<Feedback *>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(132,1): error C2447: '{': missing function header (old-style formal list?)
 C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
 C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
 C:\Users\lasri\source\repos\Amalasu\CUI.cpp(101,9): error C3861: 'getline': identifier not found
 C:\Users\lasri\source\repos\Amalasu\CUI.cpp(103,9): error C3861: 'getline': identifier not found
   Date.cpp
   Feedback.cpp
-  Item.cpp
-  ItemList.cpp
+  main.cpp
+C:\Users\lasri\source\repos\Amalasu\Array.h(25,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(37): message : see reference to class template instantiation 'Array<T>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(31,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(64,12): error C2995: 'Array<T>::~Array(void)': function template has already been defined
+C:\Users\lasri\source\repos\Amalasu\Array.h(17): message : see declaration of 'Array<T>::~Array'
+C:\Users\lasri\source\repos\Amalasu\Array.h(30,1): error C2084: function 'std::ostream &Array<Feedback *>::operator <<(std::ostream &,const Array<Feedback *> &)' already has a body
+C:\Users\lasri\source\repos\Amalasu\Array.h(24): message : see previous definition of '<<'
+C:\Users\lasri\source\repos\Amalasu\Array.h(116): message : see reference to class template instantiation 'Array<Feedback *>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(132,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
+C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
+C:\Users\lasri\source\repos\Amalasu\main.cpp(84,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(86,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(88,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(91,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(94,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(97,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(130,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(142,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(162,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(187,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(199,9): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(268,5): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(285,13): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(286,13): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(294,13): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\main.cpp(303,13): error C3861: 'getline': identifier not found
   Manager.cpp
+C:\Users\lasri\source\repos\Amalasu\Array.h(25,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(37): message : see reference to class template instantiation 'Array<T>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(31,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(64,12): error C2995: 'Array<T>::~Array(void)': function template has already been defined
+C:\Users\lasri\source\repos\Amalasu\Array.h(17): message : see declaration of 'Array<T>::~Array'
+C:\Users\lasri\source\repos\Amalasu\Array.h(30,1): error C2084: function 'std::ostream &Array<Feedback *>::operator <<(std::ostream &,const Array<Feedback *> &)' already has a body
+C:\Users\lasri\source\repos\Amalasu\Array.h(24): message : see previous definition of '<<'
+C:\Users\lasri\source\repos\Amalasu\Array.h(116): message : see reference to class template instantiation 'Array<Feedback *>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(132,1): error C2447: '{': missing function header (old-style formal list?)
 C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
 C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
 C:\Users\lasri\source\repos\Amalasu\Manager.cpp(111,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
@@ -53,33 +104,18 @@ C:\Users\lasri\source\repos\Amalasu\Manager.cpp(415,28): error C2143: syntax err
 C:\Users\lasri\source\repos\Amalasu\Manager.cpp(415,28): error C2447: '{': missing function header (old-style formal list?)
   Order.cpp
   Seller.cpp
-  main.cpp
-C:\Users\lasri\source\repos\Amalasu\BuyerSeller.h(21,1): warning C4250: 'BuyerSeller': inherits 'Buyer::Buyer::toOs' via dominance
-C:\Users\lasri\source\repos\Amalasu\Buyer.h(32): message : see declaration of 'Buyer::toOs'
-C:\Users\lasri\source\repos\Amalasu\main.cpp(84,5): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(86,5): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(88,5): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(91,9): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(94,5): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(97,5): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(130,9): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(142,5): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(162,9): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(187,9): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(199,9): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(268,5): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(285,13): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(286,13): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(294,13): error C3861: 'getline': identifier not found
-C:\Users\lasri\source\repos\Amalasu\main.cpp(303,13): error C3861: 'getline': identifier not found
+C:\Users\lasri\source\repos\Amalasu\Array.h(25,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(37): message : see reference to class template instantiation 'Array<T>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(31,13): error C2760: syntax error: unexpected token 'identifier', expected 'expression'
+C:\Users\lasri\source\repos\Amalasu\Array.h(64,12): error C2995: 'Array<T>::~Array(void)': function template has already been defined
+C:\Users\lasri\source\repos\Amalasu\Array.h(17): message : see declaration of 'Array<T>::~Array'
+C:\Users\lasri\source\repos\Amalasu\Array.h(30,1): error C2084: function 'std::ostream &Array<Feedback *>::operator <<(std::ostream &,const Array<Feedback *> &)' already has a body
+C:\Users\lasri\source\repos\Amalasu\Array.h(24): message : see previous definition of '<<'
+C:\Users\lasri\source\repos\Amalasu\Array.h(116): message : see reference to class template instantiation 'Array<Feedback *>' being compiled
+C:\Users\lasri\source\repos\Amalasu\Array.h(132,1): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\lasri\source\repos\Amalasu\Seller.cpp(11,194): warning C4305: 'argument': truncation from 'int' to 'char'
+C:\Users\lasri\source\repos\Amalasu\Seller.cpp(11,189): warning C4309: 'argument': truncation of constant value
   Generating Code...
-C:\Users\lasri\source\repos\Amalasu\Seller.cpp(46): warning C4715: 'Seller::operator=': not all control paths return a value
-C:\Users\lasri\source\repos\Amalasu\Seller.cpp(57): warning C4715: 'operator>>': not all control paths return a value
-C:\Users\lasri\source\repos\Amalasu\ItemList.cpp(60): warning C4715: 'ItemList::operator=': not all control paths return a value
 C:\Users\lasri\source\repos\Amalasu\Feedback.cpp(41): warning C4715: 'Feedback::operator=': not all control paths return a value
-C:\Users\lasri\source\repos\Amalasu\Feedback.cpp(50): warning C4715: 'operator>>': not all control paths return a value
-C:\Users\lasri\source\repos\Amalasu\Date.cpp(36): warning C4715: 'Date::operator=': not all control paths return a value
 C:\Users\lasri\source\repos\Amalasu\Date.cpp(47): warning C4715: 'operator>>': not all control paths return a value
-C:\Users\lasri\source\repos\Amalasu\BuyerSeller.cpp(42): warning C4715: 'BuyerSeller::operator=': not all control paths return a value
-C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(44): warning C4715: 'operator>>': not all control paths return a value
-C:\Users\lasri\source\repos\Amalasu\Address.cpp(34): warning C4715: 'operator>>': not all control paths return a value
+C:\Users\lasri\source\repos\Amalasu\Date.cpp(36): warning C4715: 'Date::operator=': not all control paths return a value

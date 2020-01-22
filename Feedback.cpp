@@ -52,6 +52,12 @@ ostream& operator<<(ostream& out, Feedback& f) {
     if (typeid(out) == typeid(ofstream)) {
         out << f.date << f.username << " " << f.comment<< endl;
     }
+    else {
+        out << "Username: " << f.username << endl;
+        out << "Date: " << f.date << endl;
+        out << "Comment: " << f.comment << endl;
+        f.toOs(out);
+    }
     return out;
 }
 

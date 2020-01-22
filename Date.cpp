@@ -49,6 +49,12 @@ ostream& operator<<(ostream& out, Date& d) {
     if (typeid(out) == typeid(ofstream)) {
         out << d.year <<" "<< d.month <<" "<< d.day<<" ";
     }
+    else {
+        out << "Year: " << d.year << endl;
+        out << "Month: " << d.month << endl;
+        out << "Day: " << d.day << endl;
+        d.toOs(out);
+    }
     return out;
 }
 Date::Date(const Date&& other) {

@@ -27,7 +27,12 @@ public:
 				return os;
 			}
 		}
-	
+		friend ostream& operator<<(ostream& os, const Array<Feedback*>& arr) { // check specialization
+			for (int i - 0; i < arr.logsize; i++) {
+				os << *arr.arr[i] << arr.delimeter;
+				return os;
+			}
+		}
 
 };
 
@@ -130,4 +135,5 @@ Array<Feedback*>::~Array() {
 	}
 	delete[]arr;
 }
+
 #endif //ECOMMERCE_ARRAY_H
