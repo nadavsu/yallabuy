@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <string>
 using namespace std;
 #include "CUI.h"
 #include "Manager.h"

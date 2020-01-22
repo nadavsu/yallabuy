@@ -101,8 +101,5 @@
     <ClInclude Include="..\Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Array2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

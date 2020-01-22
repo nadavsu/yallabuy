@@ -57,6 +57,9 @@ ostream& operator<<(ostream& out, Date& d) {
     }
     return out;
 }
+void Date::toOs(ostream& os) const {
+
+}
 Date::Date(const Date&& other) {
     this->day = other.day;
     this->month = other.month;

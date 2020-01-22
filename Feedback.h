@@ -8,7 +8,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Date.h"
 #include <fstream>
-#include <string.h>
+#include <string>
 
 static constexpr int COMMENT_MAX_LEN = 200;
 
@@ -38,6 +38,7 @@ public:
     const Feedback& operator=(const Feedback& other);
     friend ifstream& operator>>(ifstream& in, Feedback& f);
     friend ostream& operator<<(ostream& os, Feedback& f);
+    virtual void toOs(ostream& os) const;
 };
 
 

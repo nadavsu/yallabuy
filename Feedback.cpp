@@ -60,7 +60,9 @@ ostream& operator<<(ostream& out, Feedback& f) {
     }
     return out;
 }
+void Feedback::toOs(ostream& os) const {
 
+}
 void Feedback::setUsername(const string& new_username) {
     username = new_username;
 }

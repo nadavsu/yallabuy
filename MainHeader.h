@@ -2,6 +2,7 @@
 #define MAINHEADER_H
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include<string>
 #include "Account.h"
 #include "Buyer.h"
 #include "Address.h"

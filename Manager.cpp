@@ -78,6 +78,7 @@ ostream& operator<<(ostream& os, Manager& base) {
             }
         }
     }
+    return os;
 }
 // not completed
 ifstream& operator>>(ifstream& in, Manager& base) {

@@ -14,9 +14,9 @@ public:
 		Array(int Bsize = 10, char delimeter = ' ');
 		Array(const Array& other);
 		Array(const Array&& other);
-		~Array();
+		inline ~Array();
 
-		const Array& operator=(const Array& other);
+		inline const Array& operator=(const Array& other);
 		const Array& operator+=(const T& newVal);
 		T operator[](int index) const;
 		int givelogsize() const;
@@ -86,6 +86,7 @@ const Array<T>& Array<T>::operator+=(const T& newVal) {
 		delete[]arr;
 		arr = newarr;
 	}
+	return *this;
 }
 template<class T>
 T Array<T>::operator[](int index) const {
@@ -101,9 +102,9 @@ int Array<T>::givephysize() const {
 	return physize;
 }
 
-/*// member function specialization
+// member function specialization
 template<> // works with and without template<> 
-const Array<Feedback*>& Array<Feedback*>::operator=(const Array& other)
+const Array<Feedback*>& Array<Feedback*>::operator=(const Array<Feedback*>& other)
 {
 	if (this != &other) {
 		delete[]arr;
@@ -124,5 +125,6 @@ Array<Feedback*>::~Array() {
 		delete arr[i];
 	}
 	delete[]arr;
-}*/
+}
+
 #endif //ECOMMERCE_ARRAY_H

@@ -81,7 +81,6 @@ void newAccount(Manager& admin) {
         return;
     }
     cout << "First Name: ";                                 //Taking info from the user.
-    cin.getline(&trash, 1);
     getline(cin, f_name);
     cout << "Last Name: ";
     getline(cin, l_name);

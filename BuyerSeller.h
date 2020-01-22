@@ -3,6 +3,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Buyer.h"
 #include "Seller.h"
+#include "Array.h"
 
 class BuyerSeller : public Seller, public Buyer
 {
