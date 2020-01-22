@@ -37,7 +37,7 @@ public:
     ~Feedback();
     const Feedback& operator=(const Feedback& other);
     friend ifstream& operator>>(ifstream& in, Feedback& f);
-
+    friend ostream& operator<<(ostream& os, Feedback& f);
 };
 
 

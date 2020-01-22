@@ -45,8 +45,14 @@ ifstream& operator>>(ifstream& in, Feedback& f) {
         in >> f.username;
         in.seekg(1, ios::cur); // skip space
         in >> f.comment;
-        return in;
     }
+    return in;
+}
+ostream& operator<<(ostream& out, Feedback& f) {
+    if (typeid(out) == typeid(ofstream)) {
+        out << f.date << f.username << " " << f.comment<< endl;
+    }
+    return out;
 }
 
 void Feedback::setUsername(const string& new_username) {

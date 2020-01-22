@@ -8,37 +8,35 @@
 Seller::Seller(ifstream& os):Account(os) {
 	os >> *this;
 }
-Seller::Seller(const string& username,const string& password, const string& fname, const string& lname, Address& address) : Account(username, password, fname, lname, address) {
-    this->feedbacks = nullptr;
-    this->num_of_feedbacks = 0;
+Seller::Seller(const string& username,const string& password, const string& fname, const string& lname, Address& address) : Account(username, password, fname, lname, address),feedbacks(10,'/n'){
+
 }
 
-Seller::Seller(const Seller& other) : Account(other), stock_list(other.stock_list) {
-    this->feedbacks = new Feedback*[other.num_of_feedbacks];
-    num_of_feedbacks = other.num_of_feedbacks;
-    copyFeedback(other);
+Seller::Seller(const Seller& other) : Account(other), stock_list(other.stock_list) , feedbacks(other.feedbacks){
+   // this->feedbacks = new Feedback*[other.num_of_feedbacks];
+    //copyFeedback(other);
 }
 
-Seller::Seller(Seller&& other) : Account(std::move(other)), stock_list(std::move(other.stock_list)) {
+Seller::Seller(Seller&& other) : Account(std::move(other)), stock_list(std::move(other.stock_list))/*, feedbacks(other.feedbacks)*/{
     this->feedbacks         = other.feedbacks;
-    this->num_of_feedbacks  = other.num_of_feedbacks;
-    other.feedbacks         = nullptr;
+ //   this->num_of_feedbacks  = other.num_of_feedbacks;
+ //   other.feedbacks         = nullptr;
 }
-
+/*
 Seller::~Seller() {
     for (int i = 0; i < num_of_feedbacks; i++) {
         delete feedbacks[i];
     }
     delete[] feedbacks;
 }
-
+*/
 const Seller& Seller::operator=(const Seller& other) {
     if (this != &other) {
-        delete[] feedbacks;
-        copyFeedback(other);
+        //delete[] feedbacks;
+        //copyFeedback(other);
+		feedbacks        = other.feedbacks;
         address          = other.address;
         stock_list       = other.stock_list;
-        num_of_feedbacks = other.num_of_feedbacks;
     }
     else {
         return *this;
@@ -47,28 +45,27 @@ const Seller& Seller::operator=(const Seller& other) {
 ifstream& operator>>(ifstream& in, Seller& s) {
 	if (typeid(in) == typeid(ifstream)) {
 		//in >> (Account&)s;
-		in >> s.num_of_feedbacks; // add if size_of_feedback == 0
-		s.feedbacks = new Feedback*[s.num_of_feedbacks];
-		for (int i = 0; i < s.num_of_feedbacks; i++) {
-			s.feedbacks[i] = new Feedback(in);
+		int size_of_feedbacks;
+		in >> size_of_feedbacks; // add if size_of_feedback == 0
+		//s.feedbacks = new Feedback*[s.num_of_feedbacks];
+		for (int i = 0; i < size_of_feedbacks; i++) {
+			s.feedbacks += new Feedback(in);// check this
 		}
 		return in;
 	}
 }
-ostream& operator<<(ostream& out, Seller& s) {
+ostream& operator<<(ostream& out,Seller& s) {
 	if (typeid(out) == typeid(ofstream)) {
 		out << (Account&)s;
-		out << s.num_of_feedbacks << endl; // add if size_of_feedback == 0
-		for (int i = 0; i < s.num_of_feedbacks; i++) {
-			out << s.feedbacks[i]->getDate().getYear() << " " <<
-				s.feedbacks[i]->getDate().getMonth() << " " << s.feedbacks[i]->getDate().getDay()<<" "
-				<<s.feedbacks[i]->getUsername() << " "<< s.feedbacks[i]->getComment() << endl;
+		out << s.feedbacks.givelogsize() << endl; // add if size_of_feedback == 0
+		for (int i = 0; i < s.feedbacks.givelogsize(); i++) {
+			out << s.feedbacks[i];
 		}
 	}
 	return out;
 }
 ///Getters and Setters------------------------------------------------------
-Feedback **Seller::getFeedback() const {
+Array<Feedback*> Seller::getFeedback() const {
     return feedbacks;
 }
 
@@ -85,6 +82,8 @@ void Seller::setItem(Item* seller_item) {
 
 void Seller::setFeedback(const Feedback& buyers_feedback){ // accept item that feedback should have
     Feedback* new_feed = new Feedback(buyers_feedback);
+	this->feedbacks += new_feed;
+	/*
     Feedback** new_feedback = new Feedback*[(num_of_feedbacks)+1];
     for (int i = 0; i < num_of_feedbacks; i++) {
         new_feedback[i] = this->feedbacks[i];
@@ -92,14 +91,17 @@ void Seller::setFeedback(const Feedback& buyers_feedback){ // accept item that f
     new_feedback[num_of_feedbacks++] = new_feed;
     delete[] this->feedbacks;
     this->feedbacks = new_feedback;
+	*/
 }
 
 ///Feedback Functions-------------------------------------------------------
-void Seller::copyFeedback(const Seller& other) {
+/*void Seller::copyFeedback(Seller& other) {
     for(int i = 0; i < other.num_of_feedbacks; ++i) {
-        feedbacks[i] = new Feedback(other.feedbacks[i][0]);
+		Feedback* new_feed = new Feedback(*other.feedbacks[i]);
+		feedbacks += new_feed;
     }
 }
+*/
 
 ///Printing Functions-------------------------------------------------------
 void Seller::printStock() const {

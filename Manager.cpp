@@ -38,7 +38,7 @@ account save in this order:
 
    (in same line)
    then if seller:
-   num_of_feedbacks
+   logsize of feedback
    FeedBacks[0]
    .
    .

@@ -17,6 +17,7 @@ public:
 
 		const Array& operator=(const Array& other);
 		const Array& operator+=(const T& newVal);
+		T operator[](int index);
 		friend ostream& operator<<(ostream& os,const Array& arr) {
 			for (int i - 0; i < arr.logsize; i++) {
 				os << arr.arr[i] << arr.delimeter;
@@ -73,4 +74,10 @@ const Array<T>& Array<T>::operator+=(const T& newVal) {
 		arr = newarr;
 	}
 }
+
+template<class T>
+T Array<T>::operator[](int index) {
+	return arr[index];
+}
+
 #endif //ECOMMERCE_ARRAY_H

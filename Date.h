@@ -22,6 +22,7 @@ public:
 	Date(const Date&& other);
 	const Date& operator=(const Date& other);
 	friend ifstream& operator>>(ifstream& in, Date& d);
+	friend ostream& operator<<(ostream& out, Date& d);
 	~Date() = default;
 
 	int getYear()   const;

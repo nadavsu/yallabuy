@@ -19,7 +19,6 @@ class Seller : virtual public Account {
 protected:
     Array<Feedback*>   feedbacks;
     ItemList     stock_list;        //Linked list of ordered_items.
-    int          num_of_feedbacks;
 
 public:
     enum ePasswordStrength {
@@ -32,7 +31,7 @@ public:
     Seller(const string& username, const string& password, const string& fname, const string& lname, Address& address);
     Seller(const Seller& other); // dont want anyone to copy check what to do
     Seller(Seller&& other);
-    virtual ~Seller();
+    virtual ~Seller() = default;
 
     const Seller& operator=(const Seller& other);
     friend ifstream& operator>>(ifstream& in, Seller& s);
@@ -41,7 +40,7 @@ public:
     void setItem(Item* seller_item);
 
 public:
-    Feedback** getFeedback()         const;
+    Array<Feedback*> getFeedback()         const;
     ItemList getStock()              const;
     void printStock()                const;
 
@@ -53,7 +52,7 @@ public:
     virtual const char *getType() const;
 private:
     Item* getItem(const string& item_name);
-    void copyFeedback(const Seller& other);
+    void copyFeedback(Seller& other);
     //ePasswordStrength strengthChecker(const char* Password)    const;
 
     friend class Manager;
