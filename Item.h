@@ -17,6 +17,7 @@ class Item {
 friend class Seller;
 friend class Buyer;
 friend class Manager;
+friend class ItemList;
 public:
 	enum eCategory{Electronics = 0, Home, Garden, Games};
 

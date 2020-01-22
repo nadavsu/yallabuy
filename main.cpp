@@ -27,9 +27,9 @@ int main() {
         } else if (ans == 7) {
             manager.printSellers();
         }else if (ans == 8) {
-            getItemInfo(manager);
-        }else if (ans == 9) {
             manager.printBuyerSellers();
+        }else if (ans == 9) {
+            getItemInfo(manager);
         }else if (ans == 10) {
             manager.printAccount();
         } else if (ans == 11) {
@@ -43,6 +43,7 @@ int main() {
             if (c == 'Y' || c == 'y') {
                 cout << "Thank you for shopping!\n";
                 printLine();
+                return 0;
             }
         } else {
             cout << "Your input is invalid, please try again.\n";
@@ -61,9 +62,9 @@ void newAccount(Manager& admin) {
     Account* temp;
 
     cout << "What type of user do you want to open?" << endl;
-    cout << "To register as a new buyer, press 1."<< endl;
-    cout << "To register as a new seller, press 2."<< endl;
-    cout << "To register as a new buyer/seller, press 3." << endl;
+    cout << "1. Register as a new buyer"<< endl;
+    cout << "2. Register as a new seller"<< endl;
+    cout << "3. Register as a new buyer/seller" << endl;
     cin >> account_type;
 
     if (account_type == 1) {                                     //Choosing account type to create.
@@ -93,7 +94,6 @@ void newAccount(Manager& admin) {
     cout << "City: ";
     getline(cin, city);
     cout << "Street: ";
-    cin.getline(&trash, 1);
     getline(cin, street);
     cout << "House Number: ";
     cin >> house_number;
@@ -123,7 +123,7 @@ void makeFeedback(Manager& admin) {
     char cont ;
 
     printTitle("New Feedback");
-    printLogin(admin, buyer_username, password);            //Logging in.
+    printLogin(admin, buyer_username, password, "Buyer");            //Logging in.
     admin.printBuyerSellerHistory(buyer_username);
     do {
         cout << "Please enter the name of the seller you want to give feedback to: "<<endl;       //Checking if the user bought from the seller.
@@ -151,7 +151,7 @@ void makeItem(Manager &admin) {
     char ans;
 
     printTitle("Add a new item to stock");
-    printLogin(admin, seller_username, password);
+    printLogin(admin, seller_username, password, "Seller");
     do {                                                            //Taking in information until the user says stop.
         string name;
         char trash;
@@ -180,7 +180,7 @@ void addToCart(Manager &admin) {
     int quantity;
 
     printTitle("Add to Cart");
-    printLogin(admin, buyer_username, password);
+    printLogin(admin, buyer_username, password, "Buyer");
     admin.printSellers();                             //Printing all available sellers you can buy from.
     do {
         cout << "Please enter the seller's username you want to buy from:\n";   //Letting the user choose a seller.
@@ -215,7 +215,7 @@ void MakeOrderFromCart(Manager &admin) {
     int quantity;
 
     printTitle("Make Order");
-    printLogin(admin, buyer_username, password);
+    printLogin(admin, buyer_username, password, "Buyer");
     printSubTitle("Choose from your cart:");
 
     if(admin.buyerIsCartEmpty(buyer_username)) {

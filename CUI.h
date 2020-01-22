@@ -14,7 +14,7 @@ void printTitle(const string& title);
 void printLine();
 int printMainMenu();
 int printOperatorsMenu();
-void printLogin(Manager &manager, string& username, string& password);
+void printLogin(Manager &manager, string& username, string& password, const string& type);
 void emptyBuffer();
 
 #endif //ECOMMERCE_CUI_H

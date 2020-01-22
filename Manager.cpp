@@ -143,9 +143,9 @@ Item* Manager::getItemFromSellerToBuyer(const string& seller_username, const str
 }
 
 ///Manager Functions-------------------------------------------------------------------------------
-bool Manager::login(const string& username, const string& password) {
+bool Manager::login(const string& username, const string& password, const string& type) {
     Account *account = getAccount(username);
-    if(account) {
+    if(account && ((account->getType() == type) || account->getType() == "BuyerSeller")) {
         return account->getPassword() == password;
     }
     return false;
@@ -236,7 +236,7 @@ bool Manager::sellerIsQuantityFine(const string& seller_username, const string& 
 void Manager::printSellerShop(const string& seller_username) {
     Seller* seller = dynamic_cast<Seller *>(getAccount(seller_username));
     if(seller) {
-        cout << seller->stock_list;
+        seller->printStock();
     } else {
         cout << "Seller not found!\n";
     }
@@ -272,7 +272,7 @@ void Manager::addItemToCart(const string& buyer_username, const string& seller_u
 void Manager::printBuyerCart(const string& buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer) {
-        cout << buyer->cart;
+        buyer->printCart();
     }
     else {
         cout << "Buyer not found!\n";
@@ -307,7 +307,6 @@ void Manager::printBuyers() const {
     for (auto account : account_arr) {
         Buyer *buyer = dynamic_cast<Buyer *>(account);
         if(buyer) {
-            printLine();
             cout << *buyer;
             printLine();
         }
@@ -318,7 +317,6 @@ void Manager::printSellers() const {
     for (auto account : account_arr) {
         Seller *seller = dynamic_cast<Seller *>(account);
         if(seller) {
-            printLine();
             cout << *seller;
             printLine();
         }
@@ -336,13 +334,11 @@ bool Manager::printItemsNamed(const string& item_name) {
     for (auto account : account_arr) {                 //Going through the account array and getting all the sellers.
         Seller *temp = dynamic_cast<Seller *>(account);
         if(temp) {
-            Item *curr_item = temp->stock_list.getHead();   //Going through the list
-            while (curr_item) {
-                if (item_name == curr_item->GetName()) { //Checking if the item name matches the current item name in the list.
-                    cout << *curr_item;                     //Printing.
+            for (auto item : temp->stock_list) {
+                if(item_name == item->GetName()) {
+                    cout << *item;
                     res = true;
                 }
-                curr_item = curr_item->getNext();
             }
         }
     }
@@ -362,18 +358,18 @@ void Manager::printBuyerSellerHistory(const string& buyer_username) {
 
 void Manager::printBuyerSellers() const {
     for (auto account : account_arr) {
-        if ((typeid(*account).name(), typeid(BuyerSeller).name())) {
+        if (strcmp(typeid(*account).name(), typeid(BuyerSeller).name()) == 0) {
             cout << *account << endl;
         }
     }
 }
 
 void Manager::printAccount() const {
-    cout << "Buyers:"<<endl;
+    printSubTitle("Buyers");
     printBuyers();
-    cout << "Sellers:" << endl;
+    printSubTitle("Sellers");
     printSellers();
-    cout << "BuyerSellers:" << endl;
+    printSubTitle("Buyer-Sellers");
     printBuyerSellers();
 }
 
@@ -470,7 +466,7 @@ bool Manager::testCompareOperator(const string& username_1, const string& userna
 bool Manager::testPrintCart(const string& buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer && !buyer->isEmptyCart()) {
-        cout << buyer->cart;
+        buyer->printCart();
         return true;
     }
     return false;

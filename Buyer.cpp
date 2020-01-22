@@ -37,7 +37,14 @@ Buyer::~Buyer() {
 }
 
 void Buyer::toOs(ostream& os) const {
-    os << "Cart total: " << total_price << endl;
+    if (typeid(os) == typeid(ofstream)) {
+        os << seller_history.size() << endl; // add if size_of_feedback == 0
+        for (auto s : seller_history) {
+            os << s << endl;
+        }
+    } else {
+        os << "Cart total: " << total_price << endl;
+    }
 }
 bool Buyer::operator>(const Buyer& other) const {
     return this->getTotalPriceOfCart() > other.getTotalPriceOfCart();
@@ -54,16 +61,19 @@ ifstream& operator>>(ifstream& in, Buyer& b) {
         return in;
     }
 }
-ostream& operator<<(ostream& out, Buyer& b) {
+
+/*ostream& operator<<(ostream& out, Buyer& b) {
     if (typeid(out) == typeid(ofstream)) {
         out << (Account&)b;
         out << b.seller_history.size() << endl; // add if size_of_feedback == 0
         for (auto s : b.seller_history) {
             out << s << endl;
         }
+    } else {
+        out << (Account&)b;
     }
     return out;
-}
+}*/
 
 /*const Buyer& Buyer::operator=(const Buyer& other) {
     if(this != &other){
@@ -188,7 +198,14 @@ void Buyer::printSellerHistory() const {
 
 }
 
-const char* Buyer::getType()const {
+void Buyer::printCart() const {
+    cout << username << "'s Cart:\n";
+    for (auto item : cart) {
+        cout << *item << endl;
+    }
+}
+
+const string& Buyer::getType() const {
     return "Buyer";
 }
 

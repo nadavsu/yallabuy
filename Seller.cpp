@@ -60,15 +60,27 @@ ifstream& operator>>(ifstream& in, Seller& s) {
 		return in;
 	}
 }
-ostream& operator<<(ostream& out,Seller& s) {
+
+/*ostream& operator<<(ostream& out,Seller& s) {
 	if (typeid(out) == typeid(ofstream)) {
 		out << (Account&)s;
 		out << s.feedbacks.givelogsize() << endl; // add if size_of_feedback == 0
 		for (int i = 0; i < s.feedbacks.givelogsize(); i++) {
 			out << s.feedbacks[i];
 		}
+	} else {
+        out << (Account&)s;
 	}
 	return out;
+}*/
+
+void Seller::toOs(ostream& out) const {
+    if (typeid(out) == typeid(ofstream)) {
+        out << feedbacks.givelogsize() << endl; // add if size_of_feedback == 0
+        for (int i = 0; i < feedbacks.givelogsize(); i++) {
+            out << feedbacks[i];
+        }
+    }
 }
 ///Getters and Setters------------------------------------------------------
 Array<Feedback*> Seller::getFeedback() const {
@@ -233,6 +245,6 @@ Account* Seller::clone() const {
 	return new Seller(*this);
 }
 
-const char *Seller::getType() const {
+const string& Seller::getType() const {
 	return "Seller";
 }

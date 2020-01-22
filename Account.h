@@ -40,7 +40,8 @@ public: //Setters & Getters
     const string& getPassword()         const;
     const string& getLName()            const;
     const string& getFName()            const;
-    const Address& getAddress() const;
+    const Address& getAddress()         const;
+    virtual const string& getType()     const = 0;
 
     bool setUsername(const string& username);
     bool setPassword(const string& password);

@@ -38,7 +38,7 @@ public:
     int getNumOfBuyerSellers()  const;
     Account* getAccount(const string& username);
 
-    bool login(const string& username, const string& password);
+    bool login(const string& username, const string& password, const string& type);
 	void addAccount(Account* temp);
     void addFeedback(const Feedback& feedback, const string& seller_username);
 	void AddItem(const string&  seller_username, const Item& new_item);
