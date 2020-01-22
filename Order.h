@@ -7,6 +7,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "ItemList.h"
 #include <string.h>
+#include <vector>
+#include <algorithm>
 
 class Order{
 public:
@@ -26,22 +28,22 @@ public:
 
     void printCart();
 
-    const string* getNameOfSellers();
+    const vector<string>& getNameOfSellers() const;
     ItemList getOrderedItems();
     int getNumOfSellers();
     Item* getOrderedItemsHead(); // check if to move to private
 
 private:
     void addToNameOfSellers(const string& seller_name);
-    void makeNewNameOfSellers(const string& seller_name);
-    void copyNameOfSellers(const Order& other);
+    //void makeNewNameOfSellers(const string& seller_name);
+    //void copyNameOfSellers(const Order& other);
 
 private:
-    string      name_of_buyer;
-    string*     name_of_sellers;
-    int         total_price;
-    int         num_of_sellers;
-    ItemList    ordered_items; // head of linked list
+    string          name_of_buyer;
+    vector<string>  name_of_sellers;
+    int             total_price;
+    int             num_of_sellers;
+    ItemList        ordered_items; // head of linked list
 
 };
 

@@ -6,6 +6,8 @@
 #define ECOMMERCE_MANAGER_H
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <algorithm>
 #include "Buyer.h"
 #include "Seller.h"
 #include "Order.h"
@@ -16,12 +18,12 @@
 
 class Manager {
 private:
-	Account** account_arr;
-	int curr_account;           //TODO: change this to num_of_accounts?
+	vector<Account*> account_arr;
+	//int curr_account;           //TODO: change this to num_of_accounts?
 	int num_of_buyers;
 	int num_of_sellers;
 	int num_of_buyersellers;
-	int max_account;
+	//int max_account;
 
 public:
 	Manager();
