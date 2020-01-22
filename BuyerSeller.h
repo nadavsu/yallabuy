@@ -7,6 +7,7 @@
 class BuyerSeller :public Seller, public Buyer
 {
 public:
+    BuyerSeller(ifstream& os);
     BuyerSeller(const string& username, const string&  password, const string& fname, const string&  lname, Address& address);
 	BuyerSeller(const Buyer& otherbuyer, const Seller& otherseller);
     BuyerSeller(const BuyerSeller& other);
@@ -14,6 +15,7 @@ public:
     //virtual ~BuyerSeller();
     const BuyerSeller& operator=(const BuyerSeller& other);
     friend ostream& operator<<(ostream& out, BuyerSeller& bs);
+    friend ifstream& operator>>(ifstream& in, Seller& b);
     virtual Account* clone() const override;
     virtual const char *getType() const;
 };

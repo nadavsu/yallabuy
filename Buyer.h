@@ -48,7 +48,7 @@ public:
     void addToSellerHistory(const vector<string>& seller_names);
     virtual const char* getType() const;
     virtual Account* clone() const override;
-    void saveBuyerToFile(ofstream& OutFile);
+    //void saveBuyerToFile(ofstream& OutFile);
 
     friend class Manager;
 };

@@ -32,7 +32,7 @@ public:
     //Account(const Account& other);
     //Account(Account&& other);
     //const Account& operator=(const Account& other);
-    friend ifstream& operator>>(ifstream& os, Account& base);
+    friend ifstream& operator>>(ifstream& os, Account& base); // maybe move to private
     friend ostream& operator<<(ostream& os, Account& base);
     virtual void toOs(ostream& os) const;
 

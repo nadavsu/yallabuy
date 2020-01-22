@@ -46,7 +46,7 @@ const Seller& Seller::operator=(const Seller& other) {
 }
 ifstream& operator>>(ifstream& in, Seller& s) {
 	if (typeid(in) == typeid(ifstream)) {
-		in >> (Account&)s;
+		//in >> (Account&)s;
 		in >> s.num_of_feedbacks; // add if size_of_feedback == 0
 		s.feedbacks = new Feedback*[s.num_of_feedbacks];
 		for (int i = 0; i < s.num_of_feedbacks; i++) {

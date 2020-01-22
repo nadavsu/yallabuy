@@ -32,9 +32,11 @@ bool Buyer::operator>(const Buyer& other) const {
 }
 ifstream& operator>>(ifstream& in, Buyer& b) {
     if (typeid(in) == typeid(ifstream)) {
-        in >> (Account&)b;
-        in >> b.seller_history_size;
-        for (int i = 0; i < b.seller_history_size; i++) {
+        //in >> (Account&)b;
+        int size;
+        in >> size;
+        b.seller_history.resize(size);
+        for (int i = 0; i < size; i++) {
             in >> b.seller_history[i];
         }
         return in;
