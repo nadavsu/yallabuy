@@ -122,4 +122,12 @@ const Array<Feedback*>& Array<Feedback*>::operator=(const Array& other)
 	}
 	return *this;
 }
+// member function specialization
+template<> // works with and without template<> 
+Array<Feedback*>::~Array() {
+	for (int i = 0; i < logsize; i++) {
+		delete arr[i];
+	}
+	delete[]arr;
+}
 #endif //ECOMMERCE_ARRAY_H
