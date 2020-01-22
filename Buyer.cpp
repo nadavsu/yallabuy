@@ -6,6 +6,9 @@
 using namespace std;
 
 ///Constructors and Destructors------------------------------------------
+Buyer::Buyer(ifstream& os) :Account(os){
+    os >> *this;
+}
 Buyer::Buyer(const string& username, const string& password, const string& fname, const string& lname, Address& address)
                                                                 : Account(username, password, fname, lname, address) {
     this->seller_history;
@@ -33,12 +36,22 @@ void Buyer::toOs(ostream& os) const {
 bool Buyer::operator>(const Buyer& other) const {
     return this->getTotalPriceOfCart() > other.getTotalPriceOfCart();
 }
+ifstream& operator>>(ifstream& in, Buyer& b) {
+    if (typeid(in) == typeid(ifstream)) {
+        in >> (Account&)b;
+        in >> b.seller_history_size;
+        for (int i = 0; i < b.seller_history_size; i++) {
+            in >> b.seller_history[i];
+        }
+        return in;
+    }
+}
 ostream& operator<<(ostream& out, Buyer& b) {
     if (typeid(out) == typeid(ofstream)) {
         out << (Account&)b;
         out << b.seller_history_size << endl; // add if size_of_feedback == 0
         for (int i = 0; i < b.seller_history_size; i++) {
-            out << *b.seller_history[i] << endl;
+            out << b.seller_history[i] << endl;
         }
     }
     return out;

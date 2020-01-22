@@ -3,6 +3,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <time.h>
+#include <fstream>
 using namespace std;
 
 static constexpr int CURRENT_YEAR = 2020;
@@ -14,11 +15,13 @@ private:
 	int month;
 	int day;
 public:
+	Date(ifstream& os);
 	Date();                                     //This constructor creates a date with today's date.
 	Date(int day, int month, int year);         //This constructor creates a user inputted date.
 	Date(const Date& other);
 	Date(const Date&& other);
 	const Date& operator=(const Date& other);
+	friend ifstream& operator>>(ifstream& in, Date& d);
 	~Date() = default;
 
 	int getYear()   const;

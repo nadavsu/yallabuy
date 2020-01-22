@@ -20,6 +20,7 @@ protected:
     int         seller_history_size;
     int         total_price;
 public:
+    Buyer(ifstream& os);
     Buyer(const string& username, const string& password, const string& fname, const string& lname, Address& address);
     Buyer(const Buyer& other);
     Buyer(Buyer&& other);
@@ -27,6 +28,7 @@ public:
 
     const Buyer& operator=(const Buyer& other);
     bool operator>(const Buyer& other) const;
+    friend ifstream& operator>>(ifstream& in, Buyer& b);
     friend ostream& operator<<(ostream& out ,Buyer& b);
     void toOs(ostream& os)             const;
 

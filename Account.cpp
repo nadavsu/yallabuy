@@ -6,8 +6,13 @@
 
 ///Constructors & Destructors--------------------------------------------------------------
 Account::Account(const string& username, const string& password, const string& fname, const string& lname,
-                 const Address& address) : address(address), username(username), password(password), fname(fname),
-                 lname(lname) {
+    const Address& address) : address(address), username(username), password(password), fname(fname),
+    lname(lname) {
+}
+
+Account::Account(ifstream& in): address(in) {
+    in >> *this;
+}
 
 Account::Account(const Account& other) : address(other.address) {
     setUsername(other.username);
@@ -27,6 +32,21 @@ Account::~Account() {
     delete[] lname;
 }
 
+ifstream& operator>>(ifstream& in, Account& base) {
+    if (typeid(in) == typeid(ifstream)) {
+        in >> base.username;
+        in.seekg(1, ios::cur); // skip space
+
+        in >> base.password;
+        in.seekg(1, ios::cur); // skip space
+
+        in >> base.fname;
+        in.seekg(1, ios::cur); // skip space
+
+        in >> base.lname;
+        return in;
+    }
+}
 ///Operators----------------------------------------------------------------------
 /*const Account &Account::operator=(const Account &other) {
     if (this != &other) {
@@ -46,9 +66,9 @@ Account::~Account() {
 ostream& operator<<(ostream& os, Account& base) {
     if (typeid(os) == typeid(ofstream)) {
         const char* TypeName = typeid(base).name();
-        os << TypeName << " " << base.username << " " << base.password << " "
-            << base.fname << " " << base.lname << " "
-            << base.address.getCity << " " << base.address.getStreet() << " " << base.address.getHomeNumber() << endl;
+        os << TypeName <<" "<< base.address.getCity << " " << base.address.getStreet() << " " 
+        << base.address.getHomeNumber() << " " << base.username << " " << base.password << " "
+            << base.fname << " " << base.lname <<  endl;
     }
     else {
         os << "Username: " << base.username << endl;

@@ -3,7 +3,9 @@
 //
 
 #include "Feedback.h"
-
+Feedback::Feedback(ifstream& os):date(os) {
+    os >> *this;
+}
 Feedback::Feedback(const string& feedbacker_username, const string& comment) {  //Constructor for feedback with today's date.
     this->username = feedbacker_username;
     this->comment = comment;
@@ -35,6 +37,15 @@ const Feedback& Feedback::operator=(const Feedback& other) {
     }
     else {
         return *this;
+    }
+}
+
+ifstream& operator>>(ifstream& in, Feedback& f) {
+    if (typeid(in) == typeid(ifstream)) {
+        in >> f.username;
+        in.seekg(1, ios::cur); // skip space
+        in >> f.comment;
+        return in;
     }
 }
 

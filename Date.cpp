@@ -2,6 +2,9 @@
 
 
 //Default constructor creates today's date.
+Date::Date(ifstream& os) {
+    os >> *this;
+}
 Date::Date() {
     time_t tt;
     time(&tt);
@@ -31,7 +34,17 @@ const Date& Date::operator=(const Date& other) {
         return *this;
     }
 }
-
+ifstream& operator>>(ifstream& in, Date& d) {
+    if (typeid(in) == typeid(ifstream)) {
+        in >> d.year;
+        in.seekg(1, ios::cur); // skip space
+        in >> d.month;
+        in.seekg(1, ios::cur); // skip space
+        in >> d.day;
+        in.seekg(1, ios::cur); // skip space
+        return in;
+    }
+}
 Date::Date(const Date&& other) {
     this->day = other.day;
     this->month = other.month;

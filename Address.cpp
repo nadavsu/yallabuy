@@ -9,10 +9,28 @@ using namespace std;
 Address::Address(const string&  city, const string&  street, int home_number) : city(city), street(street), home_number(home_number) {
 
 }
+Address::Address(ifstream& in) {
+    in >> *this;
+}
 
 ostream& operator<<(ostream& os, const Address& address) {
     os << address.street << " " << address.home_number << ", " << address.city;
     return os;
+}
+
+ifstream& operator>>(ifstream& in, Address& address) {
+    if (typeid(in) == typeid(ifstream)) {
+        in >> address.city;
+        in.seekg(1, ios::cur); // skip space
+
+        in >> address.street;
+        in.seekg(1, ios::cur); // skip space
+
+        in >> address.home_number;
+        in.seekg(1, ios::cur); // skip space
+
+        return in;
+    }
 }
 
 bool Address::setCity(const string& city) {

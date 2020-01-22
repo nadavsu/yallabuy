@@ -29,6 +29,7 @@ public:
 	~Manager();
 	const Manager& operator+=(Account* other);
 	friend ostream& operator<<(ostream& os, Manager& base);
+	friend ifstream& operator>>(ifstream& in, Manager& base);
 
 public:
 	int getNumOfAccounts()      const;

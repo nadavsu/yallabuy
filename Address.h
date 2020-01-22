@@ -6,6 +6,7 @@
 #define ECOMMERCE_ADDRESS_H
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 static constexpr int CITY_MAX_LEN = 25;
@@ -32,9 +33,10 @@ private:
     int      home_number;
 
 public:
+    Address(ifstream& in);
     Address(const string& city, const string& street, int home_number);
     friend ostream& operator<<(ostream& os, const Address& address);
-
+    friend ifstream& operator>>(ifstream& in, Address& address);
 };
 
 

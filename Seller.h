@@ -27,12 +27,14 @@ public:
     };
 
 public:
+    Seller(ifstream& os);
     Seller(const string& username, const string& password, const string& fname, const string& lname, Address& address);
     Seller(const Seller& other); // dont want anyone to copy check what to do
     Seller(Seller&& other);
     virtual ~Seller();
 
     const Seller& operator=(const Seller& other);
+    friend ifstream& operator>>(ifstream& in, Seller& s);
     friend ostream& operator<<(ostream& out, Seller& s);
     void setFeedback(const Feedback& buyers_feedback);
     void setItem(Item* seller_item);

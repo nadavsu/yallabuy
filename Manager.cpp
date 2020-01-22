@@ -28,7 +28,36 @@ const Manager& Manager::operator+=(Account* other) {
     addAccount(other);
     return *this;
 }
+/* the order of the saving of the file is (new line here is new line in file) :
+curr_account, num_of_buyers,num_of_sellers,num_of_buyersellers,max_account
+account_arr[0]
+.
 
+.
+account_arr[curr_account-1]
+
+account save in this order:
+   typeofaccount,address(order:m_city,m_street,m_home_number),username,password,lname,fname
+
+   (in same line)
+   then if seller:
+   num_of_feedbacks
+   FeedBacks[0]
+   .
+   .
+   FeedBacks[num_of_feedbacks-1]
+   order :
+       date(order:year,month,day ),username,comment
+
+     if buyer:
+      seller_history_size,
+      seller_history[0][0]
+      .
+      .
+      .
+      seller_history[seller_history_size-1][0]
+      if buyerseller then all of the detail first seller then buyer
+*/
 ostream& operator<<(ostream& os, Manager& base) {
     if (typeid(os) == typeid(ofstream)) {
         Account* temp;
@@ -53,7 +82,31 @@ ostream& operator<<(ostream& os, Manager& base) {
         }
     }
 }
-
+// not completed
+ifstream& operator>>(ifstream& in, Manager& base) {
+    if (typeid(in) == typeid(ifstream)) {
+        string TypeName;
+        in >> base.curr_account >> base.num_of_buyers >> base.num_of_sellers >>
+            base.num_of_buyersellers >> base.max_account;
+        base.account_arr = new Account * [base.max_account];
+        for (int i = 0; i < base.curr_account; i++) {
+            in >> TypeName;
+            if (strcmp(TypeName, typeid(Seller).name()) == 0) {
+                Seller* newtemp = dynamic_cast<Seller*>(temp);
+                os << newtemp;
+            }
+            else if (strcmp(TypeName, typeid(Buyer).name()) == 0) {
+                Buyer* newtemp = dynamic_cast<Buyer*>(temp);
+                os << newtemp;
+            }
+            else {
+                BuyerSeller* newtemp = dynamic_cast<BuyerSeller*>(temp);
+                os << newtemp;
+            }
+        }
+        return in;
+    }
+}
 ///Getters------------------------------------------------------------------------
 int Manager::getNumOfAccounts() const {
     return curr_account;
@@ -348,37 +401,6 @@ void Manager::copyCartToOrder(Order& order, const string& buyer_username) {
         cout << "Buyer not found!\n";
     }
 }
-
-/* the order of the saving of the file is (new line here is new line in file) :
-curr_account, num_of_buyers,num_of_sellers,num_of_buyersellers,max_account
-account_arr[0]
-.
-.
-.
-account_arr[curr_account-1]
-
-account save in this order:
-   typeofaccount,username,password,lname,fname,address(order:m_city,m_street,m_home_number)
-
-   (in same line)
-   then if seller:
-   num_of_feedbacks
-   FeedBacks[0]
-   .
-   .
-   FeedBacks[num_of_feedbacks-1]
-   order :
-       username,date(order:year,month,day ),comment
-
-     if buyer:
-      seller_history_size,
-      seller_history[0][0]
-      .
-      .
-      .
-      seller_history[seller_history_size-1][0]
-      if buyerseller then all of the detail first seller then buyer
-*/
 
 void Manager::my_realloc() {
     this->max_account = (this->max_account) * 2;

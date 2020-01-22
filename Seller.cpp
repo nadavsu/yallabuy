@@ -5,6 +5,9 @@
 #include "Seller.h"
 
 ///Constructors and Destructors------------------------------------------
+Seller::Seller(ifstream& os):Account(os) {
+	os >> *this;
+}
 Seller::Seller(const string& username,const string& password, const string& fname, const string& lname, Address& address) : Account(username, password, fname, lname, address) {
     this->feedbacks = nullptr;
     this->num_of_feedbacks = 0;
@@ -41,14 +44,25 @@ const Seller& Seller::operator=(const Seller& other) {
         return *this;
     }
 }
+ifstream& operator>>(ifstream& in, Seller& s) {
+	if (typeid(in) == typeid(ifstream)) {
+		in >> (Account&)s;
+		in >> s.num_of_feedbacks; // add if size_of_feedback == 0
+		s.feedbacks = new Feedback*[s.num_of_feedbacks];
+		for (int i = 0; i < s.num_of_feedbacks; i++) {
+			s.feedbacks[i] = new Feedback(in);
+		}
+		return in;
+	}
+}
 ostream& operator<<(ostream& out, Seller& s) {
 	if (typeid(out) == typeid(ofstream)) {
 		out << (Account&)s;
 		out << s.num_of_feedbacks << endl; // add if size_of_feedback == 0
 		for (int i = 0; i < s.num_of_feedbacks; i++) {
-			out << s.feedbacks[i]->getUsername() << " " << s.feedbacks[i]->getDate().getYear() << " " <<
-				s.feedbacks[i]->getDate().getMonth() << " " << s.feedbacks[i]->getDate().getDay() << " "
-				<< s.feedbacks[i]->getComment() << endl;
+			out << s.feedbacks[i]->getDate().getYear() << " " <<
+				s.feedbacks[i]->getDate().getMonth() << " " << s.feedbacks[i]->getDate().getDay()<<" "
+				<<s.feedbacks[i]->getUsername() << " "<< s.feedbacks[i]->getComment() << endl;
 		}
 	}
 	return out;
