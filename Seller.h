@@ -16,7 +16,7 @@ using namespace std;
 
 class Seller : virtual public Account {
 protected:
-    Feedback**   feedbacks;
+    Array<Feedback*>   feedbacks;
     ItemList     stock_list;        //Linked list of ordered_items.
     int          num_of_feedbacks;
 

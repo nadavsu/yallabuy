@@ -167,6 +167,7 @@
     <ClInclude Include="..\Manager.h" />
     <ClInclude Include="..\Order.h" />
     <ClInclude Include="..\Seller.h" />
+    <ClInclude Include="Array.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
