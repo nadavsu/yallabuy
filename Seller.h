@@ -12,6 +12,7 @@
 #include "ItemList.h"
 #include "Account.h"
 #include "CUI.h"
+#include "Array.h"
 using namespace std;
 
 class Seller : virtual public Account {
