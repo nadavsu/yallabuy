@@ -19,11 +19,9 @@
 class Manager {
 private:
 	vector<Account*> account_arr;
-	//int curr_account;           //TODO: change this to num_of_accounts?
 	int num_of_buyers;
 	int num_of_sellers;
 	int num_of_buyersellers;
-	//int max_account;
 
 public:
 	Manager();

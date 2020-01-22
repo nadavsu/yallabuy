@@ -6,7 +6,7 @@
 using namespace std;
 
 ///Constructors and Destructors------------------------------------------
-Buyer::Buyer(ifstream& os) :Account(os){
+Buyer::Buyer(ifstream& os) : Account(os){
     os >> *this;
 }
 Buyer::Buyer(const string& username, const string& password, const string& fname, const string& lname, Address& address)
@@ -15,14 +15,26 @@ Buyer::Buyer(const string& username, const string& password, const string& fname
 }
 
 //Copy ctor
-/*Buyer::Buyer(const Buyer& other) : Account(other), cart(other.cart), total_price(other.total_price) {
-    copySellerHistory(other);
-}*/
+Buyer::Buyer(const Buyer& other) : Account(other), total_price(other.total_price), seller_history(other.seller_history) {
+    for (auto item : other.cart) {
+        cart.push_back(new Item(*item));
+    }
+}
 
-/*//Move ctor
+//Move ctor
 Buyer::Buyer(Buyer&& other) : Account(std::move(other)), cart(std::move(other.cart)), total_price(other.total_price) {
     seller_history = move(other.seller_history);
-}*/
+}
+
+Buyer::~Buyer() {
+    auto item_itr = cart.begin();
+    while (item_itr != cart.end()) {
+        auto temp = item_itr;
+        ++temp;
+        delete *item_itr;
+        item_itr = temp;
+    }
+}
 
 void Buyer::toOs(ostream& os) const {
     os << "Cart total: " << total_price << endl;
@@ -32,10 +44,11 @@ bool Buyer::operator>(const Buyer& other) const {
 }
 ifstream& operator>>(ifstream& in, Buyer& b) {
     if (typeid(in) == typeid(ifstream)) {
+        int seller_history_size = b.seller_history.size();
         in >> (Account&)b;
-        in >> b.seller_history_size;
-        for (int i = 0; i < b.seller_history_size; i++) {
-            in >> b.seller_history[i];
+        in >> seller_history_size;
+        for (auto i : b.seller_history) {
+            in >> i;
         }
         return in;
     }
@@ -69,7 +82,7 @@ ostream& operator<<(ostream& out, Buyer& b) {
 }*/
 
 ///Getters and Setters------------------------------------------------------
-ItemList Buyer::getCart() const {
+list<Item*> Buyer::getCart() const {
     return cart;
 }
 
@@ -80,7 +93,7 @@ vector<string> Buyer::getSellerHistory() const {
 
 
 Item* Buyer::getCartHead() {
-    return cart.getHead();
+    return *cart.begin();
 }
 
 int Buyer::getTotalPriceOfCart() const  {
@@ -89,14 +102,23 @@ int Buyer::getTotalPriceOfCart() const  {
 
 ///Cart Functions----------------------------------------------------------
 void Buyer::addToCart(Item* new_item) {
-    cart.addToTail(new_item);                                               //Adding the new item to the end of the list
+    cart.push_back(new_item);                                               //Adding the new item to the end of the list
     this->total_price += new_item->GetPrice() * new_item->GetQuantity();    //Updating the buyer's price.
 }
 
 bool Buyer::isEmptyCart() {
-    return cart.isEmpty();
+    return cart.empty();
 }
 
+list<Item*>::iterator Buyer::findItem(const string& item_name) {
+    auto item_itr = cart.begin();
+    for (; item_itr != cart.end(); ++item_itr) {
+        if((*item_itr)->GetName() == item_name) {
+            return item_itr;
+        }
+    }
+    return item_itr;
+}
 
 ///Seller History Functions-------------------------------------------------
 //A function which adds an array of strings to the history of the buyer.
@@ -143,10 +165,16 @@ void Buyer::makeNewSellerHistory(vector<string>& after_erase_dup) {
 }*/
 
 void Buyer::deleteItemFromCart(const string& item_name) {
-    Item* item_to_delete;
+    auto item_itr = findItem(item_name);
+    if (item_itr != cart.end) {
+        total_price = total_price - ((*item_itr)->GetPrice() * (*item_itr)->GetQuantity());
+        delete *item_itr;
+        cart.erase(item_itr);
+    }
+/*    Item* item_to_delete;
     item_to_delete = cart.findItem(item_name);              //Finding the item to delete.
     total_price = total_price - (item_to_delete->GetPrice() * item_to_delete->GetQuantity());  //Decreasing the total price.
-    cart.deleteItem(item_name);
+    cart.deleteItem(item_name);*/
 }
 
 

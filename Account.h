@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 #include "Address.h"
-#include "ItemList.h"
 using namespace std;
 
 static constexpr int PASSWORD_MAX_LEN = 20;
@@ -29,9 +28,6 @@ public:
     Account(ifstream& os);
     Account(const string& username, const string& password, const string& fname, const string& lname ,const Address& address);
     virtual ~Account();
-    //Account(const Account& other);
-    //Account(Account&& other);
-    //const Account& operator=(const Account& other);
     friend ifstream& operator>>(ifstream& os, Account& base);
     friend ostream& operator<<(ostream& os, Account& base);
     virtual void toOs(ostream& os) const;

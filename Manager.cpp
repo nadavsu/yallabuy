@@ -80,11 +80,11 @@ ostream& operator<<(ostream& os, Manager& base) {
     }
 }
 // not completed
-ifstream& operator>>(ifstream& in, Manager& base) {
+/*ifstream& operator>>(ifstream& in, Manager& base) {
     if (typeid(in) == typeid(ifstream)) {
         string TypeName;
-        in >> base.curr_account >> base.num_of_buyers >> base.num_of_sellers >>
-            base.num_of_buyersellers >> base.max_account;
+        in >> base.account_arr.size() >> base.num_of_buyers >> base.num_of_sellers >>
+            base.num_of_buyersellers >> base.account_arr.capacity();
         base.account_arr = new Account * [base.max_account];
         for (int i = 0; i < base.curr_account; i++) {
             in >> TypeName;
@@ -103,7 +103,7 @@ ifstream& operator>>(ifstream& in, Manager& base) {
         }
         return in;
     }
-}
+}*/
 ///Getters------------------------------------------------------------------------
 int Manager::getNumOfAccounts() const {
     return account_arr.size();
@@ -356,7 +356,7 @@ void Manager::printBuyerSellerHistory(const string& buyer_username) {
 
 void Manager::printBuyerSellers() const {
     for (auto account : account_arr) {
-        if ((typeid(*account).name(), typeid(BuyerSeller).name()) == 0) {
+        if ((typeid(*account).name(), typeid(BuyerSeller).name())) {
             cout << *account << endl;
         }
     }
@@ -393,6 +393,7 @@ void Manager::copyCartToOrder(Order& order, const string& buyer_username) {
     }
 }
 
+/*
 void Manager::my_realloc() {
     this->max_account = (this->max_account) * 2;
     Account **new_account_arr = new Account *[this->max_account];

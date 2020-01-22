@@ -8,12 +8,14 @@ Order::Order(const string& name_of_buyer) : name_of_buyer(name_of_buyer) {
 	total_price = 0;
 }
 
-/*Order::Order(const Order& other) : name_of_buyer(other.name_of_buyer){
-	copyNameOfSellers(other);
+Order::Order(const Order& other) : name_of_buyer(other.name_of_buyer), name_of_sellers(other.name_of_sellers) {
 	this->total_price = other.total_price;
 	this->num_of_sellers = other.num_of_sellers;
 	this->ordered_items = other.ordered_items;
-}*/
+	for (auto item : other.ordered_items) {
+	    ordered_items.push_back(new Item(*item));
+	}
+}
 
 /*void Order::copyNameOfSellers(const Order& other) {
 	name_of_sellers = new string[other.num_of_sellers];
@@ -29,9 +31,16 @@ Order::Order(const string& name_of_buyer) : name_of_buyer(name_of_buyer) {
 	name_of_sellers = nullptr;
 }*/
 
-/*Order::~Order() {
-	delete name_of_sellers;
-}*/
+Order::~Order() {
+    auto item_itr = ordered_items.begin();
+    while (item_itr != ordered_items.end()) {
+        auto temp = item_itr;
+        ++temp;
+        delete *item_itr;
+        item_itr = temp;
+    }
+}
+
 /*
 const Order& Order::operator=(const Order& other) {
 	if (this != &other) {
@@ -52,37 +61,36 @@ void Order::SetNameOfBuyer(const string& name_of_buyer) {
 }
 
 void Order::updatePrice() {
-	Item *temp = ordered_items.getHead();
-	while (temp) {
-		total_price += temp->GetQuantity() * temp->GetPrice();
-		temp = temp->getNext();
-	}
+    for (auto item : ordered_items) {
+        total_price += item->GetPrice() * item->GetQuantity();
+    }
 }
 
 void Order::updateSellerHistory() {
-	Item *temp = ordered_items.getHead();
+    for (auto item : ordered_items) {
+        if(item->GetQuantity() > 0) {
+            addToNameOfSellers(item->getSellerName());
+        }
+    }
+}
 
-	while (temp) {
-		if(temp->GetQuantity()!= 0) {
-			addToNameOfSellers(temp->getSellerName());
-		}
-		temp = temp->getNext();
+void Order::setItemList(const list<Item*>& list) {
+	for (auto item : list) {
+        ordered_items.push_back(new Item (*item));
 	}
 }
 
-void Order::setItemList(ItemList list) {
-	ordered_items = list;
-}
-
 void Order::printCart() {
-	ordered_items.printList();
+	for (auto item : ordered_items) {
+	    cout << *item;
+	}
 }
 
 const vector<string>& Order::getNameOfSellers() const {
 	return name_of_sellers;
 }
 
-ItemList Order::getOrderedItems() {
+const list<Item*>& Order::getOrderedItems() {
 	return ordered_items;
 }
 int Order::getNumOfSellers() {
@@ -90,7 +98,7 @@ int Order::getNumOfSellers() {
 }
 
 Item* Order::getOrderedItemsHead() {
-	return this->ordered_items.getHead();
+	return *ordered_items.begin();
 }
 
 void Order::addToNameOfSellers(const string& seller_name) {

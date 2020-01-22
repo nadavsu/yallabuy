@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <list>
 #include "Address.h"
 #include "ItemList.h"
 #include "Account.h"
@@ -15,15 +16,15 @@
 
 class Buyer : virtual public Account {
 protected:
-    ItemList        cart;         //A linked list of Items, cart points to head of list.
+    list<Item*>      cart;         //A linked list of Items, cart points to head of list.
     vector<string>  seller_history;
     int             total_price;
 public:
     Buyer(ifstream& os);
     Buyer(const string& username, const string& password, const string& fname, const string& lname, Address& address);
-    //Buyer(const Buyer& other);
-    //Buyer(Buyer&& other);
-    //virtual ~Buyer();
+    Buyer(const Buyer& other);
+    Buyer(Buyer&& other);
+    virtual ~Buyer();
 
     //const Buyer& operator=(const Buyer& other);
     bool operator>(const Buyer& other) const;
@@ -33,7 +34,7 @@ public:
 
 public:
     Item*           getCartHead();
-    ItemList        getCart()              const;
+    list<Item*>     getCart()              const;
     vector<string>  getSellerHistory()     const;
     int             getTotalPriceOfCart()  const;
 
@@ -42,6 +43,7 @@ public:
     bool isEmptyCart();
     void addToCart(Item* new_item);
     void deleteItemFromCart(const string& item_name);
+    list<Item*>::iterator findItem(const string& item_name);
 
     void makeNewSellerHistory(vector<string>& after_erase_dup);
     //void copySellerHistory(const Buyer& other);

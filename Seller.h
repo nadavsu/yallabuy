@@ -7,6 +7,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string.h>
+#include <list>
 #include "Address.h"
 #include "Feedback.h"
 #include "ItemList.h"
@@ -17,7 +18,7 @@ using namespace std;
 class Seller : virtual public Account {
 protected:
     Feedback**   feedbacks;
-    ItemList     stock_list;        //Linked list of ordered_items.
+    list<Item*>   stock_list;        //Linked list of ordered_items.
     int          num_of_feedbacks;
 
 public:
@@ -41,17 +42,18 @@ public:
 
 public:
     Feedback** getFeedback()         const;
-    ItemList getStock()              const;
+    list<Item*> getStock()           const;
     void printStock()                const;
 
+    bool isEmptyStock()              const;
     Item* getItemToBuyer(const string& item_name, int quantity);
     bool itemExist(const string& item_name)  ;
     bool quantityIsFine(const string& item_name, int quantity);
-    bool isEmptyStock();
-    virtual Account* clone() const override;
-    virtual const char *getType() const;
+
+    virtual const char *getType()    const;
+    virtual Account* clone()         const override;
 private:
-    Item* getItem(const string& item_name);
+    list<Item*>::iterator getItem(const string& item_name);
     void copyFeedback(const Seller& other);
     //ePasswordStrength strengthChecker(const char* Password)    const;
 

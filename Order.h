@@ -8,20 +8,21 @@
 #include "ItemList.h"
 #include <string.h>
 #include <vector>
+#include <list>
 #include <algorithm>
 
 class Order{
 public:
     Order() = default;
-    Order(const string& name_of_buyer);
+    explicit Order(const string& name_of_buyer);
     Order(const Order& other);
-    Order(Order&& other);
+    //Order(Order&& other);
     ~Order();
-    const Order& operator=(const Order& other);
+    //const Order& operator=(const Order& other);
 
 	void SetNameOfBuyer(const string& name_of_buyer);
     //void setItem(Item* item);
-    void setItemList(ItemList list);
+    void setItemList(const list<Item*>& list);
 
     void updatePrice();
     void updateSellerHistory();
@@ -29,7 +30,7 @@ public:
     void printCart();
 
     const vector<string>& getNameOfSellers() const;
-    ItemList getOrderedItems();
+    const list<Item*>& getOrderedItems();
     int getNumOfSellers();
     Item* getOrderedItemsHead(); // check if to move to private
 
@@ -41,9 +42,9 @@ private:
 private:
     string          name_of_buyer;
     vector<string>  name_of_sellers;
+    list<Item*>     ordered_items; // head of linked list
     int             total_price;
     int             num_of_sellers;
-    ItemList        ordered_items; // head of linked list
 
 };
 
