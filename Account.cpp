@@ -20,16 +20,10 @@ Account::Account(ifstream& in): address(in) {
 
 ifstream& operator>>(ifstream& in, Account& base) {
     if (typeid(in) == typeid(ifstream)) {
-        in >> base.username;
-        in.seekg(1, ios::cur); // skip space
-
-        in >> base.password;
-        in.seekg(1, ios::cur); // skip space
-
-        in >> base.fname;
-        in.seekg(1, ios::cur); // skip space
-
-        in >> base.lname;
+        getline(in, base.username);
+        getline(in, base.password);
+        getline(in, base.fname);
+        getline(in, base.lname);
         return in;
     }
 }
@@ -53,10 +47,9 @@ ifstream& operator>>(ifstream& in, Account& base) {
 
 ostream& operator<<(ostream& os, Account& base) {
     if (typeid(os) == typeid(ofstream)) {
-        const char* TypeName = typeid(base).name();
-        os << TypeName <<" "<< base.address.getCity() << " " << base.address.getStreet() << " "
-        << base.address.getHomeNumber() << " " << base.username << " " << base.password << " "
-            << base.fname << " " << base.lname <<  endl;
+        string TypeName = typeid(base).name();
+        os << TypeName <<endl<< base.address << endl << base.username << endl << base.password << endl
+            << base.fname << endl << base.lname <<  endl;
     }
     else {
         os << "Username: " << base.username << endl;

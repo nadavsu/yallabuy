@@ -52,11 +52,11 @@ public:
     bool itemExist(const string& item_name)  ;
     bool quantityIsFine(const string& item_name, int quantity);
 
-    virtual const string& getType()    const;
+    virtual const string getType()    const;
     virtual Account* clone()         const override;
 private:
     list<Item*>::iterator getItem(const string& item_name);
-    void copyFeedback(Seller& other);
+    //void copyFeedback(Seller& other);
     //ePasswordStrength strengthChecker(const char* Password)    const;
 
     friend class Manager;

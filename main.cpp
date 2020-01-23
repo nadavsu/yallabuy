@@ -36,6 +36,8 @@ int main() {
             testOperators(manager);
         }else if (ans == 12){
             saveSystem(manager);
+        }else if (ans == 13) {
+            loadSystem(manager);
         }else if (ans == 0) {
             char c;
             cout << "Are you sure? [Y/N]: ";
@@ -315,10 +317,21 @@ void testOperators(Manager& admin) {
 }
 
 void saveSystem(Manager& manager) {
-    char filename[FILENAME_MAX];
+    string filename;
+    char trash;
     cout << "Please Enter the name of the file that you want to save the system to(include end file like .txt etc):" << endl;
-    cin.getline(filename, FILENAME_MAX);
+    cin.getline(&trash, 1);
+    getline(cin,filename);
     ofstream OutFile(filename);
     OutFile << manager;
+    OutFile.close();
+}
+
+void loadSystem(Manager& manager) {
+    string filename;
+    cout << "Please Enter the name of the file that you want to load from(include end file like .txt etc):" << endl;
+    getline(cin, filename);
+    ifstream OutFile(filename);
+    OutFile >> manager;
     OutFile.close();
 }

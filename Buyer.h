@@ -9,6 +9,7 @@
 #include <fstream>
 #include <vector>
 #include <list>
+#include<string>
 #include "Address.h"
 #include "ItemList.h"
 #include "Account.h"
@@ -49,7 +50,7 @@ public:
     void makeNewSellerHistory(vector<string>& after_erase_dup);
     //void copySellerHistory(const Buyer& other);
     void addToSellerHistory(const vector<string>& seller_names);
-    virtual const string& getType() const;
+    virtual const string getType() const;
     virtual Account* clone() const override;
     //void saveBuyerToFile(ofstream& OutFile);
 

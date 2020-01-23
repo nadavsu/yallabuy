@@ -54,9 +54,9 @@ ifstream& operator>>(ifstream& in, Buyer& b) {
         //in >> (Account&)b;
         int size;
         in >> size;
-        b.seller_history.resize(size);
-        for (int i = 0; i < size; i++) {
-            in >> b.seller_history[i];
+        b.seller_history.reserve(size);
+        for (auto seller_name : b.seller_history) {
+            getline(in, seller_name);
         }
         return in;
     }
@@ -205,7 +205,7 @@ void Buyer::printCart() const {
     }
 }
 
-const string& Buyer::getType() const {
+const string Buyer::getType() const {
     return "Buyer";
 }
 

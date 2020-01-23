@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <fstream>
+#include<string>
 using namespace std;
 
 static constexpr int CITY_MAX_LEN = 25;

@@ -42,15 +42,14 @@ const Feedback& Feedback::operator=(const Feedback& other) {
 
 ifstream& operator>>(ifstream& in, Feedback& f) {
     if (typeid(in) == typeid(ifstream)) {
-        in >> f.username;
-        in.seekg(1, ios::cur); // skip space
-        in >> f.comment;
+        getline(in,f.username);
+        getline(in,f.comment);
     }
     return in;
 }
 ostream& operator<<(ostream& out, Feedback& f) {
     if (typeid(out) == typeid(ofstream)) {
-        out << f.date << f.username << " " << f.comment<< endl;
+        out << f.date << f.username << endl<< f.comment<< endl;
     }
     else {
         out << "Username: " << f.username << endl;

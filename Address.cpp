@@ -14,21 +14,15 @@ Address::Address(ifstream& in) {
 }
 
 ostream& operator<<(ostream& os, const Address& address) {
-    os << address.street << " " << address.home_number << ", " << address.city;
+    os << address.street << endl << address.home_number << endl << address.city;
     return os;
 }
 
 ifstream& operator>>(ifstream& in, Address& address) {
     if (typeid(in) == typeid(ifstream)) {
-        in >> address.city;
-        in.seekg(1, ios::cur); // skip space
-
-        in >> address.street;
-        in.seekg(1, ios::cur); // skip space
-
+        getline(in, address.city);
+        getline(in, address.street);
         in >> address.home_number;
-        in.seekg(1, ios::cur); // skip space
-
         return in;
     }
 }

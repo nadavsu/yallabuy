@@ -23,5 +23,6 @@ void getItemInfo(Manager& manager);
 void emptyBuffer();
 void testOperators(Manager& admin);
 void saveSystem(Manager& manager);
+void loadSystem(Manager& manager);
 
 #endif //MAINHEADER_H

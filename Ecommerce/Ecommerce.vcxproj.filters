@@ -42,9 +42,6 @@
     <ClCompile Include="..\Seller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Func.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\ItemList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

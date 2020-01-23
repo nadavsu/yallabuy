@@ -59,22 +59,22 @@ ostream& operator<<(ostream& os, Manager& base) {
     if (typeid(os) == typeid(ofstream)) {
         Account* temp;
         const char* TypeName;
-        os << base.account_arr.size() << " " << base.num_of_buyers << " " << base.num_of_sellers << " " <<
-            base.num_of_buyersellers << " " << base.account_arr.capacity() << endl;
+        os << base.account_arr.size() << endl << base.num_of_buyers << endl << base.num_of_sellers << endl <<
+            base.num_of_buyersellers << endl;
         for (auto account : base.account_arr) {
             temp = account;
             TypeName = typeid(*temp).name();
             if (strcmp(TypeName, typeid(Seller).name()) == 0) {
                 Seller* newtemp = dynamic_cast<Seller*>(temp);
-                os << newtemp;
+                os << *newtemp;
             }
             else if (strcmp(TypeName, typeid(Buyer).name()) == 0) {
                 Buyer* newtemp = dynamic_cast<Buyer*>(temp);
-                os << newtemp;
+                os << *newtemp;
             }
             else {
                 BuyerSeller* newtemp = dynamic_cast<BuyerSeller*>(temp);
-                os << newtemp;
+                os << *newtemp;
             }
         }
     }
@@ -85,10 +85,9 @@ ifstream& operator>>(ifstream& in, Manager& base) {
     if (typeid(in) == typeid(ifstream)) {
         string TypeName;
         int size_of_arr;
-        int capacity_account;
         in >> size_of_arr >> base.num_of_buyers >> base.num_of_sellers >>
-            base.num_of_buyersellers>> capacity_account;
-        base.account_arr.resize(capacity_account);
+            base.num_of_buyersellers;
+        base.account_arr.reserve(size_of_arr);
         for (int i = 0; i < size_of_arr; i++) {
             in >> TypeName;
             if (TypeName.compare(typeid(Seller).name()) == 0) {
@@ -146,7 +145,8 @@ Item* Manager::getItemFromSellerToBuyer(const string& seller_username, const str
 ///Manager Functions-------------------------------------------------------------------------------
 bool Manager::login(const string& username, const string& password, const string& type) {
     Account *account = getAccount(username);
-    if(account && ((account->getType() == type) || account->getType() == "BuyerSeller")) {
+    const string& account_type = account->getType();
+    if(account && ((account_type == type) || (account_type == "BuyerSeller"))) {
         return account->getPassword() == password;
     }
     return false;
@@ -412,9 +412,9 @@ void Manager::my_realloc() {
 
 void Manager::_debugfill() {
     Address b_address1("Nahariya", "Bialik", 2);
-    Address b_address2("Tel Aviv", "Bograshov", 9);
+    Address b_address2("Tel-Aviv", "Bograshov", 9);
     Address s_address1("Raanana", "Aharonson", 12);
-    Address s_address2("Jerusalem", "Yitzhak Sade", 4);
+    Address s_address2("Jerusalem", "Yitzhak-Sade", 4);
 
     Account* temp;
     temp = new Buyer("dorlasri", "123456", "Dor", "Lasri", b_address1);
@@ -438,8 +438,8 @@ void Manager::_debugfill() {
     temp = new Seller("shaitek5", "maccabizona", "Shai", "Rubinstein", s_address2);
     addAccount(temp);
     delete temp;
-    Item item1s2("shaitek5", "ASUS PC", (Item::eCategory) 0, 3000, 50);
-    Item item2s2("shaitek5", "Macbook Pro", (Item::eCategory) 0, 10000, 5);
+    Item item1s2("shaitek5", "ASUS-PC", (Item::eCategory) 0, 3000, 50);
+    Item item2s2("shaitek5", "Macbook-Pro", (Item::eCategory) 0, 10000, 5);
     Item item3s2("shaitek5", "Sambusak", (Item::eCategory) 0, 10, 20);
     AddItem("shaitek5", item1s2);
     AddItem("shaitek5", item2s2);

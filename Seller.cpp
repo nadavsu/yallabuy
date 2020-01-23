@@ -20,8 +20,8 @@ Seller::Seller(const Seller& other) : Account(other), stock_list(other.stock_lis
     }
 }
 
-Seller::Seller(Seller&& other) : Account(std::move(other)), stock_list(std::move(other.stock_list))/*, feedbacks(other.feedbacks)*/{
-    this->feedbacks         = other.feedbacks;
+Seller::Seller(Seller&& other) : Account(std::move(other)), stock_list(std::move(other.stock_list)), feedbacks(other.feedbacks){
+ //   this->feedbacks         = other.feedbacks;
  //   this->num_of_feedbacks  = other.num_of_feedbacks;
  //   other.feedbacks         = nullptr;
 }
@@ -78,7 +78,7 @@ void Seller::toOs(ostream& out) const {
     if (typeid(out) == typeid(ofstream)) {
         out << feedbacks.givelogsize() << endl; // add if size_of_feedback == 0
         for (int i = 0; i < feedbacks.givelogsize(); i++) {
-            out << feedbacks[i];
+            out << *feedbacks[i];
         }
     }
 }
@@ -245,6 +245,6 @@ Account* Seller::clone() const {
 	return new Seller(*this);
 }
 
-const string& Seller::getType() const {
+const string Seller::getType() const {
 	return "Seller";
 }

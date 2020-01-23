@@ -50,6 +50,6 @@ Account* BuyerSeller::clone() const {
     return new BuyerSeller(*this);
 }
 
-const string& BuyerSeller::getType() const {
+const string BuyerSeller::getType() const {
 	return "BuyerSeller";
 }

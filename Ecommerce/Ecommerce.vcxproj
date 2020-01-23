@@ -151,7 +151,6 @@
     <ClCompile Include="..\Manager.cpp" />
     <ClCompile Include="..\Order.cpp" />
     <ClCompile Include="..\Seller.cpp" />
-    <ClCompile Include="Func.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Account.h" />

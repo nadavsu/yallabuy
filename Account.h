@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include<string>
 #include "Address.h"
 using namespace std;
 
@@ -41,7 +42,7 @@ public: //Setters & Getters
     const string& getLName()            const;
     const string& getFName()            const;
     const Address& getAddress()         const;
-    virtual const string& getType()     const = 0;
+    virtual const string getType()     const = 0;
 
     bool setUsername(const string& username);
     bool setPassword(const string& password);

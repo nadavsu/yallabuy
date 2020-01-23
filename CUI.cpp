@@ -70,6 +70,7 @@ int printMainMenu() {
     cout << "10. Show all the accounts\n";
     cout << "11. Test the operators overloading\n";
     cout << "12. Save system, press 12\n";
+    cout << "13. Load system, press 13\n";
     cout << "0. Exit\n";
     printLine();
     cin >> ans;

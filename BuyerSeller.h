@@ -18,7 +18,7 @@ public:
     friend ostream& operator<<(ostream& out, BuyerSeller& bs);
     friend ifstream& operator>>(ifstream& in, Seller& b);
     virtual Account* clone() const override;
-    virtual const string& getType() const;
+    virtual const string getType() const;
     void toOs(ostream& out) const override;
 };
 
