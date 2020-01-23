@@ -1,11 +1,12 @@
 //
 // Created by Nadav Suliman on 24/11/19.
 //
-#define _CRT_SECURE_NO_WARNINGS
 #ifndef ECOMMERCE_ITEM_H
 #define ECOMMERCE_ITEM_H
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
+#include<string>
 using namespace std;
 static constexpr int ITEM_MAX_NAME_LEN = 30;
 static constexpr int MAX_ITEM_NAME = 20;

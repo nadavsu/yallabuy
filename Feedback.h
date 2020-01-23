@@ -38,7 +38,6 @@ public:
     const Feedback& operator=(const Feedback& other);
     friend ifstream& operator>>(ifstream& in, Feedback& f);
     friend ostream& operator<<(ostream& os, Feedback& f);
-    virtual void toOs(ostream& os) const;
 };
 
 

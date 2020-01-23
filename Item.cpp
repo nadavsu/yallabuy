@@ -1,4 +1,3 @@
-
 //
 // Created by Nadav Suliman on 24/11/19.
 //
@@ -16,50 +15,7 @@ Item::Item(const string& name_of_seller ,const string& name, Item::eCategory cat
     serial_number = num_of_items++;
 	next = nullptr;
 }
-
-/*Item::Item(const Item& other) {
-    name = other.name;
-    name_of_seller = other.name_of_seller;
-	this->category = other.category;
-	this->price = other.price;
-	this->quantity = other.quantity;
-	this->serial_number = other.serial_number;
-	this->next = other.next;
-}*/
-/*
-Item::Item(Item&& other) {
-	name = other.name;
-	category = other.category;
-	price = other.price;
-	quantity = other.quantity;
-	next = other.next;
-	name_of_seller = other.name_of_seller;
-	serial_number = other.serial_number;
-	this->name = nullptr;
-	this->name_of_seller = nullptr;
-}*/
-
-/*Item::~Item() {
-	delete[] name;
-	delete[] name_of_seller;
-}*/
-
 ///Operators--------------------------------------------------------------------------
-/*const Item& Item::operator=(const Item& other) {
-	if (this != &other){
-		delete[]name;
-		delete[]name_of_seller;
-		this->category = other.category;
-		this->price = other.price;
-		this->serial_number = other.serial_number;
-		this->quantity = other.quantity;
-		this->next = other.next;
-	}
-	else {
-		return *this;
-	}
-}*/
-
 ostream& operator<<(ostream& os, const Item& item) {
     os << "---------------------------------------------\n";
     os << "Name of seller: " << item.name_of_seller << endl;
@@ -71,7 +27,9 @@ ostream& operator<<(ostream& os, const Item& item) {
     os << "---------------------------------------------\n";
     return os;
 }
-
+void Item::reduceQuantity(int reduction) {
+	this->quantity -= reduction;
+}
 ///Setters and getters-----------------------------------------------------------------
 void Item::SetName(const string& name) {
 	this->name = name;
@@ -90,11 +48,6 @@ void Item::SetPrice(int price) {
 
 void Item::SetQuantity(int quantity) {
 	this->quantity = quantity;
-}
-
-void Item::reduceQuantity(int reduction) {
-	this->quantity -= reduction;
-
 }
 
 const string& Item::GetName() const {

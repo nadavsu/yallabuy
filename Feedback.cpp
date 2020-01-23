@@ -3,32 +3,22 @@
 //
 
 #include "Feedback.h"
+
+// constructor for loading system from file 
 Feedback::Feedback(ifstream& os):date(os) {
     os >> *this;
 }
+// constructor that gets feedback and comment
 Feedback::Feedback(const string& feedbacker_username, const string& comment) {  //Constructor for feedback with today's date.
     this->username = feedbacker_username;
     this->comment = comment;
 }
-
-Feedback::Feedback(const string& feedbacker_username, const string& comment, const Date& date) : date(date) { //Constructor with a specific date
+//Constructor with a specific date
+Feedback::Feedback(const string& feedbacker_username, const string& comment, const Date& date) : date(date) {
     this->username = feedbacker_username;
     this->comment = comment;
 }
-/*Feedback::Feedback(const Feedback& other) : date(other.date){
-
-}*/
-
-/*
-Feedback::Feedback(Feedback&& other) : date(other.date) {
-    comment = other.comment;
-    username = other.username;
-
-    other.comment = nullptr;
-    other.username = nullptr;
-}
-*/
-
+// operator=
 const Feedback& Feedback::operator=(const Feedback& other) {
     if (this != &other) {
         this->date      = other.date;
@@ -39,7 +29,7 @@ const Feedback& Feedback::operator=(const Feedback& other) {
         return *this;
     }
 }
-
+//operator>>
 ifstream& operator>>(ifstream& in, Feedback& f) {
     if (typeid(in) == typeid(ifstream)) {
         getline(in,f.username);
@@ -47,6 +37,7 @@ ifstream& operator>>(ifstream& in, Feedback& f) {
     }
     return in;
 }
+//operator<<
 ostream& operator<<(ostream& out, Feedback& f) {
     if (typeid(out) == typeid(ofstream)) {
         out << f.date << f.username << endl<< f.comment<< endl;
@@ -55,13 +46,10 @@ ostream& operator<<(ostream& out, Feedback& f) {
         out << "Username: " << f.username << endl;
         out << "Date: " << f.date << endl;
         out << "Comment: " << f.comment << endl;
-        f.toOs(out);
     }
     return out;
 }
-void Feedback::toOs(ostream& os) const {
 
-}
 void Feedback::setUsername(const string& new_username) {
     username = new_username;
 }

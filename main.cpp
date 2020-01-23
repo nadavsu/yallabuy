@@ -332,8 +332,8 @@ void loadSystem(Manager& manager) {
     char trash;
     cout << "Please Enter the name of the file that you want to load from(include end file like .txt etc):" << endl;
     cin.getline(&trash, 1);
-    //getline(cin, filename);
-    ifstream OutFile("C:\\Users\\lasri\\source\\repos\\Amalasu\\Ecommerce\\test8.txt");
-    OutFile >> manager;
-    OutFile.close();
+    getline(cin, filename);
+    ifstream inFile(filename);
+    inFile >> manager;
+    inFile.close();
 }

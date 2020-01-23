@@ -68,7 +68,6 @@ public:
     void _debugfill();
 private:
 	Item* getItemFromSellerToBuyer(const string& seller_username, const string& item_name_to_buy, int quantity);
-    void my_realloc();
 };
 
 
