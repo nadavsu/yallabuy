@@ -8,7 +8,7 @@ int main() {
 
     Manager manager;
     int ans;
-    manager._debugfill();
+    //manager._debugfill();
     printTitle("Welcome to YallaBuy!");     //Main menu
     do {
         ans = printMainMenu();
@@ -246,7 +246,7 @@ void MakeOrderFromCart(Manager &admin) {
     curr_order.updatePrice();
     curr_order.updateSellerHistory();
 
-    cout << "Do you want to pay?" << endl;
+    cout << "Do you want to pay[Y/N]?" << endl;
     cin >> want_to_pay;
     if (want_to_pay == 'y' || want_to_pay == 'Y') {
         cout << "In Payment..." << endl;
@@ -329,9 +329,11 @@ void saveSystem(Manager& manager) {
 
 void loadSystem(Manager& manager) {
     string filename;
+    char trash;
     cout << "Please Enter the name of the file that you want to load from(include end file like .txt etc):" << endl;
-    getline(cin, filename);
-    ifstream OutFile(filename);
+    cin.getline(&trash, 1);
+    //getline(cin, filename);
+    ifstream OutFile("C:\\Users\\lasri\\source\\repos\\Amalasu\\Ecommerce\\test8.txt");
     OutFile >> manager;
     OutFile.close();
 }

@@ -13,7 +13,7 @@ class Array {
 public:
 		Array(int Bsize = 10, char delimeter = ' ');
 		Array(const Array& other);
-		Array(const Array&& other);
+		Array(Array&& other);
 		inline ~Array();
 
 		inline const Array& operator=(const Array& other);
@@ -33,7 +33,7 @@ public:
 
 template<class T>
 Array<T>::Array(int Bsize, char delimeter): logsize(0), physize(Bsize), delimeter(delimeter){
-	arr = new T[physize];
+	this->arr = new T[Bsize];
 }
 
 template<class T>
@@ -47,7 +47,8 @@ Array<T>::~Array() {
 }
 
 template<class T>
-Array<T>::Array(const Array&& other) : arr(nullptr) {
+Array<T>::Array(Array&& other){
+	cout << "in move array" << endl;
 	this->delimeter = other.delimeter;
 	this->logsize = other.logsize;
 	this->physize = other.physize;
@@ -111,6 +112,7 @@ const Array<Feedback*>& Array<Feedback*>::operator=(const Array<Feedback*>& othe
 		this->logsize = other.logsize;
 		this->physize = other.physize;
 		delimeter = other.delimeter;
+		this->arr = new Feedback * [physize];
 		for (int i = 0; i < this->logsize; i++) {
 			Feedback* new_feed = new Feedback(*other.arr[i]);
 			arr[i] = new_feed;

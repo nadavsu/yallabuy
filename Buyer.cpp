@@ -52,11 +52,15 @@ bool Buyer::operator>(const Buyer& other) const {
 ifstream& operator>>(ifstream& in, Buyer& b) {
     if (typeid(in) == typeid(ifstream)) {
         //in >> (Account&)b;
+        char trash;
         int size;
         in >> size;
+        in.getline(&trash,1);
         b.seller_history.reserve(size);
-        for (auto seller_name : b.seller_history) {
-            getline(in, seller_name);
+        for (int i = 0; i < size; i++) {
+            string curr;
+            getline(in, curr);
+            b.seller_history.push_back(curr);
         }
         return in;
     }

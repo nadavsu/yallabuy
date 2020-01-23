@@ -83,13 +83,17 @@ ostream& operator<<(ostream& os, Manager& base) {
 // not completed
 ifstream& operator>>(ifstream& in, Manager& base) {
     if (typeid(in) == typeid(ifstream)) {
+        char trash;
         string TypeName;
         int size_of_arr;
-        in >> size_of_arr >> base.num_of_buyers >> base.num_of_sellers >>
-            base.num_of_buyersellers;
+        in >> size_of_arr;
+        in >> base.num_of_buyers;
+        in >> base.num_of_sellers;
+        in >> base.num_of_buyersellers;
+        in.getline(&trash, 1);
         base.account_arr.reserve(size_of_arr);
         for (int i = 0; i < size_of_arr; i++) {
-            in >> TypeName;
+            getline(in, TypeName);
             if (TypeName.compare(typeid(Seller).name()) == 0) {
                 Seller* newtemp = new Seller(in);
                 base.account_arr.push_back(newtemp);
@@ -145,8 +149,7 @@ Item* Manager::getItemFromSellerToBuyer(const string& seller_username, const str
 ///Manager Functions-------------------------------------------------------------------------------
 bool Manager::login(const string& username, const string& password, const string& type) {
     Account *account = getAccount(username);
-    const string& account_type = account->getType();
-    if(account && ((account_type == type) || (account_type == "BuyerSeller"))) {
+    if(account && ((account->getType() == type) || (account->getType() == "BuyerSeller"))) {
         return account->getPassword() == password;
     }
     return false;

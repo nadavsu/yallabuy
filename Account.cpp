@@ -20,6 +20,8 @@ Account::Account(ifstream& in): address(in) {
 
 ifstream& operator>>(ifstream& in, Account& base) {
     if (typeid(in) == typeid(ifstream)) {
+        char trash;
+        //in.getline(&trash, 1);
         getline(in, base.username);
         getline(in, base.password);
         getline(in, base.fname);
@@ -50,6 +52,7 @@ ostream& operator<<(ostream& os, Account& base) {
         string TypeName = typeid(base).name();
         os << TypeName <<endl<< base.address << endl << base.username << endl << base.password << endl
             << base.fname << endl << base.lname <<  endl;
+        base.toOs(os);
     }
     else {
         os << "Username: " << base.username << endl;

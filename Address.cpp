@@ -20,9 +20,11 @@ ostream& operator<<(ostream& os, const Address& address) {
 
 ifstream& operator>>(ifstream& in, Address& address) {
     if (typeid(in) == typeid(ifstream)) {
-        getline(in, address.city);
+        char trash;
         getline(in, address.street);
         in >> address.home_number;
+        in.getline(&trash, 1);
+        getline(in, address.city);
         return in;
     }
 }

@@ -104,10 +104,9 @@ Item* Order::getOrderedItemsHead() {
 void Order::addToNameOfSellers(const string& seller_name) {
     auto found = find(name_of_sellers.begin(), name_of_sellers.end(), seller_name);
     if (found == name_of_sellers.end()) {
-        return;
+		name_of_sellers.push_back(seller_name);
+		num_of_sellers++;
     }
-    name_of_sellers.push_back(seller_name);
-    num_of_sellers++;
 }
 
 /*

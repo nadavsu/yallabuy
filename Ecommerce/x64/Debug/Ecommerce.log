@@ -1,3 +1,4 @@
-﻿  main.cpp
-C:\Users\lasri\source\repos\Amalasu\main.cpp(62,10): warning C4101: 'trash': unreferenced local variable
+﻿  Manager.cpp
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(115,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\lasri\source\repos\Amalasu\Manager.cpp(112): warning C4715: 'operator>>': not all control paths return a value
   Ecommerce.vcxproj -> C:\Users\lasri\Source\Repos\Amalasu\x64\Debug\Ecommerce.exe

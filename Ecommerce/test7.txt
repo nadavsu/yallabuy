@@ -1,0 +1,20 @@
+4
+0
+0
+0
+class Buyer
+Bialik
+2
+Nahariya
+dorlasri
+123456
+Dor
+Lasri
+class Buyer
+Bograshov
+9
+Tel-Aviv
+arnaudmaarek
+ilovefrance
+Arnaud
+Maarek
