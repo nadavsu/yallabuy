@@ -102,9 +102,12 @@ ifstream& operator>>(ifstream& in, Manager& base) {
                 Buyer* newtemp = new Buyer(in);
                 base.account_arr.push_back(newtemp);
             }
-            else {//TypeName.compare(typeid(BuyerSeller).name())
+            else if (TypeName.compare(typeid(BuyerSeller).name()) == 0){//TypeName.compare(typeid(BuyerSeller).name())
                 BuyerSeller* newtemp = new BuyerSeller(in);
                 base.account_arr.push_back(newtemp);
+            }
+            else {
+                cout << "Type of User Not Found" << endl;
             }
         }
         return in;
