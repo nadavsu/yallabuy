@@ -105,7 +105,7 @@ int Array<T>::givephysize() const {
 
 // member function specialization
 template<> // works with and without template<> 
-const Array<Feedback*>& Array<Feedback*>::operator=(const Array<Feedback*>& other)
+inline const Array<Feedback*>& Array<Feedback*>::operator=(const Array<Feedback*>& other)
 {
 	if (this != &other) {
 		delete[]arr;
@@ -122,7 +122,7 @@ const Array<Feedback*>& Array<Feedback*>::operator=(const Array<Feedback*>& othe
 }
 // member function specialization
 template<> // works with and without template<> 
-Array<Feedback*>::~Array() {
+inline Array<Feedback*>::~Array() {
 	for (int i = 0; i < logsize; i++) {
 		delete arr[i];
 	}

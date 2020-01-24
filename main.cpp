@@ -59,7 +59,6 @@ int main() {
 void newAccount(Manager& admin) {
     int house_number;
     int account_type;
-    char trash;
     string street, city, f_name, l_name, password, username;
     Account* temp;
 
@@ -84,18 +83,28 @@ void newAccount(Manager& admin) {
     }
     cout << "First Name: ";                                 //Taking info from the user.
     getline(cin, f_name);
+    f_name.resize(FNAME_MAX_LEN);
+    f_name.shrink_to_fit();
     cout << "Last Name: ";
     getline(cin, l_name);
+    l_name.resize(LNAME_MAX_LEN);
+    l_name.shrink_to_fit();
     cout << "Username: ";
     getline(cin, username);
+    username.resize(USERNAME_MAX_LEN);
+    username.shrink_to_fit();
     do {
         cout << "Password (at least 6): ";
         getline(cin, password);
     } while (password.length() < 6);
     cout << "City: ";
     getline(cin, city);
+    city.resize(CITY_MAX_LEN);
+    city.shrink_to_fit();
     cout << "Street: ";
     getline(cin, street);
+    street.resize(STREET_MAX_LEN);
+    street.shrink_to_fit();
     cout << "House Number: ";
     cin >> house_number;
     printLine();
@@ -141,6 +150,8 @@ void makeFeedback(Manager& admin) {
     } while (!found);
     cout << "Comment:" << endl;                                 //Taking comment from the user.
     getline(cin, comment);
+    comment.resize(COMMENT_MAX_LEN);
+    comment.shrink_to_fit();
     admin.addFeedback(Feedback(buyer_username, comment), seller_username);
     printLine();
 }
@@ -161,6 +172,8 @@ void makeItem(Manager &admin) {
         printSubTitle("Add your product");
         cout << "Name:" << endl;
         getline(cin, name);
+        name.resize(ITEM_MAX_NAME_LEN);
+        name.shrink_to_fit();
         cout << "Category: (Enter 0 for Electronics, 1 for Home, 2 for Garden, 3 for Games):" << endl;
         cin >> category;
         cout << "Price: " << endl;

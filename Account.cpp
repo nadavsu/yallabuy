@@ -19,7 +19,7 @@ Account::Account(ifstream& in): address(in) {
 }
 
 ifstream& operator>>(ifstream& in, Account& base) {
-    if (typeid(in) == typeid(ifstream)) {
+    if (typeid(in) == typeid(ifstream)) {               //checking if the input stream is file input stream
         char trash;
         //in.getline(&trash, 1);
         getline(in, base.username);
@@ -30,32 +30,15 @@ ifstream& operator>>(ifstream& in, Account& base) {
     }
 }
 ///Operators----------------------------------------------------------------------
-/*const Account &Account::operator=(const Account &other) {
-    if (this != &other) {
-        delete[] username;
-        delete[] password;
-        delete[] fname;
-        delete[] lname;
-        this->address = other.address;
-        setFName(other.fname);
-        setLName(other.lname);
-        setUsername(other.username);
-        setPassword(other.password);
-    } else {
-        return *this;
-    }
-}
-*/
-
 ostream& operator<<(ostream& os, Account& base) {
-    if (typeid(os) == typeid(ofstream)) {
-        string TypeName = typeid(base).name();
-        os << TypeName <<endl<< base.address << endl << base.username << endl << base.password << endl
+    if (typeid(os) == typeid(ofstream)) {                       //if the output stream is output file stream
+        string TypeName = typeid(base).name();                  //writing the tye of the account
+        os << TypeName <<endl<< base.address << endl << base.username << endl << base.password << endl      //writing the data
             << base.fname << endl << base.lname <<  endl;
-        base.toOs(os);
+        base.toOs(os);                                      //Calling relevant toOs function in children classes.
     }
     else {
-        os << "Username: " << base.username << endl;
+        os << "Username: " << base.username << endl;            //Printing to console
         os << "Name: " << base.fname << " " << base.lname << endl;
         os << "Address: " << base.address << endl;
         base.toOs(os);

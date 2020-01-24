@@ -80,7 +80,6 @@ ostream& operator<<(ostream& os, Manager& base) {
     }
     return os;
 }
-// not completed
 ifstream& operator>>(ifstream& in, Manager& base) {
     if (typeid(in) == typeid(ifstream)) {
         char trash;
@@ -392,24 +391,12 @@ bool Manager::sellerExistInBuyerSeller(const string& buyer_username, const strin
 void Manager::copyCartToOrder(Order& order, const string& buyer_username) {
     Buyer *buyer = dynamic_cast<Buyer *>(getAccount(buyer_username));
     if(buyer) {
-        order.setItemList(buyer->getCart());//make copy twice!!!!
+        order.setItemList(buyer->cart);//make copy twice!!!!
     }
     else {
         cout << "Buyer not found!\n";
     }
 }
-
-/*
-void Manager::my_realloc() {
-    this->max_account = (this->max_account) * 2;
-    Account **new_account_arr = new Account *[this->max_account];
-    for (int i = 0; i < this->curr_account; i++) {
-        new_account_arr[i] = this->account_arr[i];
-    }
-    delete[] account_arr;
-    account_arr = new_account_arr;
-}
-*/
 
 ///Test Functions-----------------------------------------------------------
 

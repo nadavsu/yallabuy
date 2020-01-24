@@ -15,8 +15,6 @@ static constexpr int STREET_MAX_LEN = 25;
 
 class Address {
 public:
-    //friend class Account;
-
     static constexpr int CITY_NAME_LEN =    20;
     static constexpr int STREET_NAME_LEN =  25;
 

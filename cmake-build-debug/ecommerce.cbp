@@ -130,12 +130,6 @@
 		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Item.h">
 			<Option target="ecommerce"/>
 		</Unit>
-		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/ItemList.cpp">
-			<Option target="ecommerce"/>
-		</Unit>
-		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/ItemList.h">
-			<Option target="ecommerce"/>
-		</Unit>
 		<Unit filename="/Users/nadavsuliman/CLionProjects/Amalasu/Manager.cpp">
 			<Option target="ecommerce"/>
 		</Unit>

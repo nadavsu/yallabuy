@@ -12,7 +12,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/nadavsuliman/CLionProjects/Amalasu/Date.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Date.cpp.o"
   "/Users/nadavsuliman/CLionProjects/Amalasu/Feedback.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Feedback.cpp.o"
   "/Users/nadavsuliman/CLionProjects/Amalasu/Item.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Item.cpp.o"
-  "/Users/nadavsuliman/CLionProjects/Amalasu/ItemList.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/ItemList.cpp.o"
   "/Users/nadavsuliman/CLionProjects/Amalasu/Manager.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Manager.cpp.o"
   "/Users/nadavsuliman/CLionProjects/Amalasu/OFunctions.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/OFunctions.cpp.o"
   "/Users/nadavsuliman/CLionProjects/Amalasu/Order.cpp" "/Users/nadavsuliman/CLionProjects/Amalasu/cmake-build-debug/CMakeFiles/ecommerce.dir/Order.cpp.o"

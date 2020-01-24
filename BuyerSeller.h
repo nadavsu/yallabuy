@@ -12,7 +12,7 @@ public:
     BuyerSeller(const string& username, const string&  password, const string& fname, const string&  lname, Address& address);
 	BuyerSeller(const Buyer& otherbuyer, const Seller& otherseller);
     BuyerSeller(const BuyerSeller& other);
-    BuyerSeller(const BuyerSeller&& other);
+    BuyerSeller(BuyerSeller&& other);
     //virtual ~BuyerSeller();
     const BuyerSeller& operator=(const BuyerSeller& other);
     friend ostream& operator<<(ostream& out, BuyerSeller& bs);

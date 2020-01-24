@@ -5,19 +5,23 @@
 #include "Address.h"
 using namespace std;
 
-//Constructor
+///Constructors------------------------------------------------------------------------------------
 Address::Address(const string&  city, const string&  street, int home_number) : city(city), street(street), home_number(home_number) {
 
 }
+
+//Constructor from file input.
 Address::Address(ifstream& in) {
     in >> *this;
 }
 
+//Operator << for printing and writing to file.
 ostream& operator<<(ostream& os, const Address& address) {
     os << address.street << endl << address.home_number << endl << address.city;
     return os;
 }
 
+//Operator >> for reading from a file.
 ifstream& operator>>(ifstream& in, Address& address) {
     if (typeid(in) == typeid(ifstream)) {
         char trash;
@@ -29,6 +33,8 @@ ifstream& operator>>(ifstream& in, Address& address) {
     }
 }
 
+
+///Setters and Getters----------------------------------------------------------------------------
 bool Address::setCity(const string& city) {
     if(city.length() <= CITY_NAME_LEN) {
         this->city = city;

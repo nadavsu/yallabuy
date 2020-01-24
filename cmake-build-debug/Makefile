@@ -339,33 +339,6 @@ Item.cpp.s:
 	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/Item.cpp.s
 .PHONY : Item.cpp.s
 
-ItemList.o: ItemList.cpp.o
-
-.PHONY : ItemList.o
-
-# target to build an object file
-ItemList.cpp.o:
-	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/ItemList.cpp.o
-.PHONY : ItemList.cpp.o
-
-ItemList.i: ItemList.cpp.i
-
-.PHONY : ItemList.i
-
-# target to preprocess a source file
-ItemList.cpp.i:
-	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/ItemList.cpp.i
-.PHONY : ItemList.cpp.i
-
-ItemList.s: ItemList.cpp.s
-
-.PHONY : ItemList.s
-
-# target to generate assembly for a file
-ItemList.cpp.s:
-	$(MAKE) -f CMakeFiles/ecommerce.dir/build.make CMakeFiles/ecommerce.dir/ItemList.cpp.s
-.PHONY : ItemList.cpp.s
-
 Manager.o: Manager.cpp.o
 
 .PHONY : Manager.o
@@ -534,9 +507,6 @@ help:
 	@echo "... Item.o"
 	@echo "... Item.i"
 	@echo "... Item.s"
-	@echo "... ItemList.o"
-	@echo "... ItemList.i"
-	@echo "... ItemList.s"
 	@echo "... Manager.o"
 	@echo "... Manager.i"
 	@echo "... Manager.s"

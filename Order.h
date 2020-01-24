@@ -5,11 +5,11 @@
 #ifndef ECOMMERCE_ORDER_H
 #define ECOMMERCE_ORDER_H
 #define _CRT_SECURE_NO_WARNINGS
-#include "ItemList.h"
 #include <string.h>
 #include <vector>
 #include <list>
 #include <algorithm>
+#include "Item.h"
 
 class Order{
 public:

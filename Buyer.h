@@ -11,13 +11,13 @@
 #include <list>
 #include<string>
 #include "Address.h"
-#include "ItemList.h"
 #include "Account.h"
 #include "CUI.h"
+#include "Item.h"
 
 class Buyer : virtual public Account {
 protected:
-    list<Item*>      cart;         //A linked list of Items, cart points to head of list.
+    list<Item*>      cart;
     vector<string>  seller_history;
     int             total_price;
 public:
@@ -27,10 +27,8 @@ public:
     Buyer(Buyer&& other);
     virtual ~Buyer();
 
-    //const Buyer& operator=(const Buyer& other);
     bool operator>(const Buyer& other) const;
     friend ifstream& operator>>(ifstream& in, Buyer& b);
-    //friend ostream& operator<<(ostream& out ,Buyer& b);
     virtual void toOs(ostream& os)             const override;
 
 public:
@@ -48,11 +46,9 @@ public:
     list<Item*>::iterator findItem(const string& item_name);
 
     void makeNewSellerHistory(vector<string>& after_erase_dup);
-    //void copySellerHistory(const Buyer& other);
     void addToSellerHistory(const vector<string>& seller_names);
     virtual const string getType() const;
     virtual Account* clone() const override;
-    //void saveBuyerToFile(ofstream& OutFile);
 
     friend class Manager;
 };

@@ -7,7 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/ecommerce.dir/Date.cpp.o"
   "CMakeFiles/ecommerce.dir/Feedback.cpp.o"
   "CMakeFiles/ecommerce.dir/Item.cpp.o"
-  "CMakeFiles/ecommerce.dir/ItemList.cpp.o"
   "CMakeFiles/ecommerce.dir/Manager.cpp.o"
   "CMakeFiles/ecommerce.dir/OFunctions.cpp.o"
   "CMakeFiles/ecommerce.dir/Order.cpp.o"
