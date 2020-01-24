@@ -9,9 +9,7 @@
 Seller::Seller(ifstream& os):Account(os) {
 	os >> *this;
 }
-
-//Constructor
-Seller::Seller(const string& username,const string& password, const string& fname, const string& lname, Address& address) : Account(username, password, fname, lname, address),feedbacks(10,'/n'){
+Seller::Seller(const string& username,const string& password, const string& fname, const string& lname, Address& address) : Account(username, password, fname, lname, address){
 
 }
 
@@ -51,8 +49,10 @@ const Seller& Seller::operator=(const Seller& other) {
 
 ifstream& operator>>(ifstream& in, Seller& s) {
 	if (typeid(in) == typeid(ifstream)) {
+		char trash;
 		int size_of_feedbacks;
 		in >> size_of_feedbacks; // add if size_of_feedback == 0
+		in.getline(&trash,1);
 		for (int i = 0; i < size_of_feedbacks; i++) {
 			s.feedbacks += new Feedback(in);// check this
 		}

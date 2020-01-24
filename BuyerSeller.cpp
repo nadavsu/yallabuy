@@ -14,7 +14,7 @@ Buyer(username, password, fname, lname, address), Seller(username, password, fna
 }
 
 //Copy constructor 1
-BuyerSeller::BuyerSeller(const Buyer& otherbuyer, const Seller& otherseller) : 
+BuyerSeller::BuyerSeller(const Buyer& otherbuyer, const Seller& otherseller) :
 	Account(otherbuyer.getUsername(), otherbuyer.getPassword(),otherbuyer.getFName(), otherbuyer.getLName(), otherbuyer.getAddress()),
 	Seller(otherseller),Buyer(otherbuyer){
 
@@ -29,16 +29,14 @@ BuyerSeller::BuyerSeller(const BuyerSeller& other) : Account(other), Buyer(other
 BuyerSeller::BuyerSeller(BuyerSeller&& other):Account(other),Seller(other),Buyer(other) {
 	
 }
-
-
-///Operators----------------------------------------------------------------------------------
+/*
 ostream& operator<<(ostream& out, BuyerSeller& bs) {
 	if (typeid(out) == typeid(ofstream)) {
 		out << (Seller&)bs << (Buyer&)bs;
 	}
 	return out;
 }
-
+*/
 const BuyerSeller& BuyerSeller::operator=(const BuyerSeller& other) {
 	if (this != &other) {
 		Account::operator=(other);
@@ -51,7 +49,7 @@ const BuyerSeller& BuyerSeller::operator=(const BuyerSeller& other) {
 
 //Used for printing to file or to console.
 void BuyerSeller::toOs(ostream& out) const {
-    Seller::toOs(out);
+	Seller::toOs(out);
     Buyer::toOs(out);
 }
 

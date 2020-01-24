@@ -81,7 +81,8 @@ void newAccount(Manager& admin) {
         cout << "Invalid Input" << endl;
         return;
     }
-    cout << "First Name: ";                                 //Taking info from the user.
+    cout << "First Name: ";//Taking info from the user.
+    cin.getline(&trash,1);
     getline(cin, f_name);
     f_name.resize(FNAME_MAX_LEN);
     f_name.shrink_to_fit();
@@ -140,9 +141,9 @@ void makeFeedback(Manager& admin) {
         getline(cin, seller_username);
         found = admin.sellerExistInBuyerSeller(buyer_username, seller_username);
         if (!found) {                                                                   //If the seller not found
-            cout << seller_username << " not found in " << buyer_username << "'s history.\n";
-            cout << "Would you like to continue? [Y/N]";
-            cin >> cont;
+            cout << seller_username << " not found in " << buyer_username << "'s history.\n"<<endl;
+            cout << "Would you like to try again? [Y/N]"<<endl;
+            cin.getline(&cont,1);
             if (cont == 'N' || cont == 'n') {
                 return;
             }
@@ -195,6 +196,7 @@ void addToCart(Manager &admin) {
 
     printTitle("Add to Cart");
     printLogin(admin, buyer_username, password, "Buyer");
+    printLine();
     admin.printSellers();                             //Printing all available sellers you can buy from.
     do {
         cout << "Please enter the seller's username you want to buy from:\n";   //Letting the user choose a seller.
@@ -345,8 +347,8 @@ void loadSystem(Manager& manager) {
     char trash;
     cout << "Please Enter the name of the file that you want to load from(include end file like .txt etc):" << endl;
     cin.getline(&trash, 1);
-    //getline(cin, filename);
-    ifstream OutFile("C:\\Users\\lasri\\source\\repos\\Amalasu\\Ecommerce\\test8.txt");
-    OutFile >> manager;
-    OutFile.close();
+    getline(cin, filename);
+    ifstream inFile("C:\\Users\\lasri\\source\\repos\\Amalasu\\Ecommerce\\test10.txt");
+    inFile >> manager;
+    inFile.close();
 }

@@ -23,7 +23,6 @@ public:
 	const Date& operator=(const Date& other);
 	friend ifstream& operator>>(ifstream& in, Date& d);
 	friend ostream& operator<<(ostream& out, Date& d);
-	virtual void toOs(ostream& os) const;
 	~Date() = default;
 
 	int getYear()   const;

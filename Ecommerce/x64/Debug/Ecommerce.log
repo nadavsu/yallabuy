@@ -1,4 +1,2 @@
-﻿  Manager.cpp
-C:\Users\lasri\source\repos\Amalasu\Manager.cpp(115,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\lasri\source\repos\Amalasu\Manager.cpp(112): warning C4715: 'operator>>': not all control paths return a value
+﻿  main.cpp
   Ecommerce.vcxproj -> C:\Users\lasri\Source\Repos\Amalasu\x64\Debug\Ecommerce.exe

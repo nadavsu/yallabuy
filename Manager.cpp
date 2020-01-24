@@ -80,6 +80,7 @@ ostream& operator<<(ostream& os, Manager& base) {
     }
     return os;
 }
+//operator>>
 ifstream& operator>>(ifstream& in, Manager& base) {
     if (typeid(in) == typeid(ifstream)) {
         char trash;
@@ -101,9 +102,12 @@ ifstream& operator>>(ifstream& in, Manager& base) {
                 Buyer* newtemp = new Buyer(in);
                 base.account_arr.push_back(newtemp);
             }
-            else {//TypeName.compare(typeid(BuyerSeller).name())
+            else if (TypeName.compare(typeid(BuyerSeller).name()) == 0){//TypeName.compare(typeid(BuyerSeller).name())
                 BuyerSeller* newtemp = new BuyerSeller(in);
                 base.account_arr.push_back(newtemp);
+            }
+            else {
+                cout << "Type of User Not Found" << endl;
             }
         }
         return in;
@@ -159,33 +163,8 @@ void Manager::addAccount(Account* temp) {
     Account* new_account;
     new_account = temp->clone();
     account_arr.push_back(new_account);
-    /*                                                //check this
-    const char* account_type;
-    account_type = typeid(*temp).name();
-    if (strcmp(account_type, typeid(Buyer).name()) == 0) {
-        Buyer* temp_buyer = dynamic_cast<Buyer*>(temp);
-        account_arr.push_back(temp);
-        num_of_buyers++;
-    }
-    else if (strcmp(account_type, typeid(Seller).name()) == 0) {
-        Seller* temp_seller = dynamic_cast<Seller*>(temp);
-        account_arr.push_back(temp);
-        num_of_sellers++;
-    }
-    else if (strcmp(account_type, typeid(BuyerSeller).name()) == 0) {
-        BuyerSeller* temp_buyerseller = dynamic_cast<BuyerSeller*>(temp);
-        account_arr.push_back(temp);
-        num_of_buyersellers++;
-    }
-    else {
-        cout << "Error: didn't recognize account type, try entering a new account again." << endl;
-
-    }
-     */
 }
 
-//TODO: can create an object function for the following functions.
-//Will take in class T, and function
 //A function which adds a new feedback to a seller.
 void Manager::addFeedback(const Feedback& feedback, const string& seller_username) {
     Seller *seller = dynamic_cast<Seller *>(getAccount(seller_username));           //Getting the seller based on ID.

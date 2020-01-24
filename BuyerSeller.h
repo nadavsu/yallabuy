@@ -15,7 +15,7 @@ public:
     BuyerSeller(BuyerSeller&& other);
     //virtual ~BuyerSeller();
     const BuyerSeller& operator=(const BuyerSeller& other);
-    friend ostream& operator<<(ostream& out, BuyerSeller& bs);
+    //friend ostream& operator<<(ostream& out, BuyerSeller& bs);
     friend ifstream& operator>>(ifstream& in, Seller& b);
     virtual Account* clone() const override;
     virtual const string getType() const;

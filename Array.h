@@ -11,7 +11,7 @@ class Array {
 	char delimeter;
 	T* arr;
 public:
-		Array(int Bsize = 10, char delimeter = ' ');
+		Array(int Bsize = 10, char delimeter = '\n');
 		Array(const Array& other);
 		Array(Array&& other);
 		inline ~Array();
