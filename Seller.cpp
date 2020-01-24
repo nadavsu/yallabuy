@@ -8,7 +8,7 @@
 Seller::Seller(ifstream& os):Account(os) {
 	os >> *this;
 }
-Seller::Seller(const string& username,const string& password, const string& fname, const string& lname, Address& address) : Account(username, password, fname, lname, address),feedbacks(10,'/n'){
+Seller::Seller(const string& username,const string& password, const string& fname, const string& lname, Address& address) : Account(username, password, fname, lname, address),feedbacks(10,'\n'){
 
 }
 
