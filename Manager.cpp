@@ -133,7 +133,7 @@ int Manager::getNumOfBuyerSellers() const {
 //A functions which gets an account based on a username.
 Account *Manager::getAccount(const string& username) {
     for(auto account : account_arr) {
-        if (account->username == username) {
+        if (account->username.compare(username)) {
             return account;
         }
     }

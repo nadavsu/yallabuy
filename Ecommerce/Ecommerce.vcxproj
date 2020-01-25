@@ -146,7 +146,6 @@
     <ClCompile Include="..\Date.cpp" />
     <ClCompile Include="..\Feedback.cpp" />
     <ClCompile Include="..\Item.cpp" />
-    <ClCompile Include="..\ItemList.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\Manager.cpp" />
     <ClCompile Include="..\Order.cpp" />
@@ -162,7 +161,6 @@
     <ClInclude Include="..\Date.h" />
     <ClInclude Include="..\Feedback.h" />
     <ClInclude Include="..\Item.h" />
-    <ClInclude Include="..\ItemList.h" />
     <ClInclude Include="..\MainHeader.h" />
     <ClInclude Include="..\Manager.h" />
     <ClInclude Include="..\Order.h" />

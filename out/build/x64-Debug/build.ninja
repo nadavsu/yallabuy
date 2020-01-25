@@ -101,13 +101,6 @@ build CMakeFiles\ecommerce.dir\Manager.cpp.obj: CXX_COMPILER__ecommerce ..\..\..
   TARGET_COMPILE_PDB = CMakeFiles\ecommerce.dir\
   TARGET_PDB = ecommerce.pdb
 
-build CMakeFiles\ecommerce.dir\ItemList.cpp.obj: CXX_COMPILER__ecommerce ..\..\..\ItemList.cpp || cmake_object_order_depends_target_ecommerce
-  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd   -std:c++14
-  OBJECT_DIR = CMakeFiles\ecommerce.dir
-  OBJECT_FILE_DIR = CMakeFiles\ecommerce.dir
-  TARGET_COMPILE_PDB = CMakeFiles\ecommerce.dir\
-  TARGET_PDB = ecommerce.pdb
-
 build CMakeFiles\ecommerce.dir\CUI.cpp.obj: CXX_COMPILER__ecommerce ..\..\..\CUI.cpp || cmake_object_order_depends_target_ecommerce
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd   -std:c++14
   OBJECT_DIR = CMakeFiles\ecommerce.dir
@@ -144,7 +137,7 @@ build CMakeFiles\ecommerce.dir\OFunctions.cpp.obj: CXX_COMPILER__ecommerce ..\..
 #############################################
 # Link the executable ecommerce.exe
 
-build ecommerce.exe: CXX_EXECUTABLE_LINKER__ecommerce CMakeFiles\ecommerce.dir\main.cpp.obj CMakeFiles\ecommerce.dir\Buyer.cpp.obj CMakeFiles\ecommerce.dir\Seller.cpp.obj CMakeFiles\ecommerce.dir\Item.cpp.obj CMakeFiles\ecommerce.dir\Feedback.cpp.obj CMakeFiles\ecommerce.dir\Address.cpp.obj CMakeFiles\ecommerce.dir\Date.cpp.obj CMakeFiles\ecommerce.dir\Order.cpp.obj CMakeFiles\ecommerce.dir\Manager.cpp.obj CMakeFiles\ecommerce.dir\ItemList.cpp.obj CMakeFiles\ecommerce.dir\CUI.cpp.obj CMakeFiles\ecommerce.dir\Account.cpp.obj CMakeFiles\ecommerce.dir\BuyerSeller.cpp.obj CMakeFiles\ecommerce.dir\OFunctions.cpp.obj
+build ecommerce.exe: CXX_EXECUTABLE_LINKER__ecommerce CMakeFiles\ecommerce.dir\main.cpp.obj CMakeFiles\ecommerce.dir\Buyer.cpp.obj CMakeFiles\ecommerce.dir\Seller.cpp.obj CMakeFiles\ecommerce.dir\Item.cpp.obj CMakeFiles\ecommerce.dir\Feedback.cpp.obj CMakeFiles\ecommerce.dir\Address.cpp.obj CMakeFiles\ecommerce.dir\Date.cpp.obj CMakeFiles\ecommerce.dir\Order.cpp.obj CMakeFiles\ecommerce.dir\Manager.cpp.obj CMakeFiles\ecommerce.dir\CUI.cpp.obj CMakeFiles\ecommerce.dir\Account.cpp.obj CMakeFiles\ecommerce.dir\BuyerSeller.cpp.obj CMakeFiles\ecommerce.dir\OFunctions.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

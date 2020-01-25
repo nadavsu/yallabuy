@@ -9,9 +9,9 @@ Date::Date() {
     time_t tt;
     time(&tt);
     tm TM = *localtime(&tt);
-    setYear(TM.tm_year);
-    setMonth(TM.tm_mon + 1);
-    setDay(TM.tm_mday);
+    setYear(TM.tm_year+1900); // since 1900
+    setMonth(TM.tm_mon + 1); // from 0 to 11
+    setDay(TM.tm_mday); // from 1 to 31
 }
 //constructor in case copy of feddback or something.
 Date::Date(int day, int month, int year) : day(day), month(month), year(year) {
@@ -67,7 +67,7 @@ ostream& operator<<(ostream& out, Date& d) {
 
 bool Date::setYear(int year) {
     if(year <= CURRENT_YEAR && year >= MINIMUM_YEAR) {
-        this->year = CURRENT_YEAR;
+        this->year = year;
         return true;
     }
     return false;

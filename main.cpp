@@ -8,7 +8,7 @@ int main() {
 
     Manager manager;
     int ans;
-    //manager._debugfill();
+    manager._debugfill();
     printTitle("Welcome to YallaBuy!");     //Main menu
     do {
         ans = printMainMenu();
@@ -57,6 +57,7 @@ int main() {
 
 //A funciton that adds new account, takes in info from the user
 void newAccount(Manager& admin) {
+    char trash;
     int house_number;
     int account_type;
     string street, city, f_name, l_name, password, username;
@@ -123,7 +124,7 @@ void newAccount(Manager& admin) {
         cout << "Invalid Input" << endl;
         return;
     }
-    admin += temp;
+    admin.addAccount(temp);
     delete temp;
 }
 

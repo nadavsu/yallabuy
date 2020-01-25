@@ -1,2 +1,3 @@
-﻿  main.cpp
+﻿  Buyer.cpp
+C:\Users\lasri\source\repos\Amalasu\Buyer.cpp(70): warning C4715: 'operator>>': not all control paths return a value
   Ecommerce.vcxproj -> C:\Users\lasri\Source\Repos\Amalasu\x64\Debug\Ecommerce.exe
