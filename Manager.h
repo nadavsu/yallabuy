@@ -36,7 +36,7 @@ public:
     int getNumOfSellers()       const;
     int getNumOfBuyers()        const;
     int getNumOfBuyerSellers()  const;
-    Account* getAccount(const string& username);
+    Account* getAccount(string username);
 
     bool login(const string& username, const string& password, const string& type);
 	void addAccount(Account* temp);

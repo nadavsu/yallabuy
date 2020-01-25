@@ -8,7 +8,7 @@ int main() {
 
     Manager manager;
     int ans;
-    manager._debugfill();
+    //manager._debugfill();
     printTitle("Welcome to YallaBuy!");     //Main menu
     do {
         ans = printMainMenu();
@@ -60,7 +60,7 @@ void newAccount(Manager& admin) {
     char trash;
     int house_number;
     int account_type;
-    string street, city, f_name, l_name, password, username;
+    string t_street, t_city, t_f_name, t_l_name, t_password, t_username;
     Account* temp;
 
     cout << "What type of user do you want to open?" << endl;
@@ -84,31 +84,33 @@ void newAccount(Manager& admin) {
     }
     cout << "First Name: ";//Taking info from the user.
     cin.getline(&trash,1);
-    getline(cin, f_name);
-    f_name.resize(FNAME_MAX_LEN);
-    f_name.shrink_to_fit();
+    getline(cin, t_f_name);
+    t_f_name.resize(FNAME_MAX_LEN);
+    t_f_name.shrink_to_fit();
     cout << "Last Name: ";
-    getline(cin, l_name);
-    l_name.resize(LNAME_MAX_LEN);
-    l_name.shrink_to_fit();
+    getline(cin, t_l_name);
+    t_l_name.resize(LNAME_MAX_LEN);
+    t_l_name.shrink_to_fit();
     cout << "Username: ";
-    getline(cin, username);
-    username.resize(USERNAME_MAX_LEN);
-    username.shrink_to_fit();
+    getline(cin, t_username);
+    t_username.resize(USERNAME_MAX_LEN);
+    t_username.shrink_to_fit();
     do {
         cout << "Password (at least 6): ";
-        getline(cin, password);
-    } while (password.length() < 6);
+        getline(cin, t_password);
+    } while (t_password.length() < 6);
     cout << "City: ";
-    getline(cin, city);
-    city.resize(CITY_MAX_LEN);
-    city.shrink_to_fit();
+    getline(cin, t_city);
+    t_city.resize(CITY_MAX_LEN);
+    t_city.shrink_to_fit();
     cout << "Street: ";
-    getline(cin, street);
-    street.resize(STREET_MAX_LEN);
-    street.shrink_to_fit();
+    getline(cin, t_street);
+    t_street.resize(STREET_MAX_LEN);
+    t_street.shrink_to_fit();
     cout << "House Number: ";
     cin >> house_number;
+    const string street = t_street, city = t_city, f_name = t_f_name, l_name = t_l_name,
+        password = t_password, username = t_username,what;
     printLine();
     Address address(city, street, house_number);
     if (account_type == 1) {                                         //Creating the object based to the account_type
@@ -349,7 +351,7 @@ void loadSystem(Manager& manager) {
     cout << "Please Enter the name of the file that you want to load from(include end file like .txt etc):" << endl;
     cin.getline(&trash, 1);
     getline(cin, filename);
-    ifstream inFile("C:\\Users\\lasri\\source\\repos\\Amalasu\\Ecommerce\\test10.txt");
+    ifstream inFile(filename);
     inFile >> manager;
     inFile.close();
 }
